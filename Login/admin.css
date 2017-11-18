@@ -1,0 +1,102 @@
+.nav-item {     /*navbar div*/
+    background-color: #4F73ED;
+    border: solid 1px #E0F4FB;
+    margin-left: 2.4%;
+    margin-right: 2.4%;
+}
+
+#navbar {       
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 3%;
+    border: solid 2px #05A8E1;
+    background-color: whitesmoke;
+}
+
+.nav-link {     /*navbar item text*/
+    color: white; 
+}
+
+.active {       /*active navbar item text*/
+    font-weight: bold;
+}
+
+/*
+#line-top {
+   position: fixed;
+   background-color: #05A8E1;
+   top: 0%;
+   right: 0%;
+   left: 0%;
+   bottom: 91.5%;
+}
+*/
+
+#header {
+   position: fixed;
+   background-color: #4F73ED;
+   top: 0%;
+   right: 0%;
+   left: 0%;
+   bottom: 60%;
+   float: left;
+}
+
+
+#body {
+   position: fixed;
+   background-color: #E0F4FB;
+   top: 40%;
+   right: 0%;
+   left: 0%;
+   bottom: 0%;
+   float: right;
+}
+
+#lijnwit {
+   position: fixed;
+   background-color: white;
+   top: 39.5%;
+   right: 0%;
+   left: 0%;
+   bottom: 59%;
+   float: left;
+}
+
+#lijnblauw {
+   position: fixed;
+   background-color: #05A8E1;
+   top: 40.4%;
+   right: 0%;
+   left: 0%;
+   bottom: 59%;
+}
+
+#tekst {
+    height: 400px;
+    text-align: left;
+    padding: 5%;
+    padding-top: 2%;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 3%;
+    background-color: whitesmoke;
+    border: solid 2px black;
+    min-height: 300px;
+    height: 300px;
+}
+
+#wachtwoord {
+    font-size: 9px;
+}
+
+#knop {
+    margin-left: 45%;
+    margin-right: 45%;
+    margin-top: 5%;
+}
+
+#adminh1 {
+    font-size: 25px;
+    text-align: center;
+}
