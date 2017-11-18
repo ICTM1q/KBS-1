@@ -99,6 +99,7 @@ function createUser ( $username, $password ) {
     }   
 }
 
+// Rol van de user ophalen.
 function GetRole ( $username ) {
     include "config.php";
     try {
@@ -128,7 +129,7 @@ function getRealIpAddr() {
     return $ip;
 }
 
-// Functie om een foute try te inserten. Hoort alleen gedaan te worden als alle input ingevoerd is en het wachtwoord fout is.
+// Functie om een foute inlog-poging te inserten. Hoort alleen gedaan te worden als alle input ingevoerd is en het wachtwoord fout is.
 function insertTry ( $ip ) {
     include "config.php";
     try {
@@ -143,6 +144,7 @@ function insertTry ( $ip ) {
     }   
 }
 
+// Inlog-pogingen ophalen van specifiek IP.
 function getTries ( $ip ) {
     include "config.php";
     
@@ -159,6 +161,7 @@ function getTries ( $ip ) {
     }
 }
 
+// Inloge-pogingen verwijderen van specifiek IP. 
 function deleteTries ( $ip ) {
     include "config.php";
     
