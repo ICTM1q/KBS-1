@@ -29,5 +29,3 @@ Create <br>
     <input type="submit" name="createuser" value="Query"><br>
     <span class="result"><?php echo $createArray["result"];?></span>  
 </form>
-
-<p><a href="index.php">Index</a></p>
