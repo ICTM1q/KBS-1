@@ -65,7 +65,7 @@ function randString ( $length ) {
 }
 
 // Functie om gebruiker aan te maken.
-function createUser ( $username, $password ) {
+function createUser ( $username, $password, $email ) {
     include "config.php";
     
     try {
@@ -87,8 +87,8 @@ function createUser ( $username, $password ) {
            $hash = crypt ( $password, $cryptsalt );
     
             // Informatie opslaan in database.
-            $stmt = $conn->prepare ( "INSERT INTO user(username, password, salt, role) VALUES (?, ?, ?, ?)" );
-            $stmt->execute( array ( $username, $hash, $salt, "Gebruiker" ) );
+            $stmt = $conn->prepare ( "INSERT INTO user(username, password, salt, role, email, create_date) VALUES (?, ?, ?, ?, ?, NOW())" );
+            $stmt->execute( array ( $username, $hash, $salt, "Gebruiker", $email ) );
         
             return $username . " aangemaakt." . "<br>";
         }      

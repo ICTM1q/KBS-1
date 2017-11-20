@@ -1,5 +1,4 @@
 <?php
-#include "sql.php";
 
 // Functie om login informatie te verwerken en terug te sturen. Je kan binnen PHP maar een ding returning vandaar dat het een associative array is die wordt gereturned. 
 // Binnen deze functie wordt ook de functie aangeroepen die kijkt of het wachtwoord wat ingevoerd is klopt met de ingevoerde username.
@@ -78,16 +77,18 @@ function loginCaptchaFunc ( $username, $password, $secureImage, $captchaCode ) {
 
 // Functie om create informatie te verwerken en terug te sturen. Je kan binnen PHP maar een ding returning vandaar dat het een associative array is die wordt gereturned. 
 // Binnen deze functie wordt ook de functie aangeroepen om een account aan te maken. 
-function createFunc ( $username, $password ) {
+function createFunc ( $username, $password, $email ) {
     // Alles leeg definieren.
     $create = array();
     $createArray["result"] = FALSE;
     
     $createUsernameFlag = TRUE;
     $createPasswordFlag = TRUE;
+    $createEmailFlag = TRUE;
     
     $createArray["usernameErr"] = "";
     $createArray["passwordErr"] = "";
+    $createArray["emailErr"] = "";
     
     // Kijk of username leeg is.
     if ( empty ( $_POST["createUsername"] ) ) {
@@ -99,9 +100,14 @@ function createFunc ( $username, $password ) {
         $createArray["passwordErr"] = "Wachtwoord is vereist.";
         $createPasswordFlag = FALSE;
     }
-    // Als password en username allebij gevuld zijn, voer dit uit. 
+    // Kijk of email leeg is.
+    if ( empty ($_POST["createEmail"] ) ) {
+        $createArray["emailErr"] = "Email is vereist.";
+        $createPasswordFlag = FALSE;
+    }
+    // Als password, username en email allebij gevuld zijn, voer dit uit. 
     if ( $createPasswordFlag === TRUE && $createUsernameFlag === TRUE ) {
-        $createArray["result"] = createUser( $username, $password );
+        $createArray["result"] = createUser( $username, $password, $email );
     }
     return $createArray;
 }
