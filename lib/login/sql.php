@@ -117,10 +117,10 @@ function GetRole ( $username ) {
 
 // Functie om IP van gebruiker op te halen.
 function getRealIpAddr() {
-    if (!empty($_SERVER['HTTP_CLIENT_IP'])) {   //check ip from share internet
+    if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
         $ip=$_SERVER['HTTP_CLIENT_IP'];
     }
-    elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {  //to check ip is pass from proxy
+    elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
         $ip=$_SERVER['HTTP_X_FORWARDED_FOR'];
     }
     else {
@@ -134,7 +134,7 @@ function insertTry ( $ip ) {
     include "config.php";
     try {
         $conn = new PDO ( "mysql:host=localhost;dbname=kbs", $user );
-        $stmt = $conn->prepare ( "INSERT INTO login_tries(date, ip) VALUES(NOW(),?)");
+        $stmt = $conn->prepare ( "INSERT INTO login_try(date, ip) VALUES(NOW(),?)");
         $stmt->execute ( array ( $ip ) );
         
     }
@@ -150,7 +150,7 @@ function getTries ( $ip ) {
     
     try {
         $conn = new PDO ( "mysql:host=localhost;dbname=kbs", $user );
-        $stmt = $conn->prepare ( "SELECT count(ip) FROM login_tries WHERE ip = ? AND date > DATE_SUB(NOW(), INTERVAL 24 HOUR)" );
+        $stmt = $conn->prepare ( "SELECT count(ip) FROM login_try WHERE ip = ? AND date > DATE_SUB(NOW(), INTERVAL 24 HOUR)" );
         $stmt->execute ( array ( $ip ) );
         $row = $stmt->fetch();
         return $row[0];
@@ -167,7 +167,7 @@ function deleteTries ( $ip ) {
     
     try {
         $conn = new PDO ( "mysql:host=localhost;dbname=kbs", $user );
-        $stmt = $conn->prepare ( "DELETE FROM login_tries WHERE ip = ?" );
+        $stmt = $conn->prepare ( "DELETE FROM login_ty WHERE ip = ?" );
         $stmt->execute ( array ( $ip ) );
     }
     catch ( PDOException $e ) {
