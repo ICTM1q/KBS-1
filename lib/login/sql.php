@@ -167,7 +167,7 @@ function deleteTries ( $ip ) {
     
     try {
         $conn = new PDO ( "mysql:host=localhost;dbname=kbs", $user );
-        $stmt = $conn->prepare ( "DELETE FROM login_ty WHERE ip = ?" );
+        $stmt = $conn->prepare ( "DELETE FROM login_try WHERE ip = ?" );
         $stmt->execute ( array ( $ip ) );
     }
     catch ( PDOException $e ) {
