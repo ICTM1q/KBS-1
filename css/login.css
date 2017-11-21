@@ -78,15 +78,20 @@
     padding-top: 2%;
     margin-left: 25%;
     margin-right: 25%;
-    margin-top: 3%;
+    margin-top: 10%;
     background-color: whitesmoke;
     border: solid 2px black;
     min-height: 300px;
     height: 300px;
 }
 
-#wachtwoord {
+.ondertekst {
     font-size: 9px;
+}
+
+.error {
+    font-size: 9px;
+    color: red;
 }
 
 #knop {
@@ -98,4 +103,19 @@
 #adminh1 {
     font-size: 25px;
     text-align: center;
+    font-weight: bold;
+}
+
+#forms {
+    float: left;
+    background-color: whitesmoke;
+}
+
+#captcha {
+    float: right;
+    background-color: whitesmoke;
+}
+
+.img {
+    border: solid 1px black;
 }
