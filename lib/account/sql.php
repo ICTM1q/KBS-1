@@ -37,6 +37,14 @@ function getUser ( $conn, $username ) {
     return $row[0];
 }
 
+// Functie om email op te halen uit database. Kan gebruikt worden om te checken.
+function getEmail ( $conn, $email ) {
+    $stmt = $conn->prepare ( "SELECT email FROM user WHERE email LIKE ?" );
+    $stmt->execute ( array ( $email ) );
+    $row = $stmt->fetch();
+    return $row[0];
+}
+
 // Functie om salt op te halen uit database.
 function getSalt ( $conn, $username ) {
     $stmt = $conn->prepare ( "SELECT salt FROM user WHERE username LIKE ?" );
@@ -75,7 +83,10 @@ function createUser ( $username, $password, $email ) {
         if ( getUser ( $conn, $username ) == $username ) {
             return "Gebruikersnaam bestaat al.<br>";
         }
-    
+        // Kijken of email al bestaat.
+        if ( getEmail ( $conn, $email ) == $email ) {
+            return "Email is al gebruikt.";
+        }
         else {
         // Salt genereren en klaarmaken voor opslaan in database.
             $salt = randString ( 16 ); 
@@ -167,7 +178,7 @@ function deleteTries ( $ip ) {
     
     try {
         $conn = new PDO ( "mysql:host=localhost;dbname=kbs", $user );
-        $stmt = $conn->prepare ( "DELETE FROM login_ty WHERE ip = ?" );
+        $stmt = $conn->prepare ( "DELETE FROM login_try WHERE ip = ?" );
         $stmt->execute ( array ( $ip ) );
     }
     catch ( PDOException $e ) {
@@ -175,4 +186,33 @@ function deleteTries ( $ip ) {
         die();
     }
 }
+
+function deleteToken ( $conn, $email ) {
+    $stmt = $conn->prepare ( "DELETE FROM reset_token WHERE email = ?" );
+    $stmt->execute( array ( $email ) ); 
+}
+
+function newPassword ( $conn, $password, $email ) {
+    $salt = randString ( 16 ); 
+    $algo = 6;
+    $rounds = 5000;
+    $cryptsalt = '$' . $algo . '$rounds=' . $rounds . '$' . $salt;
+    $hash = crypt ( $password, $cryptsalt );
+    
+    $stmt = $conn->prepare ( "UPDATE user SET password = ?, salt = ? WHERE email = ?");
+    $stmt->execute ( array ( $hash, $salt, $email ) );
+}
+
+function getToken ( $conn, $email ) {
+    $stmt = $conn->prepare ( "SELECT token FROM reset_token WHERE email LIKE ? AND date > DATE_SUB(NOW(), INTERVAL '00:30' HOUR_MINUTE)" );
+    $stmt->execute ( array ( $email ) );
+    $row = $stmt->fetch();
+    return $row[0];
+}
+
+function insertToken ( $conn, $token, $email ) {
+    $stmt = $conn->prepare ( "INSERT INTO reset_token ( email, token, date ) VALUES ( ?, ?, NOW() )");
+    $stmt->execute ( array ( $email, $token ) );
+}
+
 

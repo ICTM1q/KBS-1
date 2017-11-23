@@ -1,10 +1,9 @@
 <?php
 session_start();
-include "lib\login\account.php";
-include "lib\login\sql.php";
+include "lib\account\account.php";
+include "lib\account\sql.php";
 
 // Variabelen leeg definieren.
-$createArray = array();
 $createArray["usernameErr"] = "";
 $createArray["passwordErr"] = "";
 $createArray["emailErr"] = "";
