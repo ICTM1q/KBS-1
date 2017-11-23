@@ -73,3 +73,11 @@ h1 {
 .custom-icon{
   height:30px;
 }
+.custom-col{
+  align-content: center;
+  text-align: center;
+}
+.btn:focus, .btn:hover {
+  text-decoration: none;
+  background-color: white;
+}

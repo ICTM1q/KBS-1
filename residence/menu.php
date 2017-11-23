@@ -18,12 +18,6 @@
                 <li class="nav-item">
                     <a class="nav-link <?php if($_SERVER['PHP_SELF'] == "/residence/create.php") { echo "active";} ?>" href="create">Voeg een woning toe</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link <?php if($_SERVER['PHP_SELF'] == "/residence/edit.php") { echo "active";} ?>" href="edit">Pas een woning aan</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link <?php if($_SERVER['PHP_SELF'] == "/residence/delete.php") { echo "active";} ?>" href="delete">Gooi een woning weg</a>
-                </li>
             </ul>
         </nav>
         <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">

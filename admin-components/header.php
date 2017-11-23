@@ -18,12 +18,14 @@
 
     <!-- Custom styles for this template -->
     <link href="/admin-components/css/dashboard.css" rel="stylesheet">
+    <!-- font awesome -->
+    <script src="https://use.fontawesome.com/4b9f613b5e.js"></script>
 </head>
 
 <body>
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand navbar-brand-custom" href="/admin.php"><img src="/images/logo-cropped.jpg"></a>
+        <a class="navbar-brand navbar-brand-custom" href="/admin"><img src="/images/logo-cropped.jpg"></a>
         <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

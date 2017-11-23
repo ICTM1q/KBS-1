@@ -9,42 +9,88 @@
 
 include "../admin-components/header.php";
 include "menu.php";
+require_once "functions.php";
+$functions = new functions();
+$conn = $functions->connectDB();
 
+if (isset($_POST) && $_POST != null && !isset($_POST['delete'])){
+    $conn = $functions->connectDB();
+    $result2 = $functions->insertNewResidence($conn, $_POST['adres'], $_POST['plaats'], $_POST['postcode'], $_POST['beschrijving'], $_POST['prijs'] );
+}else{
+    if (isset($_POST) && $_POST != null){
+        $conn = $functions->connectDB();
+        $functions->deleteResidence($conn, $_POST['delete']);
+    }
+}
+
+$result = $functions->getAllResidence($conn);
+$conn->close();
+
+if (isset($_SESSION['message']) &&$_SESSION['message'] != null){ ?>
+    <div class="alert alert-success custom-col" role="alert">
+        <?php echo $_SESSION['message']; $_SESSION['message'] = null; ?>
+    </div>
+<?php }
+if (isset($_SESSION['error']) && $_SESSION['error'] != null){ ?>
+    <div class="alert alert-danger custom-col" role="alert">
+        <?php echo $_SESSION['error']; $_SESSION['error'] = null; ?>
+    </div>
+<?php }
+if (isset($_SESSION['warning']) && $_SESSION['warning'] != null){ ?>
+    <div class="alert alert-warning custom-col" role="alert">
+        <?php echo $_SESSION['warning']; $_SESSION['warning'] = null; ?>
+    </div>
+<?php }
 ?>
 <!-- content here -->
 
-<h1>Woningoverzicht:</h1>
-<table class="table-hover table table-responsive">
+<h2>Woningoverzicht:</h2>
+<table class="table-hover table">
     <tr>
-        <th>Straat</th>
-        <th>Huisnummer</th>
+        <th>ID</th>
+        <th>Adres</th>
         <th>Postcode</th>
         <th>Plaats</th>
         <th>Beschrijving</th>
         <th>Prijs</th>
         <th>Afbeelding</th>
-        <th>Verwijderen</th>
+        <th class="custom-col">Wijzigen</th>
+        <th class="custom-col">Verwijderen</th>
     </tr>
     <!-- Below we must fill the table with the content from the database -->
-    <tr>
-        <td>Binnenstraat</td>
-        <td>32</td>
-        <td>1337LT</td>
-        <td>Buitenstad</td>
-        <td>Hier staat een beschrijving</td>
-        <td>999.98</td>
-        <td><!--<img src="uploads/woning.png">--></td>
-        <td><img src="/images/delete.svg" class="custom-icon"></td>
-    </tr>
-    <tr>
-        <td>De oudste straat in Nederland</td>
-        <td>1</td>
-        <td>7001AA</td>
-        <td>Amsterdam</td>
-        <td>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.</td>
-        <td>1500</td>
-        <td><!--<img src="uploads/woning.png">--></td>
-        <td><img src="/images/delete.svg" class="custom-icon"></td>
-    </tr>
+    <!-- doormiddel van een forloop moeten we de data laten zien in een tabel nadat we alles hebben opgehaald. -->
+    <?php
+    if($result != null && $result->num_rows > 0){
+        foreach($result as $row){ ?>
+            <tr>
+                <td><?php echo $row['pandid'] ?></td>
+                <td><?php echo $row['adres'] ?></td>
+                <td><?php echo $row['postalcode'] ?></td>
+                <td><?php echo $row['city'] ?></td>
+                <td><?php echo $row['description'] ?></td>
+                <td><?php echo $row['price'] ?></td>
+                <td><!--<img src="uploads/woning.png">--></td>
+                <td class="custom-col">
+                    <form method="post" action="/residence/edit.php">
+                        <input  type="hidden" name="edit" value="<?php echo $row['pandid'] ?>">
+                        <button type="submit" class="btn fa fa-edit fa-2x"></button>
+                    </form>
+                </td>
+                <td class="custom-col">
+                    <form method="post" action="/residence/overview">
+                        <input  type="hidden" name="delete" value="<?php echo $row['pandid'] ?>">
+                        <button type="submit" class="delete btn fa fa-trash-o fa-2x"></button>
+                    </form>
+                </td>
+            </tr>
+        <?php }
+        } ?>
 </table>
+<script>
+    $(function() {
+        $('.delete').click(function() {
+            return window.confirm("Weet u het zeker?");
+        });
+    });
+</script>
 <?php include "../admin-components/footer.php"; ?>
