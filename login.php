@@ -20,7 +20,6 @@
     }
 
     // Variabelen leeg definieren.
-    $loginArray = array();
     $loginArray["usernameErr"] = "";
     $loginArray["passwordErr"] = "";
     $loginArray["captchaErr"] = "";

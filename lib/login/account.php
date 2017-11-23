@@ -4,7 +4,6 @@
 // Binnen deze functie wordt ook de functie aangeroepen die kijkt of het wachtwoord wat ingevoerd is klopt met de ingevoerde username.
 function loginFunc ( $username, $password ) {
     // Alles leeg definieren.
-    $login = array();
     $loginArray["result"] = FALSE;
     $loginArray["try"] = FALSE;
     
@@ -36,7 +35,6 @@ function loginFunc ( $username, $password ) {
 // Binnen deze functie wordt ook de functie aangeroepen die kijkt of het wachtwoord wat ingevoerd is klopt met de ingevoerde username.
 function loginCaptchaFunc ( $username, $password, $secureImage, $captchaCode ) {
     // Alles leeg definieren.
-    $login = array();
     $loginArray["result"] = FALSE;
     $loginArray["try"] = FALSE;
     
@@ -79,7 +77,6 @@ function loginCaptchaFunc ( $username, $password, $secureImage, $captchaCode ) {
 // Binnen deze functie wordt ook de functie aangeroepen om een account aan te maken. 
 function createFunc ( $username, $password, $email ) {
     // Alles leeg definieren.
-    $create = array();
     $createArray["result"] = FALSE;
     
     $createUsernameFlag = TRUE;

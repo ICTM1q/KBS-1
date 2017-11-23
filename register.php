@@ -4,7 +4,6 @@ include "lib\login\account.php";
 include "lib\login\sql.php";
 
 // Variabelen leeg definieren.
-$createArray = array();
 $createArray["usernameErr"] = "";
 $createArray["passwordErr"] = "";
 $createArray["emailErr"] = "";
