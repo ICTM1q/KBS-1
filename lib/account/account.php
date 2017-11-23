@@ -109,5 +109,116 @@ function createFunc ( $username, $password, $email ) {
     return $createArray;
 }
 
+// Kijk alle input na en maakt vervolgens een wachtwoord reset token aan.
+function createToken ( $email, $secureImage, $captchaCode ) {
+    include ("config.php");
+    // Alles leeg definieren.
+    $createTokenArray["emailErr"] = "";
+    $createTokenArray["captchaErr"] = "";
+    $createTokenArray["result"] = "";
+    
+    $createTokenEmailFlag = TRUE;
+    $createTokenCaptchaFlag = TRUE;
+    
+    // Kijken of email leeg is.
+    if ( empty ( $email ) ) {
+        $createTokenArray["emailErr"] = "Email is vereist.";
+        $createTokenEmailFlag = FALSE;
+    }
+    // Kijken of captcha leeg is.
+    if ( empty ( $captchaCode ) ) {
+        $createTokenArray["captchaErr"] = "Captcha is vereist.";
+        $createTokenCaptchaFlag = FALSE;
+    }
+
+    // Als alles is ingevuld ga verder.
+    if ( $createTokenEmailFlag === TRUE && $createTokenCaptchaFlag === TRUE ) {
+        // Kijken of captcha goed is ingevuld.
+        if ($secureImage->check($captchaCode) == FALSE) {
+            $createTokenArray["captchaErr"] = "Captcha is fout!";
+        }
+        else {
+            try {
+                $conn = new PDO ( "mysql:host=localhost;dbname=kbs", $user );
+
+                if ( getEmail ( $conn, $email ) == $email ) {
+                    
+                    // Eventuele oude token verwijderen.
+                    deleteToken($conn, $email);
+
+                    // Random token aanmaken.
+                    $token = bin2hex(random_bytes(25));
+
+                    // Toevoegen aan database.
+                    insertToken($conn, $token, $email);
+
+                    // DIT DIENT ALLEEN VOOR TESTEN MOMENTEEL! HIER HOORT EEN EMAIL TO TE STAAN IN PRODUCTIE!
+                    print $token;
+                }
+                else {
+                    $createTokenArray["result"] = "Email is ongeldig.";
+                }
+            }
+            catch ( PDOException $e ) {
+                return "Error!: " . $e->getMessage() . "<br/>";
+                die();
+            }
+        }
+    }
+    return $createTokenArray;
+}
+
+// Kijk na of de ingevoerde token klopt. Zo ja, reset het wachtwoord met de gegeven input.
+function checkToken ( $token, $email, $password ) {
+    include ("config.php");
+    
+    $resetArray["tokenErr"] = "";
+    $resetArray["emailErr"] = "";
+    $resetArray["passwordErr"] = "";
+    $resetArray["result"] = "";
+            
+    $resetTokenFlag = TRUE;
+    $resetEmailFlag = TRUE;
+    $resetPasswordFlag = TRUE;
+    
+    // Kijken of code leeg is.
+    if ( empty ( $token ) ) {
+        $resetArray["tokenErr"] = "Code is vereist.";
+        $resetTokenFlag = FALSE;
+    }
+    // Kijken of emai leeg is.
+    if ( empty ( $email ) ) {
+        $resetArray["emailErr"] = "Email is vereist.";
+        $resetEmailFlag = FALSE;
+    }
+    // Kijken of password leeg is.
+    if ( empty ( $password ) ) {
+        $resetArray["passwordErr"] = "Wachtwoord is vereist.";
+        $resetPasswordFlag = FALSE;
+    }
+    if ( $resetTokenFlag === TRUE && $resetEmailFlag === TRUE && $resetPasswordFlag === TRUE ) {
+        try {
+            $conn = new PDO ( "mysql:host=localhost;dbname=kbs", $user );
+            
+            // Kijken of ingevoerde token gelijk is aan taken in de database.
+            if ( getToken ( $conn, $email ) == $token ) {
+                // Nieuw wachtwoord in de database opnemen.
+                newPassword($conn, $password, $email);
+                $resetArray["result"] = "Wachtwoord successvol gereset.";
+                // Token verwijderen.
+                deleteToken($conn, $email);
+            }
+            else {
+                $resetArray["result"] = "Code klopt niet of is niet geldig.";
+            }
+        }
+        catch ( PDOException $e ) {
+            return "Error!: " . $e->getMessage() . "<br/>";
+            die();
+        }    
+    }
+    return $resetArray;
+}
+
 ?>
 

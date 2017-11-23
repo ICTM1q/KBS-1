@@ -11,8 +11,8 @@
     <?php
     
     session_start();
-    include "lib\login\account.php";
-    include "lib\login\sql.php";
+    include "lib\account\account.php";
+    include "lib\account\sql.php";
 
     // Als tries leeg is vul hem op.
     if (empty($tries)) {
@@ -34,7 +34,7 @@
             $secureImage = new Securimage();
 
             // Roep loginCaptchaFunc aan.
-            $loginArray = loginCaptchaFunc(trim( $_POST["loginUsername"] ), trim( $_POST["loginPassword"] ), $secureImage, $_POST["captcha_code"]);
+            $loginArray = loginCaptchaFunc(trim( $_POST["loginUsername"] ), trim( $_POST["loginPassword"] ), $secureImage, $_POST["captchaCode"]);
 
             // Als het het ingevoerde wachtwoord en username klopt bind het username en de functie die bij deze user horen aan zijn sessie.
             // Hiermee kan de user bij zijn/haar dingen komen.
@@ -60,7 +60,7 @@
                 $_SESSION["user"] = trim ( $_POST["loginUsername"] );
                 $_SESSION["role"] = GetRole ( $_POST["loginUsername"] );
                 deleteTries(getRealIpAddr());
-                header( "Location: beheer.php" );
+                header( "Location: admin.php" );
             }
             // Kijk of er een volledige poging gedaan is en of het wachtwoord niet klopt. Zo ja, voeg een poging toe aan de database.
             elseif ( $loginArray["try"] === TRUE ) {
@@ -106,7 +106,7 @@
                         if ( $tries >= 3 ) { 
                             echo "<br><img id='captcha' class='img' src='lib/securimage/securimage_show.php' alt='CAPTCHA Image' }; /> <br>";
                             echo "<a class='ondertekst' href='' onclick='document.getElementById('captcha').src = 'lib/securimage/securimage_show.php?' + Math.random(); return false'>[ Andere Afbeelding ]</a> <br>";
-                            echo "<input type='text' name='captcha_code' size='10' maxlength='6' />";      
+                            echo "<input type='text' name='captchaCode' size='10' maxlength='6' />";      
                         }
                         ?>
                     

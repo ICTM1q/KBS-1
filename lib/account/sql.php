@@ -187,3 +187,32 @@ function deleteTries ( $ip ) {
     }
 }
 
+function deleteToken ( $conn, $email ) {
+    $stmt = $conn->prepare ( "DELETE FROM reset_token WHERE email = ?" );
+    $stmt->execute( array ( $email ) ); 
+}
+
+function newPassword ( $conn, $password, $email ) {
+    $salt = randString ( 16 ); 
+    $algo = 6;
+    $rounds = 5000;
+    $cryptsalt = '$' . $algo . '$rounds=' . $rounds . '$' . $salt;
+    $hash = crypt ( $password, $cryptsalt );
+    
+    $stmt = $conn->prepare ( "UPDATE user SET password = ?, salt = ? WHERE email = ?");
+    $stmt->execute ( array ( $hash, $salt, $email ) );
+}
+
+function getToken ( $conn, $email ) {
+    $stmt = $conn->prepare ( "SELECT token FROM reset_token WHERE email LIKE ? AND date > DATE_SUB(NOW(), INTERVAL '00:30' HOUR_MINUTE)" );
+    $stmt->execute ( array ( $email ) );
+    $row = $stmt->fetch();
+    return $row[0];
+}
+
+function insertToken ( $conn, $token, $email ) {
+    $stmt = $conn->prepare ( "INSERT INTO reset_token ( email, token, date ) VALUES ( ?, ?, NOW() )");
+    $stmt->execute ( array ( $email, $token ) );
+}
+
+
