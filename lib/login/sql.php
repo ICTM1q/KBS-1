@@ -37,6 +37,14 @@ function getUser ( $conn, $username ) {
     return $row[0];
 }
 
+// Functie om email op te halen uit database. Kan gebruikt worden om te checken.
+function getEmail ( $conn, $email ) {
+    $stmt = $conn->prepare ( "SELECT email FROM user WHERE email LIKE ?" );
+    $stmt->execute ( array ( $email ) );
+    $row = $stmt->fetch();
+    return $row[0];
+}
+
 // Functie om salt op te halen uit database.
 function getSalt ( $conn, $username ) {
     $stmt = $conn->prepare ( "SELECT salt FROM user WHERE username LIKE ?" );
@@ -75,7 +83,10 @@ function createUser ( $username, $password, $email ) {
         if ( getUser ( $conn, $username ) == $username ) {
             return "Gebruikersnaam bestaat al.<br>";
         }
-    
+        // Kijken of email al bestaat.
+        if ( getEmail ( $conn, $email ) == $email ) {
+            return "Email is al gebruikt.";
+        }
         else {
         // Salt genereren en klaarmaken voor opslaan in database.
             $salt = randString ( 16 ); 
