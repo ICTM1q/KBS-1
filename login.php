@@ -89,7 +89,7 @@
             <div id="header">
                 <div id="tekst">
                     <h1 id="adminh1">Alleen geautoriseerde toegang!</h1>
-                    <div id="forms">
+                    <div class="forms">
                         <form method="post">
                             Gebruikersnaam:<br>
                             <input type="text" name="loginUsername" value="<?php if ( isset ( $_POST["loginUsername"] ) ) { echo $_POST["loginUsername"]; } ?>">
@@ -101,7 +101,7 @@
                             <a class="ondertekst" href="home.php">[ Wachtwoord vergeten ]<br></a>
                             <!-- Als iemand drie pogingen heeft gedaan krijgt hij/zij een captcha. De PHP code hieronder zorgt ervoor dat de captcha in beeld komt. -->
                     </div>
-                    <div id="captcha">
+                    <div class="captcha">
                         <?php 
                         if ( $tries >= 3 ) { 
                             echo "<br><img id='captcha' class='img' src='lib/securimage/securimage_show.php' alt='CAPTCHA Image' }; /> <br>";

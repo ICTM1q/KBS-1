@@ -25,9 +25,21 @@ if (isset($_POST["reset"])) {
 }
 
 ?>
-
-
-Stap 1: Vraag een code aan om je wachtwoord te kunnen resetten.
+<head>
+            <title>Huur en beheer</title>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" crossorigin="anonymous">
+            <link rel="stylesheet" href="css/login.css">
+        </head>
+        <div id="body"></div>
+            <div id="lijnwit">
+            <div id="lijnblauw">
+            <div id="header">
+                <div id="tekst">
+                    <h1 id="adminh1">Wachtwoord resetten</h1>
+<div class="forms">
+    Stap 1: Vraag een code aan om je<br> wachtwoord te kunnen resetten.
 <br><br>
 <form method="POST">
     Email:<br>
@@ -41,8 +53,9 @@ Stap 1: Vraag een code aan om je wachtwoord te kunnen resetten.
     <span class="error"><?php echo $createTokenArray["result"];?></span><br>
 </form>
 <br>
-
-Stap 2: Gebruik de code om je wachtwoord te resetten. 
+</div>
+<div class="captcha">
+Stap 2: Gebruik de code om <br>je wachtwoord te resetten. 
 
 <form method="POST">
     Code:<br>
@@ -57,3 +70,8 @@ Stap 2: Gebruik de code om je wachtwoord te resetten.
     <input type="submit" value="Verstuur" name="reset" id="knop">
     <span class="error"><?php echo $resetArray["result"];?></span><br> 
 </form>
+</div>
+                </div>
+                </div>
+                </div>
+                </div>

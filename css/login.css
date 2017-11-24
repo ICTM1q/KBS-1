@@ -82,7 +82,7 @@
     background-color: whitesmoke;
     border: solid 2px black;
     min-height: 300px;
-    height: 300px;
+    height: 450px;
 }
 
 .ondertekst {
@@ -106,12 +106,12 @@
     font-weight: bold;
 }
 
-#forms {
+.forms {
     float: left;
     background-color: whitesmoke;
 }
 
-#captcha {
+.captcha {
     float: right;
     background-color: whitesmoke;
 }
