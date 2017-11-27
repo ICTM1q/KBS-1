@@ -1,32 +1,22 @@
 <?php
 
 // Functie om ingevoerde wachtwoord to matchen met wat in de database staat. 
-function isCorrectPassword ( $username, $password ) {
-    include "config.php";
-    try {
-        $conn = new PDO ( "mysql:host=localhost;dbname=kbs", $user );
-    
-        // Salt opvragen en klaarmaken voor password hashing.
-        $algo = 6;
-        $rounds = 5000;
-        $salt = getSalt( $conn, $username );
-        $cryptsalt = '$' . $algo . '$rounds=' . $rounds . '$' . $salt;
-    
-        // Ingevoerde password matchen en kijken of hij klopt met wat in de databse staat.
-        $hash = crypt( $password, $cryptsalt);
-        $password = getPassword( $conn, $username );
-        if ( $password == $hash ) {
-            return TRUE;
-        }
-        else {
-            return "Wachtwoord is fout.";
-        }
+function isCorrectPassword ( $conn, $username, $password ) {
+    // Salt opvragen en klaarmaken voor password hashing.
+    $algo = 6;
+    $rounds = 5000;
+    $salt = getSalt( $conn, $username );
+    $cryptsalt = '$' . $algo . '$rounds=' . $rounds . '$' . $salt;
+
+    // Ingevoerde password matchen en kijken of hij klopt met wat in de databse staat.
+    $hash = crypt( $password, $cryptsalt);
+    $password = getPassword( $conn, $username );
+    if ( $password == $hash ) {
+        return TRUE;
     }
-    catch ( PDOException $e ) {
-        return "Error!: " . $e->getMessage() . "<br/>";
-        die();
-    
-    }   
+    else {
+        return "Wachtwoord is fout.";
+    } 
 }
 
 // Functie om username op te halen uit database. Kan gebruikt worden om te checken.
@@ -73,41 +63,32 @@ function randString ( $length ) {
 }
 
 // Functie om gebruiker aan te maken.
-function createUser ( $username, $password, $email ) {
-    include "config.php";
-    
-    try {
-        $conn = new PDO ( "mysql:host=localhost;dbname=kbs", $user );
-    
-        // Kijken of gebruker al bestaat.
-        if ( getUser ( $conn, $username ) == $username ) {
-            return "Gebruikersnaam bestaat al.<br>";
-        }
-        // Kijken of email al bestaat.
-        if ( getEmail ( $conn, $email ) == $email ) {
-            return "Email is al gebruikt.";
-        }
-        else {
-        // Salt genereren en klaarmaken voor opslaan in database.
-            $salt = randString ( 16 ); 
-            $algo = 6;
-            $rounds = 5000;
-            $cryptsalt = '$' . $algo . '$rounds=' . $rounds . '$' . $salt;
-    
-           // Password hash maken.
-           $hash = crypt ( $password, $cryptsalt );
-    
-            // Informatie opslaan in database.
-            $stmt = $conn->prepare ( "INSERT INTO user(username, password, salt, role, email, create_date) VALUES (?, ?, ?, ?, ?, NOW())" );
-            $stmt->execute( array ( $username, $hash, $salt, "Gebruiker", $email ) );
-        
-            return $username . " aangemaakt." . "<br>";
-        }      
+function createUser ( $conn, $username, $password, $email ) {
+
+    // Kijken of gebruker al bestaat.
+    if ( getUser ( $conn, $username ) == $username ) {
+        return "Gebruikersnaam bestaat al.<br>";
     }
-    catch ( PDOException $e ) {
-        return "Error!: " . $e->getMessage() . "<br/>";
-        die();
-    }   
+    // Kijken of email al bestaat.
+    if ( getEmail ( $conn, $email ) == $email ) {
+        return "Email is al gebruikt.";
+    }
+    else {
+    // Salt genereren en klaarmaken voor opslaan in database.
+        $salt = randString ( 16 ); 
+        $algo = 6;
+        $rounds = 5000;
+        $cryptsalt = '$' . $algo . '$rounds=' . $rounds . '$' . $salt;
+
+        // Password hash maken.
+        $hash = crypt ( $password, $cryptsalt );
+
+        // Informatie opslaan in database.
+        $stmt = $conn->prepare ( "INSERT INTO user(username, password, salt, role, email, create_date) VALUES (?, ?, ?, ?, ?, NOW())" );
+        $stmt->execute( array ( $username, $hash, $salt, "Gebruiker", $email ) );
+
+        return $username . " aangemaakt." . "<br>";  
+    }
 }
 
 // Rol van de user ophalen.

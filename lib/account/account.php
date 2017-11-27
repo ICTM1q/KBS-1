@@ -3,6 +3,7 @@
 // Functie om login informatie te verwerken en terug te sturen. Je kan binnen PHP maar een ding returning vandaar dat het een associative array is die wordt gereturned. 
 // Binnen deze functie wordt ook de functie aangeroepen die kijkt of het wachtwoord wat ingevoerd is klopt met de ingevoerde username.
 function loginFunc ( $username, $password ) {
+    include "config.php";
     // Alles leeg definieren.
     $loginArray["result"] = FALSE;
     $loginArray["try"] = FALSE;
@@ -25,8 +26,16 @@ function loginFunc ( $username, $password ) {
         $loginPasswordFlag = FALSE;
     }
     if ( $loginPasswordFlag === TRUE && $loginUsernameFlag === TRUE ) {
-       $loginArray["result"] = isCorrectPassword( $username, $password );
-       $loginArray["try"] = TRUE;
+        try {
+            $conn = new PDO ( "mysql:host=localhost;dbname=kbs", $user );
+            
+            $loginArray["result"] = isCorrectPassword( $conn, $username, $password );
+            $loginArray["try"] = TRUE;
+        }
+        catch ( PDOException $e ) {
+            return "Error!: " . $e->getMessage() . "<br/>";
+            die();
+        }  
     }
     return $loginArray;
 }
@@ -34,6 +43,7 @@ function loginFunc ( $username, $password ) {
 // Functie om login informatie te verwerken en terug te sturen als iemand een captcha moet maken. Je kan binnen PHP maar een ding returning vandaar dat het een associative array is die wordt gereturned. 
 // Binnen deze functie wordt ook de functie aangeroepen die kijkt of het wachtwoord wat ingevoerd is klopt met de ingevoerde username.
 function loginCaptchaFunc ( $username, $password, $secureImage, $captchaCode ) {
+    include "config.php";
     // Alles leeg definieren.
     $loginArray["result"] = FALSE;
     $loginArray["try"] = FALSE;
@@ -66,8 +76,16 @@ function loginCaptchaFunc ( $username, $password, $secureImage, $captchaCode ) {
             $loginArray["captchaErr"] = "Captcha is fout!";
         }
         else {
-            $loginArray["result"] = isCorrectPassword( $username, $password );
-            $loginArray["try"] = TRUE;
+            try {
+                $conn = new PDO ( "mysql:host=localhost;dbname=kbs", $user );
+                
+                $loginArray["result"] = isCorrectPassword( $conn, $username, $password );
+                $loginArray["try"] = TRUE;
+            }
+            catch ( PDOException $e ) {
+                return "Error!: " . $e->getMessage() . "<br/>";
+                die();
+            }  
         }
     }
     return $loginArray;
@@ -76,6 +94,7 @@ function loginCaptchaFunc ( $username, $password, $secureImage, $captchaCode ) {
 // Functie om create informatie te verwerken en terug te sturen. Je kan binnen PHP maar een ding returning vandaar dat het een associative array is die wordt gereturned. 
 // Binnen deze functie wordt ook de functie aangeroepen om een account aan te maken. 
 function createFunc ( $username, $password, $email ) {
+    include "config.php";
     // Alles leeg definieren.
     $createArray["result"] = FALSE;
     
@@ -104,7 +123,15 @@ function createFunc ( $username, $password, $email ) {
     }
     // Als password, username en email allebij gevuld zijn, voer dit uit. 
     if ( $createPasswordFlag === TRUE && $createUsernameFlag === TRUE ) {
-        $createArray["result"] = createUser( $username, $password, $email );
+        try {
+            $conn = new PDO ( "mysql:host=localhost;dbname=kbs", $user );
+            
+            $createArray["result"] = createUser( $conn, $username, $password, $email );
+        }
+        catch ( PDOException $e ) {
+            return "Error!: " . $e->getMessage() . "<br/>";
+            die();
+        }     
     }
     return $createArray;
 }

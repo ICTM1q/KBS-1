@@ -42,7 +42,7 @@
                 $_SESSION["user"] = trim ( $_POST["loginUsername"] );
                 $_SESSION["role"] = GetRole ( $_POST["loginUsername"] );
                 deleteTries(getRealIpAddr());
-                header( "Location: beheer.php" );
+                header( "Location: admin.php" );
             }
             // Kijk of er een volledige poging gedaan is en of het wachtwoord niet klopt. Zo ja, voeg een poging toe aan de database.
             elseif ( $loginArray["try"] === TRUE ) {
