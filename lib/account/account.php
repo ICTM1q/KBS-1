@@ -179,8 +179,16 @@ function createToken ( $email, $secureImage, $captchaCode ) {
                     // Toevoegen aan database.
                     insertToken($conn, $token, $email);
 
-                    // DIT DIENT ALLEEN VOOR TESTEN MOMENTEEL! HIER HOORT EEN EMAIL TO TE STAAN IN PRODUCTIE!
-                    print $token;
+                    // Emailt stuuren naar gebruiker met de code.
+                    $to = $email;
+                    $subject = "Wachtwoord Reset Code";
+                    $txt = "Uw code: " . $token;
+                    if ( mail($to,$subject,$txt) ) {
+                        $createTokenArray["result"] = "Een code is opgestuurd naar " . $email;
+                    }
+                    else {
+                        $createTokenArray["result"] = "Er is een probleem met het verstuuren van de code, probeer het nogmaals.";
+                    }
                 }
                 else {
                     $createTokenArray["result"] = "Email is ongeldig.";
