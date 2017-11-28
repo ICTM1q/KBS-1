@@ -105,11 +105,11 @@
                         <?php 
                         if ( $tries >= 3 ) { 
                             echo "<br><img id='captcha' class='img' src='lib/securimage/securimage_show.php' alt='CAPTCHA Image' }; /> <br>";
-                            echo "<a class='ondertekst' href='' onclick='document.getElementById('captcha').src = 'lib/securimage/securimage_show.php?' + Math.random(); return false'>[ Andere Afbeelding ]</a> <br>";
+                            # De quotes hieronder zijn geescaped. Geen idee waarrom dit moet maar dit moet zo. LAAT STAAN!
+                            echo "<a href=\"#\" onclick=\"document.getElementById('captcha').src = 'lib/securimage/securimage_show.php?' + Math.random(); return false\">[ Andere Afbeelding ]</a> <br>";
                             echo "<input type='text' name='captchaCode' size='10' maxlength='6' />";      
                         }
                         ?>
-                    
                         <span class="error"><?php echo $loginArray["captchaErr"];?></span><br>
                     </div>    
                         
