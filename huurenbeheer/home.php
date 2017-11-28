@@ -9,7 +9,7 @@
     <title>Huur en beheer</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <link href="css/huurenbeheer.css" rel="stylesheet">
+    <link href="../css/huurenbeheer.css" rel="stylesheet">
   </head>
 
   <body>
@@ -18,7 +18,7 @@
     <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
      <div class="container">
        <a class="navbar-brand" href="index.php">
-           <img src="css/img/logo.jpg" width="160" height="90" class="d-inline-block align-top" alt=""></a>
+           <img src="../css//img/logo.jpg" width="160" height="90" class="d-inline-block align-top" alt=""></a>
        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
          <span class="navbar-toggler-icon"></span>
        </button>
@@ -64,13 +64,13 @@
             <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner sliderbox">
                   <div class="carousel-item active">
-                    <img class="d-block w-100" src="css/img/slider-01.jpg" alt="First slide">
+                    <img class="d-block w-100" src="../css/img/slider-01.jpg" alt="First slide">
                   </div>
                   <div class="carousel-item">
-                    <img class="d-block w-100" src="css/img/slider-02.jpg" alt="Second slide">
+                    <img class="d-block w-100" src="../css/img/slider-02.jpg" alt="Second slide">
                   </div>
                   <div class="carousel-item">
-                    <img class="d-block w-100" src="css/img/slider-03.jpg" alt="Third slide">
+                    <img class="d-block w-100" src="../css/img/slider-03.jpg" alt="Third slide">
                   </div>
                 </div>
               </div>
@@ -151,10 +151,10 @@
        <div class="row ">
           <div class="col vastgoed-img">
               <h3>Certificaten</h3>
-                <a href="https://www.vastgoedpro.nl/"><img src="css/img/vgp.jpg" alt=""></a>
+                <a href="https://www.vastgoedpro.nl/"><img src="../css/img/vgp.jpg" alt=""></a>
                 <br>
                 <br>
-                <a href="https://www.vastgoedcert.nl/"><img src="css/img/vastgoedcert.jpg" alt=""></a>
+                <a href="https://www.vastgoedcert.nl/"><img src="../css/img/vastgoedcert.jpg" alt=""></a>
                 <br>
                 <br>
             </div>
