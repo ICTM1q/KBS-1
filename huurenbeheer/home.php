@@ -95,7 +95,7 @@
       <!-- Call to Action Well -->
       <div class="card text-white bg-secondary my-4 text-center">
         <div class="card-body">
-          <p class="text-white m-0">This call to action card is a great place to showcase some important information or display a clever tagline!</p>
+          <p class="text-white m-0">Hier kan een tag line komen te staan.</p>
         </div>
       </div>
 
@@ -104,23 +104,11 @@
         <div class="col-md-4 mb-4">
           <div class="card h-100">
             <div class="card-body">
-              <h2 class="card-title">Card One</h2>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">More Info</a>
-            </div>
-          </div>
-        </div>
-        <!-- /.col-md-4 -->
-        <div class="col-md-4 mb-4">
-          <div class="card h-100">
-            <div class="card-body">
-              <h2 class="card-title">Card Two</h2>
+              <h2 class="card-title">DIV 1</h2>
               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
             </div>
             <div class="card-footer">
-              <a href="#" class="btn btn-primary">More Info</a>
+              <a href="#" class="btn btn-primary">Meer Informatie</a>
             </div>
           </div>
         </div>
@@ -128,11 +116,23 @@
         <div class="col-md-4 mb-4">
           <div class="card h-100">
             <div class="card-body">
-              <h2 class="card-title">Card Three</h2>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
+              <h2 class="card-title">DIV 2</h2>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
             </div>
             <div class="card-footer">
-              <a href="#" class="btn btn-primary">More Info</a>
+              <a href="#" class="btn btn-primary">Meer Informatie</a>
+            </div>
+          </div>
+        </div>
+        <!-- /.col-md-4 -->
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h2 class="card-title">DIV 3</h2>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="btn btn-primary">Meer Informatie</a>
             </div>
           </div>
         </div>
