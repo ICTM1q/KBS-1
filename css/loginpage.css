@@ -5,7 +5,7 @@
     margin-right: 2.4%;
 }
 
-#navbar {       
+.navbar {       
     margin-left: 15%;
     margin-right: 15%;
     margin-top: 3%;
@@ -21,68 +21,37 @@
     font-weight: bold;
 }
 
-/*
-#line-top {
-   position: fixed;
-   background-color: #05A8E1;
-   top: 0%;
-   right: 0%;
-   left: 0%;
-   bottom: 91.5%;
-}
-*/
-
-#header {
-   position: fixed;
-   background-color: #4F73ED;
-   top: 0%;
-   right: 0%;
-   left: 0%;
-   bottom: 60%;
-   float: left;
+body {
+    background-color: #E0F4FB;
 }
 
-
-#body {
-   position: fixed;
-   background-color: #E0F4FB;
-   top: 40%;
-   right: 0%;
-   left: 0%;
-   bottom: 0%;
-   float: right;
-}
-
-#lijnwit {
-   position: fixed;
-   background-color: white;
-   top: 39.5%;
-   right: 0%;
-   left: 0%;
-   bottom: 59%;
-   float: left;
-}
-
-#lijnblauw {
-   position: fixed;
-   background-color: #05A8E1;
-   top: 40.4%;
-   right: 0%;
-   left: 0%;
-   bottom: 59%;
-}
-
-#tekst {
+.tekst {
     text-align: left;
     padding: 5%;
     padding-top: 2%;
-    margin-left: 25%;
-    margin-right: 25%;
+    margin-right: auto; 
+    margin-left: auto;
     margin-top: 10%;
     background-color: whitesmoke;
     border: solid 2px black;
     min-height: 300px;
-    height: 450px;
+    height: 300px;
+    max-width: 700px;
+    min-width: 300px;
+}
+
+@media screen and (max-height: 400px) {
+    .tekst {
+        margin:1%;
+    }
+}
+
+@media screen and (max-width: 609px) {
+    .tekst{
+        height: 460px;
+        margin-left: 1%;
+        margin-right: 1%;
+    }
 }
 
 .ondertekst {
@@ -94,13 +63,15 @@
     color: red;
 }
 
-#knop {
-    margin-left: 45%;
-    margin-right: 45%;
+.knop {
+    margin-left: 40%;
+    margin-right: 40%;
+    width: 20;
     margin-top: 5%;
+    border: solid 2px black;
 }
 
-#adminh1 {
+.adminh1 {
     font-size: 25px;
     text-align: center;
     font-weight: bold;
@@ -112,8 +83,15 @@
 }
 
 .captcha {
-    float: right;
+    float: left;
     background-color: whitesmoke;
+
+}
+@media screen and (min-width: 610px) {
+    .captcha {
+        float: right;
+        background-color: whitesmoke;
+    }
 }
 
 .img {

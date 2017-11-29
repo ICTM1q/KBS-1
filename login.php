@@ -80,15 +80,11 @@
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" crossorigin="anonymous">
-            <link rel="stylesheet" href="css/login.css">
+            <link rel="stylesheet" href="css/loginpage.css">
         </head>
         <body>
-            <div id="body"></div>
-            <div id="lijnwit">
-            <div id="lijnblauw">
-            <div id="header">
-                <div id="tekst">
-                    <h1 id="adminh1">Alleen geautoriseerde toegang!</h1>
+                <div class="tekst">
+                    <h1 class="adminh1">Alleen geautoriseerde toegang!</h1>
                     <div class="forms">
                         <form method="post">
                             Gebruikersnaam:<br>
@@ -102,20 +98,20 @@
                             <!-- Als iemand drie pogingen heeft gedaan krijgt hij/zij een captcha. De PHP code hieronder zorgt ervoor dat de captcha in beeld komt. -->
                     </div>
                     <div class="captcha">
+                        <span>Captcha:</span>
                         <?php 
                         if ( $tries >= 3 ) { 
                             echo "<br><img id='captcha' class='img' src='lib/securimage/securimage_show.php' alt='CAPTCHA Image' }; /> <br>";
                             # De quotes hieronder zijn geescaped. Geen idee waarrom dit moet maar dit moet zo. LAAT STAAN!
-                            echo "<a href=\"#\" onclick=\"document.getElementById('captcha').src = 'lib/securimage/securimage_show.php?' + Math.random(); return false\">[ Andere Afbeelding ]</a> <br>";
+                            echo "<a class='ondertekst' href=\"#\" onclick=\"document.getElementById('captcha').src = 'lib/securimage/securimage_show.php?' + Math.random(); return false\">[ Andere Afbeelding ]</a> <br>";
                             echo "<input type='text' name='captchaCode' size='10' maxlength='6' />";      
                         }
                         ?>
                         <span class="error"><?php echo $loginArray["captchaErr"];?></span><br>
                     </div>    
                         
-                        <input type="submit" value="Verstuur" name="submit" id="knop">
+                        <input type="submit" value="Verstuur" name="submit" class="knop">
                     </form>
-                </div>
                 </div>
             </div>
             </div>
