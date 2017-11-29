@@ -33,8 +33,9 @@ function loginFunc ( $username, $password ) {
             $loginArray["try"] = TRUE;
         }
         catch ( PDOException $e ) {
-            return "Error!: " . $e->getMessage() . "<br/>";
-            die();
+            $loginArray["result"] =  "Er is een fout opgetreden, probeer het later nogmaals.";
+            file_put_contents("./logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $e->getMessage() . "\r\n", FILE_APPEND);
+            return $loginArray;
         }  
     }
     return $loginArray;
@@ -83,8 +84,9 @@ function loginCaptchaFunc ( $username, $password, $secureImage, $captchaCode ) {
                 $loginArray["try"] = TRUE;
             }
             catch ( PDOException $e ) {
-                return "Error!: " . $e->getMessage() . "<br/>";
-                die();
+                $loginArray["result"] =  "Er is een fout opgetreden, probeer het later nogmaals.";
+                file_put_contents("./logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $e->getMessage() . "\r\n", FILE_APPEND);
+                return $loginArray;
             }  
         }
     }
@@ -119,19 +121,26 @@ function createFunc ( $username, $password, $email ) {
     // Kijk of email leeg is.
     if ( empty ($_POST["createEmail"] ) ) {
         $createArray["emailErr"] = "Email is vereist.";
-        $createPasswordFlag = FALSE;
+        $createEmailFlag = FALSE;
     }
     // Als password, username en email allebij gevuld zijn, voer dit uit. 
-    if ( $createPasswordFlag === TRUE && $createUsernameFlag === TRUE ) {
-        try {
-            $conn = new PDO ( "mysql:host=localhost;dbname=kbs", $user );
-            
-            $createArray["result"] = createUser( $conn, $username, $password, $email );
+    if ( $createPasswordFlag === TRUE && $createUsernameFlag === TRUE && $createEmailFlag = TRUE ) {
+        // Kijk of email geldig is.
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $createArray["result"] = "Email is ongeldig.";
         }
-        catch ( PDOException $e ) {
-            return "Error!: " . $e->getMessage() . "<br/>";
-            die();
-        }     
+        else {
+            try {
+                $conn = new PDO ( "mysql:host=localhost;dbname=kbs", $user );
+            
+                $createArray["result"] = createUser( $conn, $username, $password, $email );
+            }
+            catch ( PDOException $e ) {
+                $createArray["result"] =  "Er is een fout opgetreden, probeer het later nogmaals.";
+                file_put_contents("./logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $e->getMessage() . "\r\n", FILE_APPEND);
+                return $createArray;
+            }   
+        }
     }
     return $createArray;
 }
@@ -195,8 +204,9 @@ function createToken ( $email, $secureImage, $captchaCode ) {
                 }
             }
             catch ( PDOException $e ) {
-                return "Error!: " . $e->getMessage() . "<br/>";
-                die();
+                $createTokenArray["result"] =  "Er is een fout opgetreden, probeer het later nogmaals.";
+                file_put_contents("./logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $e->getMessage() . "\r\n", FILE_APPEND);
+                return $createTokenArray;
             }
         }
     }
@@ -248,8 +258,9 @@ function checkToken ( $token, $email, $password ) {
             }
         }
         catch ( PDOException $e ) {
-            return "Error!: " . $e->getMessage() . "<br/>";
-            die();
+            $resetArray["result"] =  "Er is een fout opgetreden, probeer het later nogmaals.";
+            file_put_contents("./logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $e->getMessage() . "\r\n", FILE_APPEND);
+            return $resetArray;
         }    
     }
     return $resetArray;
