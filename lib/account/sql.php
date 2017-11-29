@@ -102,8 +102,8 @@ function GetRole ( $username ) {
         return $row[0];
     }
     catch ( PDOException $e ) {
-        return "Error!: " . $e->getMessage() . "<br/>";
-        die();
+        file_put_contents("./logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $e->getMessage() . "\r\n", FILE_APPEND);
+        return;
     }   
 }
 
@@ -131,8 +131,8 @@ function insertTry ( $ip ) {
         
     }
     catch ( PDOException $e ) {
-        return "Error!: " . $e->getMessage() . "<br/>";
-        die();
+        file_put_contents("./logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $e->getMessage() . "\r\n", FILE_APPEND);
+        return;
     }   
 }
 
@@ -148,8 +148,8 @@ function getTries ( $ip ) {
         return $row[0];
     }
     catch ( PDOException $e ) {
-        return "Error!: " . $e->getMessage() . "<br/>";
-        die();
+        file_put_contents("./logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $e->getMessage() . "\r\n", FILE_APPEND);
+        return;
     }
 }
 
@@ -163,8 +163,8 @@ function deleteTries ( $ip ) {
         $stmt->execute ( array ( $ip ) );
     }
     catch ( PDOException $e ) {
-        return "Error!: " . $e->getMessage() . "<br/>";
-        die();
+        file_put_contents("./logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $e->getMessage() . "\r\n", FILE_APPEND);
+        return;
     }
 }
 
