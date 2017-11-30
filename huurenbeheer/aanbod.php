@@ -10,6 +10,14 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link href="../css/huurenbeheer.css" rel="stylesheet">
+    
+    <?php
+    require "../residence/residenceFunctions.php";
+    $functions = new residenceFunctions();
+    $conn = $functions->connectDB();
+    $residences = $functions->getAllResidence($conn);
+    $conn->close();
+    ?>
   </head>
 
   <body>
@@ -25,125 +33,128 @@
        <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="home.php">Home
-                <span class="sr-only">(current)</span>
-              </a>
+              <a class="nav-link" href="home.php">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="kantoor.php">Kantoor</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="aanbod.php">Aanbod</a>
+                <a class="nav-link" href="aanbod.php">Aanbod
+                <span class="sr-only">(current)</span>
+                </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="huurvoorwaarden.php">Huurvoorwaarden</a>
+              <a class="nav-link" href="huurvoorwaarden">Huurvoorwaarden</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="inschrijven.php">Inschrijven</a>
+              <a class="nav-link" href="inschrijven">Inschrijven</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="formulieren.php">Formulieren</a>
+              <a class="nav-link" href="formulieren">Formulieren</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="beheer.php">Beheer</a>
+              <a class="nav-link" href="beheer">Beheer</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact.php">Contact</a>
+              <a class="nav-link" href="contact">Contact</a>
             </li>
           </ul>
         </div>
-      </div>
+      </div>    
     </nav>
 
     <!-- Page Content -->
-    <div class="container-white">
+    <div class="container top-tekst">
+    <div class="row">
+        <div class="col">
+            <h2>Huuraanbood aangeboden door Hoksbergen Huurenbeheer</h2>
+        </div>
+    </div>
+    </div>  
+    <div class="container py-3">
+    <?php
+    if ($residences != null && $residences->num_rows > 0) {
+        $conn = $functions->connectDB();
+        $residenceArray = $residences->fetch_all();
 
-      <!-- Heading Row -->
-      <div class="row my-4">
-        <div class="col-lg-8">
-            <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner sliderbox">
-                  <div class="carousel-item active">
-                    <img class="d-block w-100" src="../css/img/slider-01.jpg" alt="First slide">
-                  </div>
-                  <div class="carousel-item">
-                    <img class="d-block w-100" src="../css/img/slider-02.jpg" alt="Second slide">
-                  </div>
-                  <div class="carousel-item">
-                    <img class="d-block w-100" src="../css/img/slider-03.jpg" alt="Third slide">
-                  </div>
+        $index = 0;
+        if (isset($_GET['page'])) {
+            $index = ($_GET['page'] - 1) * 10;
+        } else {
+            $_GET['page'] = 1;
+        }
+
+        for (; $index < sizeof($residenceArray); $index++) {
+            $residence = $residenceArray[$index];
+            $pictures = $functions->getResidencePictures($conn, $residence[6]);
+
+            if ($index != ($_GET['page'] - 1) * 10 && $index % 10 == 0) {
+                global $current;
+                $current = $index;
+                break;
+            }
+            ?>
+            <div id="pand-<?= $residence[0] ?>" class="card pand">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="<?= $pictures->fetch_array()['path'] ?>" class="w-100  pand-pic">
+                    </div>
+                    <div class="col-md-8 px-3">
+                        <div class="card-block px-3">
+                            <h4 class="card-title"><?= $residence[1] . ", " . $residence[3] . " " . $residence[2] ?></h4>
+                            <p class="card-text"><?= $residence[4] ?></p>
+                            <p class="card-text">€<?= $residence[5] ?></p>
+                            <a href="woning.php?pandid=<?= $residence[0] ?>" class="btn btn-primary">Lees
+                                meer</a>
+                        </div>
+                    </div>
                 </div>
-              </div>
-        </div>
-        <!-- /.col-lg-8 -->
-        <div class="col-lg-4">
-            <h1 class="title">Welkom op de website van Huur & Beheer Hoksbergen</h1>
-          <p>U bent bij ons op het juiste adres voor:</p>
-          <ul>
-              <li>het bemiddelen bij de verhuur van uw woning of bedrijfspand.</li>
-              <li>het zoeken naar een huurwoning / bedrijfspand.</li>
-              <li>het uitbesteden van beheer van uw particulier of bedrijfsmatig vastgoed.</li>
-          </ul>
-          <p>Bel of mail ons voor een persoonlijk gesprek!</p>
-        </div>
-        <!-- /.col-md-4 -->
-        <!--<div class="cert1"><img src="css/img/cert1.jpg"></div>
-        <div class="cert2"><img src="css/img/cert2.jpg"></div>-->
-      </div>
-      <!-- /.row -->
+            </div>
+            <?php
+        }
+        $conn->close();
+    }
+    ?>
+    <br>
+</div>
 
-      <!-- Call to Action Well -->
-      <div class="card tag-bg my-4 text-center">
-        <div class="card-body">
-          <p class="m-0 tag-tekst">Hier kan een tag line komen te staan.</p>
-        </div>
-      </div>
+<br>
 
-      <!-- Content Row -->
-      <div class="row">
-        <div class="col-md-4 mb-4">
-          <div class="card h-100">
-            <div class="card-body">
-              <h2 class="card-title">Card 1</h2>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Meer Informatie</a>
-            </div>
-          </div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <?php
+            $pages = ceil($residences->num_rows / 10);
+            $currentpage = $_GET['page'];
+            ?>
+            <ul class="pagination mx-auto">
+                <li class="page-item <?= $currentpage == 1 ? 'disabled' : '' ?>">
+                    <a class="page-link" href="aanbod.php?page=<?= $currentpage - 1 ?>" aria-label="Previous">
+                        <span aria-hidden="true">«</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <?php
+                for ($i = 0; $i < $pages; $i++) {
+                    ?>
+                    <li class="page-item <?= $i + 1 == $currentpage ? 'active' : '' ?>"><a class="page-link"
+                                                                                           href="aanbod.php?page=<?= $i + 1 ?>"><?= $i + 1 ?></a>
+                    </li>
+                    <?php
+                }
+                ?>
+                <li class="page-item <?= $currentpage == $pages ? 'disabled' : '' ?>">
+                    <a class="page-link" href="aanbod.php?page=<?= $currentpage + 1 ?>" aria-label="Next">
+                        <span aria-hidden="true">»</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
         </div>
-        <!-- /.col-md-4 -->
-        <div class="col-md-4 mb-4">
-          <div class="card h-100">
-            <div class="card-body">
-              <h2 class="card-title">Card 2</h2>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Meer Informatie</a>
-            </div>
-          </div>
-        </div>
-        <!-- /.col-md-4 -->
-        <div class="col-md-4 mb-4">
-          <div class="card h-100">
-            <div class="card-body">
-              <h2 class="card-title">Card 3</h2>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Meer Informatie</a>
-            </div>
-          </div>
-        </div>
-        <!-- /.col-md-4 -->
-
-      </div>
-      <!-- /.row -->
+    </div>
+</div>
 
     </div>
-    <!-- /.container -->
-
     <!-- Footer -->
 
    <footer class="py-5 footer-custom">
@@ -185,7 +196,6 @@
              <p><p>
              </div>
          </div>
-    </div>
    </footer>
 
 

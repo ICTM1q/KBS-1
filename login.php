@@ -94,7 +94,7 @@
                             <input type="password" name="loginPassword">    
                             <span class="error"><?php echo $loginArray["passwordErr"];?></span>
                             <span class="error"><?php echo $loginArray["result"];?></span><br>
-                            <a class="ondertekst" href="home.php">[ Wachtwoord vergeten ]<br></a>
+                            <a class="ondertekst" href="reset.php">[ Wachtwoord vergeten ]<br></a>
                             <!-- Als iemand drie pogingen heeft gedaan krijgt hij/zij een captcha. De PHP code hieronder zorgt ervoor dat de captcha in beeld komt. -->
                     </div>
                     <div class="captcha">

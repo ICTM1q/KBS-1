@@ -10,6 +10,16 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link href="../css/huurenbeheer.css" rel="stylesheet">
+    
+    <?php
+    require "../residence/residenceFunctions.php";
+    $functions = new residenceFunctions();
+    $conn = $functions->connectDB();
+    $result = $functions->getSingleResidence($conn, $_GET['pandid']);
+    $residence = $result->fetch_array();
+    $pictures = $functions->getResidencePictures($conn, $residence['picturesid']);
+    $conn->close();
+    ?>
   </head>
 
   <body>
@@ -25,21 +35,21 @@
        <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="home.php">Home
-                <span class="sr-only">(current)</span>
-              </a>
+              <a class="nav-link" href="home.php">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="kantoor.php">Kantoor</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="aanbod.php">Aanbod</a>
+              <a class="nav-link" href="aanbod.php">Aanbod
+                <span class="sr-only">(current)</span>
+              </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="huurvoorwaarden.php">Huurvoorwaarden</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="inschrijven.php">Inschrijven</a>
+              <a class="nav-link" href="inschrijvingen.php">Inschrijven</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="formulieren.php">Formulieren</a>
@@ -52,98 +62,79 @@
             </li>
           </ul>
         </div>
-      </div>
+      </div>    
     </nav>
 
     <!-- Page Content -->
-    <div class="container-white">
-
-      <!-- Heading Row -->
-      <div class="row my-4">
-        <div class="col-lg-8">
-            <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner sliderbox">
-                  <div class="carousel-item active">
-                    <img class="d-block w-100" src="../css/img/slider-01.jpg" alt="First slide">
-                  </div>
-                  <div class="carousel-item">
-                    <img class="d-block w-100" src="../css/img/slider-02.jpg" alt="Second slide">
-                  </div>
-                  <div class="carousel-item">
-                    <img class="d-block w-100" src="../css/img/slider-03.jpg" alt="Third slide">
-                  </div>
+    <div class="container top-tekst">
+        <div class="row">
+            <div class="col">
+                <h1 class=" top-tekst"><?= $residence['adres'] . ", " . $residence['postalcode'] . " " . $residence['city'] ?></h1>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-8">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <?php
+                    for ($i = 0; $i < $pictures->num_rows; $i++) {
+                        ?>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="<?= $i ?>"
+                            class="<?= $i == 0 ? 'active' : '' ?>"></li>
+                        <?php
+                    }
+                    ?>
+                </ol>
+                <div class="carousel-inner">
+                    <?php
+                    $first = true;
+                    foreach ($pictures as $picture) {
+                        ?>
+                        <div class="carousel-item <?= $first ? 'active' : '' ?>">
+                            <img class="d-block w-100" src="<?= $picture['path'] ?>" alt="<?= $picture['path'] ?>">
+                        </div>
+                        <?php
+                        $first = false;
+                    }
+                    ?>
                 </div>
-              </div>
-        </div>
-        <!-- /.col-lg-8 -->
-        <div class="col-lg-4">
-            <h1 class="title">Welkom op de website van Huur & Beheer Hoksbergen</h1>
-          <p>U bent bij ons op het juiste adres voor:</p>
-          <ul>
-              <li>het bemiddelen bij de verhuur van uw woning of bedrijfspand.</li>
-              <li>het zoeken naar een huurwoning / bedrijfspand.</li>
-              <li>het uitbesteden van beheer van uw particulier of bedrijfsmatig vastgoed.</li>
-          </ul>
-          <p>Bel of mail ons voor een persoonlijk gesprek!</p>
-        </div>
-        <!-- /.col-md-4 -->
-        <!--<div class="cert1"><img src="css/img/cert1.jpg"></div>
-        <div class="cert2"><img src="css/img/cert2.jpg"></div>-->
-      </div>
-      <!-- /.row -->
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
 
-      <!-- Call to Action Well -->
-      <div class="card tag-bg my-4 text-center">
-        <div class="card-body">
-          <p class="m-0 tag-tekst">Hier kan een tag line komen te staan.</p>
         </div>
-      </div>
 
-      <!-- Content Row -->
-      <div class="row">
-        <div class="col-md-4 mb-4">
-          <div class="card h-100">
-            <div class="card-body">
-              <h2 class="card-title">Card 1</h2>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Meer Informatie</a>
-            </div>
-          </div>
+        <div class="col-md-4">
+            <h3 class="my-3">Details</h3>
+            <ul>
+                <li>Adres: <?= $residence['adres'] ?></li>
+                <li>Postcode: <?= $residence['postalcode'] ?></li>
+                <li>Plaats: <?= $residence['city'] ?></li>
+                <li>Prijs: €<?= $residence['price'] ?></li>
+            </ul>
+            <br>
+            <a href="../taxatiesite/contact.php" class="btn btn-space btn-primary">Contacteer ons</a><a href="#"
+                                                                                                        class="btn btn-space btn-primary">Andere
+                optie</a>
         </div>
-        <!-- /.col-md-4 -->
-        <div class="col-md-4 mb-4">
-          <div class="card h-100">
-            <div class="card-body">
-              <h2 class="card-title">Card 2</h2>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Meer Informatie</a>
-            </div>
-          </div>
-        </div>
-        <!-- /.col-md-4 -->
-        <div class="col-md-4 mb-4">
-          <div class="card h-100">
-            <div class="card-body">
-              <h2 class="card-title">Card 3</h2>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Meer Informatie</a>
-            </div>
-          </div>
-        </div>
-        <!-- /.col-md-4 -->
-
-      </div>
-      <!-- /.row -->
 
     </div>
-    <!-- /.container -->
 
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="my-3">Beschrijving</h3>
+            <p><?= $residence['description'] ?></p>
+        </div>
+    </div>
+</div>
     <!-- Footer -->
 
    <footer class="py-5 footer-custom">
@@ -185,7 +176,6 @@
              <p><p>
              </div>
          </div>
-    </div>
    </footer>
 
 

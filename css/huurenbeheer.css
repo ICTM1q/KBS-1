@@ -8,11 +8,15 @@
     color: #fff;
 }
 
-
 body {
     padding-top: 54px;
     background-repeat: repeat-x;
     background-color: white;
+}
+
+.top-tekst{
+    text-align: center;
+    margin-top: 6%; 
 }
 
 .container-white {
@@ -25,6 +29,18 @@ body {
     margin-left: auto;
 }
 
+.pand{
+    margin-bottom: 0.5%
+}
+
+.pand-pic{
+    border-right: solid 2px black;
+}
+
+.btn {
+    margin-left: 2%;
+}
+
 .sliderbox {
     margin-top: 10%;
     border: 4px solid black;
@@ -34,8 +50,42 @@ body {
     border: solid 3px black;
 }
 
-.tagline {
+.title {
     font-size: 30px;
+}
+
+.tag-bg{
+    background-color: #E0F4FB;
+    border: solid 2px black;
+}
+
+.tag-tekst{
+    color: #4F72ED;
+    font-weight: bold;
+}
+
+.card{
+    border: solid 2px black;
+}
+
+.card-body{
+    border-bottom: solid 1px black;
+    background-color: whitesmoke;
+}
+
+.card-footer{
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+}
+
+btn-primary{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pagination {
+    justify-content: center;
 }
 
 .footer-custom {
