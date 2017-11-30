@@ -9,43 +9,37 @@
     <title>Taxatie</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="css/taxatiesliding.css" rel="stylesheet">
   </head>
 
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
-     <div class="container">
-       <a class="navbar-brand" href="index.php">
-    <img src="img/hoksbergen.gif" width="160" height="90" class="d-inline-block align-top" alt=""></a>
-       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="navbar-toggler-icon fa fa-bars"></span>
-       </button>
-       <div class="collapse navbar-collapse" id="navbarResponsive">
-         <ul class="navbar-nav ml-auto">
-           <li class="nav-item">
-             <a class="nav-link" href="index.php">Home
-             </a>
-           </li>
-           <li class="nav-item">
-             <a class="nav-link" href="diensten.php">Diensten</a>
-           </li>
-           <li class="nav-item">
-             <a class="nav-link" href="onskantoor.php">Ons kantoor</a>
-           </li>
-           <li class="nav-item">
-             <a class="nav-link" href="contact.php">Contact</a>
-           </li>
-         </ul>
-       </div>
-     </div>
-   </nav>
+    <div id="sideNavigation" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a class="" href="index.php">
+   <img src="img/hoksbergen.gif" width="160" height="90" class="d-inline-block align-top" alt=""></a>
+      <a href="index.php">Home</a>
+      <a href="diensten.php">Diensten</a>
+      <a href="onskantoor.php">Ons kantoor</a>
+      <a href="contact.php">Contact</a>
+    </div>
+
+    <nav class="topnav">
+      <a href="#" onclick="openNav()">
+        <svg width="30" height="30" id="icoOpen">
+            <path d="M0,5 30,5" stroke="#000" stroke-width="5"/>
+            <path d="M0,14 30,14" stroke="#000" stroke-width="5"/>
+            <path d="M0,23 30,23" stroke="#000" stroke-width="5"/>
+        </svg>
+      </a>
+    </nav>
+
+   <div id="main">
 
    <header>
-     <br>
      <ul class="nav justify-content-center">
        <li class="nav-item">
-         <a class="nav-link" href="vastgoedpro.php">Vastgoedpro</a>
+         <a class="nav-link active" href="vastgoedpro.php">Vastgoedpro</a>
        </li>
        <li class="nav-item">
          <a class="nav-link" href="vastgoedcert.php">Vastgoedcert</a>
@@ -54,21 +48,25 @@
          <a class="nav-link" href="medewerkers.php">Medewerkers</a>
        </li>
        <li class="nav-item">
-         <a class="nav-link active" href="algvoorwaarden.php">Algemene voorwaarden</a>
+         <a class="nav-link" href="algvoorwaarden.php">Algemene voorwaarden</a>
        </li>
        <li class="nav-item">
          <a class="nav-link" href="disclaimer.php">Disclaimer</a>
        </li>
      </ul>
    </header>
-
-   <div class="container">
+    <div class="container">
      <div class="row">
        <div class="col">
-          <h3>Algemene voorwaarden</h3>
-            <a href="http://hoksbergen.nl/Html/Files/Alg%20Voorwaarden%20Hoksbergen%20Makelaardij.pdf"><p>download algemene voorwaarden Hoksbergen Makelaardij</p></a>
+          <h3>Vastgoedpro</h3>
+            <p>Ons kantoor is aangesloten bij de branchevereniging Vastgoedpro.</p>
+            <p>Vastgoedpro is in 1987 opgericht als makelaars in  onroerende zaken.</p>
+            <p>Het doel van Vastgoedpro is de belangen behartigen van de makelaardij in onroerende zaken en van de aangesloten leden.</p>
+            <p>De  activiteiten van de vereniging zijn gericht op de continuïteit  en het verhogen van de kwaliteit van de makelaardij onroerende zaken d.m.v. het stellen van hoge eisen die in de Vastgoedpro erecode zijn vermeld met de daarbij behorende sancties.</p>
+            <p>Één van de eisen is dat je minimaal het theoriediploma Makelaar-Taxateur van SVM-NIVO (Stichting Vakopleiding Makelaardij) hebt behaald en daarnaast moet de Vastgoedpro makelaar ingeschreven zijn bij de Stichting VastgoedCert, het Register wat zich richt op het certificeren en registreren van makelaars en taxateurs onroerende zaken op grond van hun vaktechnische bekwaamheid.</p>
        </div>
      </div>
+   </div>
    </div>
    <br>
 
@@ -112,6 +110,17 @@
     </div>
    </footer>
 
+   <script>
+   function openNav() {
+       document.getElementById("sideNavigation").style.width = "250px";
+       document.getElementById("main").style.marginLeft = "250px";
+   }
+
+   function closeNav() {
+       document.getElementById("sideNavigation").style.width = "0";
+       document.getElementById("main").style.marginLeft = "0";
+   }
+   </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
