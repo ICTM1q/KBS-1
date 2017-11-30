@@ -14,7 +14,7 @@
 
     <?php
     require "residenceFunctions.php";
-    $functions = new functions();
+    $functions = new residenceFunctions();
     $conn = $functions->connectDB();
     $result = $functions->getSingleResidence($conn, $_GET['pandid']);
     $residence = $result->fetch_array();

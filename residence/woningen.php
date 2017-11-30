@@ -14,7 +14,7 @@
 
     <?php
     require "residenceFunctions.php";
-    $functions = new functions();
+    $functions = new residenceFunctions();
     $conn = $functions->connectDB();
     $residences = $functions->getAllResidence($conn);
     $conn->close();
