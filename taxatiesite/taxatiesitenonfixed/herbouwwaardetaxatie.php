@@ -14,7 +14,7 @@
 
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-custom">
      <div class="container">
        <a class="navbar-brand" href="index.php">
     <img src="img/hoksbergen.gif" width="160" height="90" class="d-inline-block align-top" alt=""></a>
@@ -45,19 +45,10 @@
      <br>
      <ul class="nav justify-content-center">
        <li class="nav-item">
-         <a class="nav-link" href="vastgoedpro.php">Vastgoedpro</a>
+        <a class="nav-link" href="taxatie.php">Taxatie</a>
        </li>
        <li class="nav-item">
-         <a class="nav-link" href="vastgoedcert.php">Vastgoedcert</a>
-       </li>
-       <li class="nav-item">
-         <a class="nav-link" href="medewerkers.php">Medewerkers</a>
-       </li>
-       <li class="nav-item">
-         <a class="nav-link active" href="algvoorwaarden.php">Algemene voorwaarden</a>
-       </li>
-       <li class="nav-item">
-         <a class="nav-link" href="disclaimer.php">Disclaimer</a>
+        <a class="nav-link active" href="herbouwwaardetaxatie.php">Herbouwwaarde taxatie</a>
        </li>
      </ul>
    </header>
@@ -65,8 +56,22 @@
    <div class="container">
      <div class="row">
        <div class="col">
-          <h3>Algemene voorwaarden</h3>
-            <a href="http://hoksbergen.nl/Html/Files/Alg%20Voorwaarden%20Hoksbergen%20Makelaardij.pdf"><p>download algemene voorwaarden Hoksbergen Makelaardij</p></a>
+         <h3>Herbouwwaarde taxatie</h3>
+            <p><i>"Een ongeluk zit in een klein hoekje".</i></p>
+            <p>Dit gezegde krijgt pas echt betekenis als u werkelijk iets overkomt.</p>
+            <p>Verzekeringsmaatschappijen spelen hier op in door een uitgebreid aanbod aan verzekeringspolissen. Een goede verzekering dekt de financiële schade ten gevolge van een ongeluk of calamiteit. </p>
+            <p>Voor het bepalen van de hoogte van de verzekering dient de herbouwwaarde te worden vastgesteld door middel van een herbouwwaarde taxatie. Het vaststellen van de herbouwwaarde kan naast de opstallen ook een gedeelte van het interieur omvatten.</p>
+            <p>Tevens adviseren wij u om regelmatig te controleren of u nog op de juiste manier verzekerd bent en of uw herbouwwaarde taxatierapport nog up to date is.</p>
+            <p>Het is namelijk niet alleen mogelijk om onderverzekerd te zijn maar wij komen ook met enige regelmaat bedrijven tegen die oververzekerd zijn.</p>
+              <ul>
+                <li>voldoet het nog aan de huidige normen</li>
+                <li>is de verbouwing meegenomen in de waarde</li>
+                <li>is terreinafscheiding en fundering meegenomen</li>
+                <li>is de vaste inventaris en zijn de installaties meeverzekerd</li>
+              </ul>
+            <p>Een door ons opgesteld taxatierapport, welke door de maatschappij aan de polis gekoppeld wordt, geeft u de garantie dat u gerust kunt zijn.</p>
+            <p>Onze ervaring en deskundigheid geeft u (ver)zekerheid.</p>
+            <p><b><i>Hoksbergen Makelaardij</b></i> kan u hiermee van dienst zijn.</p>
        </div>
      </div>
    </div>

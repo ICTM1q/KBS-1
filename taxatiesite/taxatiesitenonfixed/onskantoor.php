@@ -14,7 +14,7 @@
 
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-custom">
      <div class="container">
        <a class="navbar-brand" href="index.php">
     <img src="img/hoksbergen.gif" width="160" height="90" class="d-inline-block align-top" alt=""></a>
@@ -54,7 +54,7 @@
          <a class="nav-link" href="medewerkers.php">Medewerkers</a>
        </li>
        <li class="nav-item">
-         <a class="nav-link active" href="algvoorwaarden.php">Algemene voorwaarden</a>
+         <a class="nav-link" href="algvoorwaarden.php">Algemene voorwaarden</a>
        </li>
        <li class="nav-item">
          <a class="nav-link" href="disclaimer.php">Disclaimer</a>
@@ -65,8 +65,16 @@
    <div class="container">
      <div class="row">
        <div class="col">
-          <h3>Algemene voorwaarden</h3>
-            <a href="http://hoksbergen.nl/Html/Files/Alg%20Voorwaarden%20Hoksbergen%20Makelaardij.pdf"><p>download algemene voorwaarden Hoksbergen Makelaardij</p></a>
+         <h3>Hier komt alle informatie over ons kantoor</h3>
+         <p>dgssjdgsdjhgjsdgjksdgjkgsdjkhsdjkghsdkjghdskjghdksdjhgsdkgjhkhgsdkjdsghkdgshgkjgsdkhg</p>
+         <p>dgssjdgsdjhgjsdgjksdgjkgsdjkhsdjkghsdkjghdskjghdksdjhgsdkgjhkhgsdkjdsghkdgshgkjgsdkhg</p>
+         <p>dgssjdgsdjhgjsdgjksdgjkgsdjkhsdjkghsdkjghdskjghdksdjhgsdkgjhkhgsdkjdsghkdgshgkjgsdkhg</p>
+         <p>dgssjdgsdjhgjsdgjksdgjkgsdjkhsdjkghsdkjghdskjghdksdjhgsdkgjhkhgsdkjdsghkdgshgkjgsdkhg</p>
+         <p>dgssjdgsdjhgjsdgjksdgjkgsdjkhsdjkghsdkjghdskjghdksdjhgsdkgjhkhgsdkjdsghkdgshgkjgsdkhg</p>
+         <p>dgssjdgsdjhgjsdgjksdgjkgsdjkhsdjkghsdkjghdskjghdksdjhgsdkgjhkhgsdkjdsghkdgshgkjgsdkhg</p>
+         <p>dgssjdgsdjhgjsdgjksdgjkgsdjkhsdjkghsdkjghdskjghdksdjhgsdkgjhkhgsdkjdsghkdgshgkjgsdkhg</p>
+         <p>dgssjdgsdjhgjsdgjksdgjkgsdjkhsdjkghsdkjghdskjghdksdjhgsdkgjhkhgsdkjdsghkdgshgkjgsdkhg</p>
+         <p>dgssjdgsdjhgjsdgjksdgjkgsdjkhsdjkghsdkjghdskjghdksdjhgsdkgjhkhgsdkjdsghkdgshgkjgsdkhg</p>
        </div>
      </div>
    </div>

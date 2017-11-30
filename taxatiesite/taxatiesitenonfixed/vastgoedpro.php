@@ -14,7 +14,7 @@
 
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-custom">
      <div class="container">
        <a class="navbar-brand" href="index.php">
     <img src="img/hoksbergen.gif" width="160" height="90" class="d-inline-block align-top" alt=""></a>
@@ -45,7 +45,7 @@
      <br>
      <ul class="nav justify-content-center">
        <li class="nav-item">
-         <a class="nav-link" href="vastgoedpro.php">Vastgoedpro</a>
+         <a class="nav-link active" href="vastgoedpro.php">Vastgoedpro</a>
        </li>
        <li class="nav-item">
          <a class="nav-link" href="vastgoedcert.php">Vastgoedcert</a>
@@ -54,7 +54,7 @@
          <a class="nav-link" href="medewerkers.php">Medewerkers</a>
        </li>
        <li class="nav-item">
-         <a class="nav-link active" href="algvoorwaarden.php">Algemene voorwaarden</a>
+         <a class="nav-link" href="algvoorwaarden.php">Algemene voorwaarden</a>
        </li>
        <li class="nav-item">
          <a class="nav-link" href="disclaimer.php">Disclaimer</a>
@@ -65,8 +65,12 @@
    <div class="container">
      <div class="row">
        <div class="col">
-          <h3>Algemene voorwaarden</h3>
-            <a href="http://hoksbergen.nl/Html/Files/Alg%20Voorwaarden%20Hoksbergen%20Makelaardij.pdf"><p>download algemene voorwaarden Hoksbergen Makelaardij</p></a>
+          <h3>Vastgoedpro</h3>
+            <p>Ons kantoor is aangesloten bij de branchevereniging Vastgoedpro.</p>
+            <p>Vastgoedpro is in 1987 opgericht als makelaars in  onroerende zaken.</p>
+            <p>Het doel van Vastgoedpro is de belangen behartigen van de makelaardij in onroerende zaken en van de aangesloten leden.</p>
+            <p>De  activiteiten van de vereniging zijn gericht op de continuïteit  en het verhogen van de kwaliteit van de makelaardij onroerende zaken d.m.v. het stellen van hoge eisen die in de Vastgoedpro erecode zijn vermeld met de daarbij behorende sancties.</p>
+            <p>Één van de eisen is dat je minimaal het theoriediploma Makelaar-Taxateur van SVM-NIVO (Stichting Vakopleiding Makelaardij) hebt behaald en daarnaast moet de Vastgoedpro makelaar ingeschreven zijn bij de Stichting VastgoedCert, het Register wat zich richt op het certificeren en registreren van makelaars en taxateurs onroerende zaken op grond van hun vaktechnische bekwaamheid.</p>
        </div>
      </div>
    </div>

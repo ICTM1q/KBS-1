@@ -19,7 +19,7 @@
        <a class="navbar-brand" href="index.php">
     <img src="img/hoksbergen.gif" width="160" height="90" class="d-inline-block align-top" alt=""></a>
        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="navbar-toggler-icon fa fa-bars"></span>
+         <span class="navbar-toggler-icon"></span>
        </button>
        <div class="collapse navbar-collapse" id="navbarResponsive">
          <ul class="navbar-nav ml-auto">
@@ -28,10 +28,16 @@
              </a>
            </li>
            <li class="nav-item">
+             <a class="nav-link" href="aanbod.php">Aanbod</a>
+           </li>
+           <li class="nav-item">
              <a class="nav-link" href="diensten.php">Diensten</a>
            </li>
            <li class="nav-item">
              <a class="nav-link" href="onskantoor.php">Ons kantoor</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link" href="inschrijven.php">Inschrijven</a>
            </li>
            <li class="nav-item">
              <a class="nav-link" href="contact.php">Contact</a>
@@ -41,36 +47,66 @@
      </div>
    </nav>
 
-   <header>
-     <br>
-     <ul class="nav justify-content-center">
-       <li class="nav-item">
-         <a class="nav-link" href="vastgoedpro.php">Vastgoedpro</a>
-       </li>
-       <li class="nav-item">
-         <a class="nav-link" href="vastgoedcert.php">Vastgoedcert</a>
-       </li>
-       <li class="nav-item">
-         <a class="nav-link" href="medewerkers.php">Medewerkers</a>
-       </li>
-       <li class="nav-item">
-         <a class="nav-link active" href="algvoorwaarden.php">Algemene voorwaarden</a>
-       </li>
-       <li class="nav-item">
-         <a class="nav-link" href="disclaimer.php">Disclaimer</a>
-       </li>
-     </ul>
-   </header>
-
    <div class="container">
      <div class="row">
-       <div class="col">
-          <h3>Algemene voorwaarden</h3>
-            <a href="http://hoksbergen.nl/Html/Files/Alg%20Voorwaarden%20Hoksbergen%20Makelaardij.pdf"><p>download algemene voorwaarden Hoksbergen Makelaardij</p></a>
+       <div class="col-sm">
+         <br>
+         <h1>U kunt zich inschrijven op deze pagina</h1>
+         <p>In dit formulier hieronder kunt u inschrijven voor een dienst van ons.</p>
        </div>
      </div>
+
+     <form>
+       <div class="form-row">
+         <div class="col">
+           <label for="inputAddress">Voornaam</label>
+           <input type="text" class="form-control" placeholder="Voornaam">
+         </div>
+         <div class="col">
+           <label for="inputAddress">Achternaam</label>
+           <input type="text" class="form-control" placeholder="Achternaam">
+         </div>
+       </div>
+       <br>
+       <div class="form-row">
+         <div class="col">
+           <label for="inputAddress">Email adres</label>
+           <input type="text" class="form-control" placeholder="Email adres">
+         </div>
+         <div class="col">
+           <label for="inputAddress">Telefoonnummer</label>
+           <input type="text" class="form-control" placeholder="Telefoonnummer">
+         </div>
+       </div>
+       <br>
+       <div class="form-group">
+         <label for="inputAddress">Adres</label>
+          <input type="text" class="form-control" id="inputAddress" placeholder="Straat">
+        </div>
+        <div class="form-group">
+           <input type="text" class="form-control" id="inputAddress" placeholder="Postcode">
+         </div>
+         <div class="form-group">
+            <input type="text" class="form-control" id="inputAddress" placeholder="Plaatsnaam">
+          </div>
+          <div class="form-group">
+             <input type="text" class="form-control" id="inputAddress" placeholder="Provincie">
+           </div>
+           <div class="form-group">
+             <label for="inputState">Dienst</label>
+             <select id="inputState" class="form-control">
+               <option selected>Kies een dienst</option>
+               <option>...</option>
+             </select>
+            </div>
+                <div class="form-group">
+                    <label for="form_message">Overig/extra aantekeiningen</label>
+                    <textarea id="form_message" name="message" class="form-control" placeholder="Bericht" rows="4" required="required" data-error="Laat in dit veld een bericht achter."></textarea>
+                </div>
+                <input type="submit" class="btn btn-success btn-space btn-send" value="Verzend formulier"><input type="submit" class="btn btn-success btn-space" value="Terug">
+     </form>
+     <br>
    </div>
-   <br>
 
    <footer class="py-5 footer-custom">
      <div class="container">

@@ -14,7 +14,7 @@
 
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-custom">
      <div class="container">
        <a class="navbar-brand" href="index.php">
     <img src="img/hoksbergen.gif" width="160" height="90" class="d-inline-block align-top" alt=""></a>
@@ -45,19 +45,10 @@
      <br>
      <ul class="nav justify-content-center">
        <li class="nav-item">
-         <a class="nav-link" href="vastgoedpro.php">Vastgoedpro</a>
+        <a class="nav-link active" href="taxatie.php">Taxatie</a>
        </li>
        <li class="nav-item">
-         <a class="nav-link" href="vastgoedcert.php">Vastgoedcert</a>
-       </li>
-       <li class="nav-item">
-         <a class="nav-link" href="medewerkers.php">Medewerkers</a>
-       </li>
-       <li class="nav-item">
-         <a class="nav-link active" href="algvoorwaarden.php">Algemene voorwaarden</a>
-       </li>
-       <li class="nav-item">
-         <a class="nav-link" href="disclaimer.php">Disclaimer</a>
+         <a class="nav-link" href="herbouwwaardetaxatie.php">Herbouwwaarde taxatie</a>
        </li>
      </ul>
    </header>
@@ -65,8 +56,25 @@
    <div class="container">
      <div class="row">
        <div class="col">
-          <h3>Algemene voorwaarden</h3>
-            <a href="http://hoksbergen.nl/Html/Files/Alg%20Voorwaarden%20Hoksbergen%20Makelaardij.pdf"><p>download algemene voorwaarden Hoksbergen Makelaardij</p></a>
+         <h3>Taxaties</h3>
+         <p>U wilt weten wat de waarde is van uw eigen woning? U wilt uw financiering herstructureren en oversluiten? In beide gevallen kunt u Hoksbergen Makelaardij inschakelen.</p>
+         <p>Onze makelaar-taxateurs zijn gekwalificeerd en beschikken over de nodige kennis en ervaring om objectief de waarde van het getaxeerde vast te stellen.</p>
+         <p>Het bepalen van de objectieve waarde van een pand is belangrijk voor verschillende doeleinden.</p>
+         <p>Er worden o.a. taxaties verricht:
+            <ul>
+              <li>Bij koop en verkoop van een woning</li>
+              <li>Voor hypothecaire financiering </li>
+              <li>Voor financiering met NHG (NWWI, RapportNetPro, NTS en andere validerende instituten)</li>
+              <li>Bij een overdracht in de familiesfeer</li>
+              <li>Bij onteigening van de onroerende zaak</li>
+              <li>Om de herbouwwaarde te kunnen bepalen voor de verzekering</li>
+              <li>Voor het bepalen van de huurwaarde bij verhuur</li>
+              <li>Voor fiscale doeleinden</li>
+              <li>Bedrijfsbeëindiging</li>
+              <li>Waardering van pachtvergoedingen</li>
+            </ul>
+          <p>De taxateur beoordeelt de woning en legt dit vast in een rapport. U ontvangt altijd 2 rapporten zodat u uw hypotheekverstrekker een rapport kunt overhandigen en zelf ook een exemplaar bezit.<p>
+          <p><b>Hoksbergen,</b> <i>nauwkeurig tot achter de komma.</i><p>
        </div>
      </div>
    </div>

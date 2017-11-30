@@ -10,11 +10,12 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-custom">
      <div class="container">
        <a class="navbar-brand" href="index.php">
     <img src="img/hoksbergen.gif" width="160" height="90" class="d-inline-block align-top" alt=""></a>
@@ -41,37 +42,32 @@
      </div>
    </nav>
 
-   <header>
-     <br>
-     <ul class="nav justify-content-center">
-       <li class="nav-item">
-         <a class="nav-link" href="vastgoedpro.php">Vastgoedpro</a>
-       </li>
-       <li class="nav-item">
-         <a class="nav-link" href="vastgoedcert.php">Vastgoedcert</a>
-       </li>
-       <li class="nav-item">
-         <a class="nav-link" href="medewerkers.php">Medewerkers</a>
-       </li>
-       <li class="nav-item">
-         <a class="nav-link active" href="algvoorwaarden.php">Algemene voorwaarden</a>
-       </li>
-       <li class="nav-item">
-         <a class="nav-link" href="disclaimer.php">Disclaimer</a>
-       </li>
-     </ul>
-   </header>
-
    <div class="container">
-     <div class="row">
-       <div class="col">
-          <h3>Algemene voorwaarden</h3>
-            <a href="http://hoksbergen.nl/Html/Files/Alg%20Voorwaarden%20Hoksbergen%20Makelaardij.pdf"><p>download algemene voorwaarden Hoksbergen Makelaardij</p></a>
+
+     <div class="row my-4">
+       <div class="col-lg-8">
+         <h1>Welkom</h1>
+         <p>Hoksbergen Makelaardij is een allround kantoor dat sinds 1996 actief is in Kampen en omgeving. U vindt bij ons een gespecialiseerd team dat u helpt bij al uw vragen over onroerend goed. Voor aankoopbemiddeling, taxaties en huur/verhuur kunt u altijd vrijblijvend bij ons terecht.</p>
+         <p>Hoksbergen Makelaardij is een allround kantoor dat sinds 1996 actief is in Kampen en omgeving. U vindt bij ons een gespecialiseerd team dat u helpt bij al uw vragen over onroerend goed. Voor aankoopbemiddeling, taxaties en huur/verhuur kunt u altijd vrijblijvend bij ons terecht.</p>
+         <p>Hoksbergen Makelaardij is een allround kantoor dat sinds 1996 actief is in Kampen en omgeving. U vindt bij ons een gespecialiseerd team dat u helpt bij al uw vragen over onroerend goed. Voor aankoopbemiddeling, taxaties en huur/verhuur kunt u altijd vrijblijvend bij ons terecht.</p>
+         <p>Hoksbergen Makelaardij is een allround kantoor dat sinds 1996 actief is in Kampen en omgeving. U vindt bij ons een gespecialiseerd team dat u helpt bij al uw vragen over onroerend goed. Voor aankoopbemiddeling, taxaties en huur/verhuur kunt u altijd vrijblijvend bij ons terecht.</p>
+         <p>Hoksbergen Makelaardij is een allround kantoor dat sinds 1996 actief is in Kampen en omgeving. U vindt bij ons een gespecialiseerd team dat u helpt bij al uw vragen over onroerend goed. Voor aankoopbemiddeling, taxaties en huur/verhuur kunt u altijd vrijblijvend bij ons terecht.</p>
+       </div>
+       <div class="col-lg-4">
+         <img class="img-fluid rounded" src="img/smallpand.jpg" alt="">
        </div>
      </div>
-   </div>
-   <br>
 
+     <div class="row my-4">
+       <div class="col-lg-8">
+         <p>Wij verhuren en beheren ook panden via onze andere onderneming <a href="http://huurenbeheer.nl">Huurenbeheer</a></p>
+       </div>
+       <div class="col-lg-4">
+         <a href="http://huurenbeheer.nl"><img class="img-fluid rounded" src="img/huurenbeheer.jpg" alt=""></a>
+       </div>
+     </div>
+  </div>
+    <br>
    <footer class="py-5 footer-custom">
      <div class="container">
        <div class="row ">
