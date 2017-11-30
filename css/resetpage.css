@@ -65,6 +65,11 @@ body {
     color: red;
 }
 
+.success {
+    font-size: 9px;
+    color: blue;
+}
+
 .knop {
     margin-left: 40%;
     margin-right: 40%;

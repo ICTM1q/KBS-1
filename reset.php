@@ -47,7 +47,14 @@ if (isset($_POST["reset"])) {
                             <input type="text" name="captchaCode" size="10" maxlength="6" />
                             <span class="error"><?php echo $createTokenArray["captchaErr"];?></span><br>
                             <input type="submit" value="Verstuur" name="createToken" id="knop">
-                            <span class="error"><?php echo $createTokenArray["result"];?></span>
+                            <?php if ( stripos($createTokenArray['result'], "Een code is opgestuurd naar") !== FALSE ) {
+                                echo "<span class='success'>"; echo $createTokenArray['result']; echo"</span>";
+                            }
+                            else {
+                                echo "<span class='error'>"; echo $createTokenArray['result']; echo"</span>";
+                            }
+                            ?>
+                            <!--<span class="error"><?php echo $createTokenArray["result"];?></span>-->
                         </form>
                     </div>
                     <div class="captcha">
