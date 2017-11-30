@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 
   <body>
@@ -19,7 +20,7 @@
        <a class="navbar-brand" href="index.php">
     <img src="img/hoksbergen.gif" width="160" height="90" class="d-inline-block align-top" alt=""></a>
        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="navbar-toggler-icon"></span>
+         <span class="navbar-toggler-icon fa fa-bars"></span>
        </button>
        <div class="collapse navbar-collapse" id="navbarResponsive">
          <ul class="navbar-nav ml-auto">
@@ -28,16 +29,10 @@
              </a>
            </li>
            <li class="nav-item">
-             <a class="nav-link" href="aanbod.php">Aanbod</a>
-           </li>
-           <li class="nav-item">
              <a class="nav-link" href="diensten.php">Diensten</a>
            </li>
            <li class="nav-item">
              <a class="nav-link" href="onskantoor.php">Ons kantoor</a>
-           </li>
-           <li class="nav-item">
-             <a class="nav-link" href="inschrijven.php">Inschrijven</a>
            </li>
            <li class="nav-item">
              <a class="nav-link" href="contact.php">Contact</a>
@@ -53,6 +48,10 @@
        <div class="col-lg-8">
          <h1>Welkom</h1>
          <p>Hoksbergen Makelaardij is een allround kantoor dat sinds 1996 actief is in Kampen en omgeving. U vindt bij ons een gespecialiseerd team dat u helpt bij al uw vragen over onroerend goed. Voor aankoopbemiddeling, taxaties en huur/verhuur kunt u altijd vrijblijvend bij ons terecht.</p>
+         <p>Hoksbergen Makelaardij is een allround kantoor dat sinds 1996 actief is in Kampen en omgeving. U vindt bij ons een gespecialiseerd team dat u helpt bij al uw vragen over onroerend goed. Voor aankoopbemiddeling, taxaties en huur/verhuur kunt u altijd vrijblijvend bij ons terecht.</p>
+         <p>Hoksbergen Makelaardij is een allround kantoor dat sinds 1996 actief is in Kampen en omgeving. U vindt bij ons een gespecialiseerd team dat u helpt bij al uw vragen over onroerend goed. Voor aankoopbemiddeling, taxaties en huur/verhuur kunt u altijd vrijblijvend bij ons terecht.</p>
+         <p>Hoksbergen Makelaardij is een allround kantoor dat sinds 1996 actief is in Kampen en omgeving. U vindt bij ons een gespecialiseerd team dat u helpt bij al uw vragen over onroerend goed. Voor aankoopbemiddeling, taxaties en huur/verhuur kunt u altijd vrijblijvend bij ons terecht.</p>
+         <p>Hoksbergen Makelaardij is een allround kantoor dat sinds 1996 actief is in Kampen en omgeving. U vindt bij ons een gespecialiseerd team dat u helpt bij al uw vragen over onroerend goed. Voor aankoopbemiddeling, taxaties en huur/verhuur kunt u altijd vrijblijvend bij ons terecht.</p>
        </div>
        <div class="col-lg-4">
          <img class="img-fluid rounded" src="img/smallpand.jpg" alt="">
@@ -61,65 +60,14 @@
 
      <div class="row my-4">
        <div class="col-lg-8">
-         <p>Voor huur en beheer kunt u bij huurenbeheer.nl zijn</p>
+         <p>Wij verhuren en beheren ook panden via onze andere onderneming <a href="http://huurenbeheer.nl">Huurenbeheer</a></p>
        </div>
        <div class="col-lg-4">
          <a href="http://huurenbeheer.nl"><img class="img-fluid rounded" src="img/huurenbeheer.jpg" alt=""></a>
        </div>
      </div>
-
-     <center><h3 class="my-4">Uitgelichte objecten</h3></center>
-
-     <div class="row">
-       <div class="col-md-4 mb-4">
-         <div class="card h-100">
-           <div class="card-body">
-             <center><a href="http://huurenbeheer.nl"><img src="img/Huurenbeheercard.jpg"></a></center>
-             <br>
-              <img class="img-fluid rounded" src="img/object.jpg" alt="">
-             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
-           </div>
-           <div class="card-footer">
-             <center><a href="aanbod1.php" class="btn btn-primary">Meer informatie</a></center>
-           </div>
-         </div>
-       </div>
-       <div class="col-md-4 mb-4">
-         <div class="card h-100">
-           <div class="card-body">
-             <center><a href="http://huurenbeheer.nl"><img src="img/Huurenbeheercard.jpg"></a></center>
-             <br>
-             <img class="img-fluid rounded" src="img/object.jpg" alt="">
-             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
-           </div>
-           <div class="card-footer">
-             <center><a href="aanbod1.php" class="btn btn-primary">Meer informatie</a></center>
-           </div>
-         </div>
-       </div>
-
-       <div class="col-md-4 mb-4">
-         <div class="card h-100">
-           <div class="card-body">
-             <center><a href="http://huurenbeheer.nl"><img src="img/Huurenbeheercard.jpg"></a></center>
-             <br>
-             <img class="img-fluid rounded" src="img/object.jpg" alt="">
-             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
-           </div>
-           <div class="card-footer">
-             <center><a href="aanbod1.php" class="btn btn-primary">Meer informatie</a></center>
-           </div>
-         </div>
-       </div>
-
-   </div>
-
-     <div class="row">
-
-     </div>
-
-   </div>
-
+  </div>
+    <br>
    <footer class="py-5 footer-custom">
      <div class="container">
        <div class="row ">

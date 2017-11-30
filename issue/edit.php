@@ -6,12 +6,6 @@
  * Time: 12:11
  */
 
-session_start();
-if ( $_SESSION["role"] != "Beheer") {
-    header( "Location: login.php" );
-}
-
-
 if(isset($_POST['edit'])){
     $issueID = $_POST['edit'];
 }
@@ -61,7 +55,7 @@ if(isset($result) && $result != null){?>
         <div class="form-group row">
             <label class="col-md-4 control-label" for="description">Beschrijving</label>
             <div class="col-md-4">
-                <textarea class="form-control" id="description" name="description" rows="5  "><?php echo $result->description ?></textarea>
+                <textarea class="form-control" id="description" name="description" rows="5"><?php echo $result->description ?></textarea>
             </div>
         </div>
 

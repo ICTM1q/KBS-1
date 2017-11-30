@@ -19,7 +19,7 @@
        <a class="navbar-brand" href="index.php">
     <img src="img/hoksbergen.gif" width="160" height="90" class="d-inline-block align-top" alt=""></a>
        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="navbar-toggler-icon"></span>
+         <span class="navbar-toggler-icon fa fa-bars"></span>
        </button>
        <div class="collapse navbar-collapse" id="navbarResponsive">
          <ul class="navbar-nav ml-auto">
@@ -28,16 +28,10 @@
              </a>
            </li>
            <li class="nav-item">
-             <a class="nav-link" href="aanbod.php">Aanbod</a>
-           </li>
-           <li class="nav-item">
              <a class="nav-link" href="diensten.php">Diensten</a>
            </li>
            <li class="nav-item">
              <a class="nav-link" href="onskantoor.php">Ons kantoor</a>
-           </li>
-           <li class="nav-item">
-             <a class="nav-link" href="inschrijven.php">Inschrijven</a>
            </li>
            <li class="nav-item">
              <a class="nav-link" href="contact.php">Contact</a>
@@ -124,12 +118,14 @@
 
      <div class="row">
        <div class="col-sm">
+         <center>
          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2425.5411569166!2d5.9132473156257745!3d52.559824241029794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c87883431521b5%3A0x9589572588a7b0f1!2sHoksbergen+Makelaardij+V.O.F.!5e0!3m2!1snl!2snl!4v1511431328721" width="1125" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-         <br>
+       </center>
        </div>
      </div>
      <br>
    </div>
+   <br>
 
    <footer class="py-5 footer-custom">
      <div class="container">

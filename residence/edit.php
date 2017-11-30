@@ -5,10 +5,6 @@
  * Date: 18-11-2017
  * Time: 12:11
  */
-session_start();
-if ( $_SESSION["role"] != "Beheer") {
-    header( "Location: login.php" );
-}
 
 if(isset($_POST['edit'])){
     $pandID = $_POST['edit'];

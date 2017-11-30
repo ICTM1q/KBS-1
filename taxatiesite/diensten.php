@@ -19,7 +19,7 @@
        <a class="navbar-brand" href="index.php">
     <img src="img/hoksbergen.gif" width="160" height="90" class="d-inline-block align-top" alt=""></a>
        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="navbar-toggler-icon"></span>
+         <span class="navbar-toggler-icon fa fa-bars"></span>
        </button>
        <div class="collapse navbar-collapse" id="navbarResponsive">
          <ul class="navbar-nav ml-auto">
@@ -28,16 +28,10 @@
              </a>
            </li>
            <li class="nav-item">
-             <a class="nav-link" href="aanbod.php">Aanbod</a>
-           </li>
-           <li class="nav-item">
              <a class="nav-link" href="diensten.php">Diensten</a>
            </li>
            <li class="nav-item">
              <a class="nav-link" href="onskantoor.php">Ons kantoor</a>
-           </li>
-           <li class="nav-item">
-             <a class="nav-link" href="inschrijven.php">Inschrijven</a>
            </li>
            <li class="nav-item">
              <a class="nav-link" href="contact.php">Contact</a>
@@ -48,6 +42,7 @@
    </nav>
 
    <header>
+     <br>
      <ul class="nav justify-content-center">
        <li class="nav-item">
          <a class="nav-link" href="taxatie.php">Taxatie</a>
@@ -61,8 +56,8 @@
    <div class="container">
      <div class="row">
        <div class="col">
-         <h1>Op deze pagina komen onze diensten te staan</h1>
-         <p>Op deze pagina komen diensten te staan die wij met plezier aanbieden aan onze klanten.</p>
+         <h2>Diensten</h2>
+         <p>Wij bieden taxatie aan via ons kantoor</p>
          <p>Op deze pagina komen diensten te staan die wij met plezier aanbieden aan onze klanten.</p>
          <p>Op deze pagina komen diensten te staan die wij met plezier aanbieden aan onze klanten.</p>
          <p>Op deze pagina komen diensten te staan die wij met plezier aanbieden aan onze klanten.</p>
@@ -70,6 +65,7 @@
        </div>
      </div>
    </div>
+   <br>
 
    <footer class="py-5 footer-custom">
      <div class="container">
