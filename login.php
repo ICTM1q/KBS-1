@@ -98,9 +98,9 @@
                             <!-- Als iemand drie pogingen heeft gedaan krijgt hij/zij een captcha. De PHP code hieronder zorgt ervoor dat de captcha in beeld komt. -->
                     </div>
                     <div class="captcha">
-                        <span>Captcha:</span>
                         <?php 
                         if ( $tries >= 3 ) { 
+                            echo "<span>Captcha:</span>";
                             echo "<br><img id='captcha' class='img' src='lib/securimage/securimage_show.php' alt='CAPTCHA Image' }; /> <br>";
                             # De quotes hieronder zijn geescaped. Geen idee waarrom dit moet maar dit moet zo. LAAT STAAN!
                             echo "<a class='ondertekst' href=\"#\" onclick=\"document.getElementById('captcha').src = 'lib/securimage/securimage_show.php?' + Math.random(); return false\">[ Andere Afbeelding ]</a> <br>";
