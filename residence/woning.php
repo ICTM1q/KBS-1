@@ -13,7 +13,7 @@
     <link href="../taxatiesite/css/style.css" rel="stylesheet">
 
     <?php
-    require "functions.php";
+    require "residenceFunctions.php";
     $functions = new functions();
     $conn = $functions->connectDB();
     $result = $functions->getSingleResidence($conn, $_GET['pandid']);
