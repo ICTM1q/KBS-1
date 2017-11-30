@@ -35,6 +35,7 @@ class residenceFunctions
             return $result;
         } else {
             $_SESSION['warning'] = "Er zijn geen woningen gevonden. Voeg een nieuwe woning toe om deze in het overzicht te zien.";
+            file_put_contents("./logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['warning'] . "\r\n", FILE_APPEND);
             return null;
         }
     }
@@ -48,6 +49,7 @@ class residenceFunctions
             return $result;
         } else {
             $_SESSION['error'] = "Er is iets mis gegaan, de woning die u probeerde aan te passen kan niet worden gevonden.";
+            file_put_contents("./logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
             return null;
         }
     }
@@ -62,6 +64,7 @@ class residenceFunctions
             return;
         } else {
             $_SESSION['error'] = "Error: " . $sql . "<br>" . $conn->error;
+            file_put_contents("./logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
             return;
         }
     }
@@ -74,6 +77,7 @@ class residenceFunctions
             return;
         } else {
             $_SESSION['error'] = "Error deleting record: " . $conn->error;
+            file_put_contents("./logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
             return;
         }
     }
@@ -86,6 +90,7 @@ class residenceFunctions
             return;
         } else {
             $_SESSION['error'] = "Error updating record: " . $conn->error;
+            file_put_contents("./logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
             return;
         }
     }
@@ -99,6 +104,7 @@ class residenceFunctions
             return $result;
         } else {
             $_SESSION['error'] = "Er is iets mis gegaan, de foto's kunnen niet worden gevonden.";
+            file_put_contents("./logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
             return null;
         }
     }
