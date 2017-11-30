@@ -13,7 +13,7 @@ class functions
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $dbname = "kbs-1";
+        $dbname = "kbs";
 
         // Create connection
         $conn = new mysqli($servername, $username, $password, $dbname);
@@ -89,5 +89,18 @@ class functions
             return;
         }
 
+    }
+    function getResidencePictures($conn, $pandid)
+    {
+        $sql = "SELECT * FROM `picture` WHERE pandid='$pandid'";
+
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0){
+            return $result;
+        } else {
+            $_SESSION['error'] = "Er is iets mis gegaan, de foto's kunnen niet worden gevonden.";
+            return null;
+        }
     }
 }
