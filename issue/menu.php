@@ -13,16 +13,13 @@
         <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
             <ul class="nav nav-pills flex-column">
                 <li class="nav-item">
-                    <a class="nav-link <?php if($_SERVER['PHP_SELF'] == "/issue/overview.php") { echo "active";} ?>" href="overview">overzicht</a>
+                    <a class="nav-link <?php if($_SERVER['PHP_SELF'] == "/issue/overview.php") { echo "active";} ?>" href="overview">Overzicht</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?php if($_SERVER['PHP_SELF'] == "/issue/create.php") { echo "active";} ?>" href="create">Placeholder klacht menu item</a>
+                    <a class="nav-link <?php if($_SERVER['PHP_SELF'] == "/issue/unhandled.php") { echo "active";} ?>" href="unhandled">Niet afgehandelde klachten</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?php if($_SERVER['PHP_SELF'] == "/issue/edit.php") { echo "active";} ?>" href="edit">Placeholder klacht menu item</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link <?php if($_SERVER['PHP_SELF'] == "/issue/delete.php") { echo "active";} ?>" href="delete">Placeholder klacht menu item</a>
+                    <a class="nav-link <?php if($_SERVER['PHP_SELF'] == "/issue/handled.php") { echo "active";} ?>" href="handled">Afgehandelde klachten</a>
                 </li>
             </ul>
         </nav>

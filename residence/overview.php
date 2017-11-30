@@ -5,12 +5,15 @@
  * Date: 18-11-2017
  * Time: 12:11
  */
-
+session_start();
+if ( $_SESSION["role"] != "Beheer") {
+    header( "Location: /login.php" );
+}
 
 include "../admin-components/header.php";
 include "menu.php";
-require_once "functions.php";
-$functions = new functions();
+require_once "residenceFunctions.php";
+$functions = new residenceFunctions();
 $conn = $functions->connectDB();
 
 if (isset($_POST) && $_POST != null && !isset($_POST['delete'])){
@@ -25,22 +28,7 @@ if (isset($_POST) && $_POST != null && !isset($_POST['delete'])){
 
 $result = $functions->getAllResidence($conn);
 $conn->close();
-
-if (isset($_SESSION['message']) &&$_SESSION['message'] != null){ ?>
-    <div class="alert alert-success custom-col" role="alert">
-        <?php echo $_SESSION['message']; $_SESSION['message'] = null; ?>
-    </div>
-<?php }
-if (isset($_SESSION['error']) && $_SESSION['error'] != null){ ?>
-    <div class="alert alert-danger custom-col" role="alert">
-        <?php echo $_SESSION['error']; $_SESSION['error'] = null; ?>
-    </div>
-<?php }
-if (isset($_SESSION['warning']) && $_SESSION['warning'] != null){ ?>
-    <div class="alert alert-warning custom-col" role="alert">
-        <?php echo $_SESSION['warning']; $_SESSION['warning'] = null; ?>
-    </div>
-<?php }
+include "../admin-components/alert.php";
 ?>
 <!-- content here -->
 

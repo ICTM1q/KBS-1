@@ -8,6 +8,7 @@
 
 include "../admin-components/header.php";
 include "menu.php";
+include "../admin-components/alert.php";
 
 ?>
 <h2>placeholder for edit form</h2>

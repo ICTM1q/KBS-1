@@ -67,8 +67,11 @@ if (isset($_POST["reset"])) {
                     Email:<br>
                     <input type="text" name="resetEmail">
                     <span class="error"><?php echo $resetArray["emailErr"];?></span><br>
-                    Wachtwoord:<br>
-                    <input type="password" name="resetPassword">
+                    Nieuw wachtwoord:<br>
+                    <input type="password" name="resetPassword1">
+                    <span class="error"><?php echo $resetArray["passwordErr"];?></span><br>
+                    Wachtwoord bevestigen:<br>
+                    <input type="password" name="resetPassword2">
                     <span class="error"><?php echo $resetArray["passwordErr"];?></span><br>
                     <input type="submit" value="Verstuur" name="reset" id="knop">
                     <span class="error"><?php echo $resetArray["result"];?></span> 

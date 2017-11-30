@@ -16,13 +16,13 @@ $conn = $dbFunctions->connectDB();
 
 require_once "IssueFunctions.php";
 $functions = new issueFunctions();
-$result = $functions->getAllIssues($conn);
+$result = $functions->getAllHandledIssues($conn);
 
 //show messages
 include "../admin-components/alert.php";
 ?>
-<!-- content here -->
-<h2>Klachten:</h2>
+    <!-- content here -->
+    <h2>Klachten:</h2>
     <table class="table-hover table">
         <tr>
             <th>ID</th>

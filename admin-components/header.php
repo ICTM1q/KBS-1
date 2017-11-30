@@ -38,7 +38,11 @@
                 <li class="nav-item <?php if($_SERVER['PHP_SELF'] == "/residence/overview.php" || $_SERVER['PHP_SELF'] == "/residence/create.php" || $_SERVER['PHP_SELF'] == "/residence/edit.php" || $_SERVER['PHP_SELF'] == "/residence/delete.php") { echo "active";} ?>">
                     <a class="nav-link" href="/residence/overview">Woningaanbod</a>
                 </li>
+                <li class="nav-item <?php if($_SERVER['PHP_SELF'] == "/users/overview.php" || $_SERVER['PHP_SELF'] == "/user/create.php" || $_SERVER['PHP_SELF'] == "/user/edit.php" || $_SERVER['PHP_SELF'] == "/user/delete.php") { echo "active";} ?>">
+                    <a class="nav-link" href="/user/overview">Gebruikers</a>
+                </li>
             </ul>
+            <a class="btn nav-link" href="/logout">Uitloggen</a>
         </div>
     </nav>
 </header>
