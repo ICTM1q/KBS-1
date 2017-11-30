@@ -13,8 +13,8 @@
     <link href="../taxatiesite/css/style.css" rel="stylesheet">
 
     <?php
-    require "functions.php";
-    $functions = new functions();
+    require "residenceFunctions.php";
+    $functions = new residenceFunctions();
     $conn = $functions->connectDB();
     $residences = $functions->getAllResidence($conn);
     $conn->close();
@@ -120,7 +120,7 @@
     <div class="row">
         <div class="col-lg-6 offset-lg-3">
             <?php
-            $pages = ceil($residences->num_row / 10);
+            $pages = ceil($residences->num_rows / 10);
             $currentpage = $_GET['page'];
             ?>
             <ul class="pagination mx-auto">
