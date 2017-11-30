@@ -70,24 +70,29 @@
 <div class="container py-3">
     <?php
     if ($residences != null && $residences->num_rows > 0) {
-        foreach ($residences as $residence) { ?>
-            <div id="pand-<?php echo $residence['pandid'] ?>" class="card">
+        $conn = $functions->connectDB();
+        foreach ($residences as $residence) {
+            $pictures = $functions->getResidencePictures($conn, $residence['picturesid']);
+            ?>
+            <div id="pand-<?= $residence['pandid'] ?>" class="card">
                 <div class="row">
                     <div class="col-md-4">
-                        <img src="http://via.placeholder.com/350x260" class="w-100">
+                        <img src="<?= $pictures->fetch_array()['path'] ?>" class="w-100">
                     </div>
                     <div class="col-md-8 px-3">
                         <div class="card-block px-3">
-                            <h4 class="card-title"><?php echo $residence['adres'] . ", " . $residence['postalcode'] . " " . $residence['city'] ?></h4>
-                            <p class="card-text"><?php echo $residence['description'] ?></p>
-                            <p class="card-text">€<?php echo $residence['price'] ?></p>
-                            <a href="woning.php?pandid=<?= $residence['pandid'] ?>" class="btn btn-primary">Lees meer</a>
+                            <h4 class="card-title"><?= $residence['adres'] . ", " . $residence['postalcode'] . " " . $residence['city'] ?></h4>
+                            <p class="card-text"><?= $residence['description'] ?></p>
+                            <p class="card-text">€<?= $residence['price'] ?></p>
+                            <a href="woning.php?pandid=<?= $residence['pandid'] ?>" class="btn btn-primary">Lees
+                                meer</a>
                         </div>
                     </div>
                 </div>
             </div>
             <?php
         }
+        $conn->close();
     }
     ?>
     <br>

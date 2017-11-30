@@ -90,9 +90,9 @@ class functions
         }
 
     }
-    function getResidencePictures($conn, $pandid)
+    function getResidencePictures($conn, $picturesid)
     {
-        $sql = "SELECT * FROM `picture` WHERE pandid='$pandid'";
+        $sql = "SELECT * FROM `picture` WHERE picturesid='$picturesid'";
 
         $result = $conn->query($sql);
 

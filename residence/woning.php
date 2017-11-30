@@ -17,8 +17,9 @@
     $functions = new functions();
     $conn = $functions->connectDB();
     $result = $functions->getSingleResidence($conn, $_GET['pandid']);
+    $residence = $result->fetch_array();
+    $pictures = $functions->getResidencePictures($conn, $residence['picturesid']);
     $conn->close();
-    $residence = $result->fetch_row();
     ?>
 </head>
 
@@ -61,22 +62,24 @@
 
 <div class="container">
 
-    <h1 class="my-4"><?= $residence[1] . ", " . $residence[3] . " " . $residence[2] ?></h1>
+    <h1 class="my-4"><?= $residence['adres'] . ", " . $residence['postalcode'] . " " . $residence['city'] ?></h1>
 
     <div class="row">
 
         <div class="col-md-8">
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img class="d-block w-100" src="http://placehold.it/750x500" alt="First slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="http://placehold.it/750x500" alt="Second slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="http://placehold.it/750x500" alt="Third slide">
-                    </div>
+                    <?php
+                    $first = true;
+                    foreach ($pictures as $picture) {
+                        ?>
+                        <div class="carousel-item <?= $first ? 'active' : '' ?>">
+                            <img class="d-block w-100" src="<?= $picture['path'] ?>" alt="<?= $picture['path'] ?>">
+                        </div>
+                        <?php
+                        $first = false;
+                    }
+                    ?>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -93,10 +96,10 @@
         <div class="col-md-4">
             <h3 class="my-3">Details</h3>
             <ul>
-                <li>Adres: <?= $residence[1] ?></li>
-                <li>Postcode: <?= $residence[3] ?></li>
-                <li>Plaats: <?= $residence[2] ?></li>
-                <li>Prijs: €<?= $residence[6] ?></li>
+                <li>Adres: <?= $residence['adres'] ?></li>
+                <li>Postcode: <?= $residence['postalcode'] ?></li>
+                <li>Plaats: <?= $residence['city'] ?></li>
+                <li>Prijs: €<?= $residence['price'] ?></li>
             </ul>
             <br>
             <a href="../taxatiesite/contact.php" class="btn btn-space btn-primary">Contacteer ons</a><a href="#"
@@ -109,7 +112,7 @@
     <div class="row">
         <div class="col-md-12">
             <h3 class="my-3">Beschrijving</h3>
-            <p><?=$residence[5] ?></p>
+            <p><?= $residence['description'] ?></p>
         </div>
     </div>
 </div>
