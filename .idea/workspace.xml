@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="61acd4e7-97bc-4af5-a5b9-2254052b55ff" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/residence/woning.php" afterPath="$PROJECT_DIR$/residence/woning.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/residence/woningen.php" afterPath="$PROJECT_DIR$/residence/woningen.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,8 +38,8 @@
       <file leaf-file-name="woningen.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/residence/woningen.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="16" column="39" lean-forward="false" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
+            <state relative-caret-position="483">
+              <caret line="122" column="47" lean-forward="false" selection-start-line="122" selection-start-column="47" selection-end-line="122" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -429,7 +428,7 @@
       <workItem from="1511177846041" duration="2841000" />
       <workItem from="1511249736769" duration="4764000" />
       <workItem from="1511254759949" duration="439000" />
-      <workItem from="1511877313201" duration="12717000" />
+      <workItem from="1511877313201" duration="12921000" />
     </task>
     <task id="LOCAL-00001" summary="Begin gemaakt aan weergeven woningen.">
       <created>1512035584393</created>
@@ -459,11 +458,18 @@
       <option name="project" value="LOCAL" />
       <updated>1512042209321</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="functions.php renamen">
+      <created>1512042278705</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1512042278705</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27453000" />
+    <option name="totallyTimeSpent" value="27657000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1060" extended-state="6" />
@@ -491,6 +497,16 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -907,8 +923,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/residence/woningen.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="16" column="39" lean-forward="false" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
+        <state relative-caret-position="483">
+          <caret line="122" column="47" lean-forward="false" selection-start-line="122" selection-start-column="47" selection-end-line="122" selection-end-column="47" />
           <folding />
         </state>
       </provider>

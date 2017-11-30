@@ -120,7 +120,7 @@
     <div class="row">
         <div class="col-lg-6 offset-lg-3">
             <?php
-            $pages = ceil($residences->num_row / 10);
+            $pages = ceil($residences->num_rows / 10);
             $currentpage = $_GET['page'];
             ?>
             <ul class="pagination mx-auto">
