@@ -6,14 +6,14 @@
  * Time: 10:13
  */
 
-class functions
+class residenceFunctions
 {
     function connectDB()
     {
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $dbname = "kbs-1";
+        $dbname = "kbs";
 
         // Create connection
         $conn = new mysqli($servername, $username, $password, $dbname);
@@ -88,6 +88,5 @@ class functions
             $_SESSION['error'] = "Error updating record: " . $conn->error;
             return;
         }
-
     }
 }

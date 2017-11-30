@@ -16,13 +16,13 @@ $conn = $dbFunctions->connectDB();
 
 require_once "IssueFunctions.php";
 $functions = new issueFunctions();
-$result = $functions->getAllIssues($conn);
+$result = $functions->getAllUnhandledIssues($conn);
 
 //show messages
 include "../admin-components/alert.php";
 ?>
-<!-- content here -->
-<h2>Klachten:</h2>
+    <!-- content here -->
+    <h2>Klachten:</h2>
     <table class="table-hover table">
         <tr>
             <th>ID</th>
@@ -40,7 +40,7 @@ include "../admin-components/alert.php";
                     <td><?php echo $row['issueid'] ?></td>
                     <td><?php echo $row['customername'] ?></td>
                     <td><?php echo $row['description'] ?></td>
-                    <td><a href="/residence/edit?pand=<?php echo $row['pand']; ?>"><?php echo $row['pand'] ?></a></td>
+                    <td><?php echo $row['pand'] ?></td>
                     <td><?php echo $row['date'] ?></td>
                     <td><?php if($row['handled'] == 0) {echo "Nee";}else{echo "Ja";} ?></td>
                     <td class="custom-col">
