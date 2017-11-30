@@ -89,4 +89,17 @@ class residenceFunctions
             return;
         }
     }
+    function getResidencePictures($conn, $picturesid)
+    {
+        $sql = "SELECT * FROM `picture` WHERE picturesid='$picturesid'";
+
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0){
+            return $result;
+        } else {
+            $_SESSION['error'] = "Er is iets mis gegaan, de foto's kunnen niet worden gevonden.";
+            return null;
+        }
+    }
 }
