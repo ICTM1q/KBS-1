@@ -214,17 +214,19 @@ function createToken ( $email, $secureImage, $captchaCode ) {
 }
 
 // Kijk na of de ingevoerde token klopt. Zo ja, reset het wachtwoord met de gegeven input.
-function checkToken ( $token, $email, $password ) {
+function checkToken ( $token, $email, $password1, $password2 ) {
     include ("config.php");
     
     $resetArray["tokenErr"] = "";
     $resetArray["emailErr"] = "";
-    $resetArray["passwordErr"] = "";
+    $resetArray["passwordErr1"] = "";
+    $resetArray["passwordErr2"] = "";
     $resetArray["result"] = "";
             
     $resetTokenFlag = TRUE;
     $resetEmailFlag = TRUE;
-    $resetPasswordFlag = TRUE;
+    $resetPasswordFlag1 = TRUE;
+    $resetPasswordFlag2 = TRUE;
     
     // Kijken of code leeg is.
     if ( empty ( $token ) ) {
@@ -237,31 +239,42 @@ function checkToken ( $token, $email, $password ) {
         $resetEmailFlag = FALSE;
     }
     // Kijken of password leeg is.
-    if ( empty ( $password ) ) {
-        $resetArray["passwordErr"] = "Wachtwoord is vereist.";
-        $resetPasswordFlag = FALSE;
+    if ( empty ( $password1 ) ) {
+        $resetArray["passwordErr1"] = "Wachtwoord is vereist.";
+        $resetPasswordFlag1 = FALSE;
     }
-    if ( $resetTokenFlag === TRUE && $resetEmailFlag === TRUE && $resetPasswordFlag === TRUE ) {
-        try {
-            $conn = new PDO ( "mysql:host=localhost;dbname=kbs", $user );
-            
-            // Kijken of ingevoerde token gelijk is aan taken in de database.
-            if ( getToken ( $conn, $email ) == $token ) {
-                // Nieuw wachtwoord in de database opnemen.
-                newPassword($conn, $password, $email);
-                $resetArray["result"] = "Wachtwoord successvol gereset.";
-                // Token verwijderen.
-                deleteToken($conn, $email);
+    if ( empty ( $password2 ) ) {
+        $resetArray["passwordErr2"] = "Wachtwoord is vereist.";
+        $resetPasswordFlag2 = FALSE;
+    }
+    if ( $resetTokenFlag === TRUE && $resetEmailFlag === TRUE && $resetPasswordFlag1 === TRUE && $resetPasswordFlag2 === TRUE ) {
+        // Kijken of bevestiging wachtwoord overeenkomt.
+        if ( $password1 === $password2 ) {
+            try {
+                $conn = new PDO ( "mysql:host=localhost;dbname=kbs", $user );
+
+                // Kijken of ingevoerde token gelijk is aan taken in de database.
+                if ( getToken ( $conn, $email ) == $token ) {
+                    // Nieuw wachtwoord in de database opnemen.
+                    newPassword($conn, $password, $email);
+                    $resetArray["result"] = "Wachtwoord successvol gereset.";
+                    // Token verwijderen.
+                    deleteToken($conn, $email);
+                }
+                else {
+                    $resetArray["result"] = "Code klopt niet of is niet geldig.";
+                }
             }
-            else {
-                $resetArray["result"] = "Code klopt niet of is niet geldig.";
-            }
+            catch ( PDOException $e ) {
+                $resetArray["result"] =  "Er is een fout opgetreden, probeer het later nogmaals.";
+                file_put_contents("./logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $e->getMessage() . "\r\n", FILE_APPEND);
+                return $resetArray;
+            }   
         }
-        catch ( PDOException $e ) {
-            $resetArray["result"] =  "Er is een fout opgetreden, probeer het later nogmaals.";
-            file_put_contents("./logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $e->getMessage() . "\r\n", FILE_APPEND);
-            return $resetArray;
-        }    
+        else {
+            $resetArray["result"] = "Wachtwoorden komen niet overeen.";
+        }
+ 
     }
     return $resetArray;
 }

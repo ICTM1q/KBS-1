@@ -17,13 +17,13 @@ if (isset($_POST["createToken"])) {
 
 $resetArray["tokenErr"] = "";
 $resetArray["emailErr"] = "";
-$resetArray["passwordErr"] = "";
+$resetArray["passwordErr1"] = "";
+$resetArray["passwordErr2"] = "";
 $resetArray["result"] = "";
 
 if (isset($_POST["reset"])) {
-    $resetArray = checkToken ( trim($_POST["resetToken"]), trim($_POST["resetEmail"]), trim($_POST["resetPassword"]) );
+    $resetArray = checkToken ( trim($_POST["resetToken"]), trim($_POST["resetEmail"]), trim($_POST["resetPassword1"]), trim($_POST["resetPassword2"]) );
 }
-
 ?>
         <head>
             <title>Huur en beheer</title>
@@ -47,11 +47,11 @@ if (isset($_POST["reset"])) {
                             <input type="text" name="captchaCode" size="10" maxlength="6" />
                             <span class="error"><?php echo $createTokenArray["captchaErr"];?></span><br>
                             <input type="submit" value="Verstuur" name="createToken" id="knop">
-                            <?php if ( stripos($createTokenArray['result'], "Een code is opgestuurd naar") !== FALSE ) {
-                                echo "<span class='success'>"; echo $createTokenArray['result']; echo"</span>";
+                            <?php if ( stripos($createTokenArray["result"], "Een code is opgestuurd naar") !== FALSE ) {
+                                echo "<span class='success'>"; echo $createTokenArray["result"]; echo"</span>";
                             }
                             else {
-                                echo "<span class='error'>"; echo $createTokenArray['result']; echo"</span>";
+                                echo "<span class='error'>"; echo $createTokenArray["result"]; echo"</span>";
                             }
                             ?>
                             <!--<span class="error"><?php echo $createTokenArray["result"];?></span>-->
@@ -69,12 +69,19 @@ if (isset($_POST["reset"])) {
                     <span class="error"><?php echo $resetArray["emailErr"];?></span><br>
                     Nieuw wachtwoord:<br>
                     <input type="password" name="resetPassword1">
-                    <span class="error"><?php echo $resetArray["passwordErr"];?></span><br>
+                    <span class="error"><?php echo $resetArray["passwordErr1"];?></span><br>
                     Wachtwoord bevestigen:<br>
                     <input type="password" name="resetPassword2">
-                    <span class="error"><?php echo $resetArray["passwordErr"];?></span><br>
+                    <span class="error"><?php echo $resetArray["passwordErr2"];?></span><br>
                     <input type="submit" value="Verstuur" name="reset" id="knop">
-                    <span class="error"><?php echo $resetArray["result"];?></span> 
+                    <!-- Kijk of het successvol is gedaan. -->
+                    <?php if ( $resetArray["result"] == "Wachtwoord successvol gereset." ) {
+                        echo "<span class='success'>"; echo $resetArray["result"]; echo"</span>";
+                    }
+                    else {
+                        echo "<span class='error'>"; echo $resetArray["result"]; echo"</span>";
+                    }
+                    ?>
                 </form>
 </div>
                 </div>
