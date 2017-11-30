@@ -5,15 +5,25 @@
  * Date: 18-11-2017
  * Time: 12:11
  */
+session_start();
+if ( $_SESSION["role"] != "Beheer") {
+    header( "Location: login.php" );
+}
 
+if(isset($_POST['edit'])){
+    $pandID = $_POST['edit'];
+}
+elseif(isset($_GET['pand'])){
+    $pandID = $_GET['pand'];
+}
 
 include "../admin-components/header.php";
 include "menu.php";
-require_once("functions.php");
-$functions = new functions();
+require_once("residenceFunctions.php");
+$functions = new residenceFunctions();
 $conn = $functions->connectDB();
-if (isset($_POST['edit']) && $_POST != null){
-    $result = $functions->getSingleResidence($conn, $_POST['edit']);
+if (isset($pandID) && $pandID != null){
+    $result = $functions->getSingleResidence($conn, $pandID);
     $result = $result->fetch_object();
 }
 if (isset($_POST['editRecord']) && $_POST != null){
@@ -22,22 +32,8 @@ if (isset($_POST['editRecord']) && $_POST != null){
     $result = $result->fetch_object();
 }
 
-if (isset($_SESSION['message']) &&$_SESSION['message'] != null){ ?>
-    <div class="alert alert-success custom-col" role="alert">
-        <?php echo $_SESSION['message']; $_SESSION['message'] = null; ?>
-    </div>
-<?php }
-if (isset($_SESSION['error']) && $_SESSION['error'] != null){ ?>
-    <div class="alert alert-danger custom-col" role="alert">
-        <?php echo $_SESSION['error']; $_SESSION['error'] = null; ?>
-    </div>
-<?php }
-if (isset($_SESSION['warning']) && $_SESSION['warning'] != null){ ?>
-    <div class="alert alert-warning custom-col" role="alert">
-        <?php echo $_SESSION['warning']; $_SESSION['warning'] = null; ?>
-    </div>
-<?php }
-?>
+include "../admin-components/alert.php";
+if($result != null){?>
 
 <form class="form-horizontal" method="post" action="/residence/edit">
     <fieldset>
@@ -87,4 +83,5 @@ if (isset($_SESSION['warning']) && $_SESSION['warning'] != null){ ?>
     </fieldset>
 </form>
 
-<?php include "../admin-components/footer.php"; ?>
+<?php }
+include "../admin-components/footer.php"; ?>

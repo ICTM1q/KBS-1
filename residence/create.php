@@ -5,11 +5,15 @@
  * Date: 18-11-2017
  * Time: 12:11
  */
-
+session_start();
+if ( $_SESSION["role"] != "Beheer") {
+    header( "Location: login.php" );
+}
 
 include "../admin-components/header.php";
 include "menu.php";
-require_once "functions.php";
+include "../admin-components/alert.php";
+require_once "residenceFunctions.php";
 
 ?>
 <form class="form-horizontal" method="post" action="/residence/overview">

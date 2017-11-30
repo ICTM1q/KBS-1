@@ -6,7 +6,7 @@
  * Time: 10:13
  */
 
-class functions
+class residenceFunctions
 {
     function connectDB()
     {
@@ -88,7 +88,6 @@ class functions
             $_SESSION['error'] = "Error updating record: " . $conn->error;
             return;
         }
-
     }
     function getResidencePictures($conn, $picturesid)
     {
