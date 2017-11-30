@@ -1,3 +1,8 @@
+<?php session_start();
+if ( $_SESSION["role"] != "Beheer") {
+header( "Location: login.php" );
+} ?>
+
 <!doctype html>
 <html lang="en">
 <head>

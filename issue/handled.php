@@ -6,7 +6,6 @@
  * Time: 12:11
  */
 
-
 include "../admin-components/header.php";
 include "menu.php";
 require_once "../residence/residenceFunctions.php";

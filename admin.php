@@ -1,8 +1,4 @@
 <?php
-session_start();
-if ( $_SESSION["role"] != "Beheer") {
-    header( "Location: /login.php" );
-}
 include "admin-components/header.php";
 ?>
 <div class="container-fluid">
