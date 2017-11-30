@@ -13,8 +13,8 @@
     <link href="../taxatiesite/css/style.css" rel="stylesheet">
 
     <?php
-    require "functions.php";
-    $functions = new functions();
+    require "residenceFunctions.php";
+    $functions = new residenceFunctions();
     $conn = $functions->connectDB();
     $result = $functions->getSingleResidence($conn, $_GET['pandid']);
     $residence = $result->fetch_array();
@@ -67,7 +67,17 @@
     <div class="row">
 
         <div class="col-md-8">
-            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <?php
+                    for ($i = 0; $i < $pictures->num_rows; $i++) {
+                        ?>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="<?= $i ?>"
+                            class="<?= $i == 0 ? 'active' : '' ?>"></li>
+                        <?php
+                    }
+                    ?>
+                </ol>
                 <div class="carousel-inner">
                     <?php
                     $first = true;
@@ -81,11 +91,11 @@
                     }
                     ?>
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
                 </a>
-                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                 </a>

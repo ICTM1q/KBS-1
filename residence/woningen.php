@@ -13,8 +13,8 @@
     <link href="../taxatiesite/css/style.css" rel="stylesheet">
 
     <?php
-    require "functions.php";
-    $functions = new functions();
+    require "residenceFunctions.php";
+    $functions = new residenceFunctions();
     $conn = $functions->connectDB();
     $residences = $functions->getAllResidence($conn);
     $conn->close();
@@ -71,20 +71,36 @@
     <?php
     if ($residences != null && $residences->num_rows > 0) {
         $conn = $functions->connectDB();
-        foreach ($residences as $residence) {
-            $pictures = $functions->getResidencePictures($conn, $residence['picturesid']);
+        $residenceArray = $residences->fetch_all();
+
+        $index = 0;
+        if (isset($_GET['page'])) {
+            $index = ($_GET['page'] - 1) * 10;
+        } else {
+            $_GET['page'] = 1;
+        }
+
+        for (; $index < sizeof($residenceArray); $index++) {
+            $residence = $residenceArray[$index];
+            $pictures = $functions->getResidencePictures($conn, $residence[6]);
+
+            if ($index != ($_GET['page'] - 1) * 10 && $index % 10 == 0) {
+                global $current;
+                $current = $index;
+                break;
+            }
             ?>
-            <div id="pand-<?= $residence['pandid'] ?>" class="card">
+            <div id="pand-<?= $residence[0] ?>" class="card">
                 <div class="row">
                     <div class="col-md-4">
                         <img src="<?= $pictures->fetch_array()['path'] ?>" class="w-100">
                     </div>
                     <div class="col-md-8 px-3">
                         <div class="card-block px-3">
-                            <h4 class="card-title"><?= $residence['adres'] . ", " . $residence['postalcode'] . " " . $residence['city'] ?></h4>
-                            <p class="card-text"><?= $residence['description'] ?></p>
-                            <p class="card-text">€<?= $residence['price'] ?></p>
-                            <a href="woning.php?pandid=<?= $residence['pandid'] ?>" class="btn btn-primary">Lees
+                            <h4 class="card-title"><?= $residence[1] . ", " . $residence[3] . " " . $residence[2] ?></h4>
+                            <p class="card-text"><?= $residence[4] ?></p>
+                            <p class="card-text">€<?= $residence[5] ?></p>
+                            <a href="woning.php?pandid=<?= $residence[0] ?>" class="btn btn-primary">Lees
                                 meer</a>
                         </div>
                     </div>
@@ -103,21 +119,28 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-6 offset-lg-3">
+            <?php
+            $pages = ceil($residences->num_rows / 10);
+            $currentpage = $_GET['page'];
+            ?>
             <ul class="pagination mx-auto">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" aria-label="Previous">
+                <li class="page-item <?= $currentpage == 1 ? 'disabled' : '' ?>">
+                    <a class="page-link" href="woningen.php?page=<?= $currentpage - 1 ?>" aria-label="Previous">
                         <span aria-hidden="true">«</span>
                         <span class="sr-only">Previous</span>
                     </a>
                 </li>
-                <li class="page-item active">
-                    <a class="page-link" href="#">1</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
+                <?php
+                for ($i = 0; $i < $pages; $i++) {
+                    ?>
+                    <li class="page-item <?= $i + 1 == $currentpage ? 'active' : '' ?>"><a class="page-link"
+                                                                                           href="woningen.php?page=<?= $i + 1 ?>"><?= $i + 1 ?></a>
+                    </li>
+                    <?php
+                }
+                ?>
+                <li class="page-item <?= $currentpage == $pages ? 'disabled' : '' ?>">
+                    <a class="page-link" href="woningen.php?page=<?= $currentpage + 1 ?>" aria-label="Next">
                         <span aria-hidden="true">»</span>
                         <span class="sr-only">Next</span>
                     </a>
