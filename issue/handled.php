@@ -31,7 +31,6 @@ include "../admin-components/alert.php";
             <th>Pand</th>
             <th>Date</th>
             <th>Behandeld</th>
-            <th>Aanpassen</th>
             <th>Afhandelen</th>
         </tr>
         <?php
@@ -41,19 +40,13 @@ include "../admin-components/alert.php";
                     <td><?php echo $row['issueid'] ?></td>
                     <td><?php echo $row['customername'] ?></td>
                     <td><?php echo $row['description'] ?></td>
-                    <td><?php echo $row['pand'] ?></td>
+                    <td><a href="/residence/edit?pand=<?php echo $row['pand']; ?>"><?php echo $row['pand'] ?></a></td>
                     <td><?php echo $row['date'] ?></td>
                     <td><?php if($row['handled'] == 0) {echo "Nee";}else{echo "Ja";} ?></td>
                     <td class="custom-col">
                         <form method="post" action="/issue/edit">
                             <input  type="hidden" name="edit" value="<?php echo $row['issueid'] ?>">
                             <button type="submit" class="btn fa fa-edit fa-2x"></button>
-                        </form>
-                    </td>
-                    <td class="custom-col">
-                        <form method="post" action="/issue/overview">
-                            <input  type="hidden" name="delete" value="<?php echo $row['issueid'] ?>">
-                            <button type="submit" class="delete btn fa fa-trash-o fa-2x"></button>
                         </form>
                     </td>
                 </tr>
