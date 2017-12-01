@@ -256,7 +256,7 @@ function checkToken ( $token, $email, $password1, $password2 ) {
                 // Kijken of ingevoerde token gelijk is aan taken in de database.
                 if ( getToken ( $conn, $email ) == $token ) {
                     // Nieuw wachtwoord in de database opnemen.
-                    newPassword($conn, $password, $email);
+                    newPassword($conn, $password1, $email);
                     $resetArray["result"] = "Wachtwoord successvol gereset.";
                     // Token verwijderen.
                     deleteToken($conn, $email);
