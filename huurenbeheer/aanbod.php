@@ -66,15 +66,8 @@
 </nav>
 
     <!-- Page Content -->
-    <div class="container top-tekst-aanbod">
-        <div class="row">
-            <div class="col">
-                <h2>Huuraanbood aangeboden door Hoksbergen Huurenbeheer</h2>
-            </div>
-        </div>
-    </div>
 
-    <div class="container py-3">
+    <div class="container py-3 top-tekst-aanbod">
 <!-- Page Content -->
 <div class="container top-tekst">
     <div class="row">
@@ -114,7 +107,7 @@
                              class="w-100  pand-pic">
                     </div>
                     <div class="col-md-8 px-3">
-                        <div class="card-block px-3">
+                        <div class="card-block px-3 pand-tekst">
                             <h4 class="card-title"><?= $residence[1] . ", " . $residence[3] . " " . $residence[2] ?></h4>
                             <p class="card-text"><?= $residence[4] ?></p>
                             <p class="card-text">€<?= $residence[5] ?></p>

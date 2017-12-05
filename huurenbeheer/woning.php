@@ -67,19 +67,8 @@
     </div>
 </nav>
 
-    <!-- Page Content -->
-    <div class="container top-tekst-woning">
-        <div class="row">
-            <div class="col">
-                <h1 class=" top-tekst"><?= $residence['adres'] . ", " . $residence['postalcode'] . " " . $residence['city'] ?></h1>
-            </div>
-        </div>
-    </div>
-    
-    <div class="row">
-        <div class="col-md-8">
 <!-- Page Content -->
-<div class="container top-tekst">
+<div class="container top-tekst-woning">
     <div class="row">
         <div class="col">
             <h1 class=" top-tekst"><?= $residence['adres'] . ", " . $residence['postalcode'] . " " . $residence['city'] ?></h1>
@@ -87,7 +76,7 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row body-woning row-woning">
     <div class="col-md-8">
         <?php
         if ($pictures != null) {
@@ -139,15 +128,13 @@
             <li>Prijs: €<?= $residence['price'] ?></li>
         </ul>
         <br>
-        <a href="../taxatiesite/contact.php" class="btn btn-space btn-primary">Contacteer ons</a><a href="#"
-                                                                                                    class="btn btn-space btn-primary">Andere
-            optie</a>
+        <a href="../taxatiesite/contact.php" class="btn btn-space btn-primary">Contacteer ons</a><a href="#" class="btn btn-space btn-primary">Andere optie</a>
     </div>
 
 </div>
 
-<div class="row">
-    <div class="col-md-12">
+<div class="row row-woning">
+    <div class="col-md-12 beschrijving">
         <h3 class="my-3">Beschrijving</h3>
         <p><?= $residence['description'] ?></p>
     </div>
@@ -157,7 +144,7 @@
 
 <footer class="py-5 footer-custom">
     <div class="container">
-        <div class="row ">
+        <div class="row">
             <div class="col vastgoed-img">
                 <h3>Certificaten</h3>
                 <a href="https://www.vastgoedpro.nl/"><img src="../css/img/vgp.jpg" alt=""></a>

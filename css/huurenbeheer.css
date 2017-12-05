@@ -1,3 +1,7 @@
+.navbar{
+    max-width: 100%;
+}
+
 .navbar-custom {
     color: #fff;
     background-color: #4F72ED;
@@ -14,9 +18,17 @@ body {
     background-color: white;
 }
 
+.body-woning{
+    margin-left: 5%;
+}
+
+.row-woning{
+    max-width: 95%;
+}
+
 .top-tekst-aanbod{
     text-align: center;
-    margin-top: 6%; 
+    margin-top: 5%; 
 }
 
 .top-tekst-woning{
@@ -35,14 +47,20 @@ body {
 }
 
 .pand{
-    margin-bottom: 0.5%
+    margin-bottom: 0.5%;
+    height: 260px;
+}
+
+.pand-tekst{
+    padding-top: 2%;
 }
 
 .pand-pic{
-    border-right: solid 2px black;
-    height: 350px;
+    width: 350px;
+    height: 260px;
+    padding-bottom: 1%;
     object-fit: contain;
-    
+    border-right: 2px solid black;
 }
 
 .btn {
@@ -78,8 +96,13 @@ body {
     object-fit: contain;
 }
 
-.row{
+.beschrijving{
     margin-left: 10%;
+    max-width: 50%;
+}
+
+.col-md-8{
+    max-width: 55%;
 }
 
 .card{
