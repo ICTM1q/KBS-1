@@ -5,7 +5,7 @@
 .navbar-custom {
     color: #fff;
     background-color: #4F72ED;
-    border-bottom: solid 2px black;
+    border-bottom: solid 1px black;
 }
 
 .navbar-custom a {
@@ -36,6 +36,12 @@ body {
     margin-top: 6%; 
 }
 
+.h3-tekst{
+    text-align: center;
+    margin-top: 3%;
+    color: blue;
+}
+
 .container-white {
     background-color: white;
     width: 75%;
@@ -60,7 +66,6 @@ body {
     height: 260px;
     padding-bottom: 1%;
     object-fit: contain;
-    border-right: 2px solid black;
 }
 
 .btn {
@@ -106,7 +111,7 @@ body {
 }
 
 .card{
-    border: solid 2px black;
+    background-color: #efefef;
 }
 
 .card-body{
@@ -130,7 +135,7 @@ btn-primary{
 }
 
 .footer-custom {
-  border-top: solid 2px black;
+  border-top: solid 1px black;
   color: #fff;
   background-color: #4F72ED;
 }
