@@ -38,13 +38,13 @@ header( "Location: /login.php" );
 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item <?php if($_SERVER['PHP_SELF'] == "/issue/overview.php") { echo "active";} ?>">
+                <li class="nav-item <?php if($_SERVER['PHP_SELF'] == "/admin/issue/overview.php" || $_SERVER['PHP_SELF'] == "/admin/issue/unhandled.php" || $_SERVER['PHP_SELF'] == "/admin/issue/handled.php" || $_SERVER['PHP_SELF'] == "/admin/issue/edit.php") { echo "active";} ?>">
                     <a class="nav-link" href="/admin/issue/overview">Klachten / Meldingen</a>
                 </li>
-                <li class="nav-item <?php if($_SERVER['PHP_SELF'] == "/residence/overview.php" || $_SERVER['PHP_SELF'] == "/residence/create.php" || $_SERVER['PHP_SELF'] == "/residence/edit.php" || $_SERVER['PHP_SELF'] == "/residence/delete.php") { echo "active";} ?>">
+                <li class="nav-item <?php if($_SERVER['PHP_SELF'] == "/admin/residence/overview.php" || $_SERVER['PHP_SELF'] == "/admin/residence/create.php" || $_SERVER['PHP_SELF'] == "/admin/residence/edit.php" || $_SERVER['PHP_SELF'] == "/admin/residence/delete.php") { echo "active";} ?>">
                     <a class="nav-link" href="/admin/residence/overview">Woningaanbod</a>
                 </li>
-                <li class="nav-item <?php if($_SERVER['PHP_SELF'] == "/users/overview.php" || $_SERVER['PHP_SELF'] == "/user/create.php" || $_SERVER['PHP_SELF'] == "/user/edit.php" || $_SERVER['PHP_SELF'] == "/user/delete.php") { echo "active";} ?>">
+                <li class="nav-item <?php if($_SERVER['PHP_SELF'] == "/admin/user/overview.php" || $_SERVER['PHP_SELF'] == "/admin/user/create.php" || $_SERVER['PHP_SELF'] == "/admin/user/edit.php" || $_SERVER['PHP_SELF'] == "/admin/user/delete.php") { echo "active";} ?>">
                     <a class="nav-link" href="/admin/user/overview">Gebruikers</a>
                 </li>
             </ul>

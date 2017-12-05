@@ -101,7 +101,7 @@ class residenceFunctions
         $sql = "UPDATE pand SET adres='$adres', city='$plaats', postalcode='$postcode', description='$beschrijving', price='$prijs' WHERE pandid=$pandid";
 
         if ($conn->query($sql) === TRUE) {
-            $_SESSION['message'] = "Record updated successfully";
+            $_SESSION['message'] = "De woning is successvol aangepast";
             return;
         } else {
             $_SESSION['error'] = "Error updating record: " . $conn->error;
