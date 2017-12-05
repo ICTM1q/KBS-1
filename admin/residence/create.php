@@ -6,13 +6,13 @@
  * Time: 12:11
  */
 
-include "../admin-components/header.php";
+include "..//header.php";
 include "menu.php";
-include "../admin-components/alert.php";
+include "..//alert.php";
 require_once "residenceFunctions.php";
 
 ?>
-<form class="form-horizontal" method="post" action="/residence/overview">
+<form class="form-horizontal" method="post" action="/admin/residence/overview">
     <fieldset>
         <legend>Maak een woning aan: </legend>
         <div class="form-group row">
@@ -53,4 +53,4 @@ require_once "residenceFunctions.php";
     </fieldset>
 </form>
 
-<?php include "../admin-components/footer.php"; ?>
+<?php include "..//footer.php"; ?>

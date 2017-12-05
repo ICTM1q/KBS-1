@@ -20,10 +20,10 @@ header( "Location: /login.php" );
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
     <!-- Bootstrap core CSS -->
-    <link href="/admin-components/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/admin/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="/admin-components/css/dashboard.css" rel="stylesheet">
+    <link href="/admin/css/dashboard.css" rel="stylesheet">
     <!-- font awesome -->
     <script src="https://use.fontawesome.com/4b9f613b5e.js"></script>
 </head>
@@ -31,7 +31,7 @@ header( "Location: /login.php" );
 <body>
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand navbar-brand-custom" href="/admin"><img src="/images/logo-cropped.jpg"></a>
+        <a class="navbar-brand navbar-brand-custom" href="/admin.php"><img src="/images/logo-cropped.jpg"></a>
         <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -39,13 +39,13 @@ header( "Location: /login.php" );
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item <?php if($_SERVER['PHP_SELF'] == "/issue/overview.php") { echo "active";} ?>">
-                    <a class="nav-link" href="issue/overview">Klachten / Meldingen</a>
+                    <a class="nav-link" href="/admin/issue/overview">Klachten / Meldingen</a>
                 </li>
                 <li class="nav-item <?php if($_SERVER['PHP_SELF'] == "/residence/overview.php" || $_SERVER['PHP_SELF'] == "/residence/create.php" || $_SERVER['PHP_SELF'] == "/residence/edit.php" || $_SERVER['PHP_SELF'] == "/residence/delete.php") { echo "active";} ?>">
-                    <a class="nav-link" href="residence/overview">Woningaanbod</a>
+                    <a class="nav-link" href="/admin/residence/overview">Woningaanbod</a>
                 </li>
                 <li class="nav-item <?php if($_SERVER['PHP_SELF'] == "/users/overview.php" || $_SERVER['PHP_SELF'] == "/user/create.php" || $_SERVER['PHP_SELF'] == "/user/edit.php" || $_SERVER['PHP_SELF'] == "/user/delete.php") { echo "active";} ?>">
-                    <a class="nav-link" href="user/overview">Gebruikers</a>
+                    <a class="nav-link" href="/admin/user/overview">Gebruikers</a>
                 </li>
             </ul>
             <a class="btn nav-link" href="/logout">Uitloggen</a>

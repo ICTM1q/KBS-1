@@ -7,7 +7,7 @@
  */
 
 
-include "../admin-components/header.php";
+include "../header.php";
 include "menu.php";
 require_once "../residence/residenceFunctions.php";
 //retrieve data before the alert.php include in case of errors.
@@ -19,7 +19,7 @@ $functions = new issueFunctions();
 $result = $functions->getAllIssues($conn);
 
 //show messages
-include "../admin-components/alert.php";
+include "..//alert.php";
 ?>
 <!-- content here -->
 <h2>Klachten:</h2>
@@ -40,11 +40,11 @@ include "../admin-components/alert.php";
                     <td><?php echo $row['issueid'] ?></td>
                     <td><?php echo $row['customername'] ?></td>
                     <td><?php echo $row['description'] ?></td>
-                    <td><a href="/residence/edit?pand=<?php echo $row['pand']; ?>"><?php echo $row['pand'] ?></a></td>
+                    <td><a href="/admin/residence/edit?pand=<?php echo $row['pand']; ?>"><?php echo $row['pand'] ?></a></td>
                     <td><?php echo $row['date'] ?></td>
                     <td><?php if($row['handled'] == 0) {echo "Nee";}else{echo "Ja";} ?></td>
                     <td class="custom-col">
-                        <form method="post" action="/issue/edit">
+                        <form method="post" action="/admin/issue/edit">
                             <input  type="hidden" name="edit" value="<?php echo $row['issueid'] ?>">
                             <button type="submit" class="btn fa fa-edit fa-2x"></button>
                         </form>
@@ -54,4 +54,4 @@ include "../admin-components/alert.php";
         } ?>
     </table>
 
-<?php include "../admin-components/footer.php"; ?>
+<?php include "..//footer.php"; ?>

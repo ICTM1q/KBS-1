@@ -6,12 +6,12 @@
  * Time: 09:08
  */
 
-include "../admin-components/header.php";
+include "..//header.php";
 include "menu.php";
-include "../admin-components/alert.php";
+include "..//alert.php";
 
 ?>
 <h2>placeholder for edit form</h2>
 
 
-<?php include "../admin-components/footer.php"; ?>
+<?php include "..//footer.php"; ?>

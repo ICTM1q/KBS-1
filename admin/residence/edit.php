@@ -13,7 +13,7 @@ elseif(isset($_GET['pand'])){
     $pandID = $_GET['pand'];
 }
 
-include "../admin-components/header.php";
+include "..//header.php";
 include "menu.php";
 require_once("residenceFunctions.php");
 $functions = new residenceFunctions();
@@ -28,10 +28,10 @@ if (isset($_POST['editRecord']) && $_POST != null){
     $result = $result->fetch_object();
 }
 
-include "../admin-components/alert.php";
+include "..//alert.php";
 if($result != null){?>
 
-<form class="form-horizontal" method="post" action="/residence/edit">
+<form class="form-horizontal" method="post" action="/admin/residence/edit">
     <fieldset>
 
         <!-- Form Name -->
@@ -80,4 +80,4 @@ if($result != null){?>
 </form>
 
 <?php }
-include "../admin-components/footer.php"; ?>
+include "..//footer.php"; ?>

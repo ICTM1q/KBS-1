@@ -6,7 +6,7 @@
  * Time: 12:11
  */
 
-include "../admin-components/header.php";
+include "..//header.php";
 include "menu.php";
 require_once "residenceFunctions.php";
 $functions = new residenceFunctions();
@@ -24,7 +24,7 @@ if (isset($_POST) && $_POST != null && !isset($_POST['delete'])){
 
 $result = $functions->getAllResidence($conn);
 $conn->close();
-include "../admin-components/alert.php";
+include "..//alert.php";
 ?>
 <!-- content here -->
 
@@ -55,13 +55,13 @@ include "../admin-components/alert.php";
                 <td><?php echo $row['price'] ?></td>
                 <td><!--<img src="uploads/woning.png">--></td>
                 <td class="custom-col">
-                    <form method="post" action="/residence/edit.php">
+                    <form method="post" action="/admin/residenceponents/residence/edit.php">
                         <input  type="hidden" name="edit" value="<?php echo $row['pandid'] ?>">
                         <button type="submit" class="btn fa fa-edit fa-2x"></button>
                     </form>
                 </td>
                 <td class="custom-col">
-                    <form method="post" action="/residence/overview">
+                    <form method="post" action="/admin/residence/overview">
                         <input  type="hidden" name="delete" value="<?php echo $row['pandid'] ?>">
                         <button type="submit" class="delete btn fa fa-trash-o fa-2x"></button>
                     </form>
@@ -77,4 +77,4 @@ include "../admin-components/alert.php";
         });
     });
 </script>
-<?php include "../admin-components/footer.php"; ?>
+<?php include "..//footer.php"; ?>

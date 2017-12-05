@@ -1,5 +1,5 @@
 <?php
-include "admin-components/header.php";
+include "admin/header.php";
 ?>
 <div class="container-fluid">
     <div class="row">
@@ -12,4 +12,4 @@ include "admin-components/header.php";
             <!-- content here -->
             <h1>Dashboard</h1>
             <p>Klik in het bovenste menu op een van de items om te beginnen.</p>
-<?php include "admin-components/footer.php"; ?>
+<?php include "admin/footer.php"; ?>

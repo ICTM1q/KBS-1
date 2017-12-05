@@ -84,7 +84,7 @@
         </head>
         <body>
                 <div class="tekst">
-                    <?php include "admin-components/alert.php" ?>
+                    <?php include "admin/alert.php" ?>
                     <h1 class="adminh1">Alleen geautoriseerde toegang!</h1>
                     <div class="forms">
                         <form method="post">
