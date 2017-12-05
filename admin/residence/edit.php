@@ -41,33 +41,33 @@ if($result != null){?>
         <div class="form-group row">
             <label class="col-md-5 control-label" for="straat">Adres</label>
             <div class="col-md-5">
-                <input id="adres" name="adres" type="text" value="<?php echo $result->adres ?>" class="form-control input-md" required="" readonly>
+                <input id="adres" name="adres" type="text" value="<?php echo $result->adres ?>" class="form-control input-md" required="required">
             </div>
         </div>
         <div class="form-group row">
             <label class="col-md-5 control-label" for="postcode">Postcode</label>
             <div class="col-md-5">
-                <input id="postcode" name="postcode" type="text" value="<?php echo $result->postalcode ?>" class="form-control input-md" readonly>
+                <input id="postcode" name="postcode" type="text" value="<?php echo $result->postalcode ?>" class="form-control input-md" required="required">
 
             </div>
         </div>
         <div class="form-group row">
             <label class="col-md-5 control-label" for="plaats">Plaats</label>
             <div class="col-md-5">
-                <input id="plaats" name="plaats" type="text" value="<?php echo $result->city ?>" class="form-control input-md" readonly>
+                <input id="plaats" name="plaats" type="text" value="<?php echo $result->city ?>" class="form-control input-md" required="required">
 
             </div>
         </div>
         <div class="form-group row">
             <label class="col-md-5 control-label" for="beschrijving">Beschrijving</label>
             <div class="col-md-5">
-                <textarea class="form-control" id="beschrijving" name="beschrijving" rows="5"><?php echo $result->description ?></textarea >
+                <textarea class="form-control" id="beschrijving" name="beschrijving" rows="5"><?php echo $result->description ?></textarea required="required">
             </div>
         </div>
         <div class="form-group row">
             <label class="col-md-5 control-label" for="prijs">Prijs</label>
             <div class="col-md-5">
-                <input id="prijs" name="prijs" type="text" class="form-control input-md" value="<?php echo $result->price ?>">
+                <input id="prijs" name="prijs" type="number" min="0" step=".01" placeholder="" class="form-control input-md" required="required">
             </div>
         </div>
         <div class="form-group row">
