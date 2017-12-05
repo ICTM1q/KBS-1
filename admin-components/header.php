@@ -39,13 +39,13 @@ header( "Location: /login.php" );
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item <?php if($_SERVER['PHP_SELF'] == "/issue/overview.php") { echo "active";} ?>">
-                    <a class="nav-link" href="issue/overview">Klachten / Meldingen</a>
+                    <a class="nav-link" href="issue/overview.php">Klachten / Meldingen</a>
                 </li>
                 <li class="nav-item <?php if($_SERVER['PHP_SELF'] == "/residence/overview.php" || $_SERVER['PHP_SELF'] == "/residence/create.php" || $_SERVER['PHP_SELF'] == "/residence/edit.php" || $_SERVER['PHP_SELF'] == "/residence/delete.php") { echo "active";} ?>">
-                    <a class="nav-link" href="residence/overview">Woningaanbod</a>
+                    <a class="nav-link" href="residence/overview.php">Woningaanbod</a>
                 </li>
                 <li class="nav-item <?php if($_SERVER['PHP_SELF'] == "/users/overview.php" || $_SERVER['PHP_SELF'] == "/user/create.php" || $_SERVER['PHP_SELF'] == "/user/edit.php" || $_SERVER['PHP_SELF'] == "/user/delete.php") { echo "active";} ?>">
-                    <a class="nav-link" href="user/overview">Gebruikers</a>
+                    <a class="nav-link" href="user/overview.php">Gebruikers</a>
                 </li>
             </ul>
             <a class="btn nav-link" href="/logout">Uitloggen</a>

@@ -31,7 +31,7 @@ if (isset($_POST['editRecord']) && $_POST != null){
 include "../admin-components/alert.php";
 if($result != null){?>
 
-<form class="form-horizontal" method="post" action="/residence/edit">
+<form class="form-horizontal" method="post" action="edit.php">
     <fieldset>
 
         <!-- Form Name -->

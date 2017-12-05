@@ -12,7 +12,7 @@ include "../admin-components/alert.php";
 require_once "residenceFunctions.php";
 
 ?>
-<form class="form-horizontal" method="post" action="/residence/overview">
+<form class="form-horizontal" method="post" action="overview.php">
     <fieldset>
         <legend>Maak een woning aan: </legend>
         <div class="form-group row">
