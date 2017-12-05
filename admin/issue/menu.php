@@ -13,13 +13,13 @@
         <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
             <ul class="nav nav-pills flex-column">
                 <li class="nav-item">
-                    <a class="nav-link <?php if($_SERVER['PHP_SELF'] == "/issue/overview.php") { echo "active";} ?>" href="overview">Overzicht</a>
+                    <a class="nav-link <?php if($_SERVER['PHP_SELF'] == "/admin/issue/overview.php") { echo "active";} ?>" href="overview">Overzicht</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?php if($_SERVER['PHP_SELF'] == "/issue/unhandled.php") { echo "active";} ?>" href="unhandled">Niet afgehandelde klachten</a>
+                    <a class="nav-link <?php if($_SERVER['PHP_SELF'] == "/admin/issue/unhandled.php") { echo "active";} ?>" href="unhandled">Niet afgehandelde klachten</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?php if($_SERVER['PHP_SELF'] == "/issue/handled.php") { echo "active";} ?>" href="handled">Afgehandelde klachten</a>
+                    <a class="nav-link <?php if($_SERVER['PHP_SELF'] == "/admin/issue/handled.php") { echo "active";} ?>" href="handled">Afgehandelde klachten</a>
                 </li>
             </ul>
         </nav>

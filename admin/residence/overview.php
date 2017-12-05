@@ -27,6 +27,8 @@ $total = $result->num_rows;
 
 if(isset($_GET['page'])){
     $result = $functions->getAllResidencePaginated($conn, 10 , $_GET['page']);
+}else{
+    $result = $functions->getAllResidencePaginated($conn, 10 , 1);
 }
 $conn->close();
 include "../alert.php";
@@ -75,18 +77,7 @@ include "../alert.php";
         <?php }
         } ?>
 </table>
-<div class="row">
-    <div class="offset-5 col-md-5">
-        <ul class="pagination">
-            <?php $count = 0;
-            for($i = 0;$i < $total; $i += 10){  $count++;?>
-
-                <li class="page-item <?php if(isset($_GET['page']) &&$_GET['page'] == $count) { echo "active";} ?>">
-                    <a class="page-link" href="?page=<?php echo ($count); ?>"><?php echo $count; ?></a></li>
-            <?php } ?>
-        </ul>
-    </div>
-</div>
+<?php include "../pagination.php"; ?>
 <script>
     $(function() {
         $('.delete').click(function() {

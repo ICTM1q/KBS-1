@@ -21,6 +21,20 @@ class issueFunctions
             return null;
         }
     }
+    function getAllIssuesPaginated($conn, $limit, $page)
+    {
+        $limit2 = ($page-1) * $limit;
+        $sql = "SELECT * FROM `issue` LIMIT $limit2, $limit";
+
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            return $result;
+        } else {
+            $_SESSION['warning'] = "Er zijn geen klachten gevonden.";
+            return null;
+        }
+    }
     function getAllUnhandledIssues($conn)
     {
         $sql = "SELECT * FROM `issue` WHERE `handled` = '0'";
@@ -34,9 +48,37 @@ class issueFunctions
             return null;
         }
     }
+    function getAllUnhandledIssuesPaginated($conn, $limit, $page)
+    {
+        $limit2 = ($page-1) * $limit;
+        $sql = "SELECT * FROM `issue` WHERE `handled` = '0' LIMIT $limit2, $limit";
+
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            return $result;
+        } else {
+            $_SESSION['warning'] = "Er zijn geen klachten gevonden.";
+            return null;
+        }
+    }
     function getAllHandledIssues($conn)
     {
         $sql = "SELECT * FROM `issue` WHERE `handled` = '1'";
+
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            return $result;
+        } else {
+            $_SESSION['warning'] = "Er zijn geen klachten gevonden.";
+            return null;
+        }
+    }
+    function getAllHandledIssuesPaginated($conn, $limit, $page)
+    {
+        $limit2 = ($page-1) * $limit;
+        $sql = "SELECT * FROM `issue` WHERE `handled` = '1' LIMIT $limit2, $limit";
 
         $result = $conn->query($sql);
 

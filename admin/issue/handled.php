@@ -16,7 +16,13 @@ $conn = $dbFunctions->connectDB();
 require_once "issueFunctions.php";
 $functions = new issueFunctions();
 $result = $functions->getAllHandledIssues($conn);
+$total = $result->num_rows;
 
+if(isset($_GET['page'])){
+    $result = $functions->getAllHandledIssuesPaginated($conn, 10 , $_GET['page']);
+}else{
+    $result = $functions->getAllHandledIssuesPaginated($conn, 10 , 1);
+}
 //show messages
 include "../alert.php";
 ?>
@@ -53,4 +59,6 @@ include "../alert.php";
         } ?>
     </table>
 
-<?php include "../footer.php"; ?>
+<?php
+include "../pagination.php";
+include "../footer.php"; ?>
