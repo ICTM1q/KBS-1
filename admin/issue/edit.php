@@ -104,7 +104,10 @@ if(isset($result) && $result != null){?>
             </div>
         </div>
         <div class="form-group row">
-            <div class="offset-8 col-md-2">
+            <div class="offset-4 col-md-2">
+                    <a href="javascript:history.go(-1)" class="form-control input-md btn btn-danger">Terug</a>
+            </div>
+            <div class="col-md-2">
                 <input type="hidden" value="<?php echo $result->issueid ?>" name="editRecord">
                 <input type="submit" class="form-control input-md btn btn-primary">
             </div>

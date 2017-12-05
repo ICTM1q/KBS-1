@@ -46,8 +46,11 @@ require_once "residenceFunctions.php";
             </div>
         </div>
         <div class="form-group row">
-            <div class="offset-8 col-md-2">
-                <input type="submit" placeholder="" class="form-control input-md btn btn-primary"></input>
+            <div class="offset-6 col-md-2">
+                <a href="/admin/residence/overview" class="form-control input-md btn btn-danger">Terug</a>
+            </div>
+            <div class="col-md-2">
+                <input type="submit" placeholder="" class="form-control input-md btn btn-primary">
             </div>
         </div>
     </fieldset>

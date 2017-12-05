@@ -71,7 +71,10 @@ if($result != null){?>
             </div>
         </div>
         <div class="form-group row">
-            <div class="offset-8 col-md-2">
+            <div class="offset-6 col-md-2">
+                <a href="/admin/residence/overview" class="form-control input-md btn btn-danger">Terug</a>
+            </div>
+            <div class="col-md-2">
                 <input type="hidden" value="<?php echo $result->pandid ?>" name="editRecord">
                 <input type="submit" class="form-control input-md btn btn-primary">
             </div>
