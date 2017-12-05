@@ -19,7 +19,7 @@ $functions = new issueFunctions();
 $result = $functions->getAllIssues($conn);
 
 //show messages
-include "..//alert.php";
+include "../alert.php";
 ?>
 <!-- content here -->
 <h2>Klachten:</h2>
@@ -54,4 +54,4 @@ include "..//alert.php";
         } ?>
     </table>
 
-<?php include "..//footer.php"; ?>
+<?php include "../footer.php"; ?>

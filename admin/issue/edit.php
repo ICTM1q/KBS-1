@@ -12,7 +12,7 @@ if(isset($_POST['edit'])){
 elseif(isset($_GET['issue'])){
     $issueID = $_GET['issue'];
 }
-include "..//header.php";
+include "../header.php";
 include "menu.php";
 
 
@@ -32,7 +32,7 @@ if (isset($_POST['editRecord'])){
     $result = $functions->getSingleIssue($conn, $_POST['editRecord']);
     $result = $result->fetch_object();
 }
-include "..//alert.php";
+include "../alert.php";
 if(isset($result) && $result != null){?>
 <h2>Klacht:</h2>
 
@@ -114,4 +114,4 @@ if(isset($result) && $result != null){?>
 
 
 <?php }
-include "..//footer.php"; ?>
+include "../footer.php"; ?>

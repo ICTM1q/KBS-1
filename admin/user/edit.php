@@ -5,7 +5,7 @@
  * Date: 18-11-2017
  * Time: 12:11
  */
-include "..//header.php";
+include "../header.php";
 include "menu.php";
 require_once("functions.php");
 $functions = new residenceFunctions();
@@ -19,7 +19,7 @@ if (isset($_POST['editRecord']) && $_POST != null){
     $result = $functions->getSingleResidence($conn, $_POST['editRecord']);
     $result = $result->fetch_object();
 }
-include "..//alert.php";
+include "../alert.php";
 ?>
 
-<?php include "..//footer.php"; ?>
+<?php include "../footer.php"; ?>

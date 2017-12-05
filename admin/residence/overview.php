@@ -6,7 +6,7 @@
  * Time: 12:11
  */
 
-include "..//header.php";
+include "../header.php";
 include "menu.php";
 require_once "residenceFunctions.php";
 $functions = new residenceFunctions();
@@ -24,7 +24,7 @@ if (isset($_POST) && $_POST != null && !isset($_POST['delete'])){
 
 $result = $functions->getAllResidence($conn);
 $conn->close();
-include "..//alert.php";
+include "../alert.php";
 ?>
 <!-- content here -->
 
@@ -77,4 +77,4 @@ include "..//alert.php";
         });
     });
 </script>
-<?php include "..//footer.php"; ?>
+<?php include "../footer.php"; ?>

@@ -7,7 +7,7 @@
  */
 
 
-include "..//header.php";
+include "../header.php";
 include "menu.php";
 require_once "../residence/residenceFunctions.php";
 //retrieve data before the alert.php include in case of errors.
@@ -19,7 +19,7 @@ $functions = new issueFunctions();
 $result = $functions->getAllUnhandledIssues($conn);
 
 //show messages
-include "..//alert.php";
+include "../alert.php";
 ?>
     <!-- content here -->
     <h2>Klachten:</h2>
@@ -54,4 +54,4 @@ include "..//alert.php";
         } ?>
     </table>
 
-<?php include "..//footer.php"; ?>
+<?php include "../footer.php"; ?>

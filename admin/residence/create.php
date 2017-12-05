@@ -6,9 +6,9 @@
  * Time: 12:11
  */
 
-include "..//header.php";
+include "../header.php";
 include "menu.php";
-include "..//alert.php";
+include "../alert.php";
 require_once "residenceFunctions.php";
 
 ?>
@@ -53,4 +53,4 @@ require_once "residenceFunctions.php";
     </fieldset>
 </form>
 
-<?php include "..//footer.php"; ?>
+<?php include "../footer.php"; ?>

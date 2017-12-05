@@ -6,10 +6,10 @@
  * Time: 12:11
  */
 
-include "..//header.php";
+include "../header.php";
 include "menu.php";
-include "..//alert.php";
+include "../alert.php";
 
 ?>
 
-<?php include "..//footer.php"; ?>
+<?php include "../footer.php"; ?>
