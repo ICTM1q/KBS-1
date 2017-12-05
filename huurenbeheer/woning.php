@@ -13,7 +13,7 @@
     <link href="../css/huurenbeheer.css" rel="stylesheet">
 
     <?php
-    require "../residence/residenceFunctions.php";
+    require "../admin/residence/residenceFunctions.php";
     $functions = new residenceFunctions();
     $conn = $functions->connectDB();
     $result = $functions->getSingleResidence($conn, $_GET['pandid']);
