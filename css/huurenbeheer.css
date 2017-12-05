@@ -14,7 +14,12 @@ body {
     background-color: white;
 }
 
-.top-tekst{
+.top-tekst-aanbod{
+    text-align: center;
+    margin-top: 6%; 
+}
+
+.top-tekst-woning{
     text-align: center;
     margin-top: 6%; 
 }
@@ -35,6 +40,9 @@ body {
 
 .pand-pic{
     border-right: solid 2px black;
+    height: 350px;
+    object-fit: contain;
+    
 }
 
 .btn {
@@ -62,6 +70,16 @@ body {
 .tag-tekst{
     color: #4F72ED;
     font-weight: bold;
+}
+
+.carousel{
+    height: 500px;
+    width: 750px;
+    object-fit: contain;
+}
+
+.row{
+    margin-left: 10%;
 }
 
 .card{
