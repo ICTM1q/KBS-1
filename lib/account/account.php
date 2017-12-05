@@ -27,7 +27,7 @@ function loginFunc ( $username, $password ) {
     }
     if ( $loginPasswordFlag === TRUE && $loginUsernameFlag === TRUE ) {
         try {
-            $conn = new PDO ( "mysql:host=localhost;dbname=kbs", $user );
+            $conn = new PDO ( "mysql:host=localhost;dbname=$dbname;", $user, $dbpassword);
             
             $loginArray["result"] = isCorrectPassword( $conn, $username, $password );
             $loginArray["try"] = TRUE;
@@ -78,7 +78,7 @@ function loginCaptchaFunc ( $username, $password, $secureImage, $captchaCode ) {
         }
         else {
             try {
-                $conn = new PDO ( "mysql:host=localhost;dbname=kbs", $user );
+                $conn = new PDO ( "mysql:host=localhost;dbname=$dbname;", $user, $dbpassword );
                 
                 $loginArray["result"] = isCorrectPassword( $conn, $username, $password );
                 $loginArray["try"] = TRUE;
@@ -131,7 +131,7 @@ function createFunc ( $username, $password, $email ) {
         }
         else {
             try {
-                $conn = new PDO ( "mysql:host=localhost;dbname=kbs", $user );
+                $conn = new PDO ( "mysql:host=localhost;dbname=$dbname;", $user, $dbpassword );
             
                 $createArray["result"] = createUser( $conn, $username, $password, $email );
             }
@@ -175,7 +175,7 @@ function createToken ( $email, $secureImage, $captchaCode ) {
         }
         else {
             try {
-                $conn = new PDO ( "mysql:host=localhost;dbname=kbs", $user );
+                $conn = new PDO ( "mysql:host=localhost;dbname=$dbname;", $user, $dbpassword );
 
                 if ( getEmail ( $conn, $email ) == $email ) {
                     
@@ -251,7 +251,7 @@ function checkToken ( $token, $email, $password1, $password2 ) {
         // Kijken of bevestiging wachtwoord overeenkomt.
         if ( $password1 === $password2 ) {
             try {
-                $conn = new PDO ( "mysql:host=localhost;dbname=kbs", $user );
+                $conn = new PDO ( "mysql:host=localhost;dbname=$dbname;", $user, $dbpassword );
 
                 // Kijken of ingevoerde token gelijk is aan taken in de database.
                 if ( getToken ( $conn, $email ) == $token ) {

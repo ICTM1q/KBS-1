@@ -1,5 +1,10 @@
 <?php
 
+function connectToDatabase() {
+    include "config.php";
+    return new PDO ( "mysql:host=localhost;dbname=$dbname;", $user, $dbpassword);
+}
+
 // Functie om ingevoerde wachtwoord to matchen met wat in de database staat. 
 function isCorrectPassword ( $conn, $username, $password ) {
     // Salt opvragen en klaarmaken voor password hashing.
@@ -95,7 +100,7 @@ function createUser ( $conn, $username, $password, $email ) {
 function GetRole ( $username ) {
     include "config.php";
     try {
-        $conn = new PDO ( "mysql:host=localhost;dbname=kbs", $user );
+        $conn = connectToDatabase();
         $stmt = $conn->prepare ( "SELECT role FROM user WHERE username LIKE ?" );
         $stmt->execute ( array ( $username ) );
         $row = $stmt->fetch();
@@ -125,7 +130,7 @@ function getRealIpAddr() {
 function insertTry ( $ip ) {
     include "config.php";
     try {
-        $conn = new PDO ( "mysql:host=localhost;dbname=kbs", $user );
+        $conn = connectToDatabase();
         $stmt = $conn->prepare ( "INSERT INTO login_try(date, ip) VALUES(NOW(),?)");
         $stmt->execute ( array ( $ip ) );
         
@@ -141,7 +146,7 @@ function getTries ( $ip ) {
     include "config.php";
     
     try {
-        $conn = new PDO ( "mysql:host=localhost;dbname=kbs", $user );
+        $conn = connectToDatabase();
         $stmt = $conn->prepare ( "SELECT count(ip) FROM login_try WHERE ip = ? AND date > DATE_SUB(NOW(), INTERVAL 24 HOUR)" );
         $stmt->execute ( array ( $ip ) );
         $row = $stmt->fetch();
@@ -158,7 +163,7 @@ function deleteTries ( $ip ) {
     include "config.php";
     
     try {
-        $conn = new PDO ( "mysql:host=localhost;dbname=kbs", $user );
+        $conn = connectToDatabase();
         $stmt = $conn->prepare ( "DELETE FROM login_try WHERE ip = ?" );
         $stmt->execute ( array ( $ip ) );
     }

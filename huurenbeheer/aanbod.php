@@ -82,17 +82,19 @@
         $index = ($_GET['page'] - 1) * 10;
     } else {
         $_GET['page'] = 1;
+        $index = 0;
     }
 
     if ($residences != null && $residences->num_rows > 0) {
         $conn = $functions->connectDB();
-        $residenceArray = $residences->fetch_all();
 
-        $index = 0;
-
-        for (; $index < sizeof($residenceArray); $index++) {
-            $residence = $residenceArray[$index];
-            $pictures = $functions->getResidencePictures($conn, $residence[6]);
+        $skip = $index;
+        foreach ($residences as $residence) {
+            if ($_GET['page'] > 1 && $skip > 0) {
+                $skip--;
+                continue;
+            }
+            $pictures = $functions->getResidencePictures($conn, $residence['picturesid']);
 
             if ($index != ($_GET['page'] - 1) * 10 && $index % 10 == 0) {
                 global $current;
@@ -100,24 +102,25 @@
                 break;
             }
             ?>
-            <div id="pand-<?= $residence[0] ?>" class="card pand">
+            <div id="pand-<?= $residence['pandid'] ?>" class="card pand">
                 <div class="row">
                     <div class="col-md-4">
-                        <img src="<?= $pictures == null ? "http://via.placeholder.com/350x260" : $pictures->fetch_array()['path'] ?>"
+                        <img src="<?= $pictures == null ? "https://via.placeholder.com/350x260" : $pictures->fetch_array()['path'] ?>"
                              class="w-100  pand-pic">
                     </div>
                     <div class="col-md-8 px-3">
                         <div class="card-block px-3 pand-tekst">
-                            <h4 class="card-title"><?= $residence[1] . ", " . $residence[3] . " " . $residence[2] ?></h4>
-                            <p class="card-text"><?= $residence[4] ?></p>
-                            <p class="card-text">€<?= $residence[5] ?></p>
-                            <a href="woning.php?pandid=<?= $residence[0] ?>" class="btn btn-primary">Lees
+                            <h4 class="card-title"><?= $residence['adres'] . ", " . $residence['postalcode'] . " " . $residence['city'] ?></h4>
+                            <p class="card-text"><?= $residence['description'] ?></p>
+                            <p class="card-text">€<?= $residence['price'] ?></p>
+                            <a href="woning.php?pandid=<?= $residence['pandid'] ?>" class="btn btn-primary">Lees
                                 meer</a>
                         </div>
                     </div>
                 </div>
             </div>
             <?php
+            $index++;
         }
         $conn->close();
     }
