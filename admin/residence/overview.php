@@ -81,7 +81,7 @@ include "../alert.php";
             <?php $count = 0;
             for($i = 0;$i < $total; $i += 10){  $count++;?>
 
-                <li class="page-item <?php if($_GET['page'] == $count) { echo "active";} ?>">
+                <li class="page-item <?php if(isset($_GET['page']) &&$_GET['page'] == $count) { echo "active";} ?>">
                     <a class="page-link" href="?page=<?php echo ($count); ?>"><?php echo $count; ?></a></li>
             <?php } ?>
         </ul>
