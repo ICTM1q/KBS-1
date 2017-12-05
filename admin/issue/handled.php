@@ -13,7 +13,7 @@ require_once "../residence/residenceFunctions.php";
 $dbFunctions = new residenceFunctions();
 $conn = $dbFunctions->connectDB();
 
-require_once "IssueFunctions.php";
+require_once "issueFunctions.php";
 $functions = new issueFunctions();
 $result = $functions->getAllHandledIssues($conn);
 

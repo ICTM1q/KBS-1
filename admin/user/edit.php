@@ -7,7 +7,7 @@
  */
 include "../header.php";
 include "menu.php";
-require_once("functions.php");
+require_once("userFunctions.php");
 $functions = new residenceFunctions();
 $conn = $functions->connectDB();
 if (isset($_POST['edit']) && $_POST != null){

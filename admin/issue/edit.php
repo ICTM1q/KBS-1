@@ -21,7 +21,7 @@ include "menu.php";
     $dbFunctions = new residenceFunctions();
     $conn = $dbFunctions->connectDB();
 
-    require_once "IssueFunctions.php";
+    require_once "issueFunctions.php";
     $functions = new issueFunctions();
 if(isset($issueID) && $issueID != null) {
     $result = $functions->getSingleIssue($conn, $issueID);

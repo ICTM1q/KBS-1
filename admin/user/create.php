@@ -9,7 +9,7 @@
 include "../header.php";
 include "menu.php";
 include "../alert.php";
-
+include "../../register.php";
 ?>
 
 <?php include "../footer.php"; ?>
