@@ -67,7 +67,7 @@ if($result != null){?>
         <div class="form-group row">
             <label class="col-md-5 control-label" for="prijs">Prijs</label>
             <div class="col-md-5">
-                <input id="prijs" name="prijs" type="number" min="0" step=".01" placeholder="" class="form-control input-md" required="required">
+                <input id="prijs" name="prijs" type="number" min="0" step=".01" value="<?php echo $result->price ?>" class="form-control input-md" required="required">
             </div>
         </div>
         <div class="form-group row">

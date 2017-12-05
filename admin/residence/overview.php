@@ -23,6 +23,11 @@ if (isset($_POST) && $_POST != null && !isset($_POST['delete'])){
 }
 
 $result = $functions->getAllResidence($conn);
+$total = $result->num_rows;
+
+if(isset($_GET['page'])){
+    $result = $functions->getAllResidencePaginated($conn, 10 , $_GET['page']);
+}
 $conn->close();
 include "../alert.php";
 ?>
@@ -70,6 +75,18 @@ include "../alert.php";
         <?php }
         } ?>
 </table>
+<div class="row">
+    <div class="offset-5 col-md-5">
+        <ul class="pagination">
+            <?php $count = 0;
+            for($i = 0;$i < $total; $i += 10){  $count++;?>
+
+                <li class="page-item <?php if($_GET['page'] == $count) { echo "active";} ?>">
+                    <a class="page-link" href="?page=<?php echo ($count); ?>"><?php echo $count; ?></a></li>
+            <?php } ?>
+        </ul>
+    </div>
+</div>
 <script>
     $(function() {
         $('.delete').click(function() {

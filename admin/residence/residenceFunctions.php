@@ -39,6 +39,21 @@ class residenceFunctions
             return null;
         }
     }
+    function getAllResidencePaginated($conn, $limit ,$page)
+    {
+        $limit2 = ($page-1) * $limit;
+        $sql = "SELECT * FROM `pand` LIMIT $limit2, $limit";
+
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            return $result;
+        } else {
+            $_SESSION['warning'] = "Er zijn geen woningen gevonden. Voeg een nieuwe woning toe om deze in het overzicht te zien.";
+            file_put_contents("../logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['warning'] . "\r\n", FILE_APPEND);
+            return null;
+        }
+    }
     function getSingleResidence($conn, $pandid)
     {
         $sql = "SELECT * FROM `pand` WHERE pandid='$pandid'";
