@@ -66,7 +66,7 @@
     </nav>
 
     <!-- Page Content -->
-    <div class="container top-tekst">
+    <div class="container top-tekst-woning">
         <div class="row">
             <div class="col">
                 <h1 class=" top-tekst"><?= $residence['adres'] . ", " . $residence['postalcode'] . " " . $residence['city'] ?></h1>
@@ -93,7 +93,7 @@
                     foreach ($pictures as $picture) {
                         ?>
                         <div class="carousel-item <?= $first ? 'active' : '' ?>">
-                            <img class="d-block w-100" src="<?= $picture['path'] ?>" alt="<?= $picture['path'] ?>">
+                            <img class="d-block w-100 carousel" src="<?= $picture['path'] ?>" alt="<?= $picture['path'] ?>">
                         </div>
                         <?php
                         $first = false;

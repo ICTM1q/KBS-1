@@ -64,13 +64,14 @@
     </nav>
 
     <!-- Page Content -->
-    <div class="container top-tekst">
-    <div class="row">
-        <div class="col">
-            <h2>Huuraanbood aangeboden door Hoksbergen Huurenbeheer</h2>
+    <div class="container top-tekst-aanbod">
+        <div class="row">
+            <div class="col">
+                <h2>Huuraanbood aangeboden door Hoksbergen Huurenbeheer</h2>
+            </div>
         </div>
     </div>
-    </div>  
+    
     <div class="container py-3">
     <?php
     if ($residences != null && $residences->num_rows > 0) {
@@ -137,8 +138,7 @@
                 <?php
                 for ($i = 0; $i < $pages; $i++) {
                     ?>
-                    <li class="page-item <?= $i + 1 == $currentpage ? 'active' : '' ?>"><a class="page-link"
-                                                                                           href="aanbod.php?page=<?= $i + 1 ?>"><?= $i + 1 ?></a>
+                    <li class="page-item <?= $i + 1 == $currentpage ? 'active' : '' ?>"><a class="page-link" href="aanbod.php?page=<?= $i + 1 ?>"><?= $i + 1 ?></a>
                     </li>
                     <?php
                 }
