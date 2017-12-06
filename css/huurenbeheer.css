@@ -26,6 +26,10 @@ body {
     max-width: 95%;
 }
 
+.medewerker{
+    text-align: center;
+}
+
 .top-tekst-aanbod{
     text-align: center;
     margin-top: 5%; 

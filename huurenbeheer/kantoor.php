@@ -58,21 +58,54 @@
     <!-- Page Content -->
     <div class="container-white">
         <div class="container top-tekst-kantoor">
-    <div class="row">
-        <div class="col">
-            <h3 class="h3-tekst">Het kantoor</h3>
+            <div class="row">
+                <div class="col">
+                    <h3 class="h3-tekst">Het kantoor</h3>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-        <p>Huur & Beheer Hoksbergen is een kantoor welke gevestigd is in het stadscentrum van Kampen. Ons kantoor kenmerkt zich door heldere adviezen, gedegen kennis en een persoonlijke benadering.<br><br>
-            Ons gemotiveerde team van medewerkers zet zich graag voor u in en is een team waarop u kunt bouwen.<br><br>
-            Hoksbergen heeft jarenlange ervaring in het beheren van particuliere en bedrijfsmatige panden.<br><br>
-            Wat is begonnen als een neventak is door de tevredenheid van onze klanten uitgegroeid tot het inmiddels goed bekende Huur & Beheer Hoksbergen.<br><br>
-            Ons kantoor is aangesloten bij de branchevereniging VastgoedPro.<br><br>
-            Tevens ingeschreven in de stichting VastgoedCert. Het VastgoedCert keurmerk duidt aan dat u van de makelaar/taxateur deskundigheid en vakbekwaamheid mag verwachten.</p>
-        
-        <h3 class="h3-tekst">Openingstijden</h3>
-    </div>
+            <p>Huur & Beheer Hoksbergen is een kantoor welke gevestigd is in het stadscentrum van Kampen. Ons kantoor kenmerkt zich door heldere adviezen, gedegen kennis en een persoonlijke benadering.<br><br>
+                Ons gemotiveerde team van medewerkers zet zich graag voor u in en is een team waarop u kunt bouwen.<br><br>
+                Hoksbergen heeft jarenlange ervaring in het beheren van particuliere en bedrijfsmatige panden.<br><br>
+                Wat is begonnen als een neventak is door de tevredenheid van onze klanten uitgegroeid tot het inmiddels goed bekende Huur & Beheer Hoksbergen.<br><br>
+                Ons kantoor is aangesloten bij de branchevereniging VastgoedPro.<br><br>
+                Tevens ingeschreven in de stichting VastgoedCert. Het VastgoedCert keurmerk duidt aan dat u van de makelaar/taxateur deskundigheid en vakbekwaamheid mag verwachten.</p>
+
+            <h3 class="h3-tekst">Openingstijden</h3>
+            <p>Maandag t/m vrijdag van 9.00 - 12.30 uur geopend. 's Middag op afspraak.</p>
+
+            <h3 class="h3-tekst">Medewerkers</h3>
+            <div class="medewerker">
+                <div class="medewerker-tekst">
+                    <p>__________________________________________________________________________________</p>
+                    <h5>Jan Hoksbergen</h5>
+                    <span>Register makelaar</span>
+                    <p>Taxateur</p>
+                </div>
+                <div>
+                    <img src="../css/img/jan.jpg">
+                </div>
+                <p>__________________________________________________________________________________</p>
+                <div>
+                    <h5>Paulien Gelderloos</h5>
+                        <p>Medewerker binnendienst</p>
+                </div>
+                <div>
+                    <img src="../css/img/paulien.jpg">
+                </div>
+                <p>__________________________________________________________________________________</p>
+                <div>
+                    <h5>Aline Zwakenberg</h5>
+                        <p>Medewerker binnendienst</p>
+                </div>
+                <p>__________________________________________________________________________________</p>
+        </div>
+            
+            <h3 class="h3-tekst">Algemene voorwaarden</h3>
+            <p>U kunt onze algemene voorwaarden hier downloaden.</p>
+            <form method="post">
+                <input type="submit" value="Algemene voorwaarden" name="algemeenevoorwaarden" class="knop">
+            </form><br>
     
     <!-- Footer -->
    <footer class="py-5 footer-custom">
