@@ -18,6 +18,7 @@ require_once "issueFunctions.php";
 $functions = new issueFunctions();
 $result = $functions->getAllIssues($conn);
 $total = $result->num_rows;
+$limit = 10;
 if(isset($_GET['page'])){
     $result = $functions->getAllIssuesPaginated($conn, 10 , $_GET['page']);
 }else{

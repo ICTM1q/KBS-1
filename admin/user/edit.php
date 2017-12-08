@@ -29,12 +29,14 @@ include "../alert.php";
         <div class="form-group row">
             <label class="col-md-4 control-label" for="username">Gebruikersnaam</label>
             <div class="col-md-4">
+                <input type="hidden" value="<?php echo $result->username ?>" name="username">
                 <input id="username" name="username" type="text" value="<?php echo $result->username ?>" class="form-control input-md" required="" disabled>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-md-4 control-label" for="email">Email adres</label>
             <div class="col-md-4">
+                <input type="hidden" value="<?php echo $result->email ?>" name="email">
                 <input id="email" name="email" type="text" value="<?php echo $result->email ?>" class="form-control input-md" disabled>
             </div>
         </div>

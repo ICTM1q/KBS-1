@@ -1,4 +1,4 @@
-<?php
+<?php if ($total > $limit){
 /**
  * Created by PhpStorm.
  * User: Tristan Willems
@@ -18,3 +18,4 @@
         </ul>
     </div>
 </div>
+<?php } ?>

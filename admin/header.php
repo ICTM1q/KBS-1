@@ -47,9 +47,9 @@ header( "Location: /login.php" );
                 <li class="nav-item <?php if($_SERVER['PHP_SELF'] == "/admin/user/overview.php" || $_SERVER['PHP_SELF'] == "/admin/user/create.php" || $_SERVER['PHP_SELF'] == "/admin/user/edit.php" || $_SERVER['PHP_SELF'] == "/admin/user/delete.php") { echo "active";} ?>">
                     <a class="nav-link" href="/admin/user/overview">Gebruikers</a>
                 </li>
-                <li class="nav-item <?php if($_SERVER['PHP_SELF'] == "/admin/site/overview.php" || $_SERVER['PHP_SELF'] == "/admin/site/create.php" || $_SERVER['PHP_SELF'] == "/admin/site/edit.php" || $_SERVER['PHP_SELF'] == "/admin/site/delete.php") { echo "active";} ?>">
+                <!--<li class="nav-item <?php //if($_SERVER['PHP_SELF'] == "/admin/site/overview.php" || $_SERVER['PHP_SELF'] == "/admin/site/create.php" || $_SERVER['PHP_SELF'] == "/admin/site/edit.php" || $_SERVER['PHP_SELF'] == "/admin/site/delete.php") { echo "active";} ?>">
                     <a class="nav-link" href="#">Site</a>
-                </li>
+                </li>-->
             </ul>
             <a class="btn nav-link" href="/logout">Uitloggen</a>
         </div>

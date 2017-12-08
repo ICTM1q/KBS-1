@@ -24,11 +24,11 @@ if (isset($_POST) && $_POST != null && !isset($_POST['delete'])){
 
 $result = $functions->getAllResidence($conn);
 $total = $result->num_rows;
-
+$limit = 10;
 if(isset($_GET['page'])){
-    $result = $functions->getAllResidencePaginated($conn, 10 , $_GET['page']);
+    $result = $functions->getAllResidencePaginated($conn, $limit , $_GET['page']);
 }else{
-    $result = $functions->getAllResidencePaginated($conn, 10 , 1);
+    $result = $functions->getAllResidencePaginated($conn, $limit , 1);
 }
 $conn->close();
 include "../alert.php";

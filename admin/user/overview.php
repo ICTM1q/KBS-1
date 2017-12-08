@@ -16,17 +16,17 @@ require_once "userFunctions.php";
 $functions = new userFunctions();
 $result = $functions->getAllUsers($conn);
 $total = $result->num_rows;
-
-if(isset($_GET['page'])){
-    $result = $functions->getAllUsersPaginated($conn, 10 , $_GET['page']);
-}else{
-    $result = $functions->getAllUsersPaginated($conn, 10 , 1);
-}
+$limit = 10;
 
 if (isset($_POST['delete']) && $_POST != null){
     $functions->deleteUser($conn, $_POST['delete']);
 }
 
+if(isset($_GET['page'])){
+    $result = $functions->getAllUsersPaginated($conn, $limit , $_GET['page']);
+}else{
+    $result = $functions->getAllUsersPaginated($conn, $limit , 1);
+}
 $conn->close();
 
 include "../alert.php";
