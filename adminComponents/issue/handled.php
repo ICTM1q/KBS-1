@@ -17,11 +17,11 @@ require_once "issueFunctions.php";
 $functions = new issueFunctions();
 $result = $functions->getAllHandledIssues($conn);
 $total = $result->num_rows;
-
+$limit = 10;
 if(isset($_GET['page'])){
-    $result = $functions->getAllHandledIssuesPaginated($conn, 10 , $_GET['page']);
+    $result = $functions->getAllHandledIssuesPaginated($conn, $limit , $_GET['page']);
 }else{
-    $result = $functions->getAllHandledIssuesPaginated($conn, 10 , 1);
+    $result = $functions->getAllHandledIssuesPaginated($conn, $limit , 1);
 }
 //show messages
 include "../alert.php";
