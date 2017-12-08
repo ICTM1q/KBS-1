@@ -13,7 +13,7 @@
     <link href="../css/huurenbeheer.css" rel="stylesheet">
 
     <?php
-    require "../admin/residence/residenceFunctions.php";
+    require "../adminComponents/residence/residenceFunctions.php";
     $functions = new residenceFunctions();
     $conn = $functions->connectDB();
     $residences = $functions->getAllResidence($conn);
