@@ -52,13 +52,13 @@ include "../alert.php";
         <td><?php echo $row["role"] ?></td>
         <td><?php echo $row["create_date"] ?></td>
         <td class="custom-col">
-            <form method="post" action="/admin/user/edit.php">
+            <form method="post" action="/adminComponents/user/edit.php">
                 <input  type="hidden" name="edit" value="<?php echo $row['username'] ?>">
                 <button type="submit" class="btn fa fa-edit fa-2x"></button>
             </form>
         </td>
         <td class="custom-col">
-            <form method="post" action="/admin/user/overview.php">
+            <form method="post" action="/adminComponents/user/overview.php">
                 <input  type="hidden" name="delete" value="<?php echo $row['username'] ?>">
                 <button type="submit" class="delete btn fa fa-trash-o fa-2x"></button>
             </form>

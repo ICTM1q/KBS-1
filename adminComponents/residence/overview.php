@@ -62,13 +62,13 @@ include "../alert.php";
                 <td><?php echo $row['price'] ?></td>
                 <td><!--<img src="uploads/woning.png">--></td>
                 <td class="custom-col">
-                    <form method="post" action="/admin/residence/edit.php">
+                    <form method="post" action="/adminComponents/residence/edit.php">
                         <input  type="hidden" name="edit" value="<?php echo $row['pandid'] ?>">
                         <button type="submit" class="btn fa fa-edit fa-2x"></button>
                     </form>
                 </td>
                 <td class="custom-col">
-                    <form method="post" action="/admin/residence/overview.php<?php if (isset($_GET['page'])){ echo "?page=".$_GET['page'];}?>">
+                    <form method="post" action="/adminComponents/residence/overview.php<?php if (isset($_GET['page'])){ echo "?page=".$_GET['page'];}?>">
                         <input  type="hidden" name="delete" value="<?php echo $row['pandid'] ?>">
                         <button type="submit" class="delete btn fa fa-trash-o fa-2x"></button>
                     </form>

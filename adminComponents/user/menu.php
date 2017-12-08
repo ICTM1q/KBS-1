@@ -16,7 +16,7 @@
                     <a class="nav-link <?php if($_SERVER['PHP_SELF'] == "/residence/overview.php") { echo "active";} ?>" href="overview">Overzicht</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?php if($_SERVER['PHP_SELF'] == "/admin/user/create.php") { echo "active";} ?>" href="create">Voeg een gebruiker toe</a>
+                    <a class="nav-link <?php if($_SERVER['PHP_SELF'] == "/adminComponents/user/create.php") { echo "active";} ?>" href="create">Voeg een gebruiker toe</a>
                 </li>
             </ul>
         </nav>

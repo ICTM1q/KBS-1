@@ -23,7 +23,7 @@ header( "Location: /login.php" );
     <link href="/adminComponents/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="/admin/css/dashboard.css" rel="stylesheet">
+    <link href="/adminComponents/css/dashboard.css" rel="stylesheet">
     <!-- font awesome -->
     <script src="https://use.fontawesome.com/4b9f613b5e.js"></script>
 </head>
@@ -38,13 +38,13 @@ header( "Location: /login.php" );
 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item <?php if($_SERVER['PHP_SELF'] == "/admin/issue/overview.php" || $_SERVER['PHP_SELF'] == "/admin/issue/unhandled.php" || $_SERVER['PHP_SELF'] == "/admin/issue/handled.php" || $_SERVER['PHP_SELF'] == "/admin/issue/edit.php") { echo "active";} ?>">
+                <li class="nav-item <?php if($_SERVER['PHP_SELF'] == "/adminComponents/issue/overview.php" || $_SERVER['PHP_SELF'] == "/adminComponents/issue/unhandled.php" || $_SERVER['PHP_SELF'] == "/adminComponents/issue/handled.php" || $_SERVER['PHP_SELF'] == "/adminComponents/issue/edit.php") { echo "active";} ?>">
                     <a class="nav-link" href="/adminComponents/issue/overview">Klachten / Meldingen</a>
                 </li>
-                <li class="nav-item <?php if($_SERVER['PHP_SELF'] == "/admin/residence/overview.php" || $_SERVER['PHP_SELF'] == "/admin/residence/create.php" || $_SERVER['PHP_SELF'] == "/admin/residence/edit.php" || $_SERVER['PHP_SELF'] == "/admin/residence/delete.php") { echo "active";} ?>">
+                <li class="nav-item <?php if($_SERVER['PHP_SELF'] == "/adminComponents/residence/overview.php" || $_SERVER['PHP_SELF'] == "/adminComponents/residence/create.php" || $_SERVER['PHP_SELF'] == "/adminComponents/residence/edit.php" || $_SERVER['PHP_SELF'] == "/adminComponents/residence/delete.php") { echo "active";} ?>">
                     <a class="nav-link" href="/adminComponents/residence/overview">Woningaanbod</a>
                 </li>
-                <li class="nav-item <?php if($_SERVER['PHP_SELF'] == "/admin/user/overview.php" || $_SERVER['PHP_SELF'] == "/admin/user/create.php" || $_SERVER['PHP_SELF'] == "/admin/user/edit.php" || $_SERVER['PHP_SELF'] == "/admin/user/delete.php") { echo "active";} ?>">
+                <li class="nav-item <?php if($_SERVER['PHP_SELF'] == "/adminComponents/user/overview.php" || $_SERVER['PHP_SELF'] == "/adminComponents/user/create.php" || $_SERVER['PHP_SELF'] == "/adminComponents/user/edit.php" || $_SERVER['PHP_SELF'] == "/adminComponents/user/delete.php") { echo "active";} ?>">
                     <a class="nav-link" href="/adminComponents/user/overview">Gebruikers</a>
                 </li>
                 <!--<li class="nav-item <?php //if($_SERVER['PHP_SELF'] == "/adminComponents/site/overview.php" || $_SERVER['PHP_SELF'] == "/adminComponents/site/create.php" || $_SERVER['PHP_SELF'] == "/adminComponents/site/edit.php" || $_SERVER['PHP_SELF'] == "/adminComponents/site/delete.php") { echo "active";} ?>">
