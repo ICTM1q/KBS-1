@@ -36,7 +36,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="home.php">Home</a>
                 </li>
                 <li class="nav-item">
@@ -128,7 +128,7 @@
             <li>Prijs: €<?= $residence['price'] ?></li>
         </ul>
         <br>
-        <a href="../taxatiesite/contact.php" class="btn btn-space btn-primary">Contacteer ons</a><a href="#" class="btn btn-space btn-primary">Andere optie</a>
+        <a href="contact.php" class="btn btn-space btn-primary">Contacteer ons</a><a href="#" class="btn btn-space btn-primary">Andere optie</a>
     </div>
 
 </div>
