@@ -24,11 +24,11 @@
        </button>
        <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
+            <li class="nav-item">
               <a class="nav-link" href="home.php">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="kantoor.php">Kantoor
+                <a class="nav-link active" href="kantoor.php">Kantoor
                     <span class="sr-only">(current)</span>
                 </a>
             </li>
@@ -56,14 +56,10 @@
     </nav>
 
     <!-- Page Content -->
-    <div class="container-white">
-        <div class="container top-tekst-kantoor">
-            <div class="row">
-                <div class="col">
+    <div class="container py-3 top-tekst">
                     <h3 class="h3-tekst">Het kantoor</h3>
                 </div>
-            </div>
-        </div>
+    <div class="padding">
             <p>Huur & Beheer Hoksbergen is een kantoor welke gevestigd is in het stadscentrum van Kampen. Ons kantoor kenmerkt zich door heldere adviezen, gedegen kennis en een persoonlijke benadering.<br><br>
                 Ons gemotiveerde team van medewerkers zet zich graag voor u in en is een team waarop u kunt bouwen.<br><br>
                 Hoksbergen heeft jarenlange ervaring in het beheren van particuliere en bedrijfsmatige panden.<br><br>
@@ -106,6 +102,7 @@
             <form method="post">
                 <input type="submit" value="Algemene voorwaarden" name="algemeenevoorwaarden" class="knop">
             </form><br>
+    </div>
     
     <!-- Footer -->
    <footer class="py-5 footer-custom">

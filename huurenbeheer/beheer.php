@@ -24,7 +24,7 @@
        </button>
        <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
+            <li class="nav-item">
               <a class="nav-link" href="home.php">Home</a>
             </li>
             <li class="nav-item">
@@ -43,7 +43,7 @@
               <a class="nav-link" href="formulieren.php">Formulieren</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="beheer.php">Beheer
+              <a class="nav-link active" href="beheer.php">Beheer
                     <span class="sr-only">(current)</span>
               </a>
             </li>
