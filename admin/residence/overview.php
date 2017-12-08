@@ -68,7 +68,7 @@ include "../alert.php";
                     </form>
                 </td>
                 <td class="custom-col">
-                    <form method="post" action="/admin/residence/overview.php">
+                    <form method="post" action="/admin/residence/overview.php<?php if (isset($_GET['page'])){ echo "?page=".$_GET['page'];}?>">
                         <input  type="hidden" name="delete" value="<?php echo $row['pandid'] ?>">
                         <button type="submit" class="delete btn fa fa-trash-o fa-2x"></button>
                     </form>
