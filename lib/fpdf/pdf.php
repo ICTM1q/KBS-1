@@ -65,7 +65,7 @@ function pdfHBContactFunc ( $firstname, $insertion, $surname, $email, $telno, $s
     }
     // Kijk of message leeg is.
     if ( empty ( $message ) ) {
-        $pdfHBContactArray["messageErr"] = "Voer A.U.B. uw klacht in.";
+        $pdfHBContactArray["messageErr"] = "Voer A.U.B. uw bericht in.";
         $pdfHBContactMessageFlag = FALSE;
     }
     // Kijk of captchacode leeg is.
