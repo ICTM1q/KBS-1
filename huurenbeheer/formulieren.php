@@ -55,11 +55,115 @@
       </div>
     </nav>
 
-    <!-- Page Content -->
-    <div class="container-white">
-    </div>
-    
-    <!-- Footer -->
+    <div class="container">
+
+      <div class="row">
+        <div class="col-sm">
+          <br>
+          <h1>Meldingen</h1>
+          <p>In dit veld hieronder kunt u meldingen naar ons doorsturen.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm">
+          <form id="contact-form" method="post" action="contact.php" role="form">
+
+              <div class="messages"></div>
+
+              <div class="controls">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="form_name">Voornaam*</label>
+                            <input id="form_name" type="text" name="name" class="form-control" placeholder="Voornaam" required="required" data-error="Voornaam is verplicht.">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="form_lastname">Achternaam*</label>
+                            <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Achternaam" required="required" data-error="Achternaam is verplicht">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="form_email">Email adres*</label>
+                            <input id="form_email" type="email" name="email" class="form-control" placeholder="Email adres" required="required" data-error="Een geldige email is verplicht">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="form_phone">Telefoonnummer*</label>
+                            <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="Telefoonnummer">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="inputAddress">Adres*</label>
+                  <input type="text" class="form-control" id="inputAddress" placeholder="Straatnaam">
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputCity">Stad*</label>
+                    <input type="text" class="form-control" id="inputCity" placeholder="Stad">
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="inputState">Huisnummer*</label>
+                    <input type="text" class="form-control" id="inputCity" placeholder="Huisnummer">
+                  </div>
+                  <div class="form-group col-md-2">
+                    <label for="inputZip">Postcode*</label>
+                    <input type="text" class="form-control" id="inputZip" placeholder="Postcode">
+                  </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="form_message">Bericht*</label>
+                            <textarea id="form_message" name="message" class="form-control" placeholder="Bericht" rows="4" required="required" data-error="Laat in dit veld een bericht achter."></textarea>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="exampleFormControlFile1">Fotos invoegen</label>
+                      <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                    </div>
+                  </div>
+
+                    <div class="col-md-12">
+                      Captacha hier
+                    </div>
+                    <br>
+                    <br>
+                    <div class="col-md-12">
+                        <input type="submit" class="btn btn-success btn-send" value="Verzend bericht">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                      <br>
+                        <p class="text-muted">Velden met een * zijn verplicht. </p>
+                    </div>
+                </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
    <footer class="py-5 footer-custom">
      <div class="container">
        <div class="row ">
