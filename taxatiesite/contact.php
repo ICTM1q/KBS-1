@@ -92,6 +92,24 @@
                      </div>
                  </div>
                  <div class="row">
+                   <div class="form-group col-md-6">
+                     <label for="inputCity">Straatnaam*</label>
+                     <input type="text" class="form-control" id="inputCity" placeholder="Straatnaam">
+                   </div>
+                    <div class="form-group col-md-6">
+                      <label for="inputCity">Plaatsnaam*</label>
+                      <input type="text" class="form-control" id="inputCity" placeholder="Plaatsnaam">
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="inputZip">Huisnummer*</label>
+                      <input type="text" class="form-control" id="inputZip" placeholder="Huisnummer">
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="inputZip">Postcode*</label>
+                      <input type="text" class="form-control" id="inputZip" placeholder="Postcode">
+                    </div>
+                  </div>
+                 <div class="row">
                      <div class="col-md-12">
                          <div class="form-group">
                              <label for="form_message">Bericht*</label>
@@ -99,6 +117,11 @@
                              <div class="help-block with-errors"></div>
                          </div>
                      </div>
+                     <div class="col-md-12">
+                       Captacha hier
+                     </div>
+                     <br>
+                     <br>
                      <div class="col-md-12">
                          <input type="submit" class="btn btn-success btn-send" value="Verzend bericht">
                      </div>
