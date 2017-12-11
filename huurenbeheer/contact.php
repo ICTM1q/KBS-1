@@ -1,3 +1,31 @@
+<?php
+session_start();
+include "../lib/fpdf/pdf.php";
+
+// Definier captchaError leeg.
+$pdfArray["firstnameErr"] = "";
+$pdfArray["lastnameErr"] = "";
+$pdfArray["emailErr"] = "";
+$pdfArray["telnoErr"] = "";
+$pdfArray["complaintErr"] = "";
+$pdfArray["captchaErr"] = "";
+
+// Als het knopje ingedrukt is.
+if ( isset( $_POST["submit"]) ) {
+    include_once "../lib/securimage/securimage.php";
+    $secureImage = new Securimage();
+    
+    // Voer pdfFunc uit.
+    $pdfArray = pdfFunc($_POST["firstname"], $_POST["lastname"], $_POST["email"], $_POST["telno"], $_POST["complaint"], $secureImage, $_POST["captchaCode"]);
+    if ( $pdfArray["result"] === TRUE ) {
+        $pdfArray["pdf"]->Output();
+    }
+}
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -135,7 +163,9 @@
                           </div>
                       </div>
                       <div class="col-md-12">
-                        Captacha hier
+                        <img id="captcha" src="../lib/securimage/securimage_show.php" alt="CAPTCHA Image" /><br>
+                        <a href="#" onclick="document.getElementById('captcha').src = '../lib/securimage/securimage_show.php?' + Math.random(); return false">[ Different Image ]</a><br>
+                        <input type="text" name="captchaCode" size="10" maxlength="6" /><span class="error">  <?php echo $pdfArray["captchaErr"]; ?><span><br><br>
                       </div>
                       <br>
                       <br>
