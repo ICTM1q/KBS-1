@@ -2,7 +2,7 @@
 require ("fpdf.php");
 
 // Funcite om te pdf input te verwerken.
-function pdfHBContactFunc ( $firstname, $insertion, $surname, $email, $telno, $street, $city, $houseno, $zip, $complaint, $secureImage, $captchaCode ) {
+function pdfHBContactFunc ( $firstname, $insertion, $surname, $email, $telno, $street, $city, $houseno, $zip, $message, $secureImage, $captchaCode ) {
     // Alles definieren.
     $pdfHBContactArray = array();
     $pdfHBContactArray["result"] = FALSE;
@@ -16,7 +16,7 @@ function pdfHBContactFunc ( $firstname, $insertion, $surname, $email, $telno, $s
     $pdfHBContactCityFlag = TRUE;
     $pdfHBContactHousenoFlag = TRUE;
     $pdfHBContactZipFlag = TRUE;
-    $pdfHBContactComplaintFlag = TRUE;
+    $pdfHBContactMessageFlag = TRUE;
     $pdfHBContactCaptchaFlag = TRUE;
     
     $pdfHBContactArray["firstnameErr"] = "";
@@ -27,7 +27,7 @@ function pdfHBContactFunc ( $firstname, $insertion, $surname, $email, $telno, $s
     $pdfHBContactArray["cityErr"] = "";
     $pdfHBContactArray["housenoErr"] = "";
     $pdfHBContactArray["zipErr"] = "";
-    $pdfHBContactArray["complaintErr"] = "";
+    $pdfHBContactArray["messageErr"] = "";
     $pdfHBContactArray["captchaErr"] = "";
     
     // Kijk of email leeg is.
@@ -63,10 +63,10 @@ function pdfHBContactFunc ( $firstname, $insertion, $surname, $email, $telno, $s
         $pdfHBContactArray["zipErr"] = "Postcode is vereist.";
         $pdfHBContactZipFlag = FALSE;
     }
-    // Kijk of complaint leeg is.
-    if ( empty ( $complaint ) ) {
-        $pdfHBContactArray["complaintErr"] = "Voer A.U.B. uw klacht in.";
-        $pdfHBContactComplaintFlag = FALSE;
+    // Kijk of message leeg is.
+    if ( empty ( $message ) ) {
+        $pdfHBContactArray["messageErr"] = "Voer A.U.B. uw klacht in.";
+        $pdfHBContactMessageFlag = FALSE;
     }
     // Kijk of captchacode leeg is.
     if ( empty ( $captchaCode ) ) {
@@ -74,7 +74,7 @@ function pdfHBContactFunc ( $firstname, $insertion, $surname, $email, $telno, $s
         $pdfHBContactCaptchaFlag = FALSE;
     }
     // Kijk of alles nog op TRUE staat.
-    if ( $pdfHBContactFirstnameFlag === TRUE && $pdfHBContactSurnameFlag === TRUE && $pdfHBContactEmailFlag == TRUE && $pdfHBContactTelnoFlag == TRUE && $pdfHBContactComplaintFlag == TRUE && $pdfHBContactCaptchaFlag == TRUE ) {
+    if ( $pdfHBContactFirstnameFlag === TRUE && $pdfHBContactSurnameFlag === TRUE && $pdfHBContactEmailFlag == TRUE && $pdfHBContactTelnoFlag == TRUE && $pdfHBContactMessageFlag == TRUE && $pdfHBContactCaptchaFlag == TRUE ) {
         // Kijk of captcha fout is.
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $pdfHBContactArray["emailErr"] = "Email is ongeldig.";
@@ -94,7 +94,7 @@ function pdfHBContactFunc ( $firstname, $insertion, $surname, $email, $telno, $s
                     // Move to the right
                     $this->Cell(80);
                     // Title
-                    $this->Cell(35,18,"Klachtformulier",0,0,"C");
+                    $this->Cell(35,18,"Contactformulier",0,0,"C");
 
                     $this->Line(20, 35, 210-20, 35);
                     // Line break
@@ -115,7 +115,7 @@ function pdfHBContactFunc ( $firstname, $insertion, $surname, $email, $telno, $s
                 $pdf->Ln(5);
                 $pdf->Line(20, 78, 210-20, 78);
                 $pdf->Ln(15);
-                $pdf->Multicell(190,7.5,"Klacht: \n" . $complaint);
+                $pdf->Multicell(190,7.5,"Klacht: \n" . $message);
                 $pdfHBContactArray["pdf"] = $pdf;
                 $pdfHBContactArray["result"] = TRUE;
             }

@@ -144,13 +144,18 @@ btn-primary{
 }
 
 .footer-custom {
-  border-top: solid 1px black;
-  color: #fff;
-  background-color: #4F72ED;
+    border-top: solid 1px black;
+    color: #fff;
+    background-color: #4F72ED;
 }
 
 .ulfooter {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.error {
+    color: red;
+    font-size: 11px;
 }
