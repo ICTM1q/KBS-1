@@ -2,68 +2,93 @@
 require ("fpdf.php");
 
 // Funcite om te pdf input te verwerken.
-function pdfContactFunc ( $firstname, $lastname, $email, $telno, $complaint, $secureImage, $captchaCode ) {
+function pdfHBContactFunc ( $firstname, $insertion, $surname, $email, $telno, $street, $city, $houseno, $zip, $complaint, $secureImage, $captchaCode ) {
     // Alles definieren.
-    $pdfArray = array();
-    $pdfArray["result"] = FALSE;
+    $pdfHBContactArray = array();
+    $pdfHBContactArray["result"] = FALSE;
     
-    $pdfFirstnameFlag = TRUE;
-    $pdfLastnameFlag = TRUE;
-    $pdfEmailFlag = TRUE;
-    $pdfTelnoFlag = TRUE;
-    $pdfComplaintFlag = TRUE;
-    $pdfCaptchaFlag = TRUE;
+    $pdfHBContactFirstnameFlag = TRUE;
+    $pdfHBContactSurnameFlag = TRUE;
+    $pdfHBContactEmailFlag = TRUE;
+    $pdfHBContactTelnoFlag = TRUE;
+    $pdfHBContactTelnoFlag = TRUE;
+    $pdfHBContactStreetFlag = TRUE;
+    $pdfHBContactCityFlag = TRUE;
+    $pdfHBContactHousenoFlag = TRUE;
+    $pdfHBContactZipFlag = TRUE;
+    $pdfHBContactComplaintFlag = TRUE;
+    $pdfHBContactCaptchaFlag = TRUE;
     
-    $pdfArray["firstnameErr"] = "";
-    $pdfArray["lastnameErr"] = "";
-    $pdfArray["emailErr"] = "";
-    $pdfArray["telnoErr"] = "";
-    $pdfArray["complaintErr"] = "";
-    $pdfArray["captchaErr"] = "";
+    $pdfHBContactArray["firstnameErr"] = "";
+    $pdfHBContactArray["surnameErr"] = "";
+    $pdfHBContactArray["emailErr"] = "";
+    $pdfHBContactArray["telnoErr"] = "";
+    $pdfHBContactArray["streetErr"] = "";
+    $pdfHBContactArray["cityErr"] = "";
+    $pdfHBContactArray["housenoErr"] = "";
+    $pdfHBContactArray["zipErr"] = "";
+    $pdfHBContactArray["complaintErr"] = "";
+    $pdfHBContactArray["captchaErr"] = "";
     
     // Kijk of email leeg is.
     if ( empty ( $firstname ) ) {
-        $pdfArray["firstnameErr"] = "Voornaam is vereist.";
-        $pdfFirstnameFlag = FALSE;
+        $pdfHBContactArray["firstnameErr"] = "Voornaam is vereist.";
+        $pdfHBContactFirstnameFlag = FALSE;
     }
-    if ( empty ( $firstname ) ) {
-        $pdfArray["lastnameErr"] = "Achternaam is vereist.";
-        $pdfLastnameFlag = FALSE;
+    if ( empty ( $surname ) ) {
+        $pdfHBContactArray["surnameErr"] = "Achternaam is vereist.";
+        $pdfHBContactSurnameFlag = FALSE;
     }
     if ( empty ( $email ) ) {
-        $pdfArray["emailErr"] = "Email is vereist.";
-        $pdfEmailFlag = FALSE;
+        $pdfHBContactArray["emailErr"] = "Email is vereist.";
+        $pdfHBContactEmailFlag = FALSE;
     }
     if ( empty ( $telno ) ) {
-        $pdfArray["telnoErr"] = "Telefoon nummer is vereist.";
-        $pdfTelnoFlag = FALSE;
+        $pdfHBContactArray["telnoErr"] = "Telefoon nummer is vereist.";
+        $pdfHBContactTelnoFlag = FALSE;
+    }
+    if ( empty ( $street ) ) {
+        $pdfHBContactArray["streetErr"] = "Straat is vereist.";
+        $pdfHBContactStreetFlag = FALSE;
+    }
+    if ( empty ( $city ) ) {
+        $pdfHBContactArray["cityErr"] = "Plaats is vereist.";
+        $pdfHBContactCityFlag = FALSE;
+    }
+    if ( empty ( $houseno ) ) {
+        $pdfHBContactArray["housenoErr"] = "Huisnummer is vereist.";
+        $pdfHBContactHousenoFlag = FALSE;
+    }
+    if ( empty ( $zip ) ) {
+        $pdfHBContactArray["zipErr"] = "Postcode is vereist.";
+        $pdfHBContactZipFlag = FALSE;
     }
     // Kijk of complaint leeg is.
     if ( empty ( $complaint ) ) {
-        $pdfArray["complaintErr"] = "Voer A.U.B. uw klacht in.";
-        $pdfComplaintFlag = FALSE;
+        $pdfHBContactArray["complaintErr"] = "Voer A.U.B. uw klacht in.";
+        $pdfHBContactComplaintFlag = FALSE;
     }
     // Kijk of captchacode leeg is.
     if ( empty ( $captchaCode ) ) {
-        $pdfArray["captchaErr"] = "Captcha is vereist.";
-        $pdfCaptchaFlag = FALSE;
+        $pdfHBContactArray["captchaErr"] = "Captcha is vereist.";
+        $pdfHBContactCaptchaFlag = FALSE;
     }
     // Kijk of alles nog op TRUE staat.
-    if ( $pdfFirstnameFlag === TRUE && $pdfLastnameFlag === TRUE && $pdfEmailFlag == TRUE && $pdfTelnoFlag == TRUE && $pdfComplaintFlag == TRUE && $pdfCaptchaFlag == TRUE ) {
+    if ( $pdfHBContactFirstnameFlag === TRUE && $pdfHBContactSurnameFlag === TRUE && $pdfHBContactEmailFlag == TRUE && $pdfHBContactTelnoFlag == TRUE && $pdfHBContactComplaintFlag == TRUE && $pdfHBContactCaptchaFlag == TRUE ) {
         // Kijk of captcha fout is.
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $pdfArray["emailErr"] = "Email is ongeldig.";
+            $pdfHBContactArray["emailErr"] = "Email is ongeldig.";
         }
         else {
             if ($secureImage->check($captchaCode) == FALSE) {
-                $pdfArray["captchaErr"] = "Captcha is fout!";
+                $pdfHBContactArray["captchaErr"] = "Captcha is fout!";
             }
             // Als alles ingevuld is en de captcha goed is maak de pdf.
             else {
                 class PDF extends FPDF {
                     function Header() {
                     // Logo
-                    $this->Image("lib/fpdf/logo_groot.png",10,5,65);
+                    $this->Image("../lib/fpdf/logo_groot.png",10,5,65);
                     // Arial bold 15
                     $this->SetFont("Arial","B",15);
                     // Move to the right
@@ -82,7 +107,7 @@ function pdfContactFunc ( $firstname, $lastname, $email, $telno, $complaint, $se
                 $pdf->SetFont("Arial","",12);
                 $pdf->Cell(35,10,"Voornaam: " . $firstname);
                 $pdf->Ln(8);
-                $pdf->Cell(35,10,"Achternaam: " . $lastname);
+                $pdf->Cell(35,10,"Achternaam: " . $surname);
                 $pdf->Ln(8);
                 $pdf->Cell(35,10,"Email: " . $email);
                 $pdf->Ln(8);
@@ -91,12 +116,12 @@ function pdfContactFunc ( $firstname, $lastname, $email, $telno, $complaint, $se
                 $pdf->Line(20, 78, 210-20, 78);
                 $pdf->Ln(15);
                 $pdf->Multicell(190,7.5,"Klacht: \n" . $complaint);
-                $pdfArray["pdf"] = $pdf;
-                $pdfArray["result"] = TRUE;
+                $pdfHBContactArray["pdf"] = $pdf;
+                $pdfHBContactArray["result"] = TRUE;
             }
         }
     }
-    return $pdfArray;
+    return $pdfHBContactArray;
 }
 
 ?>

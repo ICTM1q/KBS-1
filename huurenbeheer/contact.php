@@ -3,12 +3,13 @@ session_start();
 include "../lib/fpdf/pdf.php";
 
 // Definier captchaError leeg.
-$pdfArray["firstnameErr"] = "";
-$pdfArray["lastnameErr"] = "";
-$pdfArray["emailErr"] = "";
-$pdfArray["telnoErr"] = "";
-$pdfArray["complaintErr"] = "";
-$pdfArray["captchaErr"] = "";
+$pdfHBContactArray["firstnameErr"] = "";
+$pdfHBContactArray["lastnameErr"] = "";
+$pdfHBContactArray["emailErr"] = "";
+$pdfHBContactArray["telnoErr"] = "";
+$pdfHBContactArray["complaintErr"] = "";
+$pdfHBContactArray["captchaErr"] = "";
+$pdfHBContactArray["result"] = "";
 
 // Als het knopje ingedrukt is.
 if ( isset( $_POST["submit"]) ) {
@@ -16,13 +17,12 @@ if ( isset( $_POST["submit"]) ) {
     $secureImage = new Securimage();
     
     // Voer pdfFunc uit.
-    $pdfArray = pdfFunc($_POST["firstname"], $_POST["lastname"], $_POST["email"], $_POST["telno"], $_POST["complaint"], $secureImage, $_POST["captchaCode"]);
-    if ( $pdfArray["result"] === TRUE ) {
-        $pdfArray["pdf"]->Output();
+    $pdfHBContactArray = pdfHBContactFunc($_POST["firstname"], $_POST["insertion"], $_POST["surname"], $_POST["email"], $_POST["telno"], $_POST["street"], $_POST["city"], $_POST["houseno"], $_POST["zip"], $_POST["complaint"], $secureImage, $_POST["captchaCode"]);
+    if ( $pdfHBContactArray["result"] === TRUE ) {
+        $pdfHBContactArray["pdf"]->Output();
     }
 }
 ?>
-
 
 
 
@@ -98,7 +98,7 @@ if ( isset( $_POST["submit"]) ) {
 
       <div class="row">
         <div class="col-sm">
-          <form id="contact-form" method="post" action="contact.php" role="form">
+          <form id="contact-form" method="post">
 
               <div class="messages"></div>
 
@@ -108,14 +108,22 @@ if ( isset( $_POST["submit"]) ) {
                       <div class="col-md-6">
                           <div class="form-group">
                               <label for="form_name">Voornaam*</label>
-                              <input id="form_name" type="text" name="name" class="form-control" placeholder="Voornaam" required="required" data-error="Voornaam is verplicht.">
+                              <input id="form_name" type="text" name="firstname" class="form-control" placeholder="Voornaam">
+                              <span class="error"><?php echo $pdfHBContactArray["firstnameErr"];?></span><br>
+                              <div class="help-block with-errors"></div>
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="form-group">
+                              <label for="form_name">Tussenvoegsel</label>
+                              <input id="form_name" type="text" name="insertion" class="form-control" placeholder="Tussenvoegsel">
                               <div class="help-block with-errors"></div>
                           </div>
                       </div>
                       <div class="col-md-6">
                           <div class="form-group">
                               <label for="form_lastname">Achternaam*</label>
-                              <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Achternaam" required="required" data-error="Achternaam is verplicht">
+                              <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Achternaam">
                               <div class="help-block with-errors"></div>
                           </div>
                       </div>
@@ -124,14 +132,14 @@ if ( isset( $_POST["submit"]) ) {
                       <div class="col-md-6">
                           <div class="form-group">
                               <label for="form_email">Email adres*</label>
-                              <input id="form_email" type="email" name="email" class="form-control" placeholder="Email adres" required="required" data-error="Een geldige email is verplicht">
+                              <input id="form_email" type="email" name="email" class="form-control" placeholder="Email adres">
                               <div class="help-block with-errors"></div>
                           </div>
                       </div>
                       <div class="col-md-6">
                           <div class="form-group">
                               <label for="form_phone">Telefoonnummer*</label>
-                              <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="Telefoonnummer">
+                              <input id="form_phone" type="tel" name="telno" class="form-control" placeholder="Telefoonnummer">
                               <div class="help-block with-errors"></div>
                           </div>
                       </div>
@@ -139,38 +147,38 @@ if ( isset( $_POST["submit"]) ) {
                   <div class="row">
                     <div class="form-group col-md-6">
                       <label for="inputCity">Straatnaam*</label>
-                      <input type="text" class="form-control" id="inputCity" placeholder="Straatnaam">
+                      <input type="text" class="form-control" name="street" id="inputCity" placeholder="Straatnaam">
                     </div>
                      <div class="form-group col-md-6">
                        <label for="inputCity">Plaatsnaam*</label>
-                       <input type="text" class="form-control" id="inputCity" placeholder="Plaatsnaam">
+                       <input type="text" class="form-control" name="city" id="inputCity" placeholder="Plaatsnaam">
                      </div>
                      <div class="form-group col-md-6">
                        <label for="inputZip">Huisnummer*</label>
-                       <input type="text" class="form-control" id="inputZip" placeholder="Huisnummer">
+                       <input type="text" class="form-control" name="houseno" id="inputZip" placeholder="Huisnummer">
                      </div>
                      <div class="form-group col-md-6">
                        <label for="inputZip">Postcode*</label>
-                       <input type="text" class="form-control" id="inputZip" placeholder="Postcode">
+                       <input type="text" class="form-control" name="zip" id="inputZip" placeholder="Postcode">
                      </div>
                    </div>
                   <div class="row">
                       <div class="col-md-12">
                           <div class="form-group">
                               <label for="form_message">Bericht*</label>
-                              <textarea id="form_message" name="message" class="form-control" placeholder="Bericht" rows="4" required="required" data-error="Laat in dit veld een bericht achter."></textarea>
+                              <textarea id="form_message" name="complaint" class="form-control" placeholder="Bericht" rows="4"></textarea>
                               <div class="help-block with-errors"></div>
                           </div>
                       </div>
                       <div class="col-md-12">
                         <img id="captcha" src="../lib/securimage/securimage_show.php" alt="CAPTCHA Image" /><br>
                         <a href="#" onclick="document.getElementById('captcha').src = '../lib/securimage/securimage_show.php?' + Math.random(); return false">[ Different Image ]</a><br>
-                        <input type="text" name="captchaCode" size="10" maxlength="6" /><span class="error">  <?php echo $pdfArray["captchaErr"]; ?><span><br><br>
+                        <input type="text" name="captchaCode" size="10" maxlength="6" /><span class="error">  <?php echo $pdfHBContactArray["captchaErr"]; ?><span><br><br>
                       </div>
                       <br>
                       <br>
                       <div class="col-md-12">
-                          <input type="submit" class="btn btn-success btn-send" value="Verzend bericht">
+                          <input type="submit" class="btn btn-success btn-send" name="submit" value="Verzend bericht">
                       </div>
                   </div>
                   <div class="row">
