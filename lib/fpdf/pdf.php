@@ -107,7 +107,12 @@ function pdfHBContactFunc ( $firstname, $insertion, $surname, $email, $telno, $s
                 $pdf->SetFont("Arial","",12);
                 $pdf->Cell(35,10,"Voornaam: " . $firstname);
                 $pdf->Ln(8);
-                $pdf->Cell(35,10,"Achternaam: " . $surname);
+                if (empty($insertion)) {
+                    $pdf->Cell(35,10,"Achternaam: " . $surname);
+                }
+                else {
+                    $pdf->Cell(35,10,"Achternaam: " . $surname . ", " . $insertion);
+                }
                 $pdf->Ln(8);
                 $pdf->Cell(35,10,"Email: " . $email);
                 $pdf->Ln(8);

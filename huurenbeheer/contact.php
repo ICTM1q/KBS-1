@@ -1,6 +1,13 @@
 <?php
 session_start();
+// NIET AF
 include "../lib/fpdf/pdf.php";
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require '../lib/mail/PHPMailer/src/Exception.php';
+require '../lib/mail/PHPMailer/src/PHPMailer.php';
+require '../lib/mail/PHPMailer/src/SMTP.php';
 
 // Definier captchaError leeg.
 $pdfHBContactArray["firstnameErr"] = "";
@@ -19,7 +26,31 @@ if ( isset( $_POST["submit"]) ) {
     // Voer pdfFunc uit.
     $pdfHBContactArray = pdfHBContactFunc($_POST["firstname"], $_POST["insertion"], $_POST["surname"], $_POST["email"], $_POST["telno"], $_POST["street"], $_POST["city"], $_POST["houseno"], $_POST["zip"], $_POST["message"], $secureImage, $_POST["captchaCode"]);
     if ( $pdfHBContactArray["result"] === TRUE ) {
-        $pdfHBContactArray["pdf"]->Output();
+        // Dit komt later in een aparte functie te staan.
+        $attachment = $pdfHBContactArray["pdf"]->Output("contactformulier.pdf", 'S');
+        $mail = new PHPMailer();
+        $mail->IsSMTP();
+        $mail->SMTPDebug = 0; // Debugging. 1 = Errors. 2 = Errors en server messsages.
+        $mail->SMTPAuth = true;
+        $mail->SMTPSecure = 'tls';
+        $mail->SMTPOptions = array(
+                            'ssl' => array(
+                                'verify_peer' => false,
+                                'verify_peer_name' => false,
+                                'allow_self_signed' => true
+                            )
+                        );
+        $mail->Host = "smtp.gmail.com";
+        $mail->Port = 587;
+        $mail->IsHTML(true);
+        $mail->Username = "";
+        $mail->Password = "";
+        $mail->SetFrom("");
+        $mail->Subject = "Test";
+        $mail->Body = "hello";
+        $mail->AddAddress("remcostoelwinder@hotmail.com");
+        $mail->AddStringAttachment($attachment, "contactformulier.pdf");
+        $mail->Send();
     }
 }
 ?>

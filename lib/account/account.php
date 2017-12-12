@@ -3,7 +3,8 @@
 // Functie om login informatie te verwerken en terug te sturen. Je kan binnen PHP maar een ding returning vandaar dat het een associative array is die wordt gereturned. 
 // Binnen deze functie wordt ook de functie aangeroepen die kijkt of het wachtwoord wat ingevoerd is klopt met de ingevoerde username.
 function loginFunc ( $username, $password ) {
-    include "config.php";
+    include $_SERVER['DOCUMENT_ROOT']."/lib/config/sqlconfig.php";
+
     // Alles leeg definieren.
     $loginArray["result"] = FALSE;
     $loginArray["try"] = FALSE;
@@ -44,7 +45,8 @@ function loginFunc ( $username, $password ) {
 // Functie om login informatie te verwerken en terug te sturen als iemand een captcha moet maken. Je kan binnen PHP maar een ding returning vandaar dat het een associative array is die wordt gereturned. 
 // Binnen deze functie wordt ook de functie aangeroepen die kijkt of het wachtwoord wat ingevoerd is klopt met de ingevoerde username.
 function loginCaptchaFunc ( $username, $password, $secureImage, $captchaCode ) {
-    include "config.php";
+    include $_SERVER['DOCUMENT_ROOT']."/lib/config/sqlconfig.php";
+
     // Alles leeg definieren.
     $loginArray["result"] = FALSE;
     $loginArray["try"] = FALSE;
@@ -96,7 +98,8 @@ function loginCaptchaFunc ( $username, $password, $secureImage, $captchaCode ) {
 // Functie om create informatie te verwerken en terug te sturen. Je kan binnen PHP maar een ding returning vandaar dat het een associative array is die wordt gereturned. 
 // Binnen deze functie wordt ook de functie aangeroepen om een account aan te maken. 
 function createFunc ( $username, $password, $email ) {
-    include "config.php";
+    include $_SERVER['DOCUMENT_ROOT']."/lib/config/sqlconfig.php";
+
     // Alles leeg definieren.
     $createArray["result"] = FALSE;
     
@@ -147,7 +150,8 @@ function createFunc ( $username, $password, $email ) {
 
 // Kijk alle input na en maakt vervolgens een wachtwoord reset token aan.
 function createToken ( $email, $secureImage, $captchaCode ) {
-    include ("config.php");
+    include $_SERVER['DOCUMENT_ROOT']."/lib/config/sqlconfig.php";
+
     // Alles leeg definieren.
     $createTokenArray["emailErr"] = "";
     $createTokenArray["captchaErr"] = "";
@@ -215,7 +219,7 @@ function createToken ( $email, $secureImage, $captchaCode ) {
 
 // Kijk na of de ingevoerde token klopt. Zo ja, reset het wachtwoord met de gegeven input.
 function checkToken ( $token, $email, $password1, $password2 ) {
-    include ("config.php");
+    include $_SERVER['DOCUMENT_ROOT']."/lib/config/sqlconfig.php";
     
     $resetArray["tokenErr"] = "";
     $resetArray["emailErr"] = "";
