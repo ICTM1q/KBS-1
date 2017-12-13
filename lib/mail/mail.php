@@ -23,9 +23,9 @@ function sendTokenMail ( $token, $email ) {
     $mail->Host = "smtp.gmail.com";
     $mail->Port = 587;
     $mail->IsHTML(true);
-    $mail->Username = $mailaccount;
-    $mail->Password = $mailpassword;
-    $mail->SetFrom($mailaccount);
+    $mail->Username = $emailaccount;
+    $mail->Password = $emailpassword;
+    $mail->SetFrom($emailaccount);
     $mail->Subject = "Wachtwoord Reset Code";
     $mail->Body = "Uw code: " . $token;
     $mail->AddAddress($email);
@@ -54,9 +54,9 @@ function sendContactMail ( $attachment, $type, $firstname, $surname ) {
     $mail->Host = "smtp.gmail.com";
     $mail->Port = 587;
     $mail->IsHTML(true);
-    $mail->Username = $mailaccount;
-    $mail->Password = $mailpassword;
-    $mail->SetFrom($mailaccount);
+    $mail->Username = $emailaccount;
+    $mail->Password = $emailpassword;
+    $mail->SetFrom($emailaccount);
     $mail->Subject = "[" . date("y-m-d H:i:s") . "]" . "[" . $type . "]" . " Van: " . $firstname . " " . $surname;
     $mail->Body = "Inkomend contactformulier.";
     $mail->AddAddress("remcostoelwinder@hotmail.com");
@@ -86,9 +86,9 @@ function sendComplaintMail ( $attachment, $type, $firstname, $surname ) {
     $mail->Host = "smtp.gmail.com";
     $mail->Port = 587;
     $mail->IsHTML(true);
-    $mail->Username = $mailaccount;
-    $mail->Password = $mailpassword;
-    $mail->SetFrom($mailaccount);
+    $mail->Username = $emailaccount;
+    $mail->Password = $emailpassword;
+    $mail->SetFrom($emailaccount);
     $mail->Subject = "[" . date("y-m-d H:i:s") . "]" . "[" . $type . "]" . " Van: " . $firstname . " " . $surname;
     $mail->Body = "Inkomend meldingformulier.";
     $mail->AddAddress("remcostoelwinder@hotmail.com");
