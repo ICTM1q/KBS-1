@@ -1,13 +1,7 @@
 <?php
 session_start();
-// NIET AF
 include "../lib/fpdf/pdf.php";
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require '../lib/mail/PHPMailer/src/Exception.php';
-require '../lib/mail/PHPMailer/src/PHPMailer.php';
-require '../lib/mail/PHPMailer/src/SMTP.php';
+require $_SERVER['DOCUMENT_ROOT']."/lib/mail/mail.php";
 
 // Definier captchaError leeg.
 $pdfHBContactArray["firstnameErr"] = "";
@@ -17,40 +11,30 @@ $pdfHBContactArray["telnoErr"] = "";
 $pdfHBContactArray["messageErr"] = "";
 $pdfHBContactArray["captchaErr"] = "";
 $pdfHBContactArray["result"] = "";
+$pdfHBContactArray["message"] = "";
 
 // Als het knopje ingedrukt is.
-if ( isset( $_POST["submit"]) ) {
+if ( isset( $_POST["submit"] ) ) {
     include_once "../lib/securimage/securimage.php";
     $secureImage = new Securimage();
     
     // Voer pdfFunc uit.
     $pdfHBContactArray = pdfHBContactFunc($_POST["firstname"], $_POST["insertion"], $_POST["surname"], $_POST["email"], $_POST["telno"], $_POST["street"], $_POST["city"], $_POST["houseno"], $_POST["zip"], $_POST["message"], $secureImage, $_POST["captchaCode"]);
     if ( $pdfHBContactArray["result"] === TRUE ) {
-        // Dit komt later in een aparte functie te staan.
-        $attachment = $pdfHBContactArray["pdf"]->Output("contactformulier.pdf", 'S');
-        $mail = new PHPMailer();
-        $mail->IsSMTP();
-        $mail->SMTPDebug = 0; // Debugging. 1 = Errors. 2 = Errors en server messsages.
-        $mail->SMTPAuth = true;
-        $mail->SMTPSecure = 'tls';
-        $mail->SMTPOptions = array(
-                            'ssl' => array(
-                                'verify_peer' => false,
-                                'verify_peer_name' => false,
-                                'allow_self_signed' => true
-                            )
-                        );
-        $mail->Host = "smtp.gmail.com";
-        $mail->Port = 587;
-        $mail->IsHTML(true);
-        $mail->Username = "";
-        $mail->Password = "";
-        $mail->SetFrom("");
-        $mail->Subject = "Test";
-        $mail->Body = "hello";
-        $mail->AddAddress("remcostoelwinder@hotmail.com");
-        $mail->AddStringAttachment($attachment, "contactformulier.pdf");
-        $mail->Send();
+        // Voor testing wanneer je geen mail win ontvangen zet comments bij sendContactMail en geen comments bij de ->Output() functie.
+        //$pdfHBContactArray["pdf"]->Output();
+        if ( sendContactMail ( $pdfHBContactArray["pdf"]->Output("contactformulier.pdf", 'S'), "Contact", $_POST["firstname"], $_POST["surname"] ) ) {
+            $pdfHBContactArray["success"] = TRUE;
+            $pdfHBContactArray["message"] = "Wij hebben uw contactverzoek ontvangen en zullen hem zo spoedig mogelijk afhandelen!";
+        }
+        else {
+            $pdfHBContactArray["success"] = FALSE;
+            $pdfHBContactArray["message"] = "Er is een probleem opgetreden, probeer het later nogmaals.";
+        }
+    }
+    else {
+        $pdfHBContactArray["success"] = FALSE;
+        $pdfHBContactArray["message"] = "Er zijn errors opgetreden, los deze op en probeer het nogmaals.";
     }
 }
 ?>
@@ -124,12 +108,22 @@ if ( isset( $_POST["submit"]) ) {
           <br>
           <h1>Contacteer ons hieronder</h1>
           <p>In dit veld hieronder kunt u met ons contact maken.</p>
+          <?php
+          if ( !empty($pdfHBContactArray["message"])) {
+              if ( $pdfHBContactArray["success"] === TRUE ) {
+                echo "<span class='success'>" . $pdfHBContactArray["message"] . "</span><br>";
+              }
+              else {
+                echo "<span class='error'>" . $pdfHBContactArray["message"] . "</span><br>";
+              }
+          }
+          ?>
         </div>
       </div>
 
       <div class="row">
         <div class="col-sm">
-          <form id="contact-form" method="post">
+          <form id="Contact-form" method="post">
 
               <div class="messages"></div>
 
@@ -242,7 +236,7 @@ if ( isset( $_POST["submit"]) ) {
                                 echo "<span class='error'>" . $pdfHBContactArray["messageErr"] . "</span><br>";
                               }
                               ?>
-                              <!--<div class="help-block with-errors"></div>-->
+                              <div class="help-block with-errors"></div>
                           </div>
                       </div>
                       <div class="col-md-12">

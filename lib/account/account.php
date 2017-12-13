@@ -150,6 +150,7 @@ function createFunc ( $username, $password, $email ) {
 
 // Kijk alle input na en maakt vervolgens een wachtwoord reset token aan.
 function createToken ( $email, $secureImage, $captchaCode ) {
+    include $_SERVER['DOCUMENT_ROOT']."/lib/mail/mail.php";
     include $_SERVER['DOCUMENT_ROOT']."/lib/config/sqlconfig.php";
 
     // Alles leeg definieren.
@@ -185,18 +186,16 @@ function createToken ( $email, $secureImage, $captchaCode ) {
                     
                     // Eventuele oude token verwijderen.
                     deleteToken($conn, $email);
-
+                    echo gettype($email);
                     // Random token aanmaken.
                     $token = bin2hex(random_bytes(25));
+                    echo gettype($token);
 
                     // Toevoegen aan database.
                     insertToken($conn, $token, $email);
 
                     // Emailt stuuren naar gebruiker met de code.
-                    $to = $email;
-                    $subject = "Wachtwoord Reset Code";
-                    $txt = "Uw code: " . $token;
-                    if ( mail($to,$subject,$txt) ) {
+                    if (sendTokenMail($token, $email) ) {
                         $createTokenArray["result"] = "Een code is opgestuurd naar " . $email;
                     }
                     else {

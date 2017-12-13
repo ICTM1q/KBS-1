@@ -160,7 +160,6 @@ function getTries ( $ip ) {
 // Inloge-pogingen verwijderen van specifiek IP. 
 function deleteTries ( $ip ) {
     include $_SERVER['DOCUMENT_ROOT']."/lib/config/sqlconfig.php";
-
     try {
         $conn = connectToDatabase();
         $stmt = $conn->prepare ( "DELETE FROM login_try WHERE ip = ?" );

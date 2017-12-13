@@ -159,3 +159,8 @@ btn-primary{
     color: red;
     font-size: 11px;
 }
+
+.success {
+    color: blue;
+    font-size: 11px; 
+}

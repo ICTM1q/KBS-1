@@ -4,3 +4,6 @@ nbproject/project.xml
 logs/errorlog.txt
 .idea/workspace.xml
 .idea/
+
+lib/config/mailconfig.php
+lib/config/mailconfig.php

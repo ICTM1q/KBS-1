@@ -39,7 +39,7 @@ if (isset($_POST["reset"])) {
                         Stap 1: Vraag een code aan om je<br> wachtwoord te kunnen resetten.
                         <form method="POST">
                             Email:<br>
-                            <input type="text" name="email"><br>
+                            <input type="text" name="email" value=<?php if ( isset ( $_POST["email"] ) ) { echo $_POST["email"]; } ?>><br>
                             <span> Captcha: </span>
                             <span class="error"><?php echo $createTokenArray["emailErr"];?></span><br>
                             <img id="captcha" class="img" src="lib/securimage/securimage_show.php" alt="CAPTCHA Image"/><br>
