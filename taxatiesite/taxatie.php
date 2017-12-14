@@ -28,7 +28,7 @@
              </a>
            </li>
            <li class="nav-item">
-             <a class="nav-link" href="diensten.php">Diensten</a>
+             <a class="nav-link" href="taxatie.php">Taxatie</a>
            </li>
            <li class="nav-item">
              <a class="nav-link" href="onskantoor.php">Ons kantoor</a>
@@ -41,40 +41,57 @@
      </div>
    </nav>
 
-   <header>
-     <br>
-     <ul class="nav justify-content-center">
-       <li class="nav-item">
-        <a class="nav-link active" href="taxatie.php">Taxatie</a>
-       </li>
-       <li class="nav-item">
-         <a class="nav-link" href="herbouwwaardetaxatie.php">Herbouwwaarde taxatie</a>
-       </li>
-     </ul>
-   </header>
-
    <div class="container">
      <div class="row">
        <div class="col">
-         <h3>Taxaties</h3>
-         <p>U wilt weten wat de waarde is van uw eigen woning? U wilt uw financiering herstructureren en oversluiten? In beide gevallen kunt u Hoksbergen Makelaardij inschakelen.</p>
-         <p>Onze makelaar-taxateurs zijn gekwalificeerd en beschikken over de nodige kennis en ervaring om objectief de waarde van het getaxeerde vast te stellen.</p>
-         <p>Het bepalen van de objectieve waarde van een pand is belangrijk voor verschillende doeleinden.</p>
-         <p>Er worden o.a. taxaties verricht:
-            <ul>
-              <li>Bij koop en verkoop van een woning</li>
-              <li>Voor hypothecaire financiering </li>
-              <li>Voor financiering met NHG (NWWI, RapportNetPro, NTS en andere validerende instituten)</li>
-              <li>Bij een overdracht in de familiesfeer</li>
-              <li>Bij onteigening van de onroerende zaak</li>
-              <li>Om de herbouwwaarde te kunnen bepalen voor de verzekering</li>
-              <li>Voor het bepalen van de huurwaarde bij verhuur</li>
-              <li>Voor fiscale doeleinden</li>
-              <li>Bedrijfsbeëindiging</li>
-              <li>Waardering van pachtvergoedingen</li>
-            </ul>
-          <p>De taxateur beoordeelt de woning en legt dit vast in een rapport. U ontvangt altijd 2 rapporten zodat u uw hypotheekverstrekker een rapport kunt overhandigen en zelf ook een exemplaar bezit.<p>
-          <p><b>Hoksbergen,</b> <i>nauwkeurig tot achter de komma.</i><p>
+         <br>
+         <h2>Taxaties</h2>
+         <p>
+           U wilt weten wat de waarde is van uw eigen woning? U wilt uw financiering herstructureren en oversluiten?
+           <br>
+           In beide gevallen kunt u Hoksbergen Makelaardij inschakelen. Onze makelaar-taxateurs zijn gekwalificeerd en beschikken over de nodige kennis en ervaring om objectief de waarde van het getaxeerde vast te stellen.
+Het bepalen van de objectieve waarde van een pand is belangrijk voor verschillende doeleinden.
+         </p>
+         <p>
+           Er worden o.a. taxaties verricht;
+           <ul>
+             <li>Bij koop en verkoop van een woning</li>
+             <li>Voor hypothecaire financiering </li>
+             <li>Voor financiering met NHG (NWWI, RapportNetPro, NTS, TVI en andere validerende instituten)</li>
+             <li>Bij een overdracht in de familiesfeer</li>
+             <li>Bij onteigening van de onroerende zaak</li>
+             <li>Om de herbouwwaarde te kunnen bepalen voor de verzekering</li>
+             <li>Voor het bepalen van de huurwaarde bij verhuur</li>
+             <li>Voor fiscale doeleinden</li>
+             <li>Waardering van pachtvergoedingen </li>
+           </ul>
+        </p>
+        <p>
+          De taxateur beoordeelt de woning en legt dit vast in een rapport.
+          <br>
+          <b>Hoksbergen</b>, <i>nauwkeurig</i> tot achter de komma
+        </p>
+        <p>
+          <br>
+          <ul>
+            <li></li>
+            <li></li>
+          </ul>
+        </p>
+        <p>
+          Voor gevalideerde taxatierapporten van woningen voor hypothecaire financieringen zijn wij aangesloten bij het NWWI en de TaxateursUnie.
+        </p>
+        <table border="1">
+          <br>
+          <center><h4>Wilt u direct een taxatie aanvragen?</h4></center>
+          <br>
+          Klik dan <a href="contact.php">hier</a>
+          <br>
+          Wilt u liever telefonisch een afspraak maken dan kunt u bellen naar 038-333
+        </table>
+        <p>
+          <center><a href="https://www.vastgoedcert.nl/"><img src="img/vastgoedcert.jpg" alt="" hspace="13"></a><img src="img/NWWI.jpg" alt="" hspace="13"><img src="img/TVI.jpg" alt="" hspace="13"><img src="img/nrvt.jpg" alt="" hspace="13"></center>
+        </p>
        </div>
      </div>
    </div>

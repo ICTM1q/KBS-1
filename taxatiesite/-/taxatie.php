@@ -14,7 +14,7 @@
 
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-custom">
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
      <div class="container">
        <a class="navbar-brand" href="index.php">
     <img src="img/hoksbergen.gif" width="160" height="90" class="d-inline-block align-top" alt=""></a>
@@ -45,19 +45,10 @@
      <br>
      <ul class="nav justify-content-center">
        <li class="nav-item">
-         <a class="nav-link" href="vastgoedpro.php">Vastgoedpro</a>
+        <a class="nav-link active" href="taxatie.php">Taxatie</a>
        </li>
        <li class="nav-item">
-         <a class="nav-link active" href="vastgoedcert.php">Vastgoedcert</a>
-       </li>
-       <li class="nav-item">
-         <a class="nav-link" href="medewerkers.php">Medewerkers</a>
-       </li>
-       <li class="nav-item">
-         <a class="nav-link" href="algvoorwaarden.php">Algemene voorwaarden</a>
-       </li>
-       <li class="nav-item">
-         <a class="nav-link" href="disclaimer.php">Disclaimer</a>
+         <a class="nav-link" href="herbouwwaardetaxatie.php">Herbouwwaarde taxatie</a>
        </li>
      </ul>
    </header>
@@ -65,23 +56,25 @@
    <div class="container">
      <div class="row">
        <div class="col">
-         <h3>Vastgoedcert</h3>
-         <p>Deze stichting is er op gericht om de kwaliteit van de Makelaar-Taxateur te waarborgen door er eisen aan te stellen zodat de vakbekwaamheid gegarandeerd kan worden.</p>
-         <p>Alle gecertificeerden/geregistreerden moeten aan hoge opleidingseisen voldoen. De eisen die hier voor gelden zijn vastgelegd in een certificatieschema.</p>
-         <p>Stichting VastgoedCert heeft voor elke tak in de makelaardij een aparte certificering opgezet.</p>
-         <p>De verschillende kamers zijn:
-           <ul>
-             <li>Wonen/MKB</li>
-             <li>Bedrijfsmatig Vastgoed</li>
-             <li>Landelijk Vastgoed</li>
-             <li>WOZ</li>
-           </ul></p>
-          <p>De Kamer Wonen richt zich op de makelaar-taxateur in het algemeen, met als werkgebied woningen en MKB-bedrijfsonroerend goed.</p>
-          <p>De andere Kamers richten zich op taxateurs met een specifiek werkgebied, zoals de naam van de betreffende tak al aangeeft.</p>
-          <p>Voor het toetreden tot VastgoedCert moet een makelaar of taxateur aantonen dat hij/zij aan alle gestelde vakbekwaamheidseisen voor die tak voldoet.</p>
-          <p>Het VastgoedCert keurmerk duidt aan dat u van de makelaar/taxateur deskundigheid en vakbekwaamheid mag verwachten.</p>
-          <p>Alleen gecertificeerde makelaars en/of taxateurs die geregistreerd zijn bij VastgoedCert zijn bevoegd te taxeren voor banken en andere hypotheekverstrekkers.</p>
-
+         <h3>Taxaties</h3>
+         <p>U wilt weten wat de waarde is van uw eigen woning? U wilt uw financiering herstructureren en oversluiten? In beide gevallen kunt u Hoksbergen Makelaardij inschakelen.</p>
+         <p>Onze makelaar-taxateurs zijn gekwalificeerd en beschikken over de nodige kennis en ervaring om objectief de waarde van het getaxeerde vast te stellen.</p>
+         <p>Het bepalen van de objectieve waarde van een pand is belangrijk voor verschillende doeleinden.</p>
+         <p>Er worden o.a. taxaties verricht:
+            <ul>
+              <li>Bij koop en verkoop van een woning</li>
+              <li>Voor hypothecaire financiering </li>
+              <li>Voor financiering met NHG (NWWI, RapportNetPro, NTS en andere validerende instituten)</li>
+              <li>Bij een overdracht in de familiesfeer</li>
+              <li>Bij onteigening van de onroerende zaak</li>
+              <li>Om de herbouwwaarde te kunnen bepalen voor de verzekering</li>
+              <li>Voor het bepalen van de huurwaarde bij verhuur</li>
+              <li>Voor fiscale doeleinden</li>
+              <li>Bedrijfsbeëindiging</li>
+              <li>Waardering van pachtvergoedingen</li>
+            </ul>
+          <p>De taxateur beoordeelt de woning en legt dit vast in een rapport. U ontvangt altijd 2 rapporten zodat u uw hypotheekverstrekker een rapport kunt overhandigen en zelf ook een exemplaar bezit.<p>
+          <p><b>Hoksbergen,</b> <i>nauwkeurig tot achter de komma.</i><p>
        </div>
      </div>
    </div>
