@@ -51,7 +51,7 @@ function uploadFile()
             if ($count > 0) {
 
                 //Loop through each file
-                for ($i = 0; $i < $count + 1; $i++) {
+                for ($i = 0; $i < $count; $i++) {
 
                     //Get the temp file path
                     $tmpFilePath = $_FILES['upload']['tmp_name'][$i];
