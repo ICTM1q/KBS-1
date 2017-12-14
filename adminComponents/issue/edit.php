@@ -28,7 +28,7 @@ if(isset($issueID) && $issueID != null) {
     $result = $result->fetch_object();
 }
 if (isset($_POST['editRecord'])){
-    $functions->updateIssue($conn, $_POST['editRecord'],$_POST['customername'],$_POST['description'], $_POST['pandid'], $_POST['date'], $_POST['behandeld']);
+    $functions->updateIssue($conn, $_POST['editRecord'],$_POST['firstname'], $_POST['prefix'], $_POST['lastname'], $_POST['email'], $_POST['description'],0, $_POST['pandid'], $_POST['date'], (int)$_POST['behandeld']);
     $result = $functions->getSingleIssue($conn, $_POST['editRecord']);
     $result = $result->fetch_object();
 }
@@ -44,9 +44,30 @@ if(isset($result) && $result != null){?>
 
         <!-- Text input-->
         <div class="form-group row">
-            <label class="col-md-4 control-label" for="customername">Klantnaam</label>
+            <label class="col-md-4 control-label" for="firstname">Voornaam</label>
             <div class="col-md-4">
-                <input id="customername" name="customername" type="text" value="<?php echo $result->customername ?>" class="form-control input-md">
+                <input id="firstname" name="firstname" type="text" value="<?php echo $result->voornaam ?>" class="form-control input-md">
+
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-4 control-label" for="prefix">Tussenvoegsel</label>
+            <div class="col-md-4">
+                <input id="prefix" name="prefix" type="text" value="<?php echo $result->tussenvoegsel ?>" class="form-control input-md">
+
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-4 control-label" for="lastname">Achternaam</label>
+            <div class="col-md-4">
+                <input id="lastname" name="lastname" type="text" value="<?php echo $result->achternaam ?>" class="form-control input-md">
+
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-4 control-label" for="email">Email</label>
+            <div class="col-md-4">
+                <input id="email" name="email" type="text" value="<?php echo $result->email ?>" class="form-control input-md">
 
             </div>
         </div>
@@ -84,9 +105,9 @@ if(isset($result) && $result != null){?>
                 <div class="radio">
                     <label for="behandeld-0">
                         <?php if($result->handled == '1'){?>
-                            <input type="radio" name="behandeld" id="behandeld-0" value="1" checked="checked">
+                            <input type="radio" name="behandeld" id="behandeld-0" value=1 checked="checked">
                         <?php } else { ?>
-                            <input type="radio" name="behandeld" id="behandeld-0" value="1">
+                            <input type="radio" name="behandeld" id="behandeld-0" value=1>
                         <?php } ?>
                         Ja
                     </label>
@@ -94,9 +115,9 @@ if(isset($result) && $result != null){?>
                 <div class="radio">
                     <label for="behandeld-1">
                         <?php if($result->handled == '0'){ ?>
-                            <input type="radio" name="behandeld" id="behandeld-1" value="0" checked="checked">
+                            <input type="radio" name="behandeld" id="behandeld-1" value=0 checked="checked">
                         <?php } else { ?>
-                            <input type="radio" name="behandeld" id="behandeld-1" value="0">
+                            <input type="radio" name="behandeld" id="behandeld-1" value=0>
                         <?php } ?>
                         Nee
                     </label>

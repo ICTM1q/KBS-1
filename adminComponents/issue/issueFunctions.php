@@ -129,7 +129,7 @@ class issueFunctions
         }
     }
 
-    function updateIssue($conn, $firstname, $prefix, $lastname, $email, $description, $picturesid, $pandid, $date){
+    function updateIssue($conn, $issueid, $firstname, $prefix, $lastname, $email, $description, $picturesid, $pandid, $date, $behandeld){
         $sql = "UPDATE issue SET issueid='$issueid', voornaam='$firstname', tussenvoegsel='$prefix', achternaam='$lastname', email='$email',  description='$description',picturesid='$picturesid', pand='$pandid', date='$date',handled='$behandeld'  WHERE issueid=$issueid";
 
         if ($conn->query($sql) === TRUE) {
