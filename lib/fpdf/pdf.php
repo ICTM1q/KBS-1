@@ -11,7 +11,6 @@ function pdfHBContactFunc ( $firstname, $insertion, $surname, $email, $telno, $s
     $pdfHBContactSurnameFlag = TRUE;
     $pdfHBContactEmailFlag = TRUE;
     $pdfHBContactTelnoFlag = TRUE;
-    $pdfHBContactTelnoFlag = TRUE;
     $pdfHBContactStreetFlag = TRUE;
     $pdfHBContactCityFlag = TRUE;
     $pdfHBContactHousenoFlag = TRUE;
@@ -181,7 +180,6 @@ function pdfHBComplaintFunc ( $firstname, $insertion, $surname, $email, $telno, 
     $pdfHBComplaintFirstnameFlag = TRUE;
     $pdfHBComplaintSurnameFlag = TRUE;
     $pdfHBComplaintEmailFlag = TRUE;
-    $pdfHBComplaintTelnoFlag = TRUE;
     $pdfHBComplaintTelnoFlag = TRUE;
     $pdfHBComplaintStreetFlag = TRUE;
     $pdfHBComplaintCityFlag = TRUE;

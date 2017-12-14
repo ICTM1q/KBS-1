@@ -30,10 +30,9 @@ if ( isset( $_POST["submit"]) ) {
             $pdfHBComplaintArray["message"] = $UPLOAD_ERROR;
         } else {
             $pictures = getPictures($id);
-            var_dump($pictures);
             // Voor testing wanneer je geen mail win ontvangen zet comments bij sendComplaintMail en geen comments bij de ->Output() functie.
             //$pdfHBComplaintArray["pdf"]->Output();
-            if ( sendComplaintMail ( $pdfHBComplaintArray["pdf"]->Output("meldingformulier.pdf", 'S'), "Melding", $_POST["firstname"], $_POST["surname"] ) ) {
+            if ( sendComplaintMail ( $pdfHBComplaintArray["pdf"]->Output("meldingformulier.pdf", 'S'), "Melding", $_POST["firstname"], $_POST["surname"], $pictures ) ) {
                 $pdfHBComplaintArray["success"] = TRUE;
                 $pdfHBComplaintArray["message"] = "Wij hebben uw melding ontvangen en zullen hem zo spoedig mogelijk afhandelen!";
             }

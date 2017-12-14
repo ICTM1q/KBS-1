@@ -5,6 +5,7 @@ use PHPMailer\PHPMailer\Exception;
 require "PHPMailer/src/Exception.php";
 require "PHPMailer/src/PHPMailer.php";
 require "PHPMailer/src/SMTP.php";
+require "sql.php";
 
 function sendTokenMail ( $token, $email ) {
     include $_SERVER['DOCUMENT_ROOT']."/lib/config/mailconfig.php";
@@ -59,7 +60,11 @@ function sendContactMail ( $attachment, $type, $firstname, $surname ) {
     $mail->SetFrom($emailaccount);
     $mail->Subject = "[" . date("y-m-d H:i:s") . "]" . "[" . $type . "]" . " Van: " . $firstname . " " . $surname;
     $mail->Body = "Inkomend contactformulier.";
-    $mail->AddAddress("remcostoelwinder@hotmail.com");
+    $toEmails = getFormEmails($type);
+    foreach ($toEmails as $addr) {
+        $mail->addAddress($addr);
+    }
+    //$mail->AddAddress("remcostoelwinder@hotmail.com");
     $mail->AddStringAttachment($attachment, "contactformulier" . "-" . date("y-m-d" ) . "-" . $firstname . "." . $surname . ".pdf");
     if ( $mail->Send() ) {
         return TRUE;
@@ -69,7 +74,7 @@ function sendContactMail ( $attachment, $type, $firstname, $surname ) {
     }
 }
 
-function sendComplaintMail ( $attachment, $type, $firstname, $surname ) {
+function sendComplaintMail ( $attachment, $type, $firstname, $surname, $images ) {
     include $_SERVER['DOCUMENT_ROOT']."/lib/config/mailconfig.php";
     $mail = new PHPMailer();
     $mail->IsSMTP();
@@ -91,7 +96,13 @@ function sendComplaintMail ( $attachment, $type, $firstname, $surname ) {
     $mail->SetFrom($emailaccount);
     $mail->Subject = "[" . date("y-m-d H:i:s") . "]" . "[" . $type . "]" . " Van: " . $firstname . " " . $surname;
     $mail->Body = "Inkomend meldingformulier.";
-    $mail->AddAddress("remcostoelwinder@hotmail.com");
+    $toEmails = getFormEmails($type);
+    foreach ($toEmails as $addr) {
+        $mail->addAddress($addr);
+    }
+    foreach ($images as $image ) {
+        $mail->addAttachment("uploads/" . $image[0], $image[0]);
+    }
     $mail->AddStringAttachment($attachment, "meldingformulier" . "-" . date("y-m-d" ) . "-" . $firstname . "." . $surname . ".pdf");
     if ( $mail->Send() ) {
         return TRUE;

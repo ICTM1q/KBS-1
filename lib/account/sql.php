@@ -69,7 +69,6 @@ function randString ( $length ) {
 
 // Functie om gebruiker aan te maken.
 function createUser ( $conn, $username, $password, $email ) {
-    include $_SERVER['DOCUMENT_ROOT']."/lib/config/sqlconfig.php";
     // Kijken of gebruker al bestaat.
     if ( getUser ( $conn, $username ) == $username ) {
         return "Gebruikersnaam bestaat al.<br>";
@@ -98,7 +97,6 @@ function createUser ( $conn, $username, $password, $email ) {
 
 // Rol van de user ophalen.
 function GetRole ( $username ) {
-    include $_SERVER['DOCUMENT_ROOT']."/lib/config/sqlconfig.php";
     try {
         $conn = connectToDatabase();
         $stmt = $conn->prepare ( "SELECT role FROM user WHERE username LIKE ?" );
@@ -128,7 +126,6 @@ function getRealIpAddr() {
 
 // Functie om een foute inlog-poging te inserten. Hoort alleen gedaan te worden als alle input ingevoerd is en het wachtwoord fout is.
 function insertTry ( $ip ) {
-    include $_SERVER['DOCUMENT_ROOT']."/lib/config/sqlconfig.php";
     try {
         $conn = connectToDatabase();
         $stmt = $conn->prepare ( "INSERT INTO login_try(date, ip) VALUES(NOW(),?)");
@@ -143,7 +140,6 @@ function insertTry ( $ip ) {
 
 // Inlog-pogingen ophalen van specifiek IP.
 function getTries ( $ip ) {
-    include $_SERVER['DOCUMENT_ROOT']."/lib/config/sqlconfig.php";
     try {
         $conn = connectToDatabase();
         $stmt = $conn->prepare ( "SELECT count(ip) FROM login_try WHERE ip = ? AND date > DATE_SUB(NOW(), INTERVAL 24 HOUR)" );
@@ -159,7 +155,6 @@ function getTries ( $ip ) {
 
 // Inloge-pogingen verwijderen van specifiek IP. 
 function deleteTries ( $ip ) {
-    include $_SERVER['DOCUMENT_ROOT']."/lib/config/sqlconfig.php";
     try {
         $conn = connectToDatabase();
         $stmt = $conn->prepare ( "DELETE FROM login_try WHERE ip = ?" );
