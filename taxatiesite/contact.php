@@ -130,6 +130,7 @@
                      <div class="col-md-12">
                        <br>
                          <p class="text-muted">Velden met een * zijn verplicht. </p>
+                         <p>nieuw</p>
                      </div>
                  </div>
              </div>
