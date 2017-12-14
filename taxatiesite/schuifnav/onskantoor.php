@@ -19,7 +19,7 @@
       <a class="" href="index.php">
    <img src="img/hoksbergen.gif" width="160" height="90" class="d-inline-block align-top" alt=""></a>
       <a href="index.php">Home</a>
-      <a href="diensten.php">Diensten</a>
+      <a href="taxatie.php">Taxatie</a>
       <a href="onskantoor.php">Ons kantoor</a>
       <a href="contact.php">Contact</a>
     </div>
@@ -36,41 +36,29 @@
 
    <div id="main">
 
-   <header>
-     <ul class="nav justify-content-center">
-       <li class="nav-item">
-         <a class="nav-link" href="vastgoedpro.php">Vastgoedpro</a>
-       </li>
-       <li class="nav-item">
-         <a class="nav-link" href="vastgoedcert.php">Vastgoedcert</a>
-       </li>
-       <li class="nav-item">
-         <a class="nav-link" href="medewerkers.php">Medewerkers</a>
-       </li>
-       <li class="nav-item">
-         <a class="nav-link" href="algvoorwaarden.php">Algemene voorwaarden</a>
-       </li>
-       <li class="nav-item">
-         <a class="nav-link" href="disclaimer.php">Disclaimer</a>
-       </li>
-     </ul>
-   </header>
-    <div class="container">
-     <div class="row">
-       <div class="col">
-         <h3>Hier komt alle informatie over ons kantoor</h3>
-         <p>dgssjdgsdjhgjsdgjksdgjkgsdjkhsdjkghsdkjghdskjghdksdjhgsdkgjhkhgsdkjdsghkdgshgkjgsdkhg</p>
-         <p>dgssjdgsdjhgjsdgjksdgjkgsdjkhsdjkghsdkjghdskjghdksdjhgsdkgjhkhgsdkjdsghkdgshgkjgsdkhg</p>
-         <p>dgssjdgsdjhgjsdgjksdgjkgsdjkhsdjkghsdkjghdskjghdksdjhgsdkgjhkhgsdkjdsghkdgshgkjgsdkhg</p>
-         <p>dgssjdgsdjhgjsdgjksdgjkgsdjkhsdjkghsdkjghdskjghdksdjhgsdkgjhkhgsdkjdsghkdgshgkjgsdkhg</p>
-         <p>dgssjdgsdjhgjsdgjksdgjkgsdjkhsdjkghsdkjghdskjghdksdjhgsdkgjhkhgsdkjdsghkdgshgkjgsdkhg</p>
-         <p>dgssjdgsdjhgjsdgjksdgjkgsdjkhsdjkghsdkjghdskjghdksdjhgsdkgjhkhgsdkjdsghkdgshgkjgsdkhg</p>
-         <p>dgssjdgsdjhgjsdgjksdgjkgsdjkhsdjkghsdkjghdskjghdksdjhgsdkgjhkhgsdkjdsghkdgshgkjgsdkhg</p>
-         <p>dgssjdgsdjhgjsdgjksdgjkgsdjkhsdjkghsdkjghdskjghdksdjhgsdkgjhkhgsdkjdsghkdgshgkjgsdkhg</p>
-         <p>dgssjdgsdjhgjsdgjksdgjkgsdjkhsdjkghsdkjghdskjghdksdjhgsdkgjhkhgsdkjdsghkdgshgkjgsdkhg</p>
+     <div class="container">
+       <div class="row">
+         <div class="col">
+           <br>
+           <center><h3>Wie zijn wij?</h3></center>
+           <br>
+           <p>
+             Huur & Beheer Hoksbergen vind je in het stadscentrum van Kampen. Ons kantoor kenmerkt zich door heldere adviezen, gedegen kennis en een persoonlijke benadering.
+             <br>
+             <br>
+             Ons gemotiveerde team van medewerkers zet zich graag voor u in en is een team waarop u kunt bouwen.
+             Hoksbergen heeft jarenlange ervaring in het taxeren en beheren van particuliere panden.
+  Wat is begonnen als een neventak is door de tevredenheid van onze klanten uitgegroeid tot het inmiddels goed bekende Huur & Beheer Hoksbergen.
+           <p>
+          <center><h3>Openingstijden</h3></center>
+          <p>
+            <center>Maandag t/m vrijdag van 9.00 - 12.30 uur geopend. 's Middag op afspraak.</center>
+          </p>
+          <br>
+          <center><h3>Onze medewerkers</h3></center>
+         </div>
        </div>
      </div>
-   </div>
    </div>
    <br>
 

@@ -28,7 +28,7 @@
              </a>
            </li>
            <li class="nav-item">
-             <a class="nav-link" href="diensten.php">Diensten</a>
+             <a class="nav-link" href="taxatie.php">Taxatie</a>
            </li>
            <li class="nav-item">
              <a class="nav-link" href="onskantoor.php">Ons kantoor</a>

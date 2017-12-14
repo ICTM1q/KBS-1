@@ -19,7 +19,7 @@
       <a class="" href="index.php">
    <img src="img/hoksbergen.gif" width="160" height="90" class="d-inline-block align-top" alt=""></a>
       <a href="index.php">Home</a>
-      <a href="diensten.php">Diensten</a>
+      <a href="taxatie.php">Taxatie</a>
       <a href="onskantoor.php">Ons kantoor</a>
       <a href="contact.php">Contact</a>
     </div>

@@ -20,7 +20,7 @@
       <a class="" href="index.php">
    <img src="img/hoksbergen.gif" width="160" height="90" class="d-inline-block align-top" alt=""></a>
       <a href="index.php">Home</a>
-      <a href="diensten.php">Diensten</a>
+      <a href="taxatie.php">Taxatie</a>
       <a href="onskantoor.php">Ons kantoor</a>
       <a href="contact.php">Contact</a>
     </div>
@@ -37,29 +37,26 @@
 
    <div id="main">
      <div class="container">
-     <div class="row my-4">
-       <div class="col-lg-8">
-         <h1>Welkom</h1>
-         <p>Hoksbergen Makelaardij is een allround kantoor dat sinds 1996 actief is in Kampen en omgeving. U vindt bij ons een gespecialiseerd team dat u helpt bij al uw vragen over onroerend goed. Voor aankoopbemiddeling, taxaties en huur/verhuur kunt u altijd vrijblijvend bij ons terecht.</p>
-         <p>Hoksbergen Makelaardij is een allround kantoor dat sinds 1996 actief is in Kampen en omgeving. U vindt bij ons een gespecialiseerd team dat u helpt bij al uw vragen over onroerend goed. Voor aankoopbemiddeling, taxaties en huur/verhuur kunt u altijd vrijblijvend bij ons terecht.</p>
-         <p>Hoksbergen Makelaardij is een allround kantoor dat sinds 1996 actief is in Kampen en omgeving. U vindt bij ons een gespecialiseerd team dat u helpt bij al uw vragen over onroerend goed. Voor aankoopbemiddeling, taxaties en huur/verhuur kunt u altijd vrijblijvend bij ons terecht.</p>
-         <p>Hoksbergen Makelaardij is een allround kantoor dat sinds 1996 actief is in Kampen en omgeving. U vindt bij ons een gespecialiseerd team dat u helpt bij al uw vragen over onroerend goed. Voor aankoopbemiddeling, taxaties en huur/verhuur kunt u altijd vrijblijvend bij ons terecht.</p>
-         <p>Hoksbergen Makelaardij is een allround kantoor dat sinds 1996 actief is in Kampen en omgeving. U vindt bij ons een gespecialiseerd team dat u helpt bij al uw vragen over onroerend goed. Voor aankoopbemiddeling, taxaties en huur/verhuur kunt u altijd vrijblijvend bij ons terecht.</p>
-       </div>
-       <div class="col-lg-4">
-         <img class="img-fluid rounded" src="img/smallpand.jpg" alt="">
-       </div>
-     </div>
 
-     <div class="row my-4">
-       <div class="col-lg-8">
-         <p>Wij verhuren en beheren ook panden via onze andere onderneming <a href="http://huurenbeheer.nl">Huurenbeheer</a></p>
+       <div class="row my-4">
+         <div class="col-lg-8">
+           <h1>Welkom</h1>
+           <p>Hoksbergen Makelaardij is een allround kantoor dat sinds 1996 actief is in Kampen en omgeving. U vindt bij ons een gespecialiseerd team dat u helpt bij al uw vragen over onroerend goed. Voor aankoopbemiddeling, taxaties en huur/verhuur kunt u altijd vrijblijvend bij ons terecht.</p>
+         </div>
+         <div class="col-lg-4">
+           <img class="img-fluid rounded" src="img/smallpand.jpg" alt="">
+         </div>
        </div>
-       <div class="col-lg-4">
-         <a href="http://huurenbeheer.nl"><img class="img-fluid rounded" src="img/huurenbeheer.jpg" alt=""></a>
+
+       <div class="row my-4">
+         <div class="col-lg-8">
+           <p>Wij verhuren en beheren ook panden via onze andere onderneming <a href="http://huurenbeheer.nl">Huurenbeheer</a></p>
+         </div>
+         <div class="col-lg-4">
+           <a href="http://huurenbeheer.nl"><img class="img-fluid rounded" src="img/huurenbeheer.jpg" alt=""></a>
+         </div>
        </div>
-     </div>
-   </div>
+    </div>
   </div>
     <br>
    <footer class="py-5 footer-custom">
