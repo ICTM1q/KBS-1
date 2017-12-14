@@ -14,10 +14,10 @@ $pdfHTContactArray["result"] = "";
 $pdfHTContactArray["message"] = "";
 
 // Als het knopje ingedrukt is.
-if ( isset( $_POST["submit"] ) ){ 
+if ( isset( $_POST["submit"] ) ){
     include_once "lib/securimage/securimage.php";
     $secureImage = new Securimage();
-    
+
     // Voer pdfFunc uit.
     $pdfHTContactArray = pdfHTContactFunc($_POST["firstname"], $_POST["insertion"], $_POST["surname"], $_POST["email"], $_POST["telno"], $_POST["street"], $_POST["city"], $_POST["houseno"], $_POST["zip"], $_POST["message"], $secureImage, $_POST["captchaCode"]);
     if ( $pdfHTContactArray["result"] === TRUE ) {
@@ -109,7 +109,8 @@ if ( isset( $_POST["submit"] ) ){
                              <input id="form_name" type="text" name="name" class="form-control" placeholder="Voornaam" required="required" data-error="Voornaam is verplicht.">
                              <?php
                              if ( !empty($pdfHTContactArray["firstnameErr"])) {
-                                echo "<span class='error'>" . $pdfHTContactArray["firstnameErr"] . "</span><br>";
+                                 echo "<span class='error'>" . $pdfHTContactArray["firstnameErr"] . "</span><br>";
+                             }
                              ?>
                              <div class="help-block with-errors"></div>
                          </div>
@@ -163,7 +164,7 @@ if ( isset( $_POST["submit"] ) ){
                       }
                       ?>
                    </div>
-                     
+
                     <div class="form-group col-md-6">
                       <label for="inputCity">Plaatsnaam*</label>
                       <input type="text" class="form-control" id="inputCity" placeholder="Plaatsnaam">
@@ -173,7 +174,7 @@ if ( isset( $_POST["submit"] ) ){
                        }
                        ?>
                     </div>
-                     
+
                     <div class="form-group col-md-6">
                       <label for="inputZip">Huisnummer*</label>
                       <input type="text" class="form-control" id="inputZip" placeholder="Huisnummer">
