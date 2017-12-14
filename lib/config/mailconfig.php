@@ -2,5 +2,5 @@
 
 //  Config file voor variabelen voor mail login info.
 
-$emailaccount = "";
+$emailaccount = "koenwillemse1@gmail.com";
 $emailpassword = "";
