@@ -16,13 +16,18 @@ function uploadFile()
             //Allowed extentions
             $EXTENTIONS = array("jpg", "jpeg", "png", "gif");
 
+            //Get the amount of uploaded files
             $count = count($_FILES['upload']['name']) > 0;
 
+            //Make sure there aren't more than 8 files
             if ($count > 8) {
                 throw new RuntimeException("Niet meer dan 8 plaatjes uploaden!");
             }
 
+            //Loop over all files
             for ($i = 0; $i < $count; $i++) {
+
+                //Get the original filename
                 $filename = $_FILES['upload']['name'][$i];
 
                 //Check if the file is an image
@@ -31,15 +36,17 @@ function uploadFile()
                     throw new RuntimeException("Alleen foto's zijn toegestaan!");
                 }
 
+                //Check if the file is not too big
                 if ($_FILES['upload']['size'][$i] > 5000000) {
                     throw new RuntimeException(sprintf("Bestand %s is te groot!", $filename));
                 }
             }
 
+            //Check if there are any images at all
             if ($count > 0) {
 
                 //Loop through each file
-                for ($i = 0; $i < $count; $i++) {
+                for ($i = 0; $i < $count + 1; $i++) {
 
                     //Get the temp file path
                     $tmpFilePath = $_FILES['upload']['tmp_name'][$i];
@@ -78,7 +85,7 @@ function uploadFile()
     }
 }
 
-//Insert a picture into the database with a specific id.
+//Insert a picture into the database with a specific id
 function insertPictureInDB($path, $id)
 {
     $conn = connectToDatabase();
@@ -87,7 +94,7 @@ function insertPictureInDB($path, $id)
     $stmt->execute(array($id, $path));
 }
 
-//Get the next available id for a picture set.
+//Get the next available id for a picture set
 function getId()
 {
     $conn = connectToDatabase();
@@ -98,7 +105,7 @@ function getId()
     return $statement->fetch()[0] + 1;
 }
 
-//Get all the pictures with this id.
+//Get all the pictures with this id
 function getPictures($id)
 {
     $conn = connectToDatabase();
@@ -109,6 +116,7 @@ function getPictures($id)
     return $statement->fetchAll();
 }
 
+//Generate a random ascii string of the given lenth
 function random_string($length)
 {
     $key = '';
@@ -118,7 +126,7 @@ function random_string($length)
         $key .= $keys[array_rand($keys)];
     }
 
-    return $key;
+    return strtoupper($key);
 }
 
 ?>
