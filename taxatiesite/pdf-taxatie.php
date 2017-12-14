@@ -28,7 +28,7 @@ function pdfHTContactFunc ( $firstname, $insertion, $surname, $email, $telno, $s
     $pdfHTContactCaptchaFlag = TRUE;
     
     $pdfHTContactArray["firstnameErr"] = "";
-    $pdfHTContactArray["surenameErr"] = "";
+    $pdfHTContactArray["surnameErr"] = "";
     $pdfHTContactArray["emailErr"] = "";
     $pdfHTContactArray["telnoErr"] = "";
     $pdfHTContactArray["streetErr"] = "";
@@ -44,7 +44,7 @@ function pdfHTContactFunc ( $firstname, $insertion, $surname, $email, $telno, $s
         $pdfHTContactFirstnameFlag = FALSE;
     }
     if ( empty ( $surname ) ) {
-        $pdfHTContactArray["surnameErr"] = "AcfHTernaam is vereist.";
+        $pdfHTContactArray["surnameErr"] = "Achternaam is vereist.";
         $pdfHTContactSurnameFlag = FALSE;
     }
     if ( empty ( $email ) ) {
