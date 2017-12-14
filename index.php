@@ -6,129 +6,157 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Taxatie</title>
+    <title>Huur en beheer</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <link href="css/taxatie.css" rel="stylesheet">
+    <link href="../css/huurenbeheer.css" rel="stylesheet">
   </head>
 
   <body>
 
+    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
      <div class="container">
        <a class="navbar-brand" href="index.php">
-    <img src="img/hoksbergen.gif" width="160" height="90" class="d-inline-block align-top" alt=""></a>
+           <img src="../css//img/logo.jpg" width="160" height="90" class="d-inline-block align-top" alt=""></a>
        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
          <span class="navbar-toggler-icon"></span>
        </button>
        <div class="collapse navbar-collapse" id="navbarResponsive">
-         <ul class="navbar-nav ml-auto">
-           <li class="nav-item">
-             <a class="nav-link" href="index.php">Home
-             </a>
-           </li>
-           <li class="nav-item">
-             <a class="nav-link" href="aanbod.php">Aanbod</a>
-           </li>
-           <li class="nav-item">
-             <a class="nav-link" href="diensten.php">Diensten</a>
-           </li>
-           <li class="nav-item">
-             <a class="nav-link" href="onskantoor.php">Ons kantoor</a>
-           </li>
-           <li class="nav-item">
-             <a class="nav-link" href="inschrijven.php">Inschrijven</a>
-           </li>
-           <li class="nav-item">
-             <a class="nav-link" href="contact.php">Contact</a>
-           </li>
-         </ul>
-       </div>
-     </div>
-   </nav>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link active" href="index.php">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="kantoor.php">Kantoor</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="aanbod.php">Aanbod</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="huurvoorwaarden.php">Huurvoorwaarden</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="inschrijven.php">Inschrijven</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="formulieren.php">Formulieren</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="beheer.php">Beheer</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.php">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-   <div class="container">
+    <!-- Page Content -->
+    <div class="container-white">
 
-     <div class="row my-4">
-       <div class="col-lg-8">
-         <h1>Welkom</h1>
-         <p>Hoksbergen Makelaardij is een allround kantoor dat sinds 1996 actief is in Kampen en omgeving. U vindt bij ons een gespecialiseerd team dat u helpt bij al uw vragen over onroerend goed. Voor aankoopbemiddeling, taxaties en huur/verhuur kunt u altijd vrijblijvend bij ons terecht.</p>
-       </div>
-       <div class="col-lg-4">
-         <img class="img-fluid rounded" src="img/smallpand.jpg" alt="">
-       </div>
-     </div>
+      <!-- Heading Row -->
+      <div class="row my-4">
+        <div class="col-lg-8">
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner sliderbox">
+                  <div class="carousel-item active">
+                    <img class="d-block w-100" src="../css/img/slider-01.jpg" alt="First slide">
+                  </div>
+                  <div class="carousel-item">
+                    <img class="d-block w-100" src="../css/img/slider-02.jpg" alt="Second slide">
+                  </div>
+                  <div class="carousel-item">
+                    <img class="d-block w-100" src="../css/img/slider-03.jpg" alt="Third slide">
+                  </div>
+                </div>
+              </div>
+        </div>
+        <!-- /.col-lg-8 -->
+        <div class="col-lg-4">
+            <h1 class="title">Welkom op de website van Huur & Beheer Hoksbergen</h1>
+          <p>U bent bij ons op het juiste adres voor:</p>
+          <ul>
+              <li>het bemiddelen bij de verhuur van uw woning of bedrijfspand.</li>
+              <li>het zoeken naar een huurwoning / bedrijfspand.</li>
+              <li>het uitbesteden van beheer van uw particulier of bedrijfsmatig vastgoed.</li>
+          </ul>
+          <p>Bel of mail ons voor een persoonlijk gesprek!</p>
+        </div>
+        <!-- /.col-md-4 -->
+        <!--<div class="cert1"><img src="css/img/cert1.jpg"></div>
+        <div class="cert2"><img src="css/img/cert2.jpg"></div>-->
+      </div>
+      <!-- /.row -->
 
-     <div class="row my-4">
-       <div class="col-lg-8">
-         <p>Voor huur en beheer kunt u bij huurenbeheer.nl zijn</p>
-       </div>
-       <div class="col-lg-4">
-         <a href="http://huurenbeheer.nl"><img class="img-fluid rounded" src="img/huurenbeheer.jpg" alt=""></a>
-       </div>
-     </div>
+      <!-- Call to Action Well -->
+      <div class="card tag-bg my-4 text-center">
+        <div class="card-body">
+          <p class="m-0 tag-tekst">Hier kan een tag line komen te staan.</p>
+        </div>
+      </div>
 
-     <center><h3 class="my-4">Uitgelichte objecten</h3></center>
+      <!-- Content Row -->
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h2 class="card-title">Card 1</h2>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="btn btn-primary">Meer Informatie</a>
+            </div>
+          </div>
+        </div>
+        <!-- /.col-md-4 -->
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h2 class="card-title">Card 2</h2>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="btn btn-primary">Meer Informatie</a>
+            </div>
+          </div>
+        </div>
+        <!-- /.col-md-4 -->
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h2 class="card-title">Card 3</h2>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="btn btn-primary">Meer Informatie</a>
+            </div>
+          </div>
+        </div>
+        <!-- /.col-md-4 -->
 
-     <div class="row">
-       <div class="col-md-4 mb-4">
-         <div class="card h-100">
-           <div class="card-body">
-             <center><a href="http://huurenbeheer.nl"><img src="img/Huurenbeheercard.jpg"></a></center>
-             <br>
-              <img class="img-fluid rounded" src="img/object.jpg" alt="">
-             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
-           </div>
-           <div class="card-footer">
-             <center><a href="aanbod1.php" class="btn btn-primary">Meer informatie</a></center>
-           </div>
-         </div>
-       </div>
-       <div class="col-md-4 mb-4">
-         <div class="card h-100">
-           <div class="card-body">
-             <center><a href="http://huurenbeheer.nl"><img src="img/Huurenbeheercard.jpg"></a></center>
-             <br>
-             <img class="img-fluid rounded" src="img/object.jpg" alt="">
-             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
-           </div>
-           <div class="card-footer">
-             <center><a href="aanbod1.php" class="btn btn-primary">Meer informatie</a></center>
-           </div>
-         </div>
-       </div>
+      </div>
+      <!-- /.row -->
 
-       <div class="col-md-4 mb-4">
-         <div class="card h-100">
-           <div class="card-body">
-             <center><a href="http://huurenbeheer.nl"><img src="img/Huurenbeheercard.jpg"></a></center>
-             <br>
-             <img class="img-fluid rounded" src="img/object.jpg" alt="">
-             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
-           </div>
-           <div class="card-footer">
-             <center><a href="aanbod1.php" class="btn btn-primary">Meer informatie</a></center>
-           </div>
-         </div>
-       </div>
+    </div>
+    <!-- /.container -->
 
-   </div>
-
-     <div class="row">
-
-     </div>
-
-   </div>
+    <!-- Footer -->
 
    <footer class="py-5 footer-custom">
      <div class="container">
        <div class="row ">
           <div class="col vastgoed-img">
               <h3>Certificaten</h3>
-                <a href="https://www.vastgoedpro.nl/"><img src="img/vgp.jpg" alt=""></a>
+                <a href="https://www.vastgoedpro.nl/"><img src="../css/img/vgp.jpg" alt=""></a>
                 <br>
                 <br>
-                <a href="https://www.vastgoedcert.nl/"><img src="img/vastgoedcert.jpg" alt=""></a>
+                <a href="https://www.vastgoedcert.nl/"><img src="../css/img/vastgoedcert.jpg" alt=""></a>
+                <br>
+                <br>
             </div>
             <div class="col">
               <h3>KVK/BTW</h3>
@@ -160,8 +188,15 @@
     </div>
    </footer>
 
+
+    <!-- Bootstrap core JavaScript -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script>
+        $('.carousel').carousel({
+            interval: 5000
+        })
+    </script>
   </body>
 </html>

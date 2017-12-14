@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "../lib/fpdf/pdf.php";
+include "lib/fpdf/pdf.php";
 require $_SERVER['DOCUMENT_ROOT']."/lib/mail/mail.php";
 
 // Definier captchaError leeg.
@@ -16,7 +16,7 @@ $pdfHBComplaintArray["complaint"] = "";
 
 // Als het knopje ingedrukt is.
 if ( isset( $_POST["submit"]) ) {
-    include_once "../lib/securimage/securimage.php";
+    include_once "lib/securimage/securimage.php";
     $secureImage = new Securimage();
     
     // Voer pdfFunc uit.
@@ -119,7 +119,7 @@ if ( isset( $_POST["submit"]) ) {
 
       <div class="row">
         <div class="col-sm">
-          <form id="Complaint-form" method="post" action="formulieren.php" role="form">
+          <form id="Complaint-form" method="post" action="melding.php" role="form">
 
               <div class="Complaints"></div>
 

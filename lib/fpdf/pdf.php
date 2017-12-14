@@ -101,7 +101,7 @@ function pdfHBContactFunc ( $firstname, $insertion, $surname, $email, $telno, $s
             else {
                 class PDF extends FPDF {
                     function Header() {
-                    $this->Image("../lib/fpdf/logo_groot.png",10,5,65);
+                    $this->Image("lib/fpdf/logo_groot.png",10,5,65);
                     $this->SetFont("Arial","B",15);
                     $this->Cell(80);
                     $this->Cell(35,18,"Contactformulier",0,0,"C");
@@ -272,7 +272,7 @@ function pdfHBComplaintFunc ( $firstname, $insertion, $surname, $email, $telno, 
             else {
                 class PDF extends FPDF {
                     function Header() {
-                    $this->Image("../lib/fpdf/logo_groot.png",10,5,65);
+                    $this->Image("lib/fpdf/logo_groot.png",10,5,65);
                     $this->SetFont("Arial","B",15);
                     $this->Cell(80);
                     $this->Cell(35,18,"Meldingformulier",0,0,"C");
