@@ -28,7 +28,7 @@ function uploadFile()
 
                             $files[] = $filePath;
 
-                            insertPictureInDB($filePath, $id);
+                            insertPictureInDB(str_replace($_SERVER['DOCUMENT_ROOT'] . "/uploads/", "", $filePath), $id);
                         }
                     }
                 }
@@ -46,6 +46,7 @@ function uploadFile()
     }
 }
 
+//Insert a picture into the database with a specific id.
 function insertPictureInDB($path, $id)
 {
     $conn = connectToDatabase();
@@ -54,6 +55,7 @@ function insertPictureInDB($path, $id)
     $stmt->execute(array($id, $path));
 }
 
+//Get the next available id for a picture set.
 function getId()
 {
     $conn = connectToDatabase();
@@ -64,6 +66,7 @@ function getId()
     return $statement->fetch()[0] + 1;
 }
 
+//Get all the pictures with this id.
 function getPictures($id)
 {
     $conn = connectToDatabase();
