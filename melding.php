@@ -18,19 +18,29 @@ $pdfHBComplaintArray["complaint"] = "";
 if ( isset( $_POST["submit"]) ) {
     include_once "lib/securimage/securimage.php";
     $secureImage = new Securimage();
+
+    include "lib/upload/upload.php";
+    $id = uploadFile();
     
     // Voer pdfFunc uit.
     $pdfHBComplaintArray = pdfHBComplaintFunc($_POST["firstname"], $_POST["insertion"], $_POST["surname"], $_POST["email"], $_POST["telno"], $_POST["street"], $_POST["city"], $_POST["houseno"], $_POST["zip"], $_POST["complaint"], $secureImage, $_POST["captchaCode"]);
     if ( $pdfHBComplaintArray["result"] === TRUE ) {
-        // Voor testing wanneer je geen mail win ontvangen zet comments bij sendComplaintMail en geen comments bij de ->Output() functie.
-        //$pdfHBComplaintArray["pdf"]->Output();
-        if ( sendComplaintMail ( $pdfHBComplaintArray["pdf"]->Output("meldingformulier.pdf", 'S'), "Melding", $_POST["firstname"], $_POST["surname"] ) ) {
-            $pdfHBComplaintArray["success"] = TRUE;
-            $pdfHBComplaintArray["message"] = "Wij hebben uw melding ontvangen en zullen hem zo spoedig mogelijk afhandelen!";
-        }
-        else {
+        if ($id == false) {
             $pdfHBComplaintArray["success"] = FALSE;
-            $pdfHBComplaintArray["message"] = "Er is een probleem opgetreden, probeer het later nogmaals.";
+            $pdfHBComplaintArray["message"] = $UPLOAD_ERROR;
+        } else {
+            $pictures = getPictures($id);
+
+            // Voor testing wanneer je geen mail win ontvangen zet comments bij sendComplaintMail en geen comments bij de ->Output() functie.
+            //$pdfHBComplaintArray["pdf"]->Output();
+            if ( sendComplaintMail ( $pdfHBComplaintArray["pdf"]->Output("meldingformulier.pdf", 'S'), "Melding", $_POST["firstname"], $_POST["surname"] ) ) {
+                $pdfHBComplaintArray["success"] = TRUE;
+                $pdfHBComplaintArray["message"] = "Wij hebben uw melding ontvangen en zullen hem zo spoedig mogelijk afhandelen!";
+            }
+            else {
+                $pdfHBComplaintArray["success"] = FALSE;
+                $pdfHBComplaintArray["message"] = "Er is een probleem opgetreden, probeer het later nogmaals.";
+            }
         }
     }
     else {
@@ -239,7 +249,7 @@ if ( isset( $_POST["submit"]) ) {
                       <div class="col-md-12">
                         <div class="form-group">
                             <label for="exampleFormControlFile1">Fotos invoegen</label>
-                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                            <input id='upload' name="upload[]" type="file" multiple="multiple">
                         </div>
                       </div>
                       <div class="col-md-12">
