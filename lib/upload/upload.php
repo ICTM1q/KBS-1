@@ -16,19 +16,33 @@ function uploadFile()
             //Allowed extentions
             $EXTENTIONS = array("jpg", "jpeg", "png", "gif");
 
-            if (count($_FILES['upload']['name']) > 0) {
+            $count = count($_FILES['upload']['name']) > 0;
+
+            if ($count > 8) {
+                throw new RuntimeException("Niet meer dan 8 plaatjes uploaden!");
+            }
+
+            for ($i = 0; $i < $count; $i++) {
+                $filename = $_FILES['upload']['name'][$i];
+
+                //Check if the file is an image
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                if (!in_array($ext, $EXTENTIONS)) {
+                    throw new RuntimeException("Alleen foto's zijn toegestaan!");
+                }
+
+                if ($_FILES['upload']['size'][$i] > 5000000) {
+                    throw new RuntimeException(sprintf("Bestand %s is te groot!", $filename));
+                }
+            }
+
+            if ($count > 0) {
 
                 //Loop through each file
-                for ($i = 0; $i < count($_FILES['upload']['name']); $i++) {
+                for ($i = 0; $i < $count; $i++) {
 
                     //Get the temp file path
                     $tmpFilePath = $_FILES['upload']['tmp_name'][$i];
-
-                    //Check if the file is an image
-                    $ext = pathinfo($_FILES['upload']['name'][$i], PATHINFO_EXTENSION);
-                    if (!in_array($ext, $EXTENTIONS)) {
-                        throw new RuntimeException("Alleen foto's zijn toegestaan!");
-                    }
 
                     //Make sure we have a filepath
                     if ($tmpFilePath != "") {
