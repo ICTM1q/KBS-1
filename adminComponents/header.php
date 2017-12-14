@@ -1,7 +1,14 @@
 <?php session_start();
-if ( $_SESSION["role"] != "Beheer") {
+$allowed = false;
+if ($_SESSION['role'] == "Admin"){
+    $allowed = true;
+}
+if ( $_SESSION["role"] == "Beheer") {
+    $allowed = true;
+}
+if ($allowed != true){
     $_SESSION['error'] = "U mag deze pagina niet bezoeken.";
-header( "Location: /login.php" );
+    header( "Location: /login.php" );
 } ?>
 
 <!doctype html>

@@ -48,7 +48,7 @@ include "../alert.php";
     <tr>
         <td><?php echo $row["username"] ?></td>
         <td><?php echo $row["email"] ?></td>
-        <td><?php for($i = 0;$i < 8; $i++){echo "*";}?></td>
+        <td><?php echo "********"?></td>
         <td><?php echo $row["role"] ?></td>
         <td><?php echo $row["create_date"] ?></td>
         <td class="custom-col">

@@ -71,8 +71,8 @@ class residenceFunctions
 
     function insertNewResidence($conn, $adres, $city, $postalcode, $description, $price)
     {
-        $sql = "INSERT INTO pand (adres, city, postalcode, description, price)
-                VALUES ('$adres', '$city', '$postalcode', '$description', '$price')";
+        $sql = "INSERT INTO pand (adres, city, postalcode, description, price, picturesid)
+                VALUES ('$adres', '$city', '$postalcode', '$description', '$price', '0')";
 
         if ($conn->query($sql) === TRUE) {
             $_SESSION['message'] = "Nieuwe woning succesvol toegevoegd.";

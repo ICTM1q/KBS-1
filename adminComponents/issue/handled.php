@@ -16,7 +16,11 @@ $conn = $dbFunctions->connectDB();
 require_once "issueFunctions.php";
 $functions = new issueFunctions();
 $result = $functions->getAllHandledIssues($conn);
-$total = $result->num_rows;
+if($result != null){
+    $total = $result->num_rows;
+}else{
+    $total = 0;
+}
 $limit = 10;
 if(isset($_GET['page'])){
     $result = $functions->getAllHandledIssuesPaginated($conn, $limit , $_GET['page']);

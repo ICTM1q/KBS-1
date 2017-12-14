@@ -36,8 +36,8 @@ include "../alert.php";
         <div class="form-group row">
             <label class="col-md-4 control-label" for="email">Email adres</label>
             <div class="col-md-4">
-                <input type="hidden" value="<?php echo $result->email ?>" name="email">
-                <input id="email" name="email" type="text" value="<?php echo $result->email ?>" class="form-control input-md" disabled>
+
+                <input id="email" name="email" type="text" value="<?php echo $result->email ?>" class="form-control input-md" >
             </div>
         </div>
         <div class="form-group row">

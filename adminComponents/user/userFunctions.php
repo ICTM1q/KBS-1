@@ -55,10 +55,10 @@ class userFunctions
         }
     }
     function updateUserRole($conn, $username, $email, $role){
-        $sql = "UPDATE user SET username='$username', email='$email', role='$role' WHERE username='$username' AND email = '$email'";
+        $sql = "UPDATE user SET username='$username', email='$email', role='$role' WHERE username='$username'";
 
         if ($conn->query($sql) === TRUE) {
-            $_SESSION['message'] = "De gebruikersrol is successvol bijgewerkt";
+            $_SESSION['message'] = "De gebruiker is successvol bijgewerkt";
             return;
         } else {
             $_SESSION['error'] = "Error updating record: " . $conn->error;
