@@ -104,8 +104,33 @@ class issueFunctions
         }
     }
 
-    function updateIssue($conn, $issueid, $customername, $description, $pandid, $date, $behandeld){
-        $sql = "UPDATE issue SET issueid='$issueid', customername='$customername', description='$description', pand='$pandid', date='$date',handled='$behandeld'  WHERE issueid=$issueid";
+
+    /** Inserts New Issue into table
+     * @param $conn = Database connection
+     * @param $firstname
+     * @param $prefix = tussenvoegsel
+     * @param $lastname
+     * @param $email
+     * @param $description
+     * @param $picturesid
+     * @param $pandid
+     */
+    function insertNewIssue($conn, $firstname, $prefix, $lastname, $email, $description, $picturesid, $pandid){
+        $sql = "INSERT INTO issue (voornaam, tussenvoegsel, achternaam, email, description, picturesid, pand, date, handled) 
+                            VALUES ('$firstname', '$prefix', '$lastname', '$email', '$description', '$picturesid', '$pandid', NOW(), '0')";
+
+        if ($conn->query($sql) === TRUE) {
+            $_SESSION['message'] = "Nieuwe klacht succesvol ingediend.";
+            return;
+        } else {
+            $_SESSION['error'] = "Error: " . $sql . "<br>" . $conn->error;
+            file_put_contents("logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
+            return;
+        }
+    }
+
+    function updateIssue($conn, $firstname, $prefix, $lastname, $email, $description, $picturesid, $pandid, $date){
+        $sql = "UPDATE issue SET issueid='$issueid', voornaam='$firstname', tussenvoegsel='$prefix', achternaam='$lastname', email='$email',  description='$description',picturesid='$picturesid', pand='$pandid', date='$date',handled='$behandeld'  WHERE issueid=$issueid";
 
         if ($conn->query($sql) === TRUE) {
             $_SESSION['message'] = "Record updated successfully";

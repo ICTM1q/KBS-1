@@ -1,4 +1,4 @@
-<?php $_SESSION['message'] = "Dit is een bericht voor reizigers naar amsterdam centraal en deventer.";
+<?php
 /**
  * Created by PhpStorm.
  * User: Tristan Willems

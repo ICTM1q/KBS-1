@@ -36,7 +36,10 @@ include "../alert.php";
     <table class="table-hover table">
         <tr>
             <th>ID</th>
-            <th>Customer name</th>
+            <th>Firstname</th>
+            <th>Prefix</th>
+            <th>Lastname</th>
+            <th>Email</th>
             <th>Description</th>
             <th>Pand</th>
             <th>Date</th>
@@ -48,7 +51,10 @@ include "../alert.php";
             foreach($result as $row){ ?>
                 <tr>
                     <td><?php echo $row['issueid'] ?></td>
-                    <td><?php echo $row['customername'] ?></td>
+                    <td><?php echo $row['voornaam'] ?></td>
+                    <td><?php echo $row['tussenvoegsel'] ?></td>
+                    <td><?php echo $row['achternaam'] ?></td>
+                    <td><?php echo $row['email'] ?></td>
                     <td><?php echo $row['description'] ?></td>
                     <td><a href="/adminComponents/residence/edit?pand=<?php echo $row['pand']; ?>"><?php echo $row['pand'] ?></a></td>
                     <td><?php echo $row['date'] ?></td>
