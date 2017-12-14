@@ -17,7 +17,12 @@ function uploadFile()
             $EXTENTIONS = array("jpg", "jpeg", "png", "gif");
 
             //Get the amount of uploaded files
-            $count = count($_FILES['upload']['name']) > 0;
+            $count = count($_FILES['upload']['name']);
+
+            //Check if there are any images at all
+            if ($count == 0) {
+                return $id;
+            }
 
             //Make sure there aren't more than 8 files
             if ($count > 8) {
