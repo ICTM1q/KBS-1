@@ -129,7 +129,7 @@ if ( isset( $_POST["submit"]) ) {
 
       <div class="row">
         <div class="col-sm">
-          <form id="Complaint-form" method="post" action="" role="form" enctype="multipart/form-data">
+          <form id="Complaint-form" method="post" action="" role="form" enctype="multipart/form-data" >
 
               <div class="Complaints"></div>
 
