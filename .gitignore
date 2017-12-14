@@ -7,3 +7,6 @@ logs/errorlog.txt
 
 lib/config/mailconfig.php
 lib/config/mailconfig.php
+
+uploads/
+uploads/*
