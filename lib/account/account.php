@@ -35,7 +35,7 @@ function loginFunc ( $username, $password ) {
         }
         catch ( PDOException $e ) {
             $loginArray["result"] =  "Er is een fout opgetreden, probeer het later nogmaals.";
-            file_put_contents("./logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $e->getMessage() . "\r\n", FILE_APPEND);
+            file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
             return $loginArray;
         }  
     }
@@ -87,7 +87,7 @@ function loginCaptchaFunc ( $username, $password, $secureImage, $captchaCode ) {
             }
             catch ( PDOException $e ) {
                 $loginArray["result"] =  "Er is een fout opgetreden, probeer het later nogmaals.";
-                file_put_contents("./logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $e->getMessage() . "\r\n", FILE_APPEND);
+                file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
                 return $loginArray;
             }  
         }
@@ -140,7 +140,7 @@ function createFunc ( $username, $password, $email ) {
             }
             catch ( PDOException $e ) {
                 $createArray["result"] =  "Er is een fout opgetreden, probeer het later nogmaals.";
-                file_put_contents("./logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $e->getMessage() . "\r\n", FILE_APPEND);
+                file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
                 return $createArray;
             }   
         }
@@ -208,7 +208,7 @@ function createToken ( $email, $secureImage, $captchaCode ) {
             }
             catch ( PDOException $e ) {
                 $createTokenArray["result"] =  "Er is een fout opgetreden, probeer het later nogmaals.";
-                file_put_contents("./logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $e->getMessage() . "\r\n", FILE_APPEND);
+                file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
                 return $createTokenArray;
             }
         }
@@ -270,7 +270,7 @@ function checkToken ( $token, $email, $password1, $password2 ) {
             }
             catch ( PDOException $e ) {
                 $resetArray["result"] =  "Er is een fout opgetreden, probeer het later nogmaals.";
-                file_put_contents("./logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $e->getMessage() . "\r\n", FILE_APPEND);
+                file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
                 return $resetArray;
             }   
         }

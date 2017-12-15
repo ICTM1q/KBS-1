@@ -16,6 +16,9 @@
     require "adminComponents/residence/residenceFunctions.php";
     $functions = new residenceFunctions();
     $conn = $functions->connectDB();
+    if (!isset($_GET['pandid'])) {
+        $_GET['pandid'] = 1;
+    }
     $result = $functions->getSingleResidence($conn, $_GET['pandid']);
     $residence = $result->fetch_array();
     $pictures = $functions->getResidencePictures($conn, $residence['picturesid']);

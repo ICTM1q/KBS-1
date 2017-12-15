@@ -35,7 +35,7 @@ class residenceFunctions
             return $result;
         } else {
             $_SESSION['warning'] = "Er zijn geen woningen gevonden. Voeg een nieuwe woning toe om deze in het overzicht te zien.";
-            file_put_contents("logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['warning'] . "\r\n", FILE_APPEND);
+            file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
             return null;
         }
     }
@@ -50,7 +50,7 @@ class residenceFunctions
             return $result;
         } else {
             $_SESSION['warning'] = "Er zijn geen woningen gevonden. Voeg een nieuwe woning toe om deze in het overzicht te zien.";
-            file_put_contents("logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['warning'] . "\r\n", FILE_APPEND);
+            file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
             return null;
         }
     }
@@ -64,25 +64,47 @@ class residenceFunctions
             return $result;
         } else {
             $_SESSION['error'] = "Er is iets mis gegaan, de woning die u probeerde aan te passen kan niet worden gevonden.";
-            file_put_contents("logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
+            file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
             return null;
         }
     }
 
     function insertNewResidence($conn, $adres, $city, $postalcode, $description, $price)
     {
-        $sql = "INSERT INTO pand (adres, city, postalcode, description, price, picturesid)
-                VALUES ('$adres', '$city', '$postalcode', '$description', '$price', '0')";
+        
+        $id = $this->getPandId( $conn );
+        include $_SERVER['DOCUMENT_ROOT']."/lib/mail/mail.php";
+        $sql = "INSERT INTO pand (pandid, adres, city, postalcode, description, price)
+                VALUES ('$id', '$adres', '$city', '$postalcode', '$description', '$price')";
 
         if ($conn->query($sql) === TRUE) {
-            $_SESSION['message'] = "Nieuwe woning succesvol toegevoegd.";
-            return;
+            if ( sendToMaillist ( $adres, $city, $postalcode, $description, $price ) === TRUE ) {
+                $_SESSION['message'] = "Nieuwe woning succesvol toegevoegd.";
+                return;    
+            }
+            else {
+                $_SESSION['error'] = "Error.";
+                file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
+                return;
+            }
+            
         } else {
             $_SESSION['error'] = "Error: " . $sql . "<br>" . $conn->error;
-            file_put_contents("logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
+            file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
             return;
         }
     }
+    
+    function getPandId( )
+    {
+        include $_SERVER['DOCUMENT_ROOT']."/lib/config/sqlconfig.php";
+        $conn = new PDO ( "mysql:host=localhost;dbname=$dbname;", $user, $dbpassword);
+        $statement = $conn->prepare("SELECT max(pandid) FROM pand");
+        $statement->execute();
+
+        return $statement->fetch()[0] + 1;
+    }
+    
     function deleteResidence($conn, $pandid)
     {
         $sql = "DELETE FROM pand WHERE pandid=$pandid";
@@ -92,7 +114,7 @@ class residenceFunctions
             return;
         } else {
             $_SESSION['error'] = "Error deleting record: " . $conn->error;
-            file_put_contents("logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
+            file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
             return;
         }
     }
@@ -105,7 +127,7 @@ class residenceFunctions
             return;
         } else {
             $_SESSION['error'] = "Error updating record: " . $conn->error;
-            file_put_contents("logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
+            file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
             return;
         }
     }
@@ -119,7 +141,7 @@ class residenceFunctions
             return $result;
         } else {
             $_SESSION['error'] = "Er is iets mis gegaan, de foto's kunnen niet worden gevonden.";
-            file_put_contents("logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
+            file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
             return null;
         }
     }
