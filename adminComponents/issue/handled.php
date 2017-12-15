@@ -50,9 +50,9 @@ include "../alert.php";
             foreach($result as $row){ ?>
                 <tr>
                     <td><?php echo $row['issueid'] ?></td>
-                    <td><?php echo $row['voornaam'] ?></td>
-                    <td><?php echo $row['tussenvoegsel'] ?></td>
-                    <td><?php echo $row['achternaam'] ?></td>
+                    <td><?php echo $row['firstname'] ?></td>
+                    <td><?php echo $row['insertion'] ?></td>
+                    <td><?php echo $row['surname'] ?></td>
                     <td><?php echo $row['email'] ?></td>
                     <td><?php echo $row['description'] ?></td>
                     <td><a href="/adminComponents/residence/edit?pand=<?php echo $row['pand']; ?>"><?php echo $row['pand'] ?></a></td>

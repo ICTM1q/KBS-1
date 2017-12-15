@@ -88,8 +88,14 @@ function createUser ( $conn, $username, $password, $email ) {
         $hash = crypt ( $password, $cryptsalt );
 
         // Informatie opslaan in database.
+        $stmt = $conn->prepare (" SET FOREIGN_KEY_CHECKS=0" );
+        $stmt->execute( array ( ) );
+        $stmt = $conn->prepare ( "INSERT INTO receiver( email ) VALUES ( ? )");
+        $stmt->execute( array ( $email ) );
         $stmt = $conn->prepare ( "INSERT INTO user(username, password, salt, role, email, create_date) VALUES (?, ?, ?, ?, ?, NOW())" );
         $stmt->execute( array ( $username, $hash, $salt, "Gebruiker", $email ) );
+        $stmt = $conn->prepare (" SET FOREIGN_KEY_CHECKS=1 " );
+        $stmt->execute( array ( ) );
 
         return $username . " aangemaakt." . "<br>";  
     }

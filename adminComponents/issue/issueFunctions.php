@@ -115,22 +115,19 @@ class issueFunctions
      * @param $picturesid
      * @param $pandid
      */
-    function insertNewIssue($conn, $firstname, $prefix, $lastname, $email, $description, $picturesid, $pandid){
-        $sql = "INSERT INTO issue (voornaam, tussenvoegsel, achternaam, email, description, picturesid, pand, date, handled) 
-                            VALUES ('$firstname', '$prefix', '$lastname', '$email', '$description', '$picturesid', '$pandid', NOW(), '0')";
-
-        if ($conn->query($sql) === TRUE) {
-            $_SESSION['message'] = "Nieuwe klacht succesvol ingediend.";
+    function insertNewIssue($conn, $firstname, $prefix, $lastname, $email, $description, $picturesid){
+        $sql = $conn->prepare( "INSERT INTO issue (firstname, insertion, surname, email, description, picturesid, date, handled) 
+                            VALUES (?, ?, ?, ?, ?, ?, NOW(), '0')" );
+        if ( $sql->execute ( array ( $firstname, $prefix, $lastname, $email, $description, $picturesid ) ) ) {
             return;
         } else {
-            $_SESSION['error'] = "Error: " . $sql . "<br>" . $conn->error;
-            file_put_contents("logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
+            file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
             return;
         }
     }
 
     function updateIssue($conn, $issueid, $firstname, $prefix, $lastname, $email, $description, $picturesid, $pandid, $date, $behandeld){
-        $sql = "UPDATE issue SET issueid='$issueid', voornaam='$firstname', tussenvoegsel='$prefix', achternaam='$lastname', email='$email',  description='$description',picturesid='$picturesid', pand='$pandid', date='$date',handled='$behandeld'  WHERE issueid=$issueid";
+        $sql = "UPDATE issue SET issueid='$issueid', firstname='$firstname', insertion='$prefix', surname='$lastname', email='$email',  description='$description',picturesid='$picturesid', date='$date',handled='$behandeld'  WHERE issueid=$issueid";
 
         if ($conn->query($sql) === TRUE) {
             $_SESSION['message'] = "Record updated successfully";

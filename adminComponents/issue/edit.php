@@ -46,21 +46,21 @@ if(isset($result) && $result != null){?>
         <div class="form-group row">
             <label class="col-md-4 control-label" for="firstname">Voornaam</label>
             <div class="col-md-4">
-                <input id="firstname" name="firstname" type="text" value="<?php echo $result->voornaam ?>" class="form-control input-md">
+                <input id="firstname" name="firstname" type="text" value="<?php echo $result->firstname ?>" class="form-control input-md">
 
             </div>
         </div>
         <div class="form-group row">
             <label class="col-md-4 control-label" for="prefix">Tussenvoegsel</label>
             <div class="col-md-4">
-                <input id="prefix" name="prefix" type="text" value="<?php echo $result->tussenvoegsel ?>" class="form-control input-md">
+                <input id="prefix" name="prefix" type="text" value="<?php echo $result->insertion ?>" class="form-control input-md">
 
             </div>
         </div>
         <div class="form-group row">
             <label class="col-md-4 control-label" for="lastname">Achternaam</label>
             <div class="col-md-4">
-                <input id="lastname" name="lastname" type="text" value="<?php echo $result->achternaam ?>" class="form-control input-md">
+                <input id="lastname" name="lastname" type="text" value="<?php echo $result->surname ?>" class="form-control input-md">
 
             </div>
         </div>

@@ -1,7 +1,10 @@
 <?php
 session_start();
 include "lib/fpdf/pdf.php";
-require $_SERVER['DOCUMENT_ROOT']."/lib/mail/mail.php";
+require_once $_SERVER['DOCUMENT_ROOT']."/lib/mail/mail.php";
+require_once $_SERVER['DOCUMENT_ROOT']."/adminComponents/issue/issueFunctions.php";
+$functions = new issueFunctions();
+
 
 // Definier captchaError leeg.
 $pdfHBComplaintArray["firstnameErr"] = "";
@@ -33,6 +36,7 @@ if ( isset( $_POST["submit"]) ) {
             // Voor testing wanneer je geen mail win ontvangen zet comments bij sendComplaintMail en geen comments bij de ->Output() functie.
             //$pdfHBComplaintArray["pdf"]->Output();
             if ( sendComplaintMail ( $pdfHBComplaintArray["pdf"]->Output("meldingformulier.pdf", 'S'), "Melding", $_POST["firstname"], $_POST["surname"], $pictures ) ) {
+                $functions->insertNewIssue(connectToDatabase(), $_POST["firstname"], $_POST["insertion"], $_POST["surname"], $_POST["email"], $_POST["complaint"], $id);
                 $pdfHBComplaintArray["success"] = TRUE;
                 $pdfHBComplaintArray["message"] = "Wij hebben uw melding ontvangen en zullen hem zo spoedig mogelijk afhandelen!";
             }
