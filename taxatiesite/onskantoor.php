@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link href="css/style.css" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
   </head>
 
   <body>
@@ -18,9 +19,9 @@
      <div class="container">
        <a class="navbar-brand" href="index.php">
     <img src="img/hoksbergen.gif" width="160" height="90" class="d-inline-block align-top" alt=""></a>
-       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="navbar-toggler-icon fa fa-bars"></span>
-       </button>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon fa fa-bars"></span>
+    </button>
        <div class="collapse navbar-collapse" id="navbarResponsive">
          <ul class="navbar-nav ml-auto">
            <li class="nav-item">
