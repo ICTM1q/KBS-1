@@ -1,0 +1,28 @@
+.navbar-custom {
+    background-color: #4F72ED;
+    border-bottom: solid 1px black;
+}
+
+.navbar-custom  a {
+    color: #fff;
+}
+
+.navbar-custom  a:hover {
+    font-weight: bold;
+    color: #fff;
+}
+
+.active{
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.toggle-icon {
+    max-height: 40px;
+    max-width: 40px;
+    justify-content: center;
+}
+
+.fa-bars {
+    color: #fff;
+}

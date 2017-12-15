@@ -1,0 +1,16 @@
+body {
+    padding-top: 10%;
+}
+
+.carousel-div {
+    height: 230px;
+}
+
+.sliderbox {
+    border: 2px solid black;
+    align-content: center;
+}
+
+.carousel-item{
+    align-content: center;
+}

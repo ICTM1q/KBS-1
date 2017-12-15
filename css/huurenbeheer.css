@@ -1,22 +1,9 @@
-.navbar-custom {
-    color: #fff;
-    background-color: #4F72ED;
-    border-bottom: solid 1px black;
-}
-
-.navbar-custom a {
-    color: #fff;
-}
-
-.active{
-    font-weight: bold;
-    text-decoration: underline;
-}
-
 body {
-    padding-top: 130px;
-    background-repeat: repeat-x;
-    background-color: white;
+    padding-top: 8%;
+}
+
+.center-tekst{
+    text-align: center;
 }
 
 .body-woning{
@@ -34,7 +21,8 @@ body {
 .top-tekst{
     text-align: center;
 }
-.padding{
+
+.content{
     padding-left: 15%;
     padding-right: 15%;
 }
@@ -81,15 +69,6 @@ body {
     margin-left: 2%;
 }
 
-.sliderbox {
-    margin-top: 10%;
-    border: 4px solid black;
-}
-
-.cert {
-    border: solid 3px black;
-}
-
 .title {
     font-size: 30px;
 }
@@ -97,6 +76,10 @@ body {
 .tag-bg{
     background-color: #E0F4FB;
     border: solid 2px black;
+}
+
+.line{
+    max-width: 100%;
 }
 
 .tag-tekst{
@@ -141,18 +124,6 @@ btn-primary{
 
 .pagination {
     justify-content: center;
-}
-
-.footer-custom {
-    border-top: solid 1px black;
-    color: #fff;
-    background-color: #4F72ED;
-}
-
-.ulfooter {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
 }
 
 .error {

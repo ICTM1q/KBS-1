@@ -1,0 +1,11 @@
+.footer-custom {
+    border-top: solid 1px black;
+    color: #fff;
+    background-color: #4F72ED;
+}
+
+.ulfooter {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
