@@ -13,6 +13,10 @@ body {
   }
 }
 
+.fa-bars {
+  color: white;
+}
+
 .btn-space {
     margin-right: 5px;
 }
