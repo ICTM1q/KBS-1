@@ -111,7 +111,7 @@ function GetRole ( $username ) {
         return $row[0];
     }
     catch ( PDOException $e ) {
-        file_put_contents("./logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $e->getMessage() . "\r\n", FILE_APPEND);
+        file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
         return;
     }   
 }
@@ -139,7 +139,7 @@ function insertTry ( $ip ) {
         
     }
     catch ( PDOException $e ) {
-        file_put_contents("./logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $e->getMessage() . "\r\n", FILE_APPEND);
+        file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
         return;
     }   
 }
@@ -154,7 +154,7 @@ function getTries ( $ip ) {
         return $row[0];
     }
     catch ( PDOException $e ) {
-        file_put_contents("./logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $e->getMessage() . "\r\n", FILE_APPEND);
+        file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
         return;
     }
 }
@@ -167,7 +167,7 @@ function deleteTries ( $ip ) {
         $stmt->execute ( array ( $ip ) );
     }
     catch ( PDOException $e ) {
-        file_put_contents("./logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $e->getMessage() . "\r\n", FILE_APPEND);
+        file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
         return;
     }
 }
