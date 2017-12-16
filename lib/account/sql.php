@@ -1,5 +1,6 @@
 <?php
 
+// Functie om te connecten met de database.
 function connectToDatabase() {
     include $_SERVER['DOCUMENT_ROOT']."/lib/config/sqlconfig.php";
     return new PDO ( "mysql:host=localhost;dbname=$dbname;", $user, $dbpassword);
