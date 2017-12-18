@@ -9,7 +9,7 @@ $createTokenArray["captchaErr"] = "";
 $createTokenArray["result"] = "";
 
 if (isset($_POST["createToken"])) {
-    include_once_once "lib/securimage/securimage.php";
+    include_once "lib/securimage/securimage.php";
     $secureImage = new Securimage();
     
     $createTokenArray = createToken ( trim($_POST["email"]), $secureImage, trim($_POST["captchaCode"]));

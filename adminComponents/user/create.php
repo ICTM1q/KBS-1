@@ -6,10 +6,10 @@
  * Time: 12:11
  */
 
-include_once "../header.php";
+include "../header.php";
 include_once "menu.php";
 include_once "../alert.php";
 include_once "../../register.php";
 ?>
 
-<?php include_once "../footer.php"; ?>
+<?php include "../footer.php"; ?>

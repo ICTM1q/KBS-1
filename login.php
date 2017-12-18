@@ -22,7 +22,7 @@ if ( isset( $_POST["submit"] ) ) {
     // Als er 3 of meer login pogingen gedaan zijn.
     if ( $tries >= 3 ) {
         // Maak captcha aan.
-        include_once_once "lib/securimage/securimage.php";
+        include_once "lib/securimage/securimage.php";
         $secureImage = new Securimage();
 
         // Roep loginCaptchaFunc aan.

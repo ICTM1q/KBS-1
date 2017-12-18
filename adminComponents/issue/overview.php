@@ -7,7 +7,7 @@
  */
 
 
-include_once "../header.php";
+include "../header.php";
 include_once "menu.php";
 require_once "../residence/residenceFunctions.php";
 //retrieve data before the alert.php include_once in case of errors.
@@ -71,4 +71,4 @@ include_once "../alert.php";
     </table>
 <?php
 include_once "../pagination.php";
-include_once "../footer.php"; ?>
+include "../footer.php"; ?>

@@ -19,7 +19,7 @@ $pdfHBComplaintArray["complaint"] = "";
 
 // Als het knopje ingedrukt is.
 if ( isset( $_POST["submit"]) ) {
-    include_once_once "lib/securimage/securimage.php";
+    include_once "lib/securimage/securimage.php";
     $secureImage = new Securimage();
 
     include_once "lib/upload/upload.php";

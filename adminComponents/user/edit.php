@@ -5,7 +5,7 @@
  * Date: 18-11-2017
  * Time: 12:11
  */
-include_once "../header.php";
+include "../header.php";
 include_once "menu.php";
 require_once("../residence/residenceFunctions.php");
 require_once("userFunctions.php");
@@ -145,4 +145,4 @@ include_once "../alert.php";
 </form>
 
 
-<?php include_once "../footer.php"; ?>
+<?php include "../footer.php"; ?>

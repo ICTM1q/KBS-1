@@ -6,7 +6,7 @@
  * Time: 12:11
  */
 
-include_once "../header.php";
+include "../header.php";
 include_once "menu.php";
 require_once "../residence/residenceFunctions.php";
 //data generation after include_once issueFunctions.php but before alert.php in case of error's.
@@ -75,4 +75,4 @@ include_once "../alert.php";
         });
     });
 </script>
-<?php include_once "../footer.php"; ?>
+<?php include "../footer.php"; ?>

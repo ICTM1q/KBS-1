@@ -13,7 +13,7 @@ elseif(isset($_GET['pand'])){
     $pandID = $_GET['pand'];
 }
 
-include_once "../header.php";
+include "../header.php";
 include_once "menu.php";
 require_once("residenceFunctions.php");
 $functions = new residenceFunctions();
@@ -83,4 +83,4 @@ if($result != null){?>
 </form>
 
 <?php }
-include_once "../footer.php"; ?>
+include "../footer.php"; ?>

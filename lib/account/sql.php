@@ -6,7 +6,7 @@ if (!isset($SQL_AVAILABLE)) {
 
 // Functie om te connecten met de database.
     function connectToDatabase() {
-        include_once_once $_SERVER['DOCUMENT_ROOT']."/lib/config/sqlconfig.php";
+        include $_SERVER['DOCUMENT_ROOT']."/lib/config/sqlconfig.php";
         return new PDO ( "mysql:host=localhost;dbname=$dbname;", $user, $dbpassword);
     }
 

@@ -12,7 +12,7 @@ if(isset($_POST['edit'])){
 elseif(isset($_GET['issue'])){
     $issueID = $_GET['issue'];
 }
-include_once "../header.php";
+include "../header.php";
 include_once "menu.php";
 
 
@@ -138,4 +138,4 @@ if(isset($result) && $result != null){?>
 
 
 <?php }
-include_once "../footer.php"; ?>
+include "../footer.php"; ?>

@@ -15,7 +15,7 @@ $pdfHTContactArray["message"] = "";
 
 // Als het knopje ingedrukt is.
 if ( isset( $_POST["submit"] ) ){
-    include_once_once $_SERVER['DOCUMENT_ROOT']."/lib/securimage/securimage.php";
+    include_once $_SERVER['DOCUMENT_ROOT']."/lib/securimage/securimage.php";
     $secureImage = new Securimage();
 
     // Voer pdfFunc uit.
