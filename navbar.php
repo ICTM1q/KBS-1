@@ -16,7 +16,7 @@ and open the template in the editor.
         <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
      <div class="container">
        <a class="navbar-brand" href="index.php">
-           <img src="css/img/logo_groot.png" width="160" height="90" class="d-inline-block align-top" alt=""></a>
+           <img src="css/img/logo_groot.png" width="214" height="90" class="d-inline-block align-top" alt=""></a>
        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
          <span class="navbar-toggler-icon fa fa-bars"></span>
        </button>
