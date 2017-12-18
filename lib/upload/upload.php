@@ -13,77 +13,72 @@ function uploadFile()
         //Get the next availabe id
         $id = getId();
 
-        if (isset($_POST['submit'])) {
+        //Allowed extentions
+        $EXTENTIONS = array("jpg", "jpeg", "png", "gif");
 
-            //Allowed extentions
-            $EXTENTIONS = array("jpg", "jpeg", "png", "gif");
+        //Get the amount of uploaded files
+        $count = count($_FILES['upload']['name']);
 
-            //Get the amount of uploaded files
-            $count = count($_FILES['upload']['name']);
-
-            //Check if there are any images at all
-            if ($count == 0) {
-                return $id;
-            }
-
-            //Make sure there aren't more than 8 files
-            if ($count > 8) {
-                throw new RuntimeException("Niet meer dan 8 plaatjes uploaden!");
-            }
-
-            //Loop over all files
-            for ($i = 0; $i < $count; $i++) {
-
-                //Get the original filename
-                $filename = $_FILES['upload']['name'][$i];
-
-                //Check if the file is an image
-                $ext = pathinfo($filename, PATHINFO_EXTENSION);
-                if (!in_array($ext, $EXTENTIONS)) {
-                    throw new RuntimeException("Alleen foto's zijn toegestaan!");
-                }
-
-                //Check if the file is not too big
-                if ($_FILES['upload']['size'][$i] > 5000000) {
-                    throw new RuntimeException(sprintf("Bestand %s is te groot!", $filename));
-                }
-            }
-
-            //Check if there are any images at all
-            if ($count > 0) {
-
-                //Loop through each file
-                for ($i = 0; $i < $count; $i++) {
-
-                    //Get the temp file path
-                    $tmpFilePath = $_FILES['upload']['tmp_name'][$i];
-
-                    //Make sure we have a filepath
-                    if ($tmpFilePath != "") {
-
-                        //save the url and the file
-                        $filePath =
-                            $_SERVER['DOCUMENT_ROOT'] . "/uploads/" .
-                            date('d-m-Y-H-i-s') . '-' .
-                            random_string(8) . '-' .
-                            $_FILES['upload']['name'][$i];
-
-                        //Upload the file into the temp dir
-                        if (move_uploaded_file($tmpFilePath, $filePath)) {
-
-                            $files[] = $filePath;
-
-                            //Insert the file into the database
-                            insertPictureInDB(str_replace($_SERVER['DOCUMENT_ROOT'] . "/uploads/", "", $filePath), $id);
-                        }
-                    }
-                }
-            }
-
+        //Check if there are any images at all
+        if ($count == 0) {
             return $id;
         }
 
-        throw new RuntimeException("Form niet gesubmit, probeer opnieuw!");
+        //Make sure there aren't more than 8 files
+        if ($count > 8) {
+            throw new RuntimeException("Niet meer dan 8 plaatjes uploaden!");
+        }
+
+        //Loop over all files
+        for ($i = 0; $i < $count; $i++) {
+
+            //Get the original filename
+            $filename = $_FILES['upload']['name'][$i];
+
+            //Check if the file is an image
+            $ext = pathinfo($filename, PATHINFO_EXTENSION);
+            if (!in_array($ext, $EXTENTIONS)) {
+                throw new RuntimeException("Alleen foto's zijn toegestaan!");
+            }
+
+            //Check if the file is not too big
+            if ($_FILES['upload']['size'][$i] > 5000000) {
+                throw new RuntimeException(sprintf("Bestand %s is te groot!", $filename));
+            }
+        }
+
+        //Check if there are any images at all
+        if ($count > 0) {
+
+            //Loop through each file
+            for ($i = 0; $i < $count; $i++) {
+
+                //Get the temp file path
+                $tmpFilePath = $_FILES['upload']['tmp_name'][$i];
+
+                //Make sure we have a filepath
+                if ($tmpFilePath != "") {
+
+                    //save the url and the file
+                    $filePath =
+                        $_SERVER['DOCUMENT_ROOT'] . "/uploads/" .
+                        date('d-m-Y-H-i-s') . '-' .
+                        random_string(8) . '-' .
+                        $_FILES['upload']['name'][$i];
+
+                    //Upload the file into the temp dir
+                    if (move_uploaded_file($tmpFilePath, $filePath)) {
+
+                        $files[] = $filePath;
+
+                        //Insert the file into the database
+                        insertPictureInDB(str_replace($_SERVER['DOCUMENT_ROOT'] . "/uploads/", "", $filePath), $id);
+                    }
+                }
+            }
+        }
+
+        return $id;
 
     } catch (RuntimeException $ex) {
         global $UPLOAD_ERROR;
