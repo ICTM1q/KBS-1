@@ -22,15 +22,15 @@ if ( isset( $_POST["submit"] ) ) {
     $pdfHBContactArray = pdfHBContactFunc($_POST["firstname"], $_POST["insertion"], $_POST["surname"], $_POST["email"], $_POST["telno"], $_POST["street"], $_POST["city"], $_POST["houseno"], $_POST["zip"], $_POST["message"], $secureImage, $_POST["captchaCode"]);
     if ( $pdfHBContactArray["result"] === TRUE ) {
         // Voor testing wanneer je geen mail win ontvangen zet comments bij sendContactMail en geen comments bij de ->Output() functie.
-        //$pdfHBContactArray["pdf"]->Output();
-        if ( sendContactMail ( $pdfHBContactArray["pdf"]->Output("contactformulier.pdf", 'S'), "Contact", $_POST["firstname"], $_POST["surname"] ) ) {
+        $pdfHBContactArray["pdf"]->Output();
+       /* if ( sendContactMail ( $pdfHBContactArray["pdf"]->Output("contactformulier.pdf", 'S'), "Contact", $_POST["firstname"], $_POST["surname"] ) ) {
             $pdfHBContactArray["success"] = TRUE;
             $pdfHBContactArray["message"] = "Wij hebben uw contactverzoek ontvangen en zullen hem zo spoedig mogelijk afhandelen!";
         }
         else {
             $pdfHBContactArray["success"] = FALSE;
             $pdfHBContactArray["message"] = "Er is een probleem opgetreden, probeer het later nogmaals.";
-        }
+        }*/
     }
     else {
         $pdfHBContactArray["success"] = FALSE;
