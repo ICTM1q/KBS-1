@@ -54,6 +54,20 @@ class userFunctions
             return null;
         }
     }
+    function getUserRecieverSettings($conn, $email){
+        $sql = "SELECT * FROM receiver WHERE email = '".$email."'";
+
+        $result = $conn->query($sql);
+
+        if($result->num_rows > 0){
+            return $result;
+        }
+        else{
+            $_SESSION['error'] = "De mailinstellingen van deze gebruiker kunnen niet worden gevonden.";
+            file_put_contents("../logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
+            return null;
+        }
+    }
     function updateUserRole($conn, $username, $email, $role){
         $sql = "UPDATE user SET username='$username', email='$email', role='$role' WHERE username='$username'";
 
@@ -66,6 +80,19 @@ class userFunctions
             return;
         }
     }
+    function updateUserMailSettings($conn, $email, $complaint, $taxation, $contact){
+        $sql = "UPDATE receiver SET email='$email', complaint='$complaint', taxation='$taxation', contact='$contact' WHERE email='$email'";
+
+        if ($conn->query($sql) === TRUE) {
+            $_SESSION['message'] = "De gebruiker is successvol bijgewerkt";
+            return;
+        } else {
+            $_SESSION['error'] = "Error updating record: " . $conn->error;
+            file_put_contents("../logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
+            return;
+        }
+    }
+
     function deleteUser($conn, $username)
     {
         $sql = "DELETE FROM user WHERE username='$username'";
