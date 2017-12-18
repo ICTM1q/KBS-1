@@ -34,7 +34,7 @@ class residenceFunctions
         if ($result->num_rows > 0) {
             return $result;
         } else {
-            $_SESSION['warning'] = "Er zijn geen woningen gevonden. Voeg een nieuwe woning toe om deze in het overzicht te zien.";
+            $_SESSION['error'] = "Er zijn geen woningen gevonden. Voeg een nieuwe woning toe om deze in het overzicht te zien.";
             file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
             return null;
         }
@@ -49,7 +49,7 @@ class residenceFunctions
         if ($result->num_rows > 0) {
             return $result;
         } else {
-            $_SESSION['warning'] = "Er zijn geen woningen gevonden. Voeg een nieuwe woning toe om deze in het overzicht te zien.";
+            $_SESSION['error'] = "Er zijn geen woningen gevonden. Voeg een nieuwe woning toe om deze in het overzicht te zien.";
             file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
             return null;
         }

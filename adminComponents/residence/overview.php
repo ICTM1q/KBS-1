@@ -23,7 +23,11 @@ if (isset($_POST) && $_POST != null && !isset($_POST['delete'])){
 }
 
 $result = $functions->getAllResidence($conn);
-$total = $result->num_rows;
+if($result != null){
+    $total = $result->num_rows;
+}else{
+    $total = 0;
+}
 $limit = 10;
 if(isset($_GET['page'])){
     $result = $functions->getAllResidencePaginated($conn, $limit , $_GET['page']);
@@ -31,11 +35,12 @@ if(isset($_GET['page'])){
     $result = $functions->getAllResidencePaginated($conn, $limit , 1);
 }
 $conn->close();
-include "../alert.php";
+
 ?>
 <!-- content here -->
 
 <h2>Woningoverzicht:</h2>
+<?php include "../alert.php"; ?>
 <table class="table-hover table">
     <tr>
         <th>ID</th>
