@@ -1,5 +1,8 @@
 <?php
 
+global $SQL_AVAILABLE;
+$SQL_AVAILABLE = true;
+
 // Functie om te connecten met de database.
 function connectToDatabase() {
     include $_SERVER['DOCUMENT_ROOT']."/lib/config/sqlconfig.php";

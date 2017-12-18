@@ -1,6 +1,8 @@
 <?php
 
-require $_SERVER['DOCUMENT_ROOT'] . "/lib/account/sql.php";
+if (!isset($SQL_AVAILABLE)) {
+    require $_SERVER['DOCUMENT_ROOT'] . "/lib/account/sql.php";
+}
 
 //Upload een foto naar het mapje ./uploads
 //Returnt false als er geen file geupload is of als er een error is
