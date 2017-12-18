@@ -23,7 +23,7 @@ and open the template in the editor.
        <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li>
-                <a class="nav-link <?php if ($_SERVER['PHP_SELF'] == "index.php"){echo "active";};?>" href="index.php">Home</a>
+                <a class="nav-link <?php if ($_SERVER['PHP_SELF'] == "index.php"){echo "active";};?>" href="home.php">Home</a>
             </li>
             <li>
                 <a class="nav-link <?php if ($_SERVER['PHP_SELF'] == "kantoor.php"){echo "active";};?>" href="kantoor.php">Kantoor</a>
