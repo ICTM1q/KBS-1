@@ -23,12 +23,14 @@ if ( isset( $_POST["submit"] ) ) {
     if ( $pdfHBContactArray["result"] === TRUE ) {
         // Voor testing wanneer je geen mail win ontvangen zet comments bij sendContactMail en geen comments bij de ->Output() functie.
         //$pdfHBContactArray["pdf"]->Output();
-        if ( sendContactMail ( $pdfHBContactArray["pdf"]->Output("contactformulier.pdf", 'S'), "Contact", $_POST["firstname"], $_POST["surname"] ) ) {
-            $pdfHBContactArray["success"] = TRUE;
-            $pdfHBContactArray["message"] = "Wij hebben uw contactverzoek ontvangen en zullen hem zo spoedig mogelijk afhandelen!";
+        $pdfHBContactArray["success"] = sendContactMail ( $pdfHBContactArray["pdf"]->Output("contactformulier.pdf", 'S'), "Contact", $_POST["firstname"], $_POST["surname"]);
+        if ( $pdfHBContactArray["success"] === TRUE ) {
+            $pdfHBContactArray["message"] = "Wij hebben uw melding ontvangen en zullen hem zo spoedig mogelijk afhandelen!";
         }
-        else {
-            $pdfHBContactArray["success"] = FALSE;
+        if ( $pdfHBContactArray["success"] === "EMPTY" ) {
+            $pdfHBContactArray["message"] = "Er is momenteel niemand bereikbaar, probeer het later nogmaals.";
+        }
+        if ( $pdfHBContactArray["success"]  === FALSE ) {
             $pdfHBContactArray["message"] = "Er is een probleem opgetreden, probeer het later nogmaals.";
         }
     }

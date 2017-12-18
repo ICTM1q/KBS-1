@@ -35,13 +35,15 @@ if ( isset( $_POST["submit"]) ) {
             $pictures = getPictures($id);
             // Voor testing wanneer je geen mail win ontvangen zet comments bij sendComplaintMail en geen comments bij de ->Output() functie.
             //$pdfHBComplaintArray["pdf"]->Output();
-            if ( sendComplaintMail ( $pdfHBComplaintArray["pdf"]->Output("meldingformulier.pdf", 'S'), "Melding", $_POST["firstname"], $_POST["surname"], $pictures ) ) {
+            $pdfHBComplaintArray["success"] = sendComplaintMail ( $pdfHBComplaintArray["pdf"]->Output("meldingformulier.pdf", 'S'), "Melding", $_POST["firstname"], $_POST["surname"], $pictures );
+            if ( $pdfHBComplaintArray["success"] === TRUE ) {
                 $functions->insertNewIssue(connectToDatabase(), $_POST["firstname"], $_POST["insertion"], $_POST["surname"], $_POST["email"], $_POST["complaint"], $id);
-                $pdfHBComplaintArray["success"] = TRUE;
                 $pdfHBComplaintArray["message"] = "Wij hebben uw melding ontvangen en zullen hem zo spoedig mogelijk afhandelen!";
             }
-            else {
-                $pdfHBComplaintArray["success"] = FALSE;
+            if ( $pdfHBComplaintArray["success"] === "EMPTY" ) {
+                $pdfHBComplaintArray["message"] = "Er is momenteel niemand bereikbaar, probeer het later nogmaals.";
+            }
+            if ( $pdfHBComplaintArray["success"]  === FALSE ) {
                 $pdfHBComplaintArray["message"] = "Er is een probleem opgetreden, probeer het later nogmaals.";
             }
         }
@@ -64,7 +66,7 @@ if ( isset( $_POST["submit"]) ) {
     <title>Huur en beheer</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <link href="../css/huurenbeheer.css" rel="stylesheet">
+    <link href="css/huurenbeheer.css" rel="stylesheet">
   </head>
 
   <body>
