@@ -20,7 +20,7 @@ if ( isset ( $_POST["createuser"] ) ) {
 
 <form class="form-horizontal" method="POST">
     <fieldset>
-        <legend>Registreer gebruiker</legend>
+        <legend><h2>Registreer gebruiker:</h2></legend>
 
         <!-- Text input-->
         <div class="form-group row">

@@ -10,17 +10,17 @@
     <div class="col-md-12">
     <?php if (isset($_SESSION['message']) &&$_SESSION['message'] != null){ ?>
         <div class="alert alert-success custom-col" role="alert">
-            <?php echo $_SESSION['message']; $_SESSION['message'] = null; ?>
+            <?php echo $_SESSION['message']; $_SESSION['message'] = null; unset($_SESSION['message']);?>
         </div>
     <?php }
     if (isset($_SESSION['error']) && $_SESSION['error'] != null){ ?>
         <div class="alert alert-danger custom-col" role="alert">
-            <?php echo $_SESSION['error']; $_SESSION['error'] = null; ?>
+            <?php echo $_SESSION['error']; $_SESSION['error'] = null; unset($_SESSION['error']); ?>
         </div>
     <?php }
     if (isset($_SESSION['warning']) && $_SESSION['warning'] != null){ ?>
         <div class="alert alert-warning custom-col" role="alert">
-            <?php echo $_SESSION['warning']; $_SESSION['warning'] = null; ?>
+            <?php echo $_SESSION['warning']; $_SESSION['warning'] = null; unset($_SESSION['warning']);?>
         </div>
     <?php }
     ?>
