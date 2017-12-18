@@ -63,7 +63,7 @@ if (!isset($SQL_AVAILABLE)) {
 
 // Functie om een random string aan te maken als salt.
     function randString ( $length ) {
-        $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz@#$&*";
+        $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz@$*";
         $size = strlen( $chars );
         $str = "";
         for( $i = 0; $i < $length; $i++ ) {
