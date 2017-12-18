@@ -1,16 +1,35 @@
-body {
-    padding-top: 10%;
+.container-div{
+    width: 80%;
+    height: 250px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.carousel-div {
-    height: 230px;
+.klachten{
+    width: 35%;
+    height: 100%;
+    float: left;
+    text-align: center;
 }
 
-.sliderbox {
-    border: 2px solid black;
-    align-content: center;
+.meldingen{
+    width: 35%;
+    height: 100%;
+    float: right;
+    text-align: center;
 }
 
-.carousel-item{
-    align-content: center;
+.fa-phone{
+    font-size: 190px;
+    margin-bottom: 7%;
+}
+
+.fa-bell{
+    font-size: 190px;
+    margin-bottom: 7%;
+}
+
+.p-button{
+    font-weight: bold;
+    font-size: 20px;
 }
