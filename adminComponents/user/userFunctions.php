@@ -17,8 +17,8 @@ class userFunctions
             return $result;
         }
         else{
-            $_SESSION['warning'] = "Er kunnen geen gebruikers worden gevonden. Probeer het later nogmaals.";
-            file_put_contents("../logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['warning'] . "\r\n", FILE_APPEND);
+            $_SESSION['error'] = "Er kunnen geen gebruikers worden gevonden. Probeer het later nogmaals.";
+            file_put_contents("../logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
             return null;
         }
 
@@ -34,8 +34,8 @@ class userFunctions
             return $result;
         }
         else{
-            $_SESSION['warning'] = "Er kunnen geen gebruikers worden gevonden. Probeer het later nogmaals.";
-            file_put_contents("../logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['warning'] . "\r\n", FILE_APPEND);
+            $_SESSION['error'] = "Er kunnen geen gebruikers worden gevonden. Probeer het later nogmaals.";
+            file_put_contents("../logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
             return null;
         }
 
