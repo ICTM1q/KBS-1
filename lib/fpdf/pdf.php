@@ -2,7 +2,7 @@
 require ("fpdf.php");
 
 // Funcite om contactverzoeken af te handelen.
-function pdfHBContactFunc ( $firstname, $insertion, $surname, $email, $telno, $street, $city, $houseno, $zip, $message, $secureImage, $captchaCode ) {
+function pdfHBContactFunc ( $firstname, $insertion, $surname, $email, $telno, $message, $secureImage, $captchaCode ) {
     // Alles definieren.
     $pdfHBContactArray = array();
     $pdfHBContactArray["result"] = FALSE;
@@ -11,10 +11,6 @@ function pdfHBContactFunc ( $firstname, $insertion, $surname, $email, $telno, $s
     $pdfHBContactSurnameFlag = TRUE;
     $pdfHBContactEmailFlag = TRUE;
     $pdfHBContactTelnoFlag = TRUE;
-    $pdfHBContactStreetFlag = TRUE;
-    $pdfHBContactCityFlag = TRUE;
-    $pdfHBContactHousenoFlag = TRUE;
-    $pdfHBContactZipFlag = TRUE;
     $pdfHBContactMessageFlag = TRUE;
     $pdfHBContactCaptchaFlag = TRUE;
     
@@ -22,10 +18,6 @@ function pdfHBContactFunc ( $firstname, $insertion, $surname, $email, $telno, $s
     $pdfHBContactArray["surnameErr"] = "";
     $pdfHBContactArray["emailErr"] = "";
     $pdfHBContactArray["telnoErr"] = "";
-    $pdfHBContactArray["streetErr"] = "";
-    $pdfHBContactArray["cityErr"] = "";
-    $pdfHBContactArray["housenoErr"] = "";
-    $pdfHBContactArray["zipErr"] = "";
     $pdfHBContactArray["messageErr"] = "";
     $pdfHBContactArray["captchaErr"] = "";
     
@@ -46,22 +38,6 @@ function pdfHBContactFunc ( $firstname, $insertion, $surname, $email, $telno, $s
         $pdfHBContactArray["telnoErr"] = "Telefoonnummer is vereist.";
         $pdfHBContactTelnoFlag = FALSE;
     }
-    if ( empty ( $street ) ) {
-        $pdfHBContactArray["streetErr"] = "Straat is vereist.";
-        $pdfHBContactStreetFlag = FALSE;
-    }
-    if ( empty ( $city ) ) {
-        $pdfHBContactArray["cityErr"] = "Plaats is vereist.";
-        $pdfHBContactCityFlag = FALSE;
-    }
-    if ( empty ( $houseno ) ) {
-        $pdfHBContactArray["housenoErr"] = "Huisnummer is vereist.";
-        $pdfHBContactHousenoFlag = FALSE;
-    }
-    if ( empty ( $zip ) ) {
-        $pdfHBContactArray["zipErr"] = "Postcode is vereist.";
-        $pdfHBContactZipFlag = FALSE;
-    }
     // Kijk of message leeg is.
     if ( empty ( $message ) ) {
         $pdfHBContactArray["messageErr"] = "Voer A.U.B. uw bericht in.";
@@ -74,8 +50,7 @@ function pdfHBContactFunc ( $firstname, $insertion, $surname, $email, $telno, $s
     }
     // Kijk of alles nog op TRUE staat.
     if ( $pdfHBContactFirstnameFlag === TRUE && $pdfHBContactSurnameFlag === TRUE && $pdfHBContactEmailFlag == TRUE && $pdfHBContactTelnoFlag == TRUE 
-            && $pdfHBContactStreetFlag === TRUE && $pdfHBContactCityFlag = TRUE && $pdfHBContactMessageFlag == TRUE && $pdfHBContactCaptchaFlag == TRUE 
-            && $pdfHBContactHousenoFlag === TRUE && $pdfHBContactZipFlag === TRUE ) {
+              && $pdfHBContactMessageFlag == TRUE && $pdfHBContactCaptchaFlag == TRUE ) {
         
         // Zet flags voor validatie email en telefoonnummer. 
         $pdfHBContactArrayEmailIsValidFlag = TRUE;
@@ -105,7 +80,7 @@ function pdfHBContactFunc ( $firstname, $insertion, $surname, $email, $telno, $s
                     $this->Cell(80);
                     $this->Cell(35,18,"Contactformulier",0,0,"C");
                     $this->Line(20, 35, 210-20, 35);
-                    $this->Ln(30);
+                    $this->Ln(23);
                     }
                 }
                 $pdf = new PDF();
@@ -144,23 +119,8 @@ function pdfHBContactFunc ( $firstname, $insertion, $surname, $email, $telno, $s
                 $pdf->Cell(35,10,$telno);
                 
                 $pdf->SetXY(23, 60);
-                $pdf->Cell(35,10,"Woonplaats: ");
-                $pdf->SetXY(60, 60);
-                $pdf->Cell(35,10,$city);
-                
-                $pdf->SetXY(23, 65);
-                $pdf->Cell(35,10,"Adres: ");
-                $pdf->SetXY(60, 65);
-                $pdf->Cell(35,10,$street . " " . $houseno);
-                
-                $pdf->SetXY(23, 70);
-                $pdf->Cell(35,10,"Postcode: ");
-                $pdf->SetXY(60, 70);
-                $pdf->Cell(35,10,$zip);
-                
+                $pdf->Line(20, 68, 210-20, 68);
                 $pdf->SetXY(23, 75);
-                $pdf->Line(20, 85, 210-20, 85);
-                $pdf->SetXY(23, 90);
                 $pdf->Multicell(165,4.5,"Bericht: \n" . $message);
                 
                 $pdfHBContactArray["pdf"] = $pdf;

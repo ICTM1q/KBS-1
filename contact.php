@@ -19,7 +19,7 @@ if ( isset( $_POST["submit"] ) ) {
     $secureImage = new Securimage();
     
     // Voer pdfFunc uit.
-    $pdfHBContactArray = pdfHBContactFunc($_POST["firstname"], $_POST["insertion"], $_POST["surname"], $_POST["email"], $_POST["telno"], $_POST["street"], $_POST["city"], $_POST["houseno"], $_POST["zip"], $_POST["message"], $secureImage, $_POST["captchaCode"]);
+    $pdfHBContactArray = pdfHBContactFunc($_POST["firstname"], $_POST["insertion"], $_POST["surname"], $_POST["email"], $_POST["telno"], $_POST["message"], $secureImage, $_POST["captchaCode"]);
     if ( $pdfHBContactArray["result"] === TRUE ) {
         // Voor testing wanneer je geen mail win ontvangen zet comments bij sendContactMail en geen comments bij de ->Output() functie.
 
@@ -33,7 +33,7 @@ if ( isset( $_POST["submit"] ) ) {
         }
         if ( $pdfHBContactArray["success"]  === FALSE ) {
             $pdfHBContactArray["message"] = "Er is een probleem opgetreden, probeer het later nogmaals.";
-        }*/
+        }
     }
     else {
         $pdfHBContactArray["success"] = FALSE;
@@ -153,44 +153,6 @@ if ( isset( $_POST["submit"] ) ) {
                           </div>
                       </div>
                   </div>
-                  <div class="row">
-                    <div class="form-group col-md-6">
-                      <label for="inputCity">Straatnaam*</label>
-                      <input type="text" class="form-control" name="street" id="inputCity" placeholder="Straatnaam" value="<?php if ( isset ( $_POST["street"] ) ) { echo $_POST["street"]; } ?>">
-                      <?php
-                      if ( !empty($pdfHBContactArray["streetErr"])) {
-                        echo "<span class='error'>" . $pdfHBContactArray["streetErr"] . "</span><br>";
-                      }
-                      ?>
-                    </div>
-                     <div class="form-group col-md-6">
-                       <label for="inputCity">Plaatsnaam*</label>
-                       <input type="text" class="form-control" name="city" id="inputCity" placeholder="Plaatsnaam" value="<?php if ( isset ( $_POST["city"] ) ) { echo $_POST["city"]; } ?>">
-                       <?php
-                       if ( !empty($pdfHBContactArray["cityErr"])) {
-                        echo "<span class='error'>" . $pdfHBContactArray["cityErr"] . "</span><br>";
-                       }
-                       ?>
-                     </div>
-                     <div class="form-group col-md-6">
-                       <label for="inputZip">Huisnummer*</label>
-                       <input type="text" class="form-control" name="houseno" id="inputZip" placeholder="Huisnummer" value="<?php if ( isset ( $_POST["houseno"] ) ) { echo $_POST["houseno"]; } ?>">
-                       <?php
-                       if ( !empty($pdfHBContactArray["housenoErr"])) {
-                         echo "<span class='error'>" . $pdfHBContactArray["housenoErr"] . "</span><br>";
-                       }
-                       ?>
-                     </div>
-                     <div class="form-group col-md-6">
-                       <label for="inputZip">Postcode*</label>
-                       <input type="text" class="form-control" name="zip" id="inputZip" placeholder="Postcode" value="<?php if ( isset ( $_POST["zip"] ) ) { echo $_POST["zip"]; } ?>">
-                       <?php
-                       if ( !empty($pdfHBContactArray["zipErr"])) {
-                         echo "<span class='error'>" . $pdfHBContactArray["zipErr"] . "</span><br>";
-                       }
-                       ?>
-                     </div>
-                   </div>
                   <div class="row">
                       <div class="col-md-12">
                           <div class="form-group">
