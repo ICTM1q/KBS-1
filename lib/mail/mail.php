@@ -71,6 +71,9 @@ function sendContactMail ( $attachment, $type, $firstname, $surname ) {
     $mail->Subject = "[" . date("y-m-d H:i:s") . "]" . "[" . $type . "]" . " Van: " . $firstname . " " . $surname;
     $mail->Body = "Inkomend contactformulier.";
     $toEmails = getFormEmails($type);
+    if ( empty( $toEmails ) ) {
+        return "EMPTY";
+    }
     foreach ($toEmails as $addr) {
         $mail->addAddress($addr[0]);
     }
@@ -106,6 +109,9 @@ function sendComplaintMail ( $attachment, $type, $firstname, $surname, $images )
     $mail->Subject = "[" . date("y-m-d H:i:s") . "]" . "[" . $type . "]" . " Van: " . $firstname . " " . $surname;
     $mail->Body = "Inkomend meldingformulier.";
     $toEmails = getFormEmails($type);
+    if ( empty( $toEmails ) ) {
+        return "EMPTY";
+    }
     foreach ($toEmails as $addr) {
         $mail->addAddress($addr[0]);
     }
