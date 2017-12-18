@@ -72,10 +72,9 @@ class residenceFunctions
     function insertNewResidence($conn, $adres, $city, $postalcode, $description, $price)
     {
         
-        $id = $this->getPandId( $conn );
         include $_SERVER['DOCUMENT_ROOT']."/lib/mail/mail.php";
-        $sql = "INSERT INTO pand (pandid, adres, city, postalcode, description, price)
-                VALUES ('$id', '$adres', '$city', '$postalcode', '$description', '$price')";
+        $sql = "INSERT INTO pand (adres, city, postalcode, description, price)
+                VALUES ('$adres', '$city', '$postalcode', '$description', '$price')";
 
         if ($conn->query($sql) === TRUE) {
             if ( sendToMaillist ( $adres, $city, $postalcode, $description, $price ) === TRUE ) {
@@ -93,16 +92,6 @@ class residenceFunctions
             file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
             return;
         }
-    }
-    
-    function getPandId( )
-    {
-        include $_SERVER['DOCUMENT_ROOT']."/lib/config/sqlconfig.php";
-        $conn = new PDO ( "mysql:host=localhost;dbname=$dbname;", $user, $dbpassword);
-        $statement = $conn->prepare("SELECT max(pandid) FROM pand");
-        $statement->execute();
-
-        return $statement->fetch()[0] + 1;
     }
     
     function deleteResidence($conn, $pandid)
