@@ -1,3 +1,9 @@
+body {
+    background-color: #E0F4FB;
+    background-image: url("img/bg.jpg");
+    background-repeat: repeat-x;
+}
+
 .container-div{
     width: 80%;
     height: 250px;
@@ -5,31 +11,32 @@
     margin-right: auto;
 }
 
-.klachten{
+.huurenbeheer_div{
+    margin-left: -15%;
     width: 35%;
     height: 100%;
     float: left;
     text-align: center;
 }
 
-.meldingen{
+.taxatie_div{
+    margin-right: 6%;
     width: 35%;
     height: 100%;
     float: right;
     text-align: center;
 }
 
-.fa-phone{
-    font-size: 190px;
+.huurenbeheer{
+    margin-top: 15%;
+    font-size: 250px;
     margin-bottom: 7%;
+    width: 150%;
 }
 
-.fa-bell{
-    font-size: 190px;
+.taxatie{
+    margin-top: 15%;
+    font-size: 250px;
     margin-bottom: 7%;
-}
-
-.p-button{
-    font-weight: bold;
-    font-size: 20px;
+    width: 150%;
 }
