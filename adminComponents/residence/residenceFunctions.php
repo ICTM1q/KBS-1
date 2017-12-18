@@ -72,7 +72,7 @@ class residenceFunctions
     function insertNewResidence($conn, $adres, $city, $postalcode, $description, $price)
     {
         
-        include $_SERVER['DOCUMENT_ROOT']."/lib/mail/mail.php";
+        include_once $_SERVER['DOCUMENT_ROOT']."/lib/mail/mail.php";
         $sql = "INSERT INTO pand (adres, city, postalcode, description, price)
                 VALUES ('$adres', '$city', '$postalcode', '$description', '$price')";
 

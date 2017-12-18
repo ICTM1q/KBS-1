@@ -5,8 +5,8 @@
  * Date: 18-11-2017
  * Time: 12:11
  */
-include "../header.php";
-include "menu.php";
+include_once "../header.php";
+include_once "menu.php";
 require_once("../residence/residenceFunctions.php");
 require_once("userFunctions.php");
 $functions = new residenceFunctions();
@@ -26,7 +26,7 @@ if (isset($_POST['editRecord']) && $_POST != null){
     $result2 = $functions->getUserRecieverSettings($conn, $result->email);
     $result2 = $result2->fetch_object();
 }
-include "../alert.php";
+include_once "../alert.php";
 ?>
 <form class="form-horizontal" method="post">
     <fieldset>
@@ -35,7 +35,7 @@ include "../alert.php";
             <label class="col-md-4 control-label" for="username">Gebruikersnaam</label>
             <div class="col-md-4">
                 <input type="hidden" value="<?php echo $result->username ?>" name="username">
-                <input id="username" name="username" type="text" value="<?php echo $result->username ?>" class="form-control input-md" required="" disabled>
+                <input id="username" name="username" type="text" value="<?php echo $result->username ?>" class="form-control input-md" require_onced="" disabled>
             </div>
         </div>
         <div class="form-group row">
@@ -145,4 +145,4 @@ include "../alert.php";
 </form>
 
 
-<?php include "../footer.php"; ?>
+<?php include_once "../footer.php"; ?>

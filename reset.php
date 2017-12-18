@@ -1,15 +1,15 @@
 <?php
 // Session voor captcha.
 session_start();
-include ("lib/account/sql.php");
-include ("lib/account/account.php");
+include_once ("lib/account/sql.php");
+include_once ("lib/account/account.php");
 
 $createTokenArray["emailErr"] = "";
 $createTokenArray["captchaErr"] = "";
 $createTokenArray["result"] = "";
 
 if (isset($_POST["createToken"])) {
-    include_once "lib/securimage/securimage.php";
+    include_once_once "lib/securimage/securimage.php";
     $secureImage = new Securimage();
     
     $createTokenArray = createToken ( trim($_POST["email"]), $secureImage, trim($_POST["captchaCode"]));

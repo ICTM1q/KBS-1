@@ -29,7 +29,7 @@
 <body>
 
 <?php
-        include 'navbar.php';
+        include_once 'navbar.php';
       ?>
 
 <!-- Page Content -->
@@ -106,7 +106,7 @@
 </div>
 </div>
 <?php
-    include 'footer.php';
+    include_once 'footer.php';
     ?>
 </body>
 </html>

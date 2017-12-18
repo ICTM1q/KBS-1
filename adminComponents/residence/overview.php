@@ -6,8 +6,8 @@
  * Time: 12:11
  */
 
-include "../header.php";
-include "menu.php";
+include_once "../header.php";
+include_once "menu.php";
 require_once "residenceFunctions.php";
 $functions = new residenceFunctions();
 $conn = $functions->connectDB();
@@ -40,7 +40,7 @@ $conn->close();
 <!-- content here -->
 
 <h2>Woningoverzicht:</h2>
-<?php include "../alert.php"; ?>
+<?php include_once "../alert.php"; ?>
 <table class="table-hover table">
     <tr>
         <th>ID</th>
@@ -82,7 +82,7 @@ $conn->close();
         <?php }
         } ?>
 </table>
-<?php include "../pagination.php"; ?>
+<?php include_once "../pagination.php"; ?>
 <script>
     $(function() {
         $('.delete').click(function() {
@@ -90,4 +90,4 @@ $conn->close();
         });
     });
 </script>
-<?php include "../footer.php"; ?>
+<?php include_once "../footer.php"; ?>

@@ -16,7 +16,7 @@
     <body>
         <!-- Navbar -->
         <?php
-            include 'navbar.php';
+            include_once 'navbar.php';
         ?>
 
         <!-- Inhoud -->
@@ -47,7 +47,7 @@
 
         <!-- Footer -->
         <?php
-            include 'footer.php';
+            include_once 'footer.php';
         ?>
     </body>
 </html>

@@ -871,7 +871,7 @@ class WavFile
     // Wave file methods
 
     /**
-     * Construct a wav header from this object. Includes "fact" chunk if necessary.
+     * Construct a wav header from this object. include_onces "fact" chunk if necessary.
      * http://www-mmsp.ece.mcgill.ca/documents/audioformats/wave/wave.html
      *
      * @return string  The RIFF header data.

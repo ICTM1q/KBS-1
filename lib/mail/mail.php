@@ -18,7 +18,7 @@ function sendToMaillist ( $adres, $city, $postalcode, $description, $price ) {
 }
 
 function sendTokenMail ( $token, $email ) {
-    include $_SERVER['DOCUMENT_ROOT']."/lib/config/mailconfig.php";
+    include_once $_SERVER['DOCUMENT_ROOT']."/lib/config/mailconfig.php";
     $mail = new PHPMailer();
     $mail->IsSMTP();
     $mail->SMTPDebug = 0; // Debugging. 1 = Errors. 2 = Errors en server messsages.
@@ -49,7 +49,7 @@ function sendTokenMail ( $token, $email ) {
 }
 
 function sendContactMail ( $attachment, $type, $firstname, $surname ) {
-    include $_SERVER['DOCUMENT_ROOT']."/lib/config/mailconfig.php";
+    include_once $_SERVER['DOCUMENT_ROOT']."/lib/config/mailconfig.php";
     $mail = new PHPMailer();
     $mail->IsSMTP();
     $mail->SMTPDebug = 0; // Debugging. 1 = Errors. 2 = Errors en server messsages.
@@ -87,7 +87,7 @@ function sendContactMail ( $attachment, $type, $firstname, $surname ) {
 }
 
 function sendComplaintMail ( $attachment, $type, $firstname, $surname, $images ) {
-    include $_SERVER['DOCUMENT_ROOT']."/lib/config/mailconfig.php";
+    include_once $_SERVER['DOCUMENT_ROOT']."/lib/config/mailconfig.php";
     $mail = new PHPMailer();
     $mail->IsSMTP();
     $mail->SMTPDebug = 0; // Debugging. 1 = Errors. 2 = Errors en server messsages.
@@ -128,7 +128,7 @@ function sendComplaintMail ( $attachment, $type, $firstname, $surname, $images )
 }
 
 function emailMaillist ( $adres, $city, $postalcode, $description, $price, $emails ) {
-    include $_SERVER['DOCUMENT_ROOT']."/lib/config/mailconfig.php";
+    include_once $_SERVER['DOCUMENT_ROOT']."/lib/config/mailconfig.php";
     foreach ($emails as $addr) {
         $mail = new PHPMailer();
         $mail->IsSMTP();

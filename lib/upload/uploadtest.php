@@ -7,7 +7,7 @@
     <?php
     //Check of de form gesubmit is.
     if (isset($_POST["submit"])) {
-        include "upload.php";
+        include_once "upload.php";
         $id = uploadFile();
 
         if ($id == false) {

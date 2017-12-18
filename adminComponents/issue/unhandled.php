@@ -7,10 +7,10 @@
  */
 
 
-include "../header.php";
-include "menu.php";
+include_once "../header.php";
+include_once "menu.php";
 require_once "../residence/residenceFunctions.php";
-//retrieve data before the alert.php include in case of errors.
+//retrieve data before the alert.php include_once in case of errors.
 $dbFunctions = new residenceFunctions();
 $conn = $dbFunctions->connectDB();
 
@@ -29,7 +29,7 @@ if(isset($_GET['page'])){
     $result = $functions->getAllUnHandledIssuesPaginated($conn, $limit , 1);
 }
 //show messages
-include "../alert.php";
+include_once "../alert.php";
 ?>
     <!-- content here -->
     <h2>Klachten:</h2>
@@ -71,5 +71,5 @@ include "../alert.php";
     </table>
 
 <?php
-include "../pagination.php";
-include "../footer.php"; ?>
+include_once "../pagination.php";
+include_once "../footer.php"; ?>

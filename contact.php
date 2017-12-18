@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "lib/fpdf/pdf.php";
+include_once "lib/fpdf/pdf.php";
 require $_SERVER['DOCUMENT_ROOT']."/lib/mail/mail.php";
 
 // Definier captchaError leeg.
@@ -15,7 +15,7 @@ $pdfHBContactArray["message"] = "";
 
 // Als het knopje ingedrukt is.
 if ( isset( $_POST["submit"] ) ) {
-    include_once "lib/securimage/securimage.php";
+    include_once_once "lib/securimage/securimage.php";
     $secureImage = new Securimage();
     
     // Voer pdfFunc uit.
@@ -62,7 +62,7 @@ if ( isset( $_POST["submit"] ) ) {
 
     <!-- Navigation -->
     <?php
-    include 'navbar.php';
+    include_once 'navbar.php';
     ?>
 
     <!-- Page Content -->
@@ -202,7 +202,7 @@ if ( isset( $_POST["submit"] ) ) {
     <br>
 
     <?php
-        include 'footer.php';
+        include_once 'footer.php';
     ?>
     
     <!-- Bootstrap core JavaScript -->

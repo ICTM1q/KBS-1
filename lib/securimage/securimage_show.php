@@ -51,7 +51,7 @@ require_once dirname(__FILE__) . '/securimage.php';
 
 $img = new Securimage();
 
-// You can customize the image by making changes below, some examples are included - remove the "//" to uncomment
+// You can customize the image by making changes below, some examples are include_onced - remove the "//" to uncomment
 
 //$img->ttf_file        = './Quiff.ttf';
 //$img->captcha_type    = Securimage::SI_CAPTCHA_MATHEMATIC; // show a simple math problem instead of text
