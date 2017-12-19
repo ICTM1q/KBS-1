@@ -1,9 +1,11 @@
 <?php
 
 include_once $_SERVER['DOCUMENT_ROOT']."/lib/mail/mail.php";
+$insertArray["success"] = FALSE;
+$insertArray["emailErr"] = "";
 
 if ( isset( $_POST["submit"] ) ) {
-    insertIntoMaillist($_POST["email"]);
+    $insertArray = insertIntoMaillist($_POST["email"]);
 }
 
 ?>
@@ -11,5 +13,16 @@ if ( isset( $_POST["submit"] ) ) {
 <form method="post">
 Email:<br>
 <input type="text" name="email" value="<?php if ( isset ( $_POST["email"] ) ) { echo $_POST["email"]; } ?>">
+<?php if ( !empty($insertArray["emailErr"]) ) {
+    echo $insertArray["emailErr"];
+}
+if ( $insertArray["success"] === TRUE ) {
+    echo "U bent succesvol toegevoegd aan ons abonnement systeem!";
+}
+if ( $insertArray["success"] === FALSE && empty($insertArray["emailErr"])) {
+    echo "Er is iets misgegaan!";
+}
+?>
+
 <input type="submit" value="Verstuur" name="submit" class="knop">
 
