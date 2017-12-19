@@ -48,36 +48,34 @@
          <br>
          <h2>Taxaties</h2>
          <p>
-           U wilt weten wat de waarde is van uw eigen woning? U wilt uw financiering herstructureren en oversluiten?
+           U wil weten wat de waarde is van uw eigen woning? U wilt uw financiering herstructureren en oversluiten? Of heeft u een nieuwe woning gekocht?
            <br>
            In beide gevallen kunt u Hoksbergen Makelaardij inschakelen. Onze makelaar-taxateurs zijn gekwalificeerd en beschikken over de nodige kennis en ervaring om objectief de waarde van het getaxeerde vast te stellen.
 Het bepalen van de objectieve waarde van een pand is belangrijk voor verschillende doeleinden.
          </p>
          <p>
-           Er worden o.a. taxaties verricht;
+           Er worden o.a. taxaties verricht voor;
            <ul>
-             <li>Bij koop en verkoop van een woning</li>
-             <li>Voor hypothecaire financiering </li>
-             <li>Voor financiering met NHG (NWWI, RapportNetPro, NTS, TVI en andere validerende instituten)</li>
-             <li>Bij een overdracht in de familiesfeer</li>
+             <li>Financiering hypothecaire lening</li>
+             <li>Financiering met of zonder NHG </li>
+             <li>Gevalideerde rapporten. (wij zijn aangesloten bij TVI en NWWI)</li>
+             <li>Aan- en verkoop beslissing van een woning</li>
+             <li>Bij een overdracht in  familieverband</li>
              <li>Bij onteigening van de onroerende zaak</li>
-             <li>Om de herbouwwaarde te kunnen bepalen voor de verzekering</li>
              <li>Voor het bepalen van de huurwaarde bij verhuur</li>
              <li>Voor fiscale doeleinden</li>
              <li>Waardering van pachtvergoedingen </li>
            </ul>
         </p>
         <p>
-          De taxateur beoordeelt de woning en legt dit vast in een rapport.
+            De afspraak voor de taxatie wordt op de dag waarop wij de taxatieopdracht ontvangen gemaakt.<br>
+De taxateur beoordeelt de woning en legt dit vast in een rapport, wat u van ons ontvangt.
+
           <br>
           <b>Hoksbergen</b>, <i>nauwkeurig</i> tot achter de komma
         </p>
         <p>
           <br>
-          <ul>
-            <li></li>
-            <li></li>
-          </ul>
         </p>
         <p>
           Voor gevalideerde taxatierapporten van woningen voor hypothecaire financieringen zijn wij aangesloten bij het NWWI en de TaxateursUnie.
@@ -88,7 +86,7 @@ Het bepalen van de objectieve waarde van een pand is belangrijk voor verschillen
           <br>
           Klik dan <a href="contact.php">hier</a>
           <br>
-          Wilt u liever telefonisch een afspraak maken dan kunt u bellen naar 038-333
+          Wilt u liever telefonisch een afspraak maken dan kunt u bellen naar 038-33 310 43
         </table>
         <p>
           <center><a href="https://www.vastgoedcert.nl/"><img src="img/vastgoedcert.jpg" alt="" hspace="13"></a><img src="img/NWWI.jpg" alt="" hspace="13"><img src="img/TVI.jpg" alt="" hspace="13"><img src="img/nrvt.jpg" alt="" hspace="13"></center>
