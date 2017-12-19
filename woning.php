@@ -32,14 +32,14 @@
         include_once 'navbar.php';
       ?>
 
-<!-- Page Content -->
-<div class="container top-tekst-woning">
+<div class="container">
+    <br>
     <div class="row">
         <div class="col">
             <h1 class=" top-tekst"><?= $residence['adres'] . ", " . $residence['postalcode'] . " " . $residence['city'] ?></h1>
+            <br>
         </div>
     </div>
-</div>
 
 <div class="row body-woning row-woning">
     <div class="col-md-8">
@@ -93,7 +93,7 @@
             <li>Prijs: €<?= $residence['price'] ?></li>
         </ul>
         <br>
-        <a href="contact.php" class="btn btn-space btn-primary">Contacteer ons</a><a href="#" class="btn btn-space btn-primary">Andere optie</a>
+        <a href="contact.php" class="btn btn-space btn-primary">Contacteer ons</a>
     </div>
 
 </div>
