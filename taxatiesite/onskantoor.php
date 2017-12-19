@@ -62,6 +62,42 @@ Wat is begonnen als een neventak is door de tevredenheid van onze klanten uitgeg
         </p>
         <br>
         <center><h3>Onze medewerkers</h3></center>
+        <br>
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <center><h4 class="card-title">Jan Hoksbergen</h4></center>
+               <center><p class="card-text">Register makelaar <br> Taxateur</p></center>
+               <br>
+                 <img class="img-fluid rounded" src="img/jan.jpg" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <center><h4 class="card-title">Paulien Gelderloos</h4></center>
+                <center><p class="card-text">Medewerker binnendienst</p></center>
+                <br>
+                <br>
+                <img class="img-fluid rounded" src="img/paulien.jpg" alt="">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <center><h4 class="card-title">Aline Zwakenberg</h4></center>
+                <center><p class="card-text">Medewerker binnendienst</p></center>
+                <br>
+                <br>
+                <img class="img-fluid rounded" src="img/aline.jpg" alt="">
+              </div>
+            </div>
+          </div>
+      </div>
        </div>
      </div>
    </div>
