@@ -39,7 +39,7 @@ if ( isset( $_POST["submit"]) ) {
             // Voor testing wanneer je geen mail win ontvangen zet comments bij sendComplaintMail en geen comments bij de ->Output() functie.
             //$pdfHBComplaintArray["pdf"]->Output();
             // Stuur een klachtmail naar de personen die deze horen te krijgen.
-            $pdfHBComplaintArray["success"] = sendComplaintMail ( $pdfHBComplaintArray["pdf"]->Output("meldingformulier.pdf", 'S'), "Melding", $_POST["firstname"], $_POST["surname"], $pictures );
+            $pdfHBComplaintArray["success"] = sendTypeMail ( $pdfHBComplaintArray["pdf"]->Output("meldingformulier.pdf", 'S'), "Melding", $_POST["firstname"], $_POST["surname"], $pictures );
             
             // Anti-CSS maatregelen
             $firstname = htmlspecialchars($_POST["firstname"]);

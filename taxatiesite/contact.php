@@ -19,18 +19,20 @@ if ( isset( $_POST["submit"] ) ){
     $secureImage = new Securimage();
 
     // Voer pdfFunc uit.
-    $pdfHTContactArray = pdfHTContactFunc($_POST["firstname"],"", $_POST["surname"], $_POST["email"], $_POST["telno"], $_POST["street"], $_POST["city"], $_POST["houseno"], $_POST["zip"], $_POST["message"], $secureImage, $_POST["captchaCode"]);
+    $pdfHTContactArray = pdfHTContactFunc($_POST["firstname"], $_POST["insertion"], $_POST["surname"], $_POST["email"], $_POST["telno"], $_POST["street"], $_POST["city"], $_POST["houseno"], $_POST["zip"], $_POST["message"], $secureImage, $_POST["captchaCode"]);
     if ( $pdfHTContactArray["result"] === TRUE ) {
         // Voor testing wanneer je geen mail win ontvangen zet comments bij sendContactMail en geen comments bij de ->Output() functie.
-       $pdfHTContactArray["pdf"]->Output();
-        /*if ( sendContactMail ( $pdfHTContactArray["pdf"]->Output("contactformulier.pdf", 'S'), "Contact", $_POST["firstname"], $_POST["surname"] ) ) {
-            $pdfHTContactArray["success"] = TRUE;
-            $pdfHTContactArray["message"] = "Wij hebben uw contactverzoek ontvangen en zullen hem zo spoedig mogelijk afhandelen!";
+        //$pdfHTContactArray["pdf"]->Output();
+        $pdfHTContactArray["success"] = sendTypeMail ( $pdfHTContactArray["pdf"]->Output("contactformulier.pdf", 'S'), "Taxatie", $_POST["firstname"], $_POST["surname"], "");
+        if ( $pdfHTContactArray["success"] === TRUE ) {
+            $pdfHTContactArray["message"] = "Wij hebben uw melding ontvangen en zullen hem zo spoedig mogelijk afhandelen!";
         }
-        else {
-            $pdfHTContactArray["success"] = FALSE;
+        if ( $pdfHTContactArray["success"] === "EMPTY" ) {
+            $pdfHTContactArray["message"] = "Er is momenteel niemand bereikbaar, probeer het later nogmaals.";
+        }
+        if ( $pdfHTContactArray["success"]  === FALSE ) {
             $pdfHTContactArray["message"] = "Er is een probleem opgetreden, probeer het later nogmaals.";
-        }*/
+        }
     }
     else {
         $pdfHTContactArray["success"] = FALSE;
@@ -92,6 +94,16 @@ if ( isset( $_POST["submit"] ) ){
          <br>
          <h1>Contacteer ons hieronder</h1>
          <p>In dit veld hieronder kunt u met ons contact maken.</p>
+         <?php
+         if ( !empty($pdfHTContactArray["message"])) {
+             if ( $pdfHTContactArray["success"] === TRUE ) {
+               echo "<span class='success'>" . $pdfHTContactArray["message"] . "</span><br>";
+             }
+             else {
+               echo "<span class='error'>" . $pdfHTContactArray["message"] . "</span><br>";
+             }
+         }
+         ?>
        </div>
      </div>
 
@@ -107,7 +119,7 @@ if ( isset( $_POST["submit"] ) ){
                      <div class="col-md-6">
                          <div class="form-group">
                              <label for="form_name">Voornaam*</label>
-                             <input id="form_name" type="text" name="firstname" class="form-control" placeholder="Voornaam" required="required" data-error="Voornaam is verplicht.">
+                             <input id="form_name" type="text" name="firstname" class="form-control" placeholder="Voornaam">
                              <?php
                              if ( !empty($pdfHTContactArray["firstnameErr"])) {
                                  echo "<span class='error'>" . $pdfHTContactArray["firstnameErr"] . "</span><br>";
@@ -117,9 +129,16 @@ if ( isset( $_POST["submit"] ) ){
                          </div>
                      </div>
                      <div class="col-md-6">
+                          <div class="form-group">
+                              <label for="form_name">Tussenvoegsel</label>
+                              <input id="form_name" type="text" name="insertion" class="form-control" placeholder="Tussenvoegsel" value="<?php if ( isset ( $_POST["insertion"] ) ) { echo $_POST["insertion"]; } ?>">
+                              <div class="help-block with-errors"></div>
+                          </div>
+                     </div>
+                     <div class="col-md-6">
                          <div class="form-group">
                              <label for="form_lastname">Achternaam*</label>
-                             <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Achternaam" required="required" data-error="Achternaam is verplicht">
+                             <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Achternaam">
                              <?php
                               if ( !empty($pdfHTContactArray["surnameErr"])) {
                                 echo "<span class='error'>" . $pdfHTContactArray["surnameErr"] . "</span><br>";
@@ -133,7 +152,7 @@ if ( isset( $_POST["submit"] ) ){
                      <div class="col-md-6">
                          <div class="form-group">
                              <label for="form_email">Email adres*</label>
-                             <input id="form_email" type="email" name="email" class="form-control" placeholder="Email adres" required="required" data-error="Een geldige email is verplicht">
+                             <input id="form_email" type="email" name="email" class="form-control" placeholder="Email adres">
                              <?php
                               if ( !empty($pdfHTContactArray["emailErr"])) {
                                 echo "<span class='error'>" . $pdfHTContactArray["emailErr"] . "</span><br>";
@@ -199,7 +218,7 @@ if ( isset( $_POST["submit"] ) ){
                      <div class="col-md-12">
                          <div class="form-group">
                              <label for="form_message">Bericht*</label>
-                             <textarea id="form_message" name="message" class="form-control" placeholder="Bericht" rows="4" required="required" data-error="Laat in dit veld een bericht achter."></textarea>
+                             <textarea id="form_message" name="message" class="form-control" placeholder="Bericht" rows="4"></textarea>
                              <?php
                               if ( !empty($pdfHTContactArray["messageErr"])) {
                                 echo "<span class='error'>" . $pdfHTContactArray["messageErr"] . "</span><br>";

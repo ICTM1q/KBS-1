@@ -9,7 +9,7 @@ function getFormEmails ( $type ) {
         $row = $stmt->fetchAll();
         return $row;
     }
-    if ( $type === "Taxation" ) {
+    if ( $type === "Taxatie" ) {
         include $_SERVER['DOCUMENT_ROOT']."/lib/config/sqlconfig.php";
         $conn = new PDO ( "mysql:host=localhost;dbname=$dbname;", $user, $dbpassword);
         $stmt = $conn->prepare ( "SELECT email FROM receiver WHERE taxation = 1" );
