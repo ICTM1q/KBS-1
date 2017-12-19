@@ -64,9 +64,9 @@
         </div>
             
             <h3 class="h3-tekst">Algemene voorwaarden</h3>
-            <p>U kunt onze algemene voorwaarden hier downloaden.</p>
-            <form method="post">
-                <input type="submit" value="Algemene voorwaarden" name="algemeenevoorwaarden" class="knop">
+            <center><p>U kunt onze algemene voorwaarden hier downloaden.</p>
+                <form method="get" action="Algemene_Voorwaarden.pdf">
+                <input type="submit" value="Algemene voorwaarden" name="algemeenevoorwaarden" class="knop"></center>
             </form><br>
     </div>
     
