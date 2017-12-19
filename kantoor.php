@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link href="css/huurenbeheer.css" rel="stylesheet">
+    <link href="css/kantoor.css" rel="stylesheet">
   </head>
 
   <body>
@@ -38,21 +39,26 @@
                     <span>Register makelaar</span>
                     <p>Taxateur</p>
                 </div>
-                <div>
-                    <img src="css/img/jan.jpg">
-                </div>
-                <img class="line" src="css/img/line.png"><br>
-                <div>
-                    <h5>Paulien Gelderloos</h5>
-                        <p>Medewerker binnendienst</p>
-                </div>
-                <div>
-                    <img src="css/img/paulien.jpg">
+                <div class="medewerker-img">
+                    <img src="css/img/jan.jpg" height="350" width="216">
                 </div>
                 <img class="line" src="css/img/line.png"><br>
                 <div>
                     <h5>Aline Zwakenberg</h5>
                         <p>Medewerker binnendienst</p>
+                </div>
+                <div class="medewerker-img">
+                    <img src="css/img/aline.jpg" height="350" width="216">
+                </div>
+                <div>
+                <img class="line" src="css/img/line.png"><br>
+                </div>
+                <div>
+                    <h5>Paulien Gelderloos</h5>
+                        <p>Medewerker binnendienst</p>
+                </div>
+                <div class="medewerker-img">
+                    <img src="css/img/paulien.jpg" height="350" width="216">
                 </div>
                 <img class="line" src="css/img/line.png"><br>
         </div>
