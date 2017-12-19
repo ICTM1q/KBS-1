@@ -23,16 +23,18 @@ if ( isset( $_POST["submit"]) ) {
     $secureImage = new Securimage();
 
     include_once "lib/upload/upload.php";
-    $id = uploadFile();
+    $id = autoUpload();
     
     // Voer pdfFunc uit.
     $pdfHBComplaintArray = pdfHBComplaintFunc($_POST["firstname"], $_POST["insertion"], $_POST["surname"], $_POST["email"], $_POST["telno"], $_POST["street"], $_POST["city"], $_POST["houseno"], $_POST["zip"], $_POST["complaint"], $secureImage, $_POST["captchaCode"]);
     if ( $pdfHBComplaintArray["result"] === TRUE ) {
         if ($id == false) {
             $pdfHBComplaintArray["success"] = FALSE;
-            $pdfHBComplaintArray["message"] = $UPLOAD_ERROR;
+            $pdfHBComplaintArray["message"] = $_SESSION['error'];
         } else {
-            $pictures = getPictures($id);
+            $func = new residenceFunctions();
+            $conn = $func->connectDB();
+            $pictures = getPictures($id, $conn);
             // Voor testing wanneer je geen mail win ontvangen zet comments bij sendComplaintMail en geen comments bij de ->Output() functie.
             //$pdfHBComplaintArray["pdf"]->Output();
             $pdfHBComplaintArray["success"] = sendComplaintMail ( $pdfHBComplaintArray["pdf"]->Output("meldingformulier.pdf", 'S'), "Melding", $_POST["firstname"], $_POST["surname"], $pictures );

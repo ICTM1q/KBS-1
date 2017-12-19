@@ -12,7 +12,7 @@ include_once "../alert.php";
 require_once "residenceFunctions.php";
 
 ?>
-<form class="form-horizontal" method="post" action="overview.php">
+<form class="form-horizontal" method="post" action="overview.php" enctype="multipart/form-data">
     <fieldset>
         <legend>Maak een woning aan: </legend>
         <div class="form-group row">
@@ -39,6 +39,14 @@ require_once "residenceFunctions.php";
                 <textarea class="form-control" id="beschrijving" name="beschrijving" rows="5"></textarea require_onced="require_onced">
             </div>
         </div>
+
+        <div class="form-group row">
+            <label class="col-md-5 control-label" for="filebutton">File Button</label>
+            <div class="col-md-5">
+                <input id="filebutton" name="upload[]" type="file"  class="input-file" multiple="multiple">
+            </div>
+        </div>
+
         <div class="form-group row">
             <label class="col-md-5 control-label" for="prijs">Prijs</label>
             <div class="col-md-5">

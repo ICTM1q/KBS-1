@@ -44,7 +44,7 @@ class issueFunctions
         if ($result->num_rows > 0) {
             return $result;
         } else {
-            $_SESSION['error'] = "Er zijn geen klachten gevonden.";
+            $_SESSION['error'] = "Er zijn geen on-afgehandelde klachten gevonden.";
             return null;
         }
     }
@@ -58,7 +58,7 @@ class issueFunctions
         if ($result->num_rows > 0) {
             return $result;
         } else {
-            $_SESSION['error'] = "Er zijn geen klachten gevonden.";
+            $_SESSION['error'] = "Er zijn geen on-afgehandelde klachten gevonden.";
             return null;
         }
     }
@@ -71,7 +71,7 @@ class issueFunctions
         if ($result->num_rows > 0) {
             return $result;
         } else {
-            $_SESSION['error'] = "Er zijn geen klachten gevonden.";
+            $_SESSION['error'] = "Er zijn geen afgehandelde klachten gevonden.";
             return null;
         }
     }
@@ -85,7 +85,7 @@ class issueFunctions
         if ($result->num_rows > 0) {
             return $result;
         } else {
-            $_SESSION['error'] = "Er zijn geen klachten gevonden.";
+            $_SESSION['error'] = "Er zijn geen afgehandelde klachten gevonden.";
             return null;
         }
     }

@@ -45,28 +45,28 @@ if(isset($result) && $result != null){?>
         <!-- Text input-->
         <div class="form-group row">
             <label class="col-md-4 control-label" for="firstname">Voornaam</label>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <input id="firstname" name="firstname" type="text" value="<?php echo $result->firstname ?>" class="form-control input-md">
 
             </div>
         </div>
         <div class="form-group row">
             <label class="col-md-4 control-label" for="prefix">Tussenvoegsel</label>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <input id="prefix" name="prefix" type="text" value="<?php echo $result->insertion ?>" class="form-control input-md">
 
             </div>
         </div>
         <div class="form-group row">
             <label class="col-md-4 control-label" for="lastname">Achternaam</label>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <input id="lastname" name="lastname" type="text" value="<?php echo $result->surname ?>" class="form-control input-md">
 
             </div>
         </div>
         <div class="form-group row">
             <label class="col-md-4 control-label" for="email">Email</label>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <input id="email" name="email" type="text" value="<?php echo $result->email ?>" class="form-control input-md">
 
             </div>
@@ -75,7 +75,7 @@ if(isset($result) && $result != null){?>
         <!-- Textarea -->
         <div class="form-group row">
             <label class="col-md-4 control-label" for="description">Beschrijving</label>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <textarea class="form-control" id="description" name="description" rows="5"><?php echo $result->description ?></textarea>
             </div>
         </div>
@@ -83,7 +83,7 @@ if(isset($result) && $result != null){?>
         <!-- Text input-->
         <div class="form-group row">
             <label class="col-md-4 control-label" for="pandid">pand</label>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <input id="pandid" name="pandid" type="text" value="<?php echo $result->pand ?>" class="form-control input-md">
 
             </div>
@@ -92,7 +92,7 @@ if(isset($result) && $result != null){?>
         <!-- Text input-->
         <div class="form-group row">
             <label class="col-md-4 control-label" for="date">Datum</label>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <input id="date" name="date" type="text" value="<?php echo $result->date ?>" class="form-control input-md">
 
             </div>
@@ -101,7 +101,7 @@ if(isset($result) && $result != null){?>
         <!-- Multiple Radios -->
         <div class="form-group row">
             <label class="col-md-4 control-label" for="behandeld">Behandeld</label>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="radio">
                     <label for="behandeld-0">
                         <?php if($result->handled == '1'){?>
