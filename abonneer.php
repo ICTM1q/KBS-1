@@ -1,6 +1,6 @@
 <?php
 include 'navbar.php';
-//include_once $_SERVER['DOCUMENT_ROOT']."/lib/mail/mail.php";
+include_once $_SERVER['DOCUMENT_ROOT']."/lib/mail/mail.php";
 $insertArray["success"] = FALSE;
 $insertArray["emailErr"] = "";
 
