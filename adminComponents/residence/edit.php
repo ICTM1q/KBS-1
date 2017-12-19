@@ -14,7 +14,7 @@ elseif(isset($_GET['pand'])){
 }
 
 include "../header.php";
-include "menu.php";
+include_once "menu.php";
 require_once("residenceFunctions.php");
 $functions = new residenceFunctions();
 $conn = $functions->connectDB();
@@ -28,7 +28,7 @@ if (isset($_POST['editRecord']) && $_POST != null){
     $result = $result->fetch_object();
 }
 
-include "../alert.php";
+include_once "../alert.php";
 if($result != null){?>
 
 <form class="form-horizontal" method="post" action="edit.php">
@@ -41,33 +41,33 @@ if($result != null){?>
         <div class="form-group row">
             <label class="col-md-5 control-label" for="straat">Adres</label>
             <div class="col-md-5">
-                <input id="adres" name="adres" type="text" value="<?php echo $result->adres ?>" class="form-control input-md" required="required">
+                <input id="adres" name="adres" type="text" value="<?php echo $result->adres ?>" class="form-control input-md" require_onced="require_onced">
             </div>
         </div>
         <div class="form-group row">
             <label class="col-md-5 control-label" for="postcode">Postcode</label>
             <div class="col-md-5">
-                <input id="postcode" name="postcode" type="text" value="<?php echo $result->postalcode ?>" class="form-control input-md" required="required">
+                <input id="postcode" name="postcode" type="text" value="<?php echo $result->postalcode ?>" class="form-control input-md" require_onced="require_onced">
 
             </div>
         </div>
         <div class="form-group row">
             <label class="col-md-5 control-label" for="plaats">Plaats</label>
             <div class="col-md-5">
-                <input id="plaats" name="plaats" type="text" value="<?php echo $result->city ?>" class="form-control input-md" required="required">
+                <input id="plaats" name="plaats" type="text" value="<?php echo $result->city ?>" class="form-control input-md" require_onced="require_onced">
 
             </div>
         </div>
         <div class="form-group row">
             <label class="col-md-5 control-label" for="beschrijving">Beschrijving</label>
             <div class="col-md-5">
-                <textarea class="form-control" id="beschrijving" name="beschrijving" rows="5"><?php echo $result->description ?></textarea required="required">
+                <textarea class="form-control" id="beschrijving" name="beschrijving" rows="5"><?php echo $result->description ?></textarea require_onced="require_onced">
             </div>
         </div>
         <div class="form-group row">
             <label class="col-md-5 control-label" for="prijs">Prijs</label>
             <div class="col-md-5">
-                <input id="prijs" name="prijs" type="number" min="0" step=".01" value="<?php echo $result->price ?>" class="form-control input-md" required="required">
+                <input id="prijs" name="prijs" type="number" min="0" step=".01" value="<?php echo $result->price ?>" class="form-control input-md" require_onced="require_onced">
             </div>
         </div>
         <div class="form-group row">

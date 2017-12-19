@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "lib/fpdf/pdf.php";
+include_once "lib/fpdf/pdf.php";
 require_once $_SERVER['DOCUMENT_ROOT']."/lib/mail/mail.php";
 require_once $_SERVER['DOCUMENT_ROOT']."/adminComponents/issue/issueFunctions.php";
 $functions = new issueFunctions();
@@ -22,7 +22,7 @@ if ( isset( $_POST["submit"]) ) {
     include_once "lib/securimage/securimage.php";
     $secureImage = new Securimage();
 
-    include "lib/upload/upload.php";
+    include_once "lib/upload/upload.php";
     $id = uploadFile();
     
     // Voer pdfFunc uit.
@@ -73,7 +73,7 @@ if ( isset( $_POST["submit"]) ) {
 
     <!-- Navigation -->
     <?php
-    include 'navbar.php';
+    include_once 'navbar.php';
     ?>
 
     <div class="content">
@@ -243,7 +243,7 @@ if ( isset( $_POST["submit"]) ) {
             </div>
           </div>
     <?php
-        include 'footer.php';
+        include_once 'footer.php';
     ?>
 
     <!-- Bootstrap core JavaScript -->

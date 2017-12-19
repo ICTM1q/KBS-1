@@ -13,7 +13,7 @@
     <link href="../taxatiesite/css/style.css" rel="stylesheet">
 
     <?php
-    require "residenceFunctions.php";
+    require_once "residenceFunctions.php";
     $functions = new residenceFunctions();
     $conn = $functions->connectDB();
     $residences = $functions->getAllResidence($conn);

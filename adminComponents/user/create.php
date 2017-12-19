@@ -7,9 +7,9 @@
  */
 
 include "../header.php";
-include "menu.php";
-include "../alert.php";
-include "../../register.php";
+include_once "menu.php";
+include_once "../alert.php";
+include_once "../../register.php";
 ?>
 
 <?php include "../footer.php"; ?>

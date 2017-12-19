@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "pdf-taxatie.php";
+include_once "pdf-taxatie.php";
 require $_SERVER['DOCUMENT_ROOT']."/lib/mail/mail.php";
 
 // Definier captchaError leeg.

@@ -7,9 +7,9 @@
  */
 
 include "../header.php";
-include "menu.php";
+include_once "menu.php";
 require_once "../residence/residenceFunctions.php";
-//data generation after include issueFunctions.php but before alert.php in case of error's.
+//data generation after include_once issueFunctions.php but before alert.php in case of error's.
 $functions = new residenceFunctions();
 $conn = $functions->connectDB();
 require_once "userFunctions.php";
@@ -29,7 +29,7 @@ if(isset($_GET['page'])){
 }
 $conn->close();
 
-include "../alert.php";
+include_once "../alert.php";
 ?>
 <!-- content here -->
 <h2>Gebruikers:</h2>
@@ -67,7 +67,7 @@ include "../alert.php";
     }
     ?>
 </table>
-<?php  include "../pagination.php"; ?>
+<?php  include_once "../pagination.php"; ?>
 <script>
     $(function() {
         $('.delete').click(function() {

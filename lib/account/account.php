@@ -151,7 +151,7 @@ function createFunc ( $username, $password, $email ) {
 
 // Kijk alle input na en maakt vervolgens een wachtwoord reset token aan.
 function createToken ( $email, $secureImage, $captchaCode ) {
-    include $_SERVER['DOCUMENT_ROOT']."/lib/mail/mail.php";
+    include_once $_SERVER['DOCUMENT_ROOT']."/lib/mail/mail.php";
     include $_SERVER['DOCUMENT_ROOT']."/lib/config/sqlconfig.php";
 
     // Alles leeg definieren.

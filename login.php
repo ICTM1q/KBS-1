@@ -3,8 +3,8 @@
 ob_start(); //https://stackoverflow.com/questions/9707693/warning-cannot-modify-header-information-headers-already-sent-by-error
 
 session_start();
-include "lib/account/account.php";
-include "lib/account/sql.php";
+include_once "lib/account/account.php";
+include_once "lib/account/sql.php";
 
 // Als tries leeg is vul hem op.
 if (empty($tries)) {
@@ -88,7 +88,7 @@ $tries = getTries(getRealIpAddr());
         </head>
         <body>
                 <div class="tekst">
-                    <?php include "adminComponents/alert.php" ?>
+                    <?php include_once "adminComponents/alert.php" ?>
                     <h1 class="adminh1">Alleen geautoriseerde toegang!</h1>
                     <div class="forms">
                         <form method="post">

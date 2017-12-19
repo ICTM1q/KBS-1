@@ -29,8 +29,8 @@ function getFormEmails ( $type ) {
 
 function insertIntoMaillist ( $email ) {
     if (!isset($SQL_AVAILABLE)) {
-    require $_SERVER['DOCUMENT_ROOT'] . "/lib/account/sql.php";
-}
+        require $_SERVER['DOCUMENT_ROOT'] . "/lib/account/sql.php";
+    }
     $token = randString(10);
     $conn = connectToDatabase();
     $stmt = $conn->prepare ( "INSERT INTO mail_list ( email, token ) VALUES ( ?, ? )" );
@@ -39,8 +39,8 @@ function insertIntoMaillist ( $email ) {
 
 function getAllMallist ( ) {
     if (!isset($SQL_AVAILABLE)) {
-    require $_SERVER['DOCUMENT_ROOT'] . "/lib/account/sql.php";
-}
+        require $_SERVER['DOCUMENT_ROOT'] . "/lib/account/sql.php";
+    }
     $conn = connectToDatabase();
     $stmt = $conn->prepare ( "SELECT * FROM mail_list" );
     $stmt->execute();
@@ -57,8 +57,8 @@ function getMaillistToken ( $conn, $email) {
 
 function unsubscribe ( $token, $email ) {
     if (!isset($SQL_AVAILABLE)) {
-    require $_SERVER['DOCUMENT_ROOT'] . "/lib/account/sql.php";
-}
+        require $_SERVER['DOCUMENT_ROOT'] . "/lib/account/sql.php";
+    }
     $conn = connectToDatabase();
     $checkToken = getMaillistToken($conn, $email);
     if ( $token === $checkToken[0][0] ) {

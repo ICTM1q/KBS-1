@@ -981,7 +981,7 @@ class Securimage
 
         // check for and load settings from custom config file
         if (file_exists(dirname(__FILE__) . '/config.inc.php')) {
-            $settings = include dirname(__FILE__) . '/config.inc.php';
+            $settings = include_once dirname(__FILE__) . '/config.inc.php';
 
             if (is_array($settings)) {
                 $options = array_merge($settings, $options);
@@ -1087,7 +1087,7 @@ class Securimage
      *
      * @param bool $new If true, generates a new challenge and returns and ID.  If false, the existing captcha ID is returned, or null if none exists.
      * @param array $options Additional options to be passed to Securimage.
-     *   $options must include database settings if they are not set directly in securimage.php
+     *   $options must include_once database settings if they are not set directly in securimage.php
      *
      * @return null|string Returns null if no captcha id set and new was false, or the captcha ID
      */
@@ -1114,7 +1114,7 @@ class Securimage
      * @param string $id       The captcha ID to check
      * @param string $value    The captcha value supplied by the user
      * @param array  $options  Array of options to construct Securimage with.
-     *   Options must include database options if they are not set in securimage.php
+     *   Options must include_once database options if they are not set in securimage.php
      *
      * @see Securimage::$database_driver
      * @return bool true if the code was valid for the given captcha ID, false if not or if database failed to open

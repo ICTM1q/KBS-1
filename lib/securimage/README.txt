@@ -133,7 +133,7 @@ LICENSES:
     
     This copyright message and attribution must be preserved upon
     modification. Redistribution under other licenses is expressly allowed.
-    Other licenses include GPL 2 or higher, BSD, and non-free licenses.
+    Other licenses include_once GPL 2 or higher, BSD, and non-free licenses.
     The original, unrestricted version can be obtained from
     http://www.lagom.nl/linux/hkcaptcha/
     

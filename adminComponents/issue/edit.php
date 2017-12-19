@@ -13,11 +13,11 @@ elseif(isset($_GET['issue'])){
     $issueID = $_GET['issue'];
 }
 include "../header.php";
-include "menu.php";
+include_once "menu.php";
 
 
     require_once "../residence/residenceFunctions.php";
-    //retrieve data before the alert.php include in case of errors.
+    //retrieve data before the alert.php include_once in case of errors.
     $dbFunctions = new residenceFunctions();
     $conn = $dbFunctions->connectDB();
 
@@ -32,7 +32,7 @@ if (isset($_POST['editRecord'])){
     $result = $functions->getSingleIssue($conn, $_POST['editRecord']);
     $result = $result->fetch_object();
 }
-include "../alert.php";
+include_once "../alert.php";
 if(isset($result) && $result != null){?>
 <h2>Klacht:</h2>
 
