@@ -8,12 +8,11 @@
 }
 
 .navbar-custom  a:hover {
-    font-weight: bold;
+    text-decoration: underline;
     color: #fff;
 }
 
 .active{
-    font-weight: bold;
     text-decoration: underline;
 }
 
