@@ -14,7 +14,15 @@ $conn = $functions->connectDB();
 
 if (isset($_POST) && $_POST != null && !isset($_POST['delete'])){
     $conn = $functions->connectDB();
-    $result2 = $functions->insertNewResidence($conn, $_POST['adres'], $_POST['plaats'], $_POST['postcode'], $_POST['beschrijving'], $_POST['prijs'] );
+
+    include "../../lib/upload/upload.php";
+    $id = autoUpload();
+    if ($id == false) {
+        $_SESSION['error'] = $UPLOAD_ERROR;
+    }
+    $functions->insertNewResidence($conn, $_POST['adres'], $_POST['plaats'], $_POST['postcode'], $_POST['beschrijving'], $_POST['prijs'], $id);
+
+
 }else{
     if (isset($_POST) && $_POST != null){
         $conn = $functions->connectDB();
