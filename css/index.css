@@ -40,3 +40,13 @@ body {
     margin-bottom: 7%;
     width: 150%;
 }
+
+h2{
+    color: white;
+    text-align: center;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
