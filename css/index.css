@@ -2,6 +2,7 @@ body {
     background-color: #E0F4FB;
     background-image: url("img/bg.jpg");
     background-repeat: repeat-x;
+    padding-top: 5%;
 }
 
 .container-div{
@@ -20,6 +21,7 @@ body {
 }
 
 .taxatie_div{
+    margin-top: 3%;
     margin-right: 6%;
     width: 35%;
     height: 100%;
@@ -44,6 +46,15 @@ body {
 h2{
     color: white;
     text-align: center;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+p{
+    color: white;
     text-shadow:
     -1px -1px 0 #000,
     1px -1px 0 #000,
