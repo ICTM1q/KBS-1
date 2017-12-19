@@ -8,7 +8,17 @@
     //Check of de form gesubmit is.
     if (isset($_POST["submit"])) {
         include_once "upload.php";
-        $id = uploadFile();
+
+        $func = new residenceFunctions();
+        $conn = $func->connectDB();
+
+        $id = getId($conn);
+
+        $pictures = uploadFile($id);
+
+        insertPictures($pictures, $id, $conn);
+
+
 
         if ($id == false) {
             echo $UPLOAD_ERROR;

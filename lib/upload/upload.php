@@ -1,17 +1,11 @@
 <?php
 
-if (!isset($SQL_AVAILABLE)) {
-    require $_SERVER['DOCUMENT_ROOT'] . "/lib/account/sql.php";
-}
+require_once $_SERVER['DOCUMENT_ROOT'] . "/adminComponents/residence/residenceFunctions.php";
 
-//Upload een foto naar het mapje ./uploads
-//Returnt false als er geen file geupload is of als er een error is
-//Returnt het path van de foto als de upload geslaagd is.
-function uploadFile()
+function uploadFile($id)
 {
     try {
-        //Get the next availabe id
-        $id = getId();
+        $files = array();
 
         //Allowed extentions
         $EXTENTIONS = array("jpg", "jpeg", "png", "gif");
@@ -69,16 +63,13 @@ function uploadFile()
                     //Upload the file into the temp dir
                     if (move_uploaded_file($tmpFilePath, $filePath)) {
 
-                        $files[] = $filePath;
-
-                        //Insert the file into the database
-                        insertPictureInDB(str_replace($_SERVER['DOCUMENT_ROOT'] . "/uploads/", "", $filePath), $id);
+                        $files[] = str_replace($_SERVER['DOCUMENT_ROOT'] . "/uploads/", "", $filePath);
                     }
                 }
             }
         }
 
-        return $id;
+        return $files;
 
     } catch (RuntimeException $ex) {
         global $UPLOAD_ERROR;
@@ -87,33 +78,54 @@ function uploadFile()
     }
 }
 
-//Insert a picture into the database with a specific id
-function insertPictureInDB($path, $id)
-{
-    $conn = connectToDatabase();
+function autoUpload() {
+    $func = new residenceFunctions();
+    $conn = $func->connectDB();
+    $id = getId($conn);
+    $pictures = uploadFile($id);
+    insertPictures($pictures, $id, $conn);
+    return $id;
+}
 
-    $stmt = $conn->prepare("INSERT INTO picture (picturesId, path) VALUES (?, ?)");
-    $stmt->execute(array($id, $path));
+function removePicture($path, $id, $conn)
+{
+    $stmt = $conn->prepare("DELETE FROM picture WHERE path = `?` AND picturesid = `?`");
+    $stmt->bind_param("ss", $path, $id);
+    $stmt->execute();
+}
+
+function insertPictures($pictures, $id, $conn)
+{
+    foreach ($pictures as $picture) {
+        insertPictureInDB($picture, $id, $conn);
+    }
+}
+
+//Insert a picture into the database with a specific id
+function insertPictureInDB($path, $id, $conn)
+{
+    $statement = $conn->prepare("INSERT INTO picture (picturesId, path) VALUES (?, ?)");
+    $statement->bind_param("ss", $id, $path);
+    $statement->execute();
 }
 
 //Get the next available id for a picture set
-function getId()
+function getId($conn)
 {
-    $conn = connectToDatabase();
-
     $statement = $conn->prepare("SELECT max(picturesId) FROM picture");
     $statement->execute();
+    $statement->bind_result($max);
+    $statement->fetch();
 
-    return $statement->fetch()[0] + 1;
+    return $max + 1;
 }
 
 //Get all the pictures with this id
-function getPictures($id)
+function getPictures($id, $conn)
 {
-    $conn = connectToDatabase();
-
     $statement = $conn->prepare("SELECT path FROM picture WHERE picturesId = ?");
-    $statement->execute(array($id));
+    $statement->bind_param("s", $id);
+    $statement->execute();
 
     return $statement->fetchAll();
 }
