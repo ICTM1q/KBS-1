@@ -3,6 +3,7 @@ session_start();
 include_once "lib/fpdf/pdf.php";
 require_once $_SERVER['DOCUMENT_ROOT']."/lib/mail/mail.php";
 require_once $_SERVER['DOCUMENT_ROOT']."/adminComponents/issue/issueFunctions.php";
+require_once $_SERVER['DOCUMENT_ROOT']."/lib/account/sql.php";
 $functions = new issueFunctions();
 
 
@@ -37,24 +38,32 @@ if ( isset( $_POST["submit"]) ) {
             $pictures = getPictures($id, $conn);
             // Voor testing wanneer je geen mail win ontvangen zet comments bij sendComplaintMail en geen comments bij de ->Output() functie.
             //$pdfHBComplaintArray["pdf"]->Output();
+            // Stuur een klachtmail naar de personen die deze horen te krijgen.
             $pdfHBComplaintArray["success"] = sendComplaintMail ( $pdfHBComplaintArray["pdf"]->Output("meldingformulier.pdf", 'S'), "Melding", $_POST["firstname"], $_POST["surname"], $pictures );
+            
+            // Anti-CSS maatregelen
             $firstname = htmlspecialchars($_POST["firstname"]);
             $insertion = htmlspecialchars($_POST["insertion"]);
             $surname = htmlspecialchars($_POST["surname"]);
             $email = htmlspecialchars($_POST["email"]);
             $complaint = htmlspecialchars($_POST["complaint"]);
+            
+            // Als het PDF bestand fatsoenlijk is gemaild stop het in de database.
             if ( $pdfHBComplaintArray["success"] === TRUE ) {
                 $functions->insertNewIssue(connectToDatabase(), $firstname, $insertion, $surname, $email, $complaint, $id);
                 $pdfHBComplaintArray["message"] = "Wij hebben uw melding ontvangen en zullen hem zo spoedig mogelijk afhandelen!";
             }
+            // Als niemand klachtmails ontvangt.
             if ( $pdfHBComplaintArray["success"] === "EMPTY" ) {
                 $pdfHBComplaintArray["message"] = "Er is momenteel niemand bereikbaar, probeer het later nogmaals.";
             }
+            // Als er een fout opgetreden is.
             if ( $pdfHBComplaintArray["success"]  === FALSE ) {
                 $pdfHBComplaintArray["message"] = "Er is een probleem opgetreden, probeer het later nogmaals.";
             }
         }
     }
+    // Als er iets is opgetreden zoals geen invoer.
     else {
         $pdfHBComplaintArray["success"] = FALSE;
         $pdfHBComplaintArray["message"] = "Er zijn errors opgetreden, los deze op en probeer het nogmaals.";
