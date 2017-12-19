@@ -200,7 +200,7 @@ function createToken ( $email, $secureImage, $captchaCode ) {
                         $createTokenArray["result"] = "Een code is opgestuurd naar " . $email;
                     }
                     else {
-                        $createTokenArray["result"] = "Er is een probleem met het verstuuren van de code, probeer het nogmaals.";
+                        $createTokenArray["result"] = "Er is een probleem met het versturen van de code, probeer het nogmaals.";
                     }
                 }
                 else {

@@ -1,7 +1,7 @@
 <?php
 include 'navbar.php';
 include_once $_SERVER['DOCUMENT_ROOT']."/lib/mail/mail.php";
-$insertArray["success"] = FALSE;
+$insertArray["success"] = "";
 $insertArray["emailErr"] = "";
 
 if ( isset( $_POST["submit"] ) ) {
@@ -22,6 +22,8 @@ if ( isset( $_POST["submit"] ) ) {
         <span class="bold">Vul hieronder uw email in om u in te schrijven.</span><br>
             Email:<br>
             <input type="text" name="email" value="<?php if ( isset ( $_POST["email"] ) ) { echo $_POST["email"]; } ?>">
+
+            <input type="submit" value="Verstuur" name="submit" class="knop"><br>
                 <?php 
                     if ( !empty($insertArray["emailErr"]) ) {
                         echo $insertArray["emailErr"];
@@ -33,9 +35,6 @@ if ( isset( $_POST["submit"] ) ) {
                         echo "Er is iets misgegaan!";
                     }
                 ?>
-            <input type="submit" value="Verstuur" name="submit" class="knop"><br>
-                <?php echo 'error code hier';?>
-            
             <br><br>
             
             <p> Als u geen mailtjes meer wilt ontvangen, kunt u uwzelf uitschrijven doormiddel van de link in de e-mail </p>
