@@ -36,7 +36,7 @@ and open the template in the editor.
                        <ul class="ulfooter"><li>Oudestraat 172</li>
                        <li>8261 CW Kampen</li>
                        <li>Tel.: 038-33 88 341</li>
-                       <li>info@hoksbergen.nl</li></ul>
+                       <li>info@huurenbeheer.nl</li></ul>
                  </div>
                  <div class="col">
                    <h3>Locatie</h3>

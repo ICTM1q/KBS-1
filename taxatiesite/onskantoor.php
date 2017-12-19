@@ -124,7 +124,7 @@ Wat is begonnen als een neventak is door de tevredenheid van onze klanten uitgeg
               <h3>Adres</h3>
                   <ul class="ulfooter"><li>Oudestraat 172</li>
                   <li>8261 CW Kampen</li>
-                  <li>Tel.: 038-33 88 341</li>
+                  <li>Tel.: 038-33 310 43</li>
                   <li>info@hoksbergen.nl</li></ul>
             </div>
             <div class="col">
