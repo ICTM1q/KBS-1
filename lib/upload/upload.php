@@ -83,6 +83,9 @@ function autoUpload() {
     $conn = $func->connectDB();
     $id = getId($conn);
     $pictures = uploadFile($id);
+    if ($pictures == false) {
+        return false;
+    }
     insertPictures($pictures, $id, $conn);
     return $id;
 }
