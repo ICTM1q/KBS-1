@@ -128,8 +128,16 @@ function getPictures($id, $conn)
     $statement = $conn->prepare("SELECT path FROM picture WHERE picturesId = ?");
     $statement->bind_param("s", $id);
     $statement->execute();
+    $statement->bind_result($path);
 
-    return $statement->fetchAll();
+    $pictures = array();
+    $index = 0;
+    while ($statement->fetch()) {
+        $pictures[$index] = $path;
+        $index++;
+    }
+
+    return $pictures;
 }
 
 //Generate a random ascii string of the given lenth
