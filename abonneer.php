@@ -1,6 +1,6 @@
 <?php
 
-//include_once $_SERVER['DOCUMENT_ROOT']."/lib/mail/mail.php";
+include_once $_SERVER['DOCUMENT_ROOT']."/lib/mail/mail.php";
 include 'navbar.php';
 if ( isset( $_POST["submit"] ) ) {
     insertIntoMaillist($_POST["email"]);
