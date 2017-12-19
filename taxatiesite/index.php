@@ -46,8 +46,9 @@
 
      <div class="row my-4">
        <div class="col-lg-8">
-         <h1>Welkom</h1>
-         <p>Hoksbergen Makelaardij is een allround kantoor dat sinds 1996 actief is in Kampen en omgeving. U vindt bij ons een gespecialiseerd team dat u helpt bij al uw vragen over onroerend goed. Voor aankoopbemiddeling, taxaties en huur/verhuur kunt u altijd vrijblijvend bij ons terecht.</p>
+         <h1>Welkom bij Hoksbergen</h1>
+         <p>Hoksbergen Makelaardij is een allround kantoor dat sinds 1996 actief is in Kampen en omgeving. U vindt bij ons een gespecialiseerd team dat u helpt bij al uw vragen over onroerend goed.</p>
+         <p><b>Ook voor professionele taxaties zijn de makelaars van Hoksbergen u graag van dienst.</b></p>
        </div>
        <div class="col-lg-4">
          <img class="img-fluid rounded" src="img/smallpand.jpg" alt="">
