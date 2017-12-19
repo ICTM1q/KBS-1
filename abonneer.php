@@ -1,9 +1,15 @@
 <?php
 
 include_once $_SERVER['DOCUMENT_ROOT']."/lib/mail/mail.php";
+<<<<<<< HEAD
+$insertArray["success"] = FALSE;
+$insertArray["emailErr"] = "";
+
+=======
 include 'navbar.php';
+>>>>>>> 17f8b49e1a90ebd9e434e45fb82804b4f1469402
 if ( isset( $_POST["submit"] ) ) {
-    insertIntoMaillist($_POST["email"]);
+    $insertArray = insertIntoMaillist($_POST["email"]);
 }
 
 ?>
@@ -11,6 +17,24 @@ if ( isset( $_POST["submit"] ) ) {
     <title>Huur en beheer</title>
 </head>    
 
+<<<<<<< HEAD
+<form method="post">
+Email:<br>
+<input type="text" name="email" value="<?php if ( isset ( $_POST["email"] ) ) { echo $_POST["email"]; } ?>">
+<?php if ( !empty($insertArray["emailErr"]) ) {
+    echo $insertArray["emailErr"];
+}
+if ( $insertArray["success"] === TRUE ) {
+    echo "U bent succesvol toegevoegd aan ons abonnement systeem!";
+}
+if ( $insertArray["success"] === FALSE && empty($insertArray["emailErr"])) {
+    echo "Er is iets misgegaan!";
+}
+?>
+
+<input type="submit" value="Verstuur" name="submit" class="knop">
+
+=======
 <body>
     <div class="content">
         <h2 class="h3-tekst">Hier kunt u abonneren </h2>
@@ -34,3 +58,4 @@ if ( isset( $_POST["submit"] ) ) {
         include 'footer.php';
     ?>
 </body>
+>>>>>>> 17f8b49e1a90ebd9e434e45fb82804b4f1469402
