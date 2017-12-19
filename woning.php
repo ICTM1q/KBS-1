@@ -100,15 +100,15 @@
 
 <div class="row row-woning">
     <div class="col-md-12 beschrijving">
-        <iframe width="600" height="450" frameborder="0" style="border:0"
-                src="https://www.google.com/maps/embed/v1/search?q=<?= str_replace(" ", "+", $residence['city'] . "+" . $residence['adres'] . "+" . $residence['postalcode']) ?>&key=AIzaSyBTlBGgJMAjD1MibY_XKVf1amexgekuW1g" allowfullscreen></iframe>
+        <h3 class="my-3">Beschrijving</h3>
+        <p><?= $residence['description'] ?></p>
     </div>
 </div>
 
 <div class="row row-woning">
     <div class="col-md-12 beschrijving">
-        <h3 class="my-3">Beschrijving</h3>
-        <p><?= $residence['description'] ?></p>
+        <iframe width="600" height="450" frameborder="0" style="border:0"
+                src="https://www.google.com/maps/embed/v1/search?q=<?= str_replace(" ", "+", $residence['city'] . "+" . $residence['adres'] . "+" . $residence['postalcode']) ?>&key=AIzaSyBTlBGgJMAjD1MibY_XKVf1amexgekuW1g" allowfullscreen></iframe>
     </div>
 </div>
 
