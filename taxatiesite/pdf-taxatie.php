@@ -73,7 +73,7 @@ function pdfHTContactFunc ( $firstname, $insertion, $surname, $email, $telno, $s
     }
     // Kijk of message leeg is.
     if ( empty ( $message ) ) {
-        $pdfHTContactArray["messageErr"] = "Voer A.U.B. uw bericfHT in.";
+        $pdfHTContactArray["messageErr"] = "Voer A.U.B. uw bericht in.";
         $pdfHTContactMessageFlag = FALSE;
     }
     // Kijk of captchacode leeg is.
@@ -109,7 +109,7 @@ function pdfHTContactFunc ( $firstname, $insertion, $surname, $email, $telno, $s
             else {
                 class PDF extends FPDF {
                     function Header() {
-                    $this->Image("lib/fpdf/logo_groot.png",10,5,65);
+                    $this->Image($_SERVER['DOCUMENT_ROOT']."/css/img/hoksbergen_groot.jpg",10,5,65);
                     $this->SetFont("Arial","B",15);
                     $this->Cell(80);
                     $this->Cell(35,18,"Contactformulier",0,0,"C");
@@ -132,12 +132,12 @@ function pdfHTContactFunc ( $firstname, $insertion, $surname, $email, $telno, $s
                 
                 $pdf->SetXY(23, 45);
                 if (empty($insertion)) {
-                    $pdf->Cell(35,10,"AcfHTernaam: ");
+                    $pdf->Cell(35,10,"Achternaam: ");
                     $pdf->SetXY(60, 45);
                     $pdf->Cell(35,10,$surname);
                 }
                 else {
-                    $pdf->Cell(35,10,"AcfHTernaam: ");
+                    $pdf->Cell(35,10,"Achternaam: ");
                     $pdf->SetXY(60, 45);
                     $pdf->Cell(35,10,$surname . ", " . $insertion);
                 }
@@ -170,7 +170,7 @@ function pdfHTContactFunc ( $firstname, $insertion, $surname, $email, $telno, $s
                 $pdf->SetXY(23, 75);
                 $pdf->Line(20, 85, 210-20, 85);
                 $pdf->SetXY(23, 90);
-                $pdf->Multicell(165,4.5,"BericfHT: \n" . $message);
+                $pdf->Multicell(165,4.5,"Bericht: \n" . $message);
                 
                 $pdfHTContactArray["pdf"] = $pdf;
                 $pdfHTContactArray["result"] = TRUE;
@@ -215,7 +215,7 @@ function pdfHTComplaintFunc ( $firstname, $insertion, $surname, $email, $telno, 
         $pdfHTComplaintFirstnameFlag = FALSE;
     }
     if ( empty ( $surname ) ) {
-        $pdfHTComplaintArray["surnameErr"] = "AcfHTernaam is vereist.";
+        $pdfHTComplaintArray["surnameErr"] = "Achternaam is vereist.";
         $pdfHTComplaintSurnameFlag = FALSE;
     }
     if ( empty ( $email ) ) {
@@ -244,7 +244,7 @@ function pdfHTComplaintFunc ( $firstname, $insertion, $surname, $email, $telno, 
     }
     // Kijk of complaint leeg is.
     if ( empty ( $complaint ) ) {
-        $pdfHTComplaintArray["complaintErr"] = "Voer A.U.B. uw klacfHT in.";
+        $pdfHTComplaintArray["complaintErr"] = "Voer A.U.B. uw bericht in.";
         $pdfHTComplaintComplaintFlag = FALSE;
     }
     // Kijk of captchacode leeg is.
@@ -280,10 +280,10 @@ function pdfHTComplaintFunc ( $firstname, $insertion, $surname, $email, $telno, 
             else {
                 class PDF extends FPDF {
                     function Header() {
-                    $this->Image("lib/fpdf/logo_groot.png",10,5,65);
+                    $this->Image($_SERVER['DOCUMENT_ROOT'] . "/css/img/hoksbergen_groot.jpg",10,5,65);
                     $this->SetFont("Arial","B",15);
                     $this->Cell(80);
-                    $this->Cell(35,18,"Meldingformulier",0,0,"C");
+                    $this->Cell(35,18,"Contactformulier",0,0,"C");
                     $this->Line(20, 35, 210-20, 35);
                     $this->Ln(30);
                     }
@@ -303,12 +303,12 @@ function pdfHTComplaintFunc ( $firstname, $insertion, $surname, $email, $telno, 
                 
                 $pdf->SetXY(23, 45);
                 if (empty($insertion)) {
-                    $pdf->Cell(35,10,"AcfHTernaam: ");
+                    $pdf->Cell(35,10,"Achternaam: ");
                     $pdf->SetXY(60, 45);
                     $pdf->Cell(35,10,$surname);
                 }
                 else {
-                    $pdf->Cell(35,10,"AcfHTernaam: ");
+                    $pdf->Cell(35,10,"Achternaam: ");
                     $pdf->SetXY(60, 45);
                     $pdf->Cell(35,10,$surname . ", " . $insertion);
                 }
@@ -341,7 +341,7 @@ function pdfHTComplaintFunc ( $firstname, $insertion, $surname, $email, $telno, 
                 $pdf->SetXY(23, 75);
                 $pdf->Line(20, 85, 210-20, 85);
                 $pdf->SetXY(23, 90);
-                $pdf->Multicell(165,4.5,"Melding: \n" . $complaint);
+                $pdf->Multicell(165,4.5,"Bericht: \n" . $complaint);
                 
                 $pdfHTComplaintArray["pdf"] = $pdf;
                 $pdfHTComplaintArray["result"] = TRUE;

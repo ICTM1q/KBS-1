@@ -36,8 +36,13 @@ if ( isset( $_POST["submit"]) ) {
             // Voor testing wanneer je geen mail win ontvangen zet comments bij sendComplaintMail en geen comments bij de ->Output() functie.
             //$pdfHBComplaintArray["pdf"]->Output();
             $pdfHBComplaintArray["success"] = sendComplaintMail ( $pdfHBComplaintArray["pdf"]->Output("meldingformulier.pdf", 'S'), "Melding", $_POST["firstname"], $_POST["surname"], $pictures );
+            $firstname = htmlspecialchars($_POST["firstname"]);
+            $insertion = htmlspecialchars($_POST["insertion"]);
+            $surname = htmlspecialchars($_POST["surname"]);
+            $email = htmlspecialchars($_POST["email"]);
+            $complaint = htmlspecialchars($_POST["complaint"]);
             if ( $pdfHBComplaintArray["success"] === TRUE ) {
-                $functions->insertNewIssue(connectToDatabase(), $_POST["firstname"], $_POST["insertion"], $_POST["surname"], $_POST["email"], $_POST["complaint"], $id);
+                $functions->insertNewIssue(connectToDatabase(), $firstname, $insertion, $surname, $email, $complaint, $id);
                 $pdfHBComplaintArray["message"] = "Wij hebben uw melding ontvangen en zullen hem zo spoedig mogelijk afhandelen!";
             }
             if ( $pdfHBComplaintArray["success"] === "EMPTY" ) {

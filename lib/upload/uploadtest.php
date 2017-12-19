@@ -9,19 +9,10 @@
     if (isset($_POST["submit"])) {
         include_once "upload.php";
 
-        $func = new residenceFunctions();
-        $conn = $func->connectDB();
-
-        $id = getId($conn);
-
-        $pictures = uploadFile($id);
-
-        insertPictures($pictures, $id, $conn);
-
-
+        $id = autoUpload();
 
         if ($id == false) {
-            echo $UPLOAD_ERROR;
+            echo $_SESSION['error'];
         } else {
             echo $id;
         }
