@@ -20,11 +20,11 @@
 
         <!-- Inhoud -->
         <div class="content">
-            <h2 class="h3-tekst">Naar welke site wilt u?</h2>
+            <h2 class="h3-tekst"></h2>
             <br>
             <div class="container-div">
                 <div class="huurenbeheer_div"><a href="home.php"><img class="huurenbeheer" src="css/img/logo_groot.png" aria-hidden="true"></a></div>
-                <div class="taxatie_div"><a href="taxatiesite/index.php"><img class="taxatie" src="css/img/hoksbergen_groot.jpg" aria-hidden="true"></a></div>
+                <div class="taxatie_div"><a href="taxatiesite/index.php"><img class="taxatie" src="css/img/hoksbergen.gif" aria-hidden="true"></a></div>
             </div>
             <br>
             <br>

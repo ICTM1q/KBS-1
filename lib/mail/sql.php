@@ -1,34 +1,39 @@
 <?php
-if (!isset($SQL_AVAILABLE)) {
-    require $_SERVER['DOCUMENT_ROOT'] . "/lib/account/sql.php";
-}
 
 function getFormEmails ( $type ) {
-    $conn = new PDO ( "mysql:host=localhost;dbname=$dbname;", $user, $dbpassword);
     if ( $type === "Contact" ) {
+        include $_SERVER['DOCUMENT_ROOT']."/lib/config/sqlconfig.php";
+        $conn = new PDO ( "mysql:host=localhost;dbname=$dbname;", $user, $dbpassword);
         $stmt = $conn->prepare ( "SELECT email FROM receiver WHERE contact = 1" );
+        $stmt->execute ( array ( ) );
+        $row = $stmt->fetchAll();
+        return $row;
     }
     if ( $type === "Taxation" ) {
+        include $_SERVER['DOCUMENT_ROOT']."/lib/config/sqlconfig.php";
+        $conn = new PDO ( "mysql:host=localhost;dbname=$dbname;", $user, $dbpassword);
         $stmt = $conn->prepare ( "SELECT email FROM receiver WHERE taxation = 1" );
+        $stmt->execute ( array ( ) );
+        $row = $stmt->fetchAll();
+        return $row;
     }
     if ( $type === "Melding" ) {
+        include $_SERVER['DOCUMENT_ROOT']."/lib/config/sqlconfig.php";
+        $conn = new PDO ( "mysql:host=localhost;dbname=$dbname;", $user, $dbpassword);
         $stmt = $conn->prepare ( "SELECT email FROM receiver WHERE complaint = 1" );
+        $stmt->execute ( array ( ) );
+        $row = $stmt->fetchAll();
+        return $row;
     }
-    $stmt->execute ( array ( ) );
-    $row = $stmt->fetchAll();
-    return $row;
 }
 
 function insertIntoMaillist ( $email ) {
-<<<<<<< HEAD
     $insertArray["success"] = FALSE;
     $insertArray["emailErr"] = "";
     
     if (!isset($SQL_AVAILABLE)) {
         require $_SERVER['DOCUMENT_ROOT'] . "/lib/account/sql.php";
     }
-=======
->>>>>>> 17f8b49e1a90ebd9e434e45fb82804b4f1469402
     $token = randString(10);
     $conn = connectToDatabase();
     
@@ -60,6 +65,9 @@ function insertIntoMaillist ( $email ) {
 }
 
 function getAllMallist ( ) {
+    if (!isset($SQL_AVAILABLE)) {
+        require $_SERVER['DOCUMENT_ROOT'] . "/lib/account/sql.php";
+    }
     $conn = connectToDatabase();
     $stmt = $conn->prepare ( "SELECT * FROM mail_list" );
     $stmt->execute();
@@ -75,6 +83,9 @@ function getMaillistToken ( $conn, $email) {
 }
 
 function unsubscribe ( $token, $email ) {
+    if (!isset($SQL_AVAILABLE)) {
+        require $_SERVER['DOCUMENT_ROOT'] . "/lib/account/sql.php";
+    }
     $conn = connectToDatabase();
     $checkToken = getMaillistToken($conn, $email);
     if ( empty($checkToken) ) {

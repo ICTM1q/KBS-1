@@ -2,8 +2,8 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-include_once "lib/account/account.php";
-include_once "lib/account/sql.php";
+include_once "lib\account\account.php";
+include_once "lib\account\sql.php";
 
 // Variabelen leeg definieren.
 $createArray["usernameErr"] = "";

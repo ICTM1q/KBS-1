@@ -1,6 +1,8 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'] . "/adminComponents/residence/residenceFunctions.php";
+if (!isset($SQL_AVAILABLE)) {
+    require $_SERVER['DOCUMENT_ROOT'] . "/lib/account/sql.php";
+}
 
 //Upload een foto naar het mapje ./uploads
 //Returnt false als er geen file geupload is of als er een error is
@@ -8,11 +10,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/adminComponents/residence/residenceFu
 function uploadFile()
 {
     try {
-        $func = new residenceFunctions();
-        $conn = $func->connectDB();
-
         //Get the next availabe id
-        $id = getId($conn);
+        $id = getId();
 
         //Allowed extentions
         $EXTENTIONS = array("jpg", "jpeg", "png", "gif");
@@ -73,7 +72,7 @@ function uploadFile()
                         $files[] = $filePath;
 
                         //Insert the file into the database
-                        insertPictureInDB(str_replace($_SERVER['DOCUMENT_ROOT'] . "/uploads/", "", $filePath), $id, $conn);
+                        insertPictureInDB(str_replace($_SERVER['DOCUMENT_ROOT'] . "/uploads/", "", $filePath), $id);
                     }
                 }
             }
@@ -89,16 +88,19 @@ function uploadFile()
 }
 
 //Insert a picture into the database with a specific id
-function insertPictureInDB($path, $id, $conn)
+function insertPictureInDB($path, $id)
 {
-    $statement = $conn->prepare("INSERT INTO picture (picturesId, path) VALUES (?, ?)");
-    $statement->bind_param("ss", $id, $path);
-    $statement->execute();
+    $conn = connectToDatabase();
+
+    $stmt = $conn->prepare("INSERT INTO picture (picturesId, path) VALUES (?, ?)");
+    $stmt->execute(array($id, $path));
 }
 
 //Get the next available id for a picture set
-function getId($conn)
+function getId()
 {
+    $conn = connectToDatabase();
+
     $statement = $conn->prepare("SELECT max(picturesId) FROM picture");
     $statement->execute();
 
@@ -106,11 +108,12 @@ function getId($conn)
 }
 
 //Get all the pictures with this id
-function getPictures($id, $conn)
+function getPictures($id)
 {
+    $conn = connectToDatabase();
+
     $statement = $conn->prepare("SELECT path FROM picture WHERE picturesId = ?");
-    $statement->bind_param("s", $id);
-    $statement->execute();
+    $statement->execute(array($id));
 
     return $statement->fetchAll();
 }
