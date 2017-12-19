@@ -72,8 +72,7 @@ function uploadFile($id)
         return $files;
 
     } catch (RuntimeException $ex) {
-        global $UPLOAD_ERROR;
-        $UPLOAD_ERROR = "Bestand uploaden mislukt: " . $ex->getMessage();
+        $_SESSION['error'] = "Bestand uploaden mislukt: " . $ex->getMessage();
         return false;
     }
 }

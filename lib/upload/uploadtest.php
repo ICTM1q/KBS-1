@@ -12,7 +12,7 @@
         $id = autoUpload();
 
         if ($id == false) {
-            echo $UPLOAD_ERROR;
+            echo $_SESSION['error'];
         } else {
             echo $id;
         }
