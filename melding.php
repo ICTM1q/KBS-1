@@ -27,7 +27,7 @@ if ( isset( $_POST["submit"]) ) {
     $id = autoUpload();
     
     // Voer pdfFunc uit.
-    $pdfHBComplaintArray = pdfHBComplaintFunc($_POST["firstname"], $_POST["insertion"], $_POST["surname"], $_POST["email"], $_POST["telno"], $_POST["street"], $_POST["city"], $_POST["houseno"], $_POST["zip"], $_POST["complaint"], $secureImage, $_POST["captchaCode"]);
+    $pdfHBComplaintArray = pdfTypeFunc($_POST["firstname"], $_POST["insertion"], $_POST["surname"], $_POST["email"], $_POST["telno"], $_POST["street"], $_POST["city"], $_POST["houseno"], $_POST["zip"], $_POST["complaint"], $secureImage, $_POST["captchaCode"], "Melding");
     if ( $pdfHBComplaintArray["result"] === TRUE ) {
         if ($id == false) {
             $pdfHBComplaintArray["success"] = FALSE;
@@ -36,30 +36,39 @@ if ( isset( $_POST["submit"]) ) {
             $func = new residenceFunctions();
             $conn = $func->connectDB();
             $pictures = getPictures($id, $conn);
-            // Voor testing wanneer je geen mail win ontvangen zet comments bij sendComplaintMail en geen comments bij de ->Output() functie.
-            //$pdfHBComplaintArray["pdf"]->Output();
-            // Stuur een klachtmail naar de personen die deze horen te krijgen.
-            $pdfHBComplaintArray["success"] = sendTypeMail ( $pdfHBComplaintArray["pdf"]->Output("meldingformulier.pdf", 'S'), "Melding", $_POST["firstname"], $_POST["surname"], $pictures );
             
-            // Anti-CSS maatregelen
-            $firstname = htmlspecialchars($_POST["firstname"]);
-            $insertion = htmlspecialchars($_POST["insertion"]);
-            $surname = htmlspecialchars($_POST["surname"]);
-            $email = htmlspecialchars($_POST["email"]);
-            $complaint = htmlspecialchars($_POST["complaint"]);
-            
-            // Als het PDF bestand fatsoenlijk is gemaild stop het in de database.
-            if ( $pdfHBComplaintArray["success"] === TRUE ) {
-                $functions->insertNewIssue(connectToDatabase(), $firstname, $insertion, $surname, $email, $complaint, $id);
-                $pdfHBComplaintArray["message"] = "Wij hebben uw melding ontvangen en zullen hem zo spoedig mogelijk afhandelen!";
+            // Vraag het pandid op en kijk of deze leeg is. Als deze leeg is is er geen pand dat overeenkomt met de ingevoerde informatie.
+            $pandid = $functions->getPandid(connectToDatabase(), $_POST["street"], $_POST["houseno"], $_POST["zip"]);
+            if ( empty($pandid)) {
+                $pdfHBComplaintArray["message"] = "Wij hebben geen huis kunnen vinden die overeen komt met de ingevoerde informatie, is alles wel correct ingevoerd?";
+                $pdfHBComplaintArray["success"] = FALSE;
             }
-            // Als niemand klachtmails ontvangt.
-            if ( $pdfHBComplaintArray["success"] === "EMPTY" ) {
-                $pdfHBComplaintArray["message"] = "Er is momenteel niemand bereikbaar, probeer het later nogmaals.";
-            }
-            // Als er een fout opgetreden is.
-            if ( $pdfHBComplaintArray["success"]  === FALSE ) {
-                $pdfHBComplaintArray["message"] = "Er is een probleem opgetreden, probeer het later nogmaals.";
+            else {
+                // Voor testing wanneer je geen mail win ontvangen zet comments bij sendComplaintMail en geen comments bij de ->Output() functie.
+                //$pdfHBComplaintArray["pdf"]->Output();
+                // Stuur een klachtmail naar de personen die deze horen te krijgen.
+                $pdfHBComplaintArray["success"] = sendTypeMail ( $pdfHBComplaintArray["pdf"]->Output("meldingformulier.pdf", 'S'), "Melding", $_POST["firstname"], $_POST["surname"], $pictures );
+
+                // Anti-CSS maatregelen
+                $firstname = htmlspecialchars($_POST["firstname"]);
+                $insertion = htmlspecialchars($_POST["insertion"]);
+                $surname = htmlspecialchars($_POST["surname"]);
+                $email = htmlspecialchars($_POST["email"]);
+                $complaint = htmlspecialchars($_POST["complaint"]);
+
+                // Als het PDF bestand fatsoenlijk is gemaild stop het in de database.
+                if ( $pdfHBComplaintArray["success"] === TRUE ) {
+                    $functions->insertNewIssue(connectToDatabase(), $pandid[0][0], $firstname, $insertion, $surname, $email, $complaint, $id);
+                    $pdfHBComplaintArray["message"] = "Wij hebben uw melding ontvangen en zullen hem zo spoedig mogelijk afhandelen!";
+                }
+                // Als niemand klachtmails ontvangt.
+                if ( $pdfHBComplaintArray["success"] === "EMPTY" ) {
+                    $pdfHBComplaintArray["message"] = "Er is momenteel niemand bereikbaar, probeer het later nogmaals.";
+                }
+                // Als er een fout opgetreden is.
+                if ( $pdfHBComplaintArray["success"]  === FALSE ) {
+                    $pdfHBComplaintArray["message"] = "Er is een probleem opgetreden, probeer het later nogmaals.";
+                }
             }
         }
     }

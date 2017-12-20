@@ -19,7 +19,7 @@ if ( isset( $_POST["submit"] ) ) {
     $secureImage = new Securimage();
     
     // Voer pdfFunc uit.
-    $pdfHBContactArray = pdfHBContactFunc($_POST["firstname"], $_POST["insertion"], $_POST["surname"], $_POST["email"], $_POST["telno"], $_POST["message"], $secureImage, $_POST["captchaCode"]);
+    $pdfHBContactArray = pdfTypeFunc($_POST["firstname"], $_POST["insertion"], $_POST["surname"], $_POST["email"], $_POST["telno"], "", "", "", "", $_POST["message"], $secureImage, $_POST["captchaCode"], "Contact");
     if ( $pdfHBContactArray["result"] === TRUE ) {
         // Voor testing wanneer je geen mail win ontvangen zet comments bij sendContactMail en geen comments bij de ->Output() functie.
 

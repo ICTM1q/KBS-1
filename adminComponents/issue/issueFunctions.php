@@ -115,13 +115,15 @@ class issueFunctions
      * @param $picturesid
      * @param $pandid
      */
-    function insertNewIssue($conn, $firstname, $prefix, $lastname, $email, $description, $picturesid){
-        $sql = $conn->prepare( "INSERT INTO issue (firstname, insertion, surname, email, description, picturesid, date, handled) 
-                            VALUES (?, ?, ?, ?, ?, ?, NOW(), '0')" );
-        if ( $sql->execute ( array ( $firstname, $prefix, $lastname, $email, $description, $picturesid ) ) ) {
-            return;
-        } else {
-            file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
+    function insertNewIssue($conn, $pandid, $firstname, $prefix, $lastname, $email, $description, $picturesid){
+        echo $pandid;
+        try { 
+            $sql = $conn->prepare( "INSERT INTO issue (pand, firstname, insertion, surname, email, description, picturesid, date, handled) 
+                            VALUES (?, ?, ?, ?, ?, ?, ?, NOW(), '0')" );
+            $sql->execute ( array ( $pandid, $firstname, $prefix, $lastname, $email, $description, $picturesid ) );
+        } 
+        catch ( PDOException $e ) {
+            file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $e . "\r\n", FILE_APPEND);
             return;
         }
     }
@@ -136,5 +138,12 @@ class issueFunctions
             $_SESSION['error'] = "Error updating record: " . $conn->error;
             return;
         }
+    }
+    
+    function getPandid ( $conn, $street, $houseno, $zip ) {
+        $sql = $conn->prepare("SELECT pandid FROM pand WHERE adres = ? AND postalcode = ?");
+        $sql->execute ( array ( $street . " " . $houseno, $zip ) );
+        $row = $sql->fetchAll();
+        return $row;
     }
 }

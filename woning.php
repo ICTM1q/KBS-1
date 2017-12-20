@@ -63,7 +63,7 @@
                     foreach ($pictures as $picture) {
                         ?>
                         <div class="carousel-item <?= $first ? 'active' : '' ?>">
-                            <img class="d-block w-100 carousel" src="<?= $picture['path'] ?>" alt="<?= $picture['path'] ?>">
+                            <img class="d-block w-100 carousel" src="<?= "uploads/" . $picture['path'] ?>" alt="<?= $picture['path'] ?>">
                         </div>
                         <?php
                         $first = false;

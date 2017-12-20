@@ -1,7 +1,7 @@
 <?php
 session_start();
-include_once "pdf-taxatie.php";
 require $_SERVER['DOCUMENT_ROOT']."/lib/mail/mail.php";
+require $_SERVER['DOCUMENT_ROOT']."/lib/fpdf/pdf.php";
 
 // Definier captchaError leeg.
 $pdfHTContactArray["firstnameErr"] = "";
@@ -19,7 +19,7 @@ if ( isset( $_POST["submit"] ) ){
     $secureImage = new Securimage();
 
     // Voer pdfFunc uit.
-    $pdfHTContactArray = pdfHTContactFunc($_POST["firstname"], $_POST["insertion"], $_POST["surname"], $_POST["email"], $_POST["telno"], $_POST["street"], $_POST["city"], $_POST["houseno"], $_POST["zip"], $_POST["message"], $secureImage, $_POST["captchaCode"]);
+    $pdfHTContactArray = pdfTypeFunc($_POST["firstname"], $_POST["insertion"], $_POST["surname"], $_POST["email"], $_POST["telno"], $_POST["street"], $_POST["city"], $_POST["houseno"], $_POST["zip"], $_POST["message"], $secureImage, $_POST["captchaCode"], "Taxatie");
     if ( $pdfHTContactArray["result"] === TRUE ) {
         // Voor testing wanneer je geen mail win ontvangen zet comments bij sendContactMail en geen comments bij de ->Output() functie.
         //$pdfHTContactArray["pdf"]->Output();
@@ -119,7 +119,7 @@ if ( isset( $_POST["submit"] ) ){
                      <div class="col-md-6">
                          <div class="form-group">
                              <label for="form_name">Voornaam*</label>
-                             <input id="form_name" type="text" name="firstname" class="form-control" placeholder="Voornaam">
+                             <input id="form_name" type="text" name="firstname" class="form-control" placeholder="Voornaam" value="<?php if ( isset ( $_POST["firstname"] ) ) { echo $_POST["firstname"]; } ?>">
                              <?php
                              if ( !empty($pdfHTContactArray["firstnameErr"])) {
                                  echo "<span class='error'>" . $pdfHTContactArray["firstnameErr"] . "</span><br>";
@@ -138,7 +138,7 @@ if ( isset( $_POST["submit"] ) ){
                      <div class="col-md-6">
                          <div class="form-group">
                              <label for="form_lastname">Achternaam*</label>
-                             <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Achternaam">
+                             <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Achternaam" value="<?php if ( isset ( $_POST["surname"] ) ) { echo $_POST["surname"]; } ?>">
                              <?php
                               if ( !empty($pdfHTContactArray["surnameErr"])) {
                                 echo "<span class='error'>" . $pdfHTContactArray["surnameErr"] . "</span><br>";
@@ -152,7 +152,7 @@ if ( isset( $_POST["submit"] ) ){
                      <div class="col-md-6">
                          <div class="form-group">
                              <label for="form_email">Email adres*</label>
-                             <input id="form_email" type="email" name="email" class="form-control" placeholder="Email adres">
+                             <input id="form_email" type="text" name="email" class="form-control" placeholder="Email adres" value="<?php if ( isset ( $_POST["email"] ) ) { echo $_POST["email"]; } ?>">
                              <?php
                               if ( !empty($pdfHTContactArray["emailErr"])) {
                                 echo "<span class='error'>" . $pdfHTContactArray["emailErr"] . "</span><br>";
@@ -164,7 +164,7 @@ if ( isset( $_POST["submit"] ) ){
                      <div class="col-md-6">
                          <div class="form-group">
                              <label for="form_phone">Telefoonnummer*</label>
-                             <input id="form_phone" type="tel" name="telno" class="form-control" placeholder="Telefoonnummer">
+                             <input id="form_phone" type="tel" name="telno" class="form-control" placeholder="Telefoonnummer" value="<?php if ( isset ( $_POST["telno"] ) ) { echo $_POST["telno"]; } ?>">
                              <?php
                               if ( !empty($pdfHTContactArray["telnoErr"])) {
                                 echo "<span class='error'>" . $pdfHTContactArray["telnoErr"] . "</span><br>";
@@ -177,7 +177,7 @@ if ( isset( $_POST["submit"] ) ){
                  <div class="row">
                    <div class="form-group col-md-6">
                      <label for="inputCity">Straatnaam*</label>
-                     <input type="text" class="form-control" id="inputCity" name="street" placeholder="Straatnaam">
+                     <input type="text" class="form-control" id="inputCity" name="street" placeholder="Straatnaam" value="<?php if ( isset ( $_POST["street"] ) ) { echo $_POST["street"]; } ?>">
                    <?php
                       if ( !empty($pdfHTContactArray["streetErr"])) {
                         echo "<span class='error'>" . $pdfHTContactArray["streetErr"] . "</span><br>";
@@ -187,7 +187,7 @@ if ( isset( $_POST["submit"] ) ){
 
                     <div class="form-group col-md-6">
                       <label for="inputCity">Plaatsnaam*</label>
-                      <input type="text" class="form-control" id="inputCity" name="city"  placeholder="Plaatsnaam">
+                      <input type="text" class="form-control" id="inputCity" name="city"  placeholder="Plaatsnaam" value="<?php if ( isset ( $_POST["city"] ) ) { echo $_POST["city"]; } ?>">
                     <?php
                        if ( !empty($pdfHTContactArray["cityErr"])) {
                         echo "<span class='error'>" . $pdfHTContactArray["cityErr"] . "</span><br>";
@@ -197,7 +197,7 @@ if ( isset( $_POST["submit"] ) ){
 
                     <div class="form-group col-md-6">
                       <label for="inputZip">Huisnummer*</label>
-                      <input type="text" class="form-control" id="inputZip" name="houseno" placeholder="Huisnummer">
+                      <input type="text" class="form-control" id="inputZip" name="houseno" placeholder="Huisnummer" value="<?php if ( isset ( $_POST["houseno"] ) ) { echo $_POST["houseno"]; } ?>">
                     <?php
                        if ( !empty($pdfHTContactArray["housenoErr"])) {
                          echo "<span class='error'>" . $pdfHTContactArray["housenoErr"] . "</span><br>";
@@ -206,7 +206,7 @@ if ( isset( $_POST["submit"] ) ){
                     </div>
                     <div class="form-group col-md-6">
                       <label for="inputZip">Postcode*</label>
-                      <input type="text" class="form-control" id="inputZip" name="zip" placeholder="Postcode">
+                      <input type="text" class="form-control" id="inputZip" name="zip" placeholder="Postcode" value="<?php if ( isset ( $_POST["zip"] ) ) { echo $_POST["zip"]; } ?>">
                      <?php
                        if ( !empty($pdfHTContactArray["zipErr"])) {
                          echo "<span class='error'>" . $pdfHTContactArray["zipErr"] . "</span><br>";
@@ -218,7 +218,7 @@ if ( isset( $_POST["submit"] ) ){
                      <div class="col-md-12">
                          <div class="form-group">
                              <label for="form_message">Bericht*</label>
-                             <textarea id="form_message" name="message" class="form-control" placeholder="Bericht" rows="4"></textarea>
+                             <textarea id="form_message" name="message" class="form-control" placeholder="Bericht" rows="4"><?php if ( isset ( $_POST["message"] ) ) { echo $_POST["message"]; } ?></textarea>
                              <?php
                               if ( !empty($pdfHTContactArray["messageErr"])) {
                                 echo "<span class='error'>" . $pdfHTContactArray["messageErr"] . "</span><br>";
