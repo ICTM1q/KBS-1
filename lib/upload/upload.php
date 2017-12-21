@@ -82,7 +82,7 @@ function autoUpload() {
     $conn = $func->connectDB();
     $id = getId($conn);
     $pictures = uploadFile($id);
-    if ($pictures !== "error" || empty($pictures)){
+    if ($pictures != "error" && !$pictures){
         return $id;
     }
     if ($pictures == "error") {
