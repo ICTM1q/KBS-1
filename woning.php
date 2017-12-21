@@ -55,7 +55,7 @@
                     foreach ($pictures as $picture) {
                         ?>
                         <div class="carousel-item <?= $first ? 'active' : '' ?>">
-                            <img class="d-block carousel" src="<?= "uploads/" . $picture[$PICTURE_PATH] ?>" alt="<?= $picture[$PICTURE_PATH] ?>">
+                            <img class="d-block carousel img-fluid" src="<?= "uploads/" . $picture[$PICTURE_PATH] ?>" alt="<?= $picture[$PICTURE_PATH] ?>">
                         </div>
                         <?php
                         $first = false;
@@ -100,11 +100,13 @@
 
 <div class="row row-woning">
     <div class="col-md-12 beschrijving">
+      <div class="map-responsive-woning">
         <iframe width="600" height="450" frameborder="0" style="border:0"
                 src="https://www.google.com/maps/embed/v1/search?q=<?= str_replace(" ", "+", $residence[$RESIDENCE_CITY] . "+" . $residence[$RESIDENCE_ADRES] . "+" . $residence[$RESIDENCE_POSTALCODE]) ?>&key=AIzaSyBTlBGgJMAjD1MibY_XKVf1amexgekuW1g" allowfullscreen></iframe>
+        </div>
     </div>
 </div>
-
+<br>
 </div>
 <?php
     include_once 'footer.php';

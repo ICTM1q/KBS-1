@@ -7,7 +7,21 @@
 }
 
 .carousel{
-    height: 450px !important;
-    width: 600px !important;
-    object-fit: contain !important;
+    width: auto;
+    height: 450px;
+    max-height: 450px;
+}
+
+.map-responsive-woning{
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+}
+.map-responsive-woning iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
 }
