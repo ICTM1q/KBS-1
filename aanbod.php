@@ -9,6 +9,7 @@
     $residences = $functions->getAllResidence($conn);
     $conn->close();
     ?>
+    <link href="css/aanbod.css" rel="stylesheet">
 </head>
 
 <body>

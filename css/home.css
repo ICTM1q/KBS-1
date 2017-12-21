@@ -14,3 +14,18 @@ body {
 .carousel-item{
     align-content: center;
 }
+
+.tag-bg{
+    background-color: #E0F4FB;
+}
+
+.tag-tekst{
+    color: #4F72ED;
+    font-weight: bold;
+}
+
+.carousel{
+    height: 500px;
+    width: 750px;
+    object-fit: contain;
+}
