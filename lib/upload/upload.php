@@ -2,7 +2,7 @@
 
 require_once $_SERVER['DOCUMENT_ROOT'] . "/adminComponents/residence/residenceFunctions.php";
 
-function uploadFile($id)
+function uploadFile()
 {
     try {
         $files = array();
