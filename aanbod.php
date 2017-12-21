@@ -21,6 +21,7 @@
     <div class="container py-3 top-tekst">
         <h3 class="titel">Huuraanbood aangeboden door Hoksbergen Huurenbeheer</h3>
     </div>
+    <h6 class="nieuwsbrief">Meld je <a href="abonneer.php">hier</a> aan voor onze nieuwsbrief om op hoogte te blijven van onze laatste woningen.</h6>
 <div class="container py-3">
     <?php
     if (isset($_GET[$RESIDENCE_PAGE])) {
