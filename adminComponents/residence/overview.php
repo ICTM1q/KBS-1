@@ -9,13 +9,13 @@
 include "../header.php";
 include_once "menu.php";
 require_once "residenceFunctions.php";
+include "../../lib/upload/upload.php";
 $functions = new residenceFunctions();
 $conn = $functions->connectDB();
 
 if (isset($_POST) && $_POST != null && !isset($_POST['delete'])){
     $conn = $functions->connectDB();
 
-    include "../../lib/upload/upload.php";
     $id = autoUpload();
     if ($id == false) {
         $_SESSION['error'] = $UPLOAD_ERROR;

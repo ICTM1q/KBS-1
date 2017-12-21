@@ -37,9 +37,13 @@ if (isset($pandID) && $pandID != null){
     }
 }
 if (isset($_POST['editRecord']) && $_POST != null){
-
-    $var = uploadFile($_POST['picturesid']);
-    if ($var != null){
+    if ($_POST['picturesid'] != null){
+        $var = uploadFile($_POST['picturesid']);
+    }
+    else{
+        $_POST['picturesid'] = autoUpload();
+    }
+    if (isset($var) && $var != null){
         insertPictures($var, $_POST['picturesid'] , $conn);
     }
 
@@ -57,6 +61,7 @@ if (isset($_POST['editRecord']) && $_POST != null){
     $result = $functions->getSingleResidence($conn, $_POST['editRecord']);
     $result = $result->fetch_object();
 }
+$images = $functions->getResidencePictures($conn, $result->picturesid);
 include_once "../alert.php";
 if(isset($result) && $result != null){?>
 
@@ -113,8 +118,7 @@ if(isset($result) && $result != null){?>
                 <input id="gwe_prijs" name="gwe_prijs" type="number" min="0" step="1" value="<?php echo $result->gwe_price ?>" class="form-control input-md" require_onced="require_onced">
             </div>
         </div>
-        <?php $images = $functions->getResidencePictures($conn, $result->picturesid);
-        if($images != null) {?>
+        <?php if($images != null) {?>
         <div class="form-group row">
             <label class="col-md-12 control-label">Verwijder een afbeelding door er op te klikken:</label>
             <?php
