@@ -15,7 +15,7 @@ function uploadFile($id)
 
         //Check if there are any images at all
         if ($count == 0 || !file_exists($_FILES['upload']['tmp_name'][0]) || !is_uploaded_file($_FILES['upload']['tmp_name'][0])) {
-            return $id;
+            return $files;
         }
 
         //Make sure there aren't more than 8 files
@@ -82,7 +82,7 @@ function autoUpload() {
     $conn = $func->connectDB();
     $id = getId($conn);
     $pictures = uploadFile($id);
-    if ($pictures != "error" && !$pictures){
+    if ($pictures != "error" && empty($pictures)){
         return $id;
     }
     if ($pictures == "error") {
