@@ -5,14 +5,15 @@
 
     <?php
     require_once "adminComponents/residence/residenceFunctions.php";
+    require_once "lib/vars.php";
     $functions = new residenceFunctions();
     $conn = $functions->connectDB();
-    if (!isset($_GET['pandid'])) {
-        $_GET['pandid'] = 1;
+    if (!isset($_GET[$RESIDENCE_ID])) {
+        $_GET[$RESIDENCE_ID] = 1;
     }
-    $result = $functions->getSingleResidence($conn, $_GET['pandid']);
+    $result = $functions->getSingleResidence($conn, $_GET[$RESIDENCE_ID]);
     $residence = $result->fetch_array();
-    $pictures = $functions->getResidencePictures($conn, $residence['picturesid']);
+    $pictures = $functions->getResidencePictures($conn, $residence[$RESIDENCE_PICTURES_ID]);
     $conn->close();
     ?>
 </head>
@@ -27,7 +28,7 @@
     <br>
     <div class="row">
         <div class="col">
-            <h1 class=" top-tekst"><?= $residence['adres'] . ", " . $residence['postalcode'] . " " . $residence['city'] ?></h1>
+            <h1 class=" top-tekst"><?= $residence[$RESIDENCE_ADRES] . ", " . $residence[$RESIDENCE_POSTALCODE] . " " . $residence[$RESIDENCE_CITY] ?></h1>
             <br>
         </div>
     </div>
@@ -54,7 +55,7 @@
                     foreach ($pictures as $picture) {
                         ?>
                         <div class="carousel-item <?= $first ? 'active' : '' ?>">
-                            <img class="d-block w-100 carousel" src="<?= "uploads/" . $picture['path'] ?>" alt="<?= $picture['path'] ?>">
+                            <img class="d-block w-100 carousel" src="<?= "uploads/" . $picture[$PICTURE_PATH] ?>" alt="<?= $picture[$PICTURE_PATH] ?>">
                         </div>
                         <?php
                         $first = false;
@@ -78,10 +79,10 @@
     <div class="col-md-4">
         <h3 class="my-3">Details</h3>
         <ul>
-            <li>Adres: <?= $residence['adres'] ?></li>
-            <li>Postcode: <?= $residence['postalcode'] ?></li>
-            <li>Plaats: <?= $residence['city'] ?></li>
-            <li>Prijs: €<?= $residence['price'] ?></li>
+            <li>Adres: <?= $residence[$RESIDENCE_ADRES] ?></li>
+            <li>Postcode: <?= $residence[$RESIDENCE_POSTALCODE] ?></li>
+            <li>Plaats: <?= $residence[$RESIDENCE_CITY] ?></li>
+            <li>Prijs: €<?= $residence[$RESIDENCE_PRICE] ?></li>
         </ul>
         <br>
         <a href="contact.php" class="btn btn-space btn-primary">Contacteer ons</a>
@@ -92,14 +93,14 @@
 <div class="row row-woning">
     <div class="col-md-12 beschrijving">
         <h3 class="my-3">Beschrijving</h3>
-        <p><?= $residence['description'] ?></p>
+        <p><?= str_replace("\n", "<br/>", $residence[$RESIDENCE_DESC]) ?></p>
     </div>
 </div>
 
 <div class="row row-woning">
     <div class="col-md-12 beschrijving">
         <iframe width="600" height="450" frameborder="0" style="border:0"
-                src="https://www.google.com/maps/embed/v1/search?q=<?= str_replace(" ", "+", $residence['city'] . "+" . $residence['adres'] . "+" . $residence['postalcode']) ?>&key=AIzaSyBTlBGgJMAjD1MibY_XKVf1amexgekuW1g" allowfullscreen></iframe>
+                src="https://www.google.com/maps/embed/v1/search?q=<?= str_replace(" ", "+", $residence[$RESIDENCE_CITY] . "+" . $residence[$RESIDENCE_ADRES] . "+" . $residence[$RESIDENCE_POSTALCODE]) ?>&key=AIzaSyBTlBGgJMAjD1MibY_XKVf1amexgekuW1g" allowfullscreen></iframe>
     </div>
 </div>
 
