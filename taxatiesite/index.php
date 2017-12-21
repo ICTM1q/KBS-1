@@ -57,7 +57,7 @@
 
      <div class="row my-4">
        <div class="col-lg-8">
-         <p>Wij verhuren en beheren ook panden via onze andere onderneming <a href="http://huurenbeheer.nl">Huurenbeheer</a></p>
+         <p>Wij verhuren en beheren ook panden via onze andere onderneming <a href="http://huurenbeheer.nl">Huur & beheer</a></p>
        </div>
        <div class="col-lg-4">
          <a href="http://huurenbeheer.nl"><img class="img-fluid rounded" src="img/huurenbeheer.jpg" alt=""></a>
