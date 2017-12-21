@@ -31,7 +31,13 @@ if (isset($_POST['editRecord']) && $_POST != null){
         $_SESSION['error'] = $UPLOAD_ERROR;
     }
 
-    $functions->updateResidence($conn, $_POST['editRecord'], $_POST['adres'], $_POST['postcode'], $_POST['plaats'], $_POST['beschrijving'], $_POST['prijs'], $id);
+    $adres          = htmlspecialchars($_POST['adres'] , ENT_QUOTES, 'UTF-8');
+    $plaats         = htmlspecialchars($_POST['plaats'] , ENT_QUOTES, 'UTF-8');
+    $postcode       = htmlspecialchars($_POST['postcode'] , ENT_QUOTES, 'UTF-8');
+    $beschrijving   = htmlspecialchars($_POST['beschrijving'] , ENT_QUOTES, 'UTF-8');
+    $prijs          = htmlspecialchars($_POST['prijs'] , ENT_QUOTES, 'UTF-8');
+
+    $functions->updateResidence($conn, $_POST['editRecord'], $adres, $postcode, $plaats, $beschrijving, $prijs, $id);
     $result = $functions->getSingleResidence($conn, $_POST['editRecord']);
     $result = $result->fetch_object();
 }
