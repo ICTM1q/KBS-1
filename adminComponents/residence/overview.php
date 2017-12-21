@@ -25,12 +25,11 @@ if (isset($_POST) && $_POST != null && !isset($_POST['delete'])){
     $postcode       = htmlspecialchars ($_POST['postcode'] , ENT_QUOTES, 'UTF-8');
     $beschrijving   = htmlspecialchars ($_POST['beschrijving'] , ENT_QUOTES, 'UTF-8');
     $prijs          = htmlspecialchars ($_POST['prijs'] , ENT_QUOTES, 'UTF-8');
-    $gweprijs          = htmlspecialchars ($_POST['gwe_prijs'] , ENT_QUOTES, 'UTF-8');
+    $gwe_prijs          = htmlspecialchars ($_POST['gwe_prijs'] , ENT_QUOTES, 'UTF-8');
     if ($id == false){
         $id = 'null';
     }
-    var_dump($beschrijving,$id);
-    $functions->insertNewResidence($conn, $adres, $plaats, $postcode, $beschrijving, $prijs, $gweprijs, $id);
+    $functions->insertNewResidence($conn, $adres, $plaats, $postcode, $beschrijving, $prijs, $gwe_prijs, $id);
 
 
 }else{
@@ -67,7 +66,7 @@ $conn->close();
         <th>Plaats</th>
         <th>Beschrijving</th>
         <th>Prijs</th>
-        <th>Afbeelding</th>
+        <th>G/W/E</th>
         <th class="custom-col">Wijzigen</th>
         <th class="custom-col">Verwijderen</th>
     </tr>
@@ -83,7 +82,7 @@ $conn->close();
                 <td><?php echo $row['city'] ?></td>
                 <td><?php echo $row['description'] ?></td>
                 <td><?php echo $row['price'] ?></td>
-                <td><?php echo $row['gwe-price'] ?></td>
+                <td><?php echo $row['gwe_price'] ?></td>
                 <td class="custom-col">
                     <form method="post" action="/adminComponents/residence/edit.php">
                         <input  type="hidden" name="edit" value="<?php echo $row['pandid'] ?>">
