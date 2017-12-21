@@ -240,7 +240,7 @@ if ( isset( $_POST["submit"]) ) {
                       </div>
                       <div class="col-md-12">
                         <img id="captcha" src="../lib/securimage/securimage_show.php" alt="CAPTCHA Image" /><br>
-                        <a href="#" onclick="document.getElementById('captcha').src = '../lib/securimage/securimage_show.php?' + Math.random(); return false">[ Andere Afbeelding ]</a><br>
+                        <a href="#" class="ondertekst" onclick="document.getElementById('captcha').src = '../lib/securimage/securimage_show.php?' + Math.random(); return false">[ Andere Afbeelding ]</a><br>
                         <input type="text" name="captchaCode" size="10" maxlength="6" /><span class="error">  <?php echo $pdfHBComplaintArray["captchaErr"]; ?><span><br><br>
                       </div>
                       <br>
