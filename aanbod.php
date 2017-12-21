@@ -69,9 +69,9 @@
                             <p class="card-text"><?php
                                 $desc = $residence['description'];
 
-                                if (strlen($desc) > 500)
+                                if (strlen($desc) > 300)
                                 {
-                                    $offset = (500 - 3) - strlen($desc);
+                                    $offset = (300 - 3) - strlen($desc);
                                     $desc = substr($desc, 0, strrpos($desc, ' ', $offset)) . '...';
                                 }
 
