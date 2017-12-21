@@ -20,7 +20,16 @@ if (isset($_POST) && $_POST != null && !isset($_POST['delete'])){
     if ($id == false) {
         $_SESSION['error'] = $UPLOAD_ERROR;
     }
-    $functions->insertNewResidence($conn, $_POST['adres'], $_POST['plaats'], $_POST['postcode'], $_POST['beschrijving'], $_POST['prijs'], $id);
+    $adres          = htmlspecialchars ($_POST['adres'] , ENT_QUOTES, 'UTF-8');
+    $plaats         = htmlspecialchars ($_POST['plaats'] , ENT_QUOTES, 'UTF-8');
+    $postcode       = htmlspecialchars ($_POST['postcode'] , ENT_QUOTES, 'UTF-8');
+    $beschrijving   = htmlspecialchars ($_POST['beschrijving'] , ENT_QUOTES, 'UTF-8');
+    $prijs          = htmlspecialchars ($_POST['prijs'] , ENT_QUOTES, 'UTF-8');
+    if ($id == false){
+        $id = 'null';
+    }
+    var_dump($beschrijving,$id);
+    $functions->insertNewResidence($conn, $adres, $plaats, $postcode, $beschrijving, $prijs, $id);
 
 
 }else{
@@ -57,7 +66,7 @@ $conn->close();
         <th>Plaats</th>
         <th>Beschrijving</th>
         <th>Prijs</th>
-        <th>Afbeelding</th>
+        <th>G/W/E</th>
         <th class="custom-col">Wijzigen</th>
         <th class="custom-col">Verwijderen</th>
     </tr>

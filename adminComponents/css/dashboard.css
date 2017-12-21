@@ -84,3 +84,7 @@ h1 {
 .modified-topoffset {
   margin-top: 0.5%;
 }
+img.thumbnail{
+  max-width: 100%;
+  position: center;
+}
