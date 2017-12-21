@@ -5,6 +5,8 @@
     <title>Title</title>
 
     <?php
+    session_start();
+
     //Check of de form gesubmit is.
     if (isset($_POST["submit"])) {
         include_once "upload.php";

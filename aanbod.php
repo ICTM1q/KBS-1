@@ -54,7 +54,17 @@
                     <div class="col-md-8 px-3">
                         <div class="card-block px-3 pand-tekst">
                             <h4 class="card-title"><?= $residence['adres'] . ", " . $residence['postalcode'] . " " . $residence['city'] ?></h4>
-                            <p class="card-text"><?= $residence['description'] ?></p>
+                            <p class="card-text"><?php
+                                $desc = $residence['description'];
+
+                                if (strlen($desc) > 300)
+                                {
+                                    $offset = (300 - 3) - strlen($desc);
+                                    $desc = substr($desc, 0, strrpos($desc, ' ', $offset)) . '...';
+                                }
+
+                                echo $desc;
+                                ?></p>
                             <p class="card-text">€<?= $residence['price'] ?></p>
                             <a href="woning.php?pandid=<?= $residence['pandid'] ?>" class="btn btn-primary">Lees
                                 meer</a>

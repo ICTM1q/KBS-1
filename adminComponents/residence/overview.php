@@ -71,7 +71,17 @@ $conn->close();
                 <td><?php echo $row['adres'] ?></td>
                 <td><?php echo $row['postalcode'] ?></td>
                 <td><?php echo $row['city'] ?></td>
-                <td><?php echo $row['description'] ?></td>
+                <td><?php
+                    $desc = $row['description'];
+
+                    if (strlen($desc) > 200)
+                    {
+                        $offset = (200 - 3) - strlen($desc);
+                        $desc = substr($desc, 0, strrpos($desc, ' ', $offset)) . '...';
+                    }
+
+                    echo $desc;
+                    ?></td>
                 <td><?php echo $row['price'] ?></td>
                 <td><!--<img src="uploads/woning.png">--></td>
                 <td class="custom-col">
