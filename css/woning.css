@@ -7,7 +7,7 @@
 }
 
 .carousel{
-    height: 450px;
-    width: 675px;
-    object-fit: contain;
+    height: 450px !important;
+    width: 600px !important;
+    object-fit: contain !important;
 }

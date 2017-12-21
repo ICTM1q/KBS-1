@@ -43,7 +43,7 @@
                     <?php
                     for ($i = 0; $i < $pictures->num_rows; $i++) {
                         ?>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="<?= $i ?>"
+                        <li data-target="#" data-slide-to="<?= $i ?>"
                             class="<?= $i == 0 ? 'active' : '' ?>"></li>
                         <?php
                     }
@@ -55,7 +55,7 @@
                     foreach ($pictures as $picture) {
                         ?>
                         <div class="carousel-item <?= $first ? 'active' : '' ?>">
-                            <img class="d-block w-100 carousel" src="<?= "uploads/" . $picture[$PICTURE_PATH] ?>" alt="<?= $picture[$PICTURE_PATH] ?>">
+                            <img class="d-block carousel" src="<?= "uploads/" . $picture[$PICTURE_PATH] ?>" alt="<?= $picture[$PICTURE_PATH] ?>">
                         </div>
                         <?php
                         $first = false;
@@ -83,6 +83,7 @@
             <li>Postcode: <?= $residence[$RESIDENCE_POSTALCODE] ?></li>
             <li>Plaats: <?= $residence[$RESIDENCE_CITY] ?></li>
             <li>Prijs: €<?= $residence[$RESIDENCE_PRICE] ?></li>
+            <li>GWE Prijs: €<?= $residence[$RESIDENCE_GWE_PRICE] ?></li>
         </ul>
         <br>
         <a href="contact.php" class="btn btn-space btn-primary">Contacteer ons</a>

@@ -7,6 +7,7 @@ $RESIDENCE_ADRES = "adres";
 $RESIDENCE_POSTALCODE = "postalcode";
 $RESIDENCE_CITY = "city";
 $RESIDENCE_PRICE = "price";
+$RESIDENCE_GWE_PRICE = "gwe_price";
 $RESIDENCE_DESC = "description";
 
 $PICTURE_PATH = "path";
