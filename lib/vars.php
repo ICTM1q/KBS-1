@@ -2,7 +2,7 @@
 
 $RESIDENCE_ID = "pandid";
 $RESIDENCE_PAGE = "page";
-$RESIDENCE_PICTURES_ID = "pictures";
+$RESIDENCE_PICTURES_ID = "picturesid";
 $RESIDENCE_ADRES = "adres";
 $RESIDENCE_POSTALCODE = "postalcode";
 $RESIDENCE_CITY = "city";
