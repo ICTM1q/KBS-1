@@ -85,9 +85,9 @@
           <br>
           <center><h4>Wilt u direct een taxatie aanvragen?</h4></center>
           <br>
-          Klik dan <a href="contact.php">hier</a>
+          <center>Klik dan <a href="contact.php">hier</a>
           <br>
-          Wilt u liever telefonisch een afspraak maken dan kunt u bellen naar 038-33 310 43
+          Wilt u liever telefonisch een afspraak maken dan kunt u bellen naar 038-33 310 43</center>
         </table>
         <p>
           <center><a href="https://www.vastgoedcert.nl/"><img src="img/vastgoedcert.jpg" alt="" hspace="13"></a><img src="img/NWWI.jpg" alt="" hspace="13"><img src="img/TVI.jpg" alt="" hspace="13"><img src="img/nrvt.jpg" alt="" hspace="13"></center>
