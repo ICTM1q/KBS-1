@@ -73,7 +73,7 @@ function uploadFile($id)
 
     } catch (RuntimeException $ex) {
         $_SESSION['error'] = "Bestand uploaden mislukt: " . $ex->getMessage();
-        return false;
+        return "error";
     }
 }
 
@@ -82,8 +82,11 @@ function autoUpload() {
     $conn = $func->connectDB();
     $id = getId($conn);
     $pictures = uploadFile($id);
-    if ($pictures == false) {
-        return false;
+    if ($pictures !== "error" || empty($pictures)){
+        return $id;
+    }
+    if ($pictures == "error") {
+        return FALSE;
     }
     insertPictures($pictures, $id, $conn);
     return $id;
