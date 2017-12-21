@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <?php
-        require "adminComponents/residence/residenceFunctions.php";
-        $functions = new residenceFunctions();
-        $conn = $functions->connectDB();
-        $residences = $functions->getAllResidence($conn);
-        $conn->close();
+    require "adminComponents/residence/residenceFunctions.php";
+    require_once "lib/vars.php";
+    $functions = new residenceFunctions();
+    $conn = $functions->connectDB();
+    $residences = $functions->getAllResidence($conn);
+    $conn->close();
     ?>
     <link href="css/aanbod.css" rel="stylesheet">
 </head>
@@ -22,10 +23,10 @@
     </div>
 <div class="container py-3">
     <?php
-    if (isset($_GET['page'])) {
-        $index = ($_GET['page'] - 1) * 10;
+    if (isset($_GET[$RESIDENCE_PAGE])) {
+        $index = ($_GET[$RESIDENCE_PAGE] - 1) * 10;
     } else {
-        $_GET['page'] = 1;
+        $_GET[$RESIDENCE_PAGE] = 1;
         $index = 0;
     }
 
@@ -34,29 +35,29 @@
 
         $skip = $index;
         foreach ($residences as $residence) {
-            if ($_GET['page'] > 1 && $skip > 0) {
+            if ($_GET[$RESIDENCE_PAGE] > 1 && $skip > 0) {
                 $skip--;
                 continue;
             }
-            $pictures = $functions->getResidencePictures($conn, $residence['picturesid']);
+            $pictures = $functions->getResidencePictures($conn, $residence[$RESIDENCE_PICTURES_ID]);
 
-            if ($index != ($_GET['page'] - 1) * 10 && $index % 10 == 0) {
+            if ($index != ($_GET[$RESIDENCE_PAGE] - 1) * 10 && $index % 10 == 0) {
                 global $current;
                 $current = $index;
                 break;
             }
             ?>
-            <div id="pand-<?= $residence['pandid'] ?>" class="pand">
+            <div id="pand-<?= $residence[$RESIDENCE_ID] ?>" class="pand">
                 <div class="row">
                     <div class="col-md-4">
-                        <img src="<?= $pictures == null ? "https://via.placeholder.com/350x260" : "uploads/" . $pictures->fetch_array()['path'] ?>"
+                        <img src="<?= $pictures == null ? "https://via.placeholder.com/350x260" : "uploads/" . $pictures->fetch_array()[$RESIDENCE_PAGE] ?>"
                              class="w-100  pand-pic">
                     </div>
                     <div class="col-md-8 px-3">
                         <div class="card-block px-3 pand-tekst">
-                            <h4 class="card-title"><?= $residence['adres'] . ", " . $residence['postalcode'] . " " . $residence['city'] ?></h4>
+                            <h4 class="card-title"><?= $residence[$RESIDENCE_ADRES] . ", " . $residence[$RESIDENCE_POSTALCODE] . " " . $residence[$RESIDENCE_CITY] ?></h4>
                             <p class="card-text"><?php
-                                $desc = $residence['description'];
+                                $desc = $residence[$RESIDENCE_DESC];
 
                                 if (strlen($desc) > 300)
                                 {
@@ -66,8 +67,8 @@
 
                                 echo $desc;
                                 ?></p>
-                            <p class="card-text">€<?= $residence['price'] ?></p>
-                            <a href="woning.php?pandid=<?= $residence['pandid'] ?>" class="btn btn-primary">Lees
+                            <p class="card-text">€<?= $residence[$RESIDENCE_PRICE] ?></p>
+                            <a href="woning.php?pandid=<?= $residence[$RESIDENCE_ID] ?>" class="btn btn-primary">Lees
                                 meer</a>
                         </div>
                     </div>
@@ -93,7 +94,7 @@
             } else {
                 $pages = ceil($residences->num_rows / 10);
             }
-            $currentpage = $_GET['page'];
+            $currentpage = $_GET[$RESIDENCE_PAGE];
             ?>
             <ul class="pagination mx-auto">
                 <li class="page-item <?= $currentpage == 1 ? 'disabled' : '' ?>">

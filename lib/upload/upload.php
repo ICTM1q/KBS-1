@@ -94,8 +94,8 @@ function autoUpload() {
 
 function removePicture($path, $id, $conn)
 {
-    $stmt = $conn->prepare("DELETE FROM picture WHERE path = `?` AND picturesid = `?`");
-    $stmt->bind_param("ss", $path, $id);
+    $stmt = $conn->prepare("DELETE FROM picture WHERE picturesid = ? AND path = ?");
+    $stmt->bind_param("ss", $id, $path);
     $stmt->execute();
 }
 

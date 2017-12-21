@@ -76,6 +76,7 @@ class residenceFunctions
         $sql = "INSERT INTO pand (adres, city, postalcode, description, price, picturesid)
                 VALUES ('$adres', '$city', '$postalcode', '$description', '$price' , $picturesid)";
 
+        var_dump($sql);
         if ($conn->query($sql) === TRUE) {
             if ( sendToMaillist ( $adres, $city, $postalcode, $description, $price ) === TRUE ) {
                 $_SESSION['message'] = "Nieuwe woning succesvol toegevoegd.";
