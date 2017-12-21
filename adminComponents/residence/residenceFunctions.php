@@ -69,13 +69,14 @@ class residenceFunctions
         }
     }
 
-    function insertNewResidence($conn, $adres, $city, $postalcode, $description, $price, $picturesid)
+    function insertNewResidence($conn, $adres, $city, $postalcode, $description, $price, $gwe, $picturesid)
     {
 
         include $_SERVER['DOCUMENT_ROOT']."/lib/mail/mail.php";
-        $sql = "INSERT INTO pand (adres, city, postalcode, description, price, picturesid)
-                VALUES ('$adres', '$city', '$postalcode', '$description', '$price' , $picturesid)";
+        $sql = "INSERT INTO pand (adres, city, postalcode, description, price, `gwe-price`, picturesid)
+                VALUES ('$adres', '$city', '$postalcode', '$description', '$price', '$gwe' , $picturesid)";
 
+        var_dump($sql);
         if ($conn->query($sql) === TRUE) {
             if ( sendToMaillist ( $adres, $city, $postalcode, $description, $price ) === TRUE ) {
                 $_SESSION['message'] = "Nieuwe woning succesvol toegevoegd.";
@@ -107,9 +108,9 @@ class residenceFunctions
             return;
         }
     }
-    function updateResidence($conn, $pandid, $adres, $postcode, $plaats, $beschrijving, $prijs, $picturesid)
+    function updateResidence($conn, $pandid, $adres, $postcode, $plaats, $beschrijving, $prijs, $gwe, $picturesid)
     {
-        $sql = "UPDATE pand SET adres='$adres', city='$plaats', postalcode='$postcode', description='$beschrijving', price='$prijs',picturesid='$picturesid' WHERE pandid=$pandid";
+        $sql = "UPDATE pand SET adres='$adres', city='$plaats', postalcode='$postcode', description='$beschrijving', price='$prijs',gwe-price='$gwe',picturesid='$picturesid' WHERE pandid=$pandid";
 
         if ($conn->query($sql) === TRUE) {
             $_SESSION['message'] = "De woning is successvol aangepast";
