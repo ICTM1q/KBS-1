@@ -17,24 +17,24 @@
 
     <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
      <div class="container">
-       <a class="navbar-brand" href="index.php">
-    <img src="img/Hoksbergenlogo.png" width="200" height="90" class="d-inline-block align-top" alt=""></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon fa fa-bars"></span>
-    </button>
+       <a class="navbar-brand" href="../index.php">
+    <img src="img/Hoksbergenlogo.png" width="200" height="70" class="d-inline-block align-top" alt=""></a>
+       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon fa fa-bars"></span>
+       </button>
        <div class="collapse navbar-collapse" id="navbarResponsive">
          <ul class="navbar-nav ml-auto">
-           <li class="nav-item">
+           <li class="nav-item py-0">
              <a class="nav-link" href="index.php">Home
              </a>
            </li>
-           <li class="nav-item">
+           <li class="nav-item py-0">
              <a class="nav-link" href="taxatie.php">Taxatie</a>
            </li>
-           <li class="nav-item">
+           <li class="nav-item py-0">
              <a class="nav-link" href="onskantoor.php">Ons kantoor</a>
            </li>
-           <li class="nav-item">
+           <li class="nav-item py-0">
              <a class="nav-link" href="contact.php">Contact</a>
            </li>
          </ul>
