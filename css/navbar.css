@@ -27,5 +27,7 @@
     color: #fff;
 }
 
-.container{
+@media screen and (max-width: 992px) {
+    .nav-logo{
+    }
 }
