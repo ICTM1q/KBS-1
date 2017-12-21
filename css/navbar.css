@@ -1,6 +1,7 @@
 .navbar-custom {
     background-color: #4F72ED;
     border-bottom: solid 1px black;
+    height: 75px;
 }
 
 .navbar-custom  a {

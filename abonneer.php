@@ -10,8 +10,7 @@ if ( isset( $_POST["submit"] ) ) {
 
 ?>
 <head>
-    <title>Huur en beheer</title>
-    <link href="css/huurenbeheer.css" rel="stylesheet"
+    
 </head>    
 <body>
     <div class="content">

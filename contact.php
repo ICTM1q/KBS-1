@@ -19,12 +19,12 @@ if ( isset( $_POST["submit"] ) ) {
     $secureImage = new Securimage();
     
     // Voer pdfFunc uit.
-    $pdfHBContactArray = pdfHBContactFunc($_POST["firstname"], $_POST["insertion"], $_POST["surname"], $_POST["email"], $_POST["telno"], $_POST["message"], $secureImage, $_POST["captchaCode"]);
+    $pdfHBContactArray = pdfTypeFunc($_POST["firstname"], $_POST["insertion"], $_POST["surname"], $_POST["email"], $_POST["telno"], "", "", "", "", $_POST["message"], $secureImage, $_POST["captchaCode"], "Contact");
     if ( $pdfHBContactArray["result"] === TRUE ) {
         // Voor testing wanneer je geen mail win ontvangen zet comments bij sendContactMail en geen comments bij de ->Output() functie.
 
         //$pdfHBContactArray["pdf"]->Output();
-        $pdfHBContactArray["success"] = sendContactMail ( $pdfHBContactArray["pdf"]->Output("contactformulier.pdf", 'S'), "Contact", $_POST["firstname"], $_POST["surname"]);
+        $pdfHBContactArray["success"] = sendTypeMail ( $pdfHBContactArray["pdf"]->Output("contactformulier.pdf", 'S'), "Contact", $_POST["firstname"], $_POST["surname"], "");
         if ( $pdfHBContactArray["success"] === TRUE ) {
             $pdfHBContactArray["message"] = "Wij hebben uw melding ontvangen en zullen hem zo spoedig mogelijk afhandelen!";
         }
@@ -47,22 +47,14 @@ if ( isset( $_POST["submit"] ) ) {
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Huur en beheer</title>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <link href="css/huurenbeheer.css" rel="stylesheet">
+      
   </head>
 
   <body>
 
     <!-- Navigation -->
     <?php
-    include_once 'navbar.php';
+    include 'navbar.php';
     ?>
 
     <!-- Page Content -->

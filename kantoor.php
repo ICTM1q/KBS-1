@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Huur en beheer</title>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <link href="css/huurenbeheer.css" rel="stylesheet">
     <link href="css/kantoor.css" rel="stylesheet">
   </head>
 
@@ -21,15 +12,15 @@
     <!-- Page Content -->
     <div class="content">
         <h3 class="h3-tekst">Het kantoor</h3>
-            <p>Huur & Beheer Hoksbergen is een kantoor welke gevestigd is in het stadscentrum van Kampen. Ons kantoor kenmerkt zich door heldere adviezen, gedegen kennis en een persoonlijke benadering.<br><br>
-                Ons gemotiveerde team van medewerkers zet zich graag voor u in en is een team waarop u kunt bouwen.<br><br>
-                Hoksbergen heeft jarenlange ervaring in het beheren van particuliere en bedrijfsmatige panden.<br><br>
-                Wat is begonnen als een neventak is door de tevredenheid van onze klanten uitgegroeid tot het inmiddels goed bekende Huur & Beheer Hoksbergen.<br><br>
-                Ons kantoor is aangesloten bij de branchevereniging VastgoedPro.<br><br>
-                Tevens ingeschreven in de stichting VastgoedCert. Het VastgoedCert keurmerk duidt aan dat u van de makelaar/taxateur deskundigheid en vakbekwaamheid mag verwachten.</p>
+            <p>Huur & Beheer Hoksbergen vind je in het stadscentrum van Kampen. Ons kantoor kenmerkt zich door heldere adviezen, diepgaande kennis en een persoonlijke benadering.
+                Ons gemotiveerde team van medewerkers zet zich graag voor u in en is een team waarop u kunt bouwen.
+                Hoksbergen heeft jarenlange ervaring in het taxeren en beheren van particuliere panden.
+                Wat is begonnen als een neventak is door de tevredenheid van onze klanten uitgegroeid tot het inmiddels goed bekende Huur & Beheer Hoksbergen.
+                Ons kantoor is aangesloten bij de branchevereniging VastgoedPro.
+                Ook zijn wij ingeschreven in de stichting VastgoedCert voor makelaars werkzaamheden. Tevens zijn we aangesloten bij NRVT het vastgoed register.</p>
 
             <h3 class="h3-tekst">Openingstijden</h3>
-            <p>Maandag t/m vrijdag van 9.00 - 12.30 uur geopend. 's Middag op afspraak.</p>
+            <p><center>Maandag t/m vrijdag van 9.00 - 12.30 uur geopend. 's Middag op afspraak.</center></p>
 
             <h3 class="h3-tekst">Medewerkers</h3>
             <div class="medewerker">
