@@ -5,3 +5,8 @@
 .fa-chevron-left{
     color: black;
 }
+
+.carousel{
+    height: 450px;
+    object-fit: contain;
+}

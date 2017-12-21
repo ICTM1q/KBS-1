@@ -52,78 +52,13 @@ padding-left: 15%;
     margin-left: auto;
 }
 
-.pand{
-    margin-bottom: 0.5%;
-    border: solid 2px lightgray;
-    height: 260px;
-    background-color: whitesmoke;
-}
-
-.pand-tekst{
-    padding-top: 2%;
-}
-
-.pand-pic{
-    width: 350px;
-    height: 260px;
-    padding-bottom: 1%;
-    object-fit: contain;
-}
-
-.btn {
-    margin-left: 2%;
-}
-
 .title {
     font-size: 30px;
     padding-top: 10px;
 }
 
-.tag-bg{
-    background-color: #E0F4FB;
-}
-
-.line{
-    max-width: 100%;
-}
-
-.tag-tekst{
-    color: #4F72ED;
-    font-weight: bold;
-}
-
-.carousel{
-    height: 500px;
-    width: 750px;
-    object-fit: contain;
-}
-
-.beschrijving{
-    margin-left: 10%;
-    max-width: 50%;
-}
-
-.col-md-8{
-    max-width: 55%;
-}
-
-.card{
-    background-color: whitesmoke;
-}
-
 .card-body{
     background-color: whitesmoke;
-}
-
-.card-footer{
-    margin-left: auto;
-    margin-right: auto;
-    background-color: white;
-}
-
-btn-primary{
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .pagination {
