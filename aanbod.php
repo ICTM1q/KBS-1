@@ -19,7 +19,7 @@
 
     <!-- Page Content -->
     <div class="container py-3 top-tekst">
-            <h2>Huuraanbood aangeboden door Hoksbergen Huurenbeheer</h2>
+        <h3 class="titel">Huuraanbood aangeboden door Hoksbergen Huurenbeheer</h3>
     </div>
 <div class="container py-3">
     <?php
@@ -51,7 +51,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <img src="<?= $pictures == null ? "https://via.placeholder.com/350x260" : "uploads/" . $pictures->fetch_array()[$PICTURE_PATH] ?>"
-                             class="w-100  pand-pic">
+                             class="pand-pic w-100">
                     </div>
                     <div class="col-md-8 px-3">
                         <div class="card-block px-3 pand-tekst">

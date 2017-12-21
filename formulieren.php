@@ -12,7 +12,7 @@
 
         <!-- Inhoud -->
         <div class="content">
-            <h2 class="h3-tekst">Formulieren</h2>
+            <h3 class="title">Formulieren</h3>
             <br>
             <div class="container-div">
                 <div class="klachten"><a href="melding.php"><i class="fa fa-bell" aria-hidden="true"></i></a><p class="p-button">Melding</p></div>

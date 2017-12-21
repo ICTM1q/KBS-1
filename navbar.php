@@ -21,7 +21,7 @@
 
         <a class="navbar-brand" href="index.php">
 
-            <img src="css/img/logo_groot.png" width="214" height="90" class="d-inline-block align-top nav-logo" alt=""></a>
+            <img src="css/img/logo_groot.png" width="200" height="60" class="d-inline-block align-top nav-logo" alt=""></a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,27 +31,27 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
 
             <ul class="navbar-nav ml-auto">
-                <li>
+                <li class="nav-item py-0">
                     <a class="nav-link <?php if ($_SERVER[$GLOBAL_PHP_SELF] == $HEADER_HOME) {
                         print "active";
                     }; ?>" href="home.php">Home</a>
                 </li>
-                <li>
+                <li class="nav-item py-0">
                     <a class="nav-link <?php if ($_SERVER[$GLOBAL_PHP_SELF] == $HEADER_KANTOOR) {
                         echo "active";
                     }; ?>" href="kantoor.php">Kantoor</a>
                 </li>
-                <li>
+                <li class="nav-item py-0">
                     <a class="nav-link <?php if ($_SERVER[$GLOBAL_PHP_SELF] == $HEADER_AANBOD || $_SERVER[$GLOBAL_PHP_SELF] == $HEADER_WONING) {
                         echo "active";
                     }; ?>" href="aanbod.php">Aanbod</a>
                 </li>
-                <li>
+                <li class="nav-item py-0">
                     <a class="nav-link <?php if ($_SERVER[$GLOBAL_PHP_SELF] == $HEADER_VOORWAARDEN) {
                         echo "active";
                     }; ?>" href="huurvoorwaarden.php">Huurvoorwaarden</a>
                 </li>
-                <li>
+                <li class="nav-item py-0">
                     <a class="nav-link <?php if ($_SERVER[$GLOBAL_PHP_SELF] == $HEADER_FORMS || $_SERVER[$GLOBAL_PHP_SELF] == $HEADER_MELDING || $_SERVER[$GLOBAL_PHP_SELF] == $HEADER_CONTACT) {
                         echo "active";
                     }; ?>" href="formulieren.php">Formulieren</a>

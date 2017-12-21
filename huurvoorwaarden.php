@@ -12,7 +12,7 @@
 
     <!-- Page Content -->
     <div class="content">
-        <h2>Huurvoorwaarden</h2>
+        <h3 class="title">Huurvoorwaarden</h3>
         <br>
         <p>Om in aanmerking te komen voor een huurwoning dient u aan een aantal voorwaarden te voldoen. Om dit te verifiëren hebben wij een aantal gegevens van u nodig;</p>
         <br>

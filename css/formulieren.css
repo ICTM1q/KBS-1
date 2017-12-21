@@ -33,3 +33,18 @@
     font-weight: bold;
     font-size: 20px;
 }
+
+@media screen and (max-width: 650px) {
+    .fa-phone{
+    font-size: 100px;
+    margin-bottom: 7%;
+    }
+
+    .fa-bell{
+        font-size: 100px;
+        margin-bottom: 7%;
+    }
+    .container-div{
+        height: 150px;
+    }
+}

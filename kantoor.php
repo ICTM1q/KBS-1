@@ -11,7 +11,7 @@
 
     <!-- Page Content -->
     <div class="content">
-        <h3 class="h3-tekst">Het kantoor</h3>
+        <h3 class="title">Het kantoor</h3>
             <p>Huur & Beheer Hoksbergen vind je in het stadscentrum van Kampen. Ons kantoor kenmerkt zich door heldere adviezen, diepgaande kennis en een persoonlijke benadering.
                 Ons gemotiveerde team van medewerkers zet zich graag voor u in en is een team waarop u kunt bouwen.
                 Hoksbergen heeft jarenlange ervaring in het taxeren en beheren van particuliere panden.
@@ -19,10 +19,15 @@
                 Ons kantoor is aangesloten bij de branchevereniging VastgoedPro.
                 Ook zijn wij ingeschreven in de stichting VastgoedCert voor makelaars werkzaamheden. Tevens zijn we aangesloten bij NRVT het vastgoed register.</p>
 
-            <h3 class="h3-tekst">Openingstijden</h3>
+            <br>
+            
+            
+            <h3 class="title">Openingstijden</h3>
             <p><center>Maandag t/m vrijdag van 9.00 - 12.30 uur geopend. 's Middag op afspraak.</center></p>
 
-            <h3 class="h3-tekst">Medewerkers</h3>
+            <br>
+            
+            <h3 class="title">Medewerkers</h3>
             <div class="medewerker">
                 <div class="medewerker-tekst">
                     <img class="line" src="css/img/line.png"><br>

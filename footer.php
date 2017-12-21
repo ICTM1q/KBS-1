@@ -43,8 +43,10 @@
 
             <div class="col">
                 <h3>Locatie</h3>
+                <div class="map-responsive-footer">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2425.5411569166!2d5.9132473156257745!3d52.559824241029794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c87883431521b5%3A0x9589572588a7b0f1!2sHoksbergen+Makelaardij+V.O.F.!5e0!3m2!1snl!2snl!4v1511426183418"
                         width="400" height="200" frameborder="0" allowfullscreen></iframe>
+                </div>
             </div>
 
         </div>

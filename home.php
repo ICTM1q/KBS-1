@@ -34,7 +34,7 @@
         <!-- Call to Action Well -->
       <div class="card tag-bg my-4 text-center">
         <div class="card-body">
-          <p class="m-0 tag-tekst"><h1 class="title">Welkom op de website van Huur & Beheer Hoksbergen</h1></p>
+          <p class="m-0 tag-tekst"><h2 class="title">Welkom op de website van Huur & Beheer Hoksbergen</h2></p>
         </div>
       </div>
         
