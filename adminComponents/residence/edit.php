@@ -22,7 +22,7 @@ $conn = $functions->connectDB();
 if (isset($_POST['picturesid'])){
     $_SESSION['picturesid'] = $_POST['picturesid'];
 }
-if (isset($_GET) && $_GET != null){
+if (isset($_GET['path']) && isset($_GET['delete']) && $_GET != null){
     //Delete image based on picturesid and path
     removePicture($_GET['path'], $_GET['delete'], $conn);
     $_SESSION['message'] = "Afbeelding is verwijderd.";
