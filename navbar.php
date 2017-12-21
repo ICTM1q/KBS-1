@@ -6,13 +6,15 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <meta charset="UTF-8">
-        <title></title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-        <link href="css/navbar.css" rel="stylesheet">
+        <title>Huur en beheer</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous" rel="stylesheet">
         <link href="css/huurenbeheer.css" rel="stylesheet">
+        <link href="css/navbar.css" rel="stylesheet">
         <script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
     </head>
+    
     <body>
         <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
      <div class="container">
@@ -24,19 +26,19 @@ and open the template in the editor.
        <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li>
-                <a class="nav-link <?php if ($_SERVER['PHP_SELF'] == "index.php"){echo "active";};?>" href="home.php">Home</a>
+                <a class="nav-link <?php if ($_SERVER['PHP_SELF'] == "/home.php"){print "active";};?>" href="home.php">Home</a>
             </li>
             <li>
-                <a class="nav-link <?php if ($_SERVER['PHP_SELF'] == "kantoor.php"){echo "active";};?>" href="kantoor.php">Kantoor</a>
+                <a class="nav-link <?php if ($_SERVER['PHP_SELF'] == "/kantoor.php"){echo "active";};?>" href="kantoor.php">Kantoor</a>
             </li>
             <li>
-                <a class="nav-link <?php if ($_SERVER['PHP_SELF'] == "aanod.php"){echo "active";};?>" href="aanbod.php">Aanbod</a>
+                <a class="nav-link <?php if ($_SERVER['PHP_SELF'] == "/aanbod.php" || $_SERVER['PHP_SELF'] == "/woning.php"){echo "active";};?>" href="aanbod.php">Aanbod</a>
             </li>
             <li>
-                <a class="nav-link <?php if ($_SERVER['PHP_SELF'] == "huurvoorwaarden.php"){echo "active";};?>" href="huurvoorwaarden.php">Huurvoorwaarden</a>
+                <a class="nav-link <?php if ($_SERVER['PHP_SELF'] == "/huurvoorwaarden.php"){echo "active";};?>" href="huurvoorwaarden.php">Huurvoorwaarden</a>
             </li>
             <li>
-                <a class="nav-link <?php if ($_SERVER['PHP_SELF'] == "formulieren.php"){echo "active";};?>" href="formulieren.php">Formulieren</a>
+                <a class="nav-link <?php if ($_SERVER['PHP_SELF'] == "/formulieren.php" || $_SERVER['PHP_SELF'] == "/melding.php" || $_SERVER['PHP_SELF'] == "/contact.php"){echo "active";};?>" href="formulieren.php">Formulieren</a>
             </li>
           </ul>
         </div>
