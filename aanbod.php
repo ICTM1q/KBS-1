@@ -60,7 +60,7 @@
             <div id="pand-<?= $residence['pandid'] ?>" class="pand">
                 <div class="row">
                     <div class="col-md-4">
-                        <img src="<?= $pictures == null ? "https://via.placeholder.com/350x260" : "uploads/" . $pictures->fetch_array()[$PICTURE_PATH] ?>"
+                        <img src="<?= $pictures == null ? "https://via.placeholder.com/350x260" : "uploads/" . $pictures->fetch_array()['path'] ?>"
                              class="w-100  pand-pic">
                     </div>
                     <div class="col-md-8 px-3">
