@@ -31,8 +31,10 @@ if (isset($_GET['path']) && isset($_GET['delete']) && $_GET != null){
 }
 if (isset($pandID) && $pandID != null){
     $result = $functions->getSingleResidence($conn, $pandID);
+    if ($result!= null && $result->num_rows > 0){
     $result = $result->fetch_object();
     $_SESSION['pandid'] = $result->pandid;
+    }
 }
 if (isset($_POST['editRecord']) && $_POST != null){
 
