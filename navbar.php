@@ -21,7 +21,7 @@
 
         <a class="navbar-brand" href="index.php">
 
-            <img src="css/img/logo_groot.png" width="200" height="60" class="d-inline-block align-top nav-logo" alt=""></a>
+            <img src="css/img/logo_groot.png" width="142" height="60" class="d-inline-block align-top nav-logo" alt=""></a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
