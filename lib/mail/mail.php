@@ -78,7 +78,6 @@ function sendTypeMail ( $attachment, $type, $firstname, $surname, $images ) {
         $mail->addAddress($addr[0]);
     }
     if ( $type === "Melding" && !empty($images) ) {
-        echo "Hier!";
         foreach ($images as $image ) {
             $mail->addAttachment("uploads/" . $image, $image);
         }

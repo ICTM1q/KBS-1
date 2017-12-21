@@ -137,4 +137,11 @@ class issueFunctions
             return;
         }
     }
+    
+    function getPandid ( $conn, $street, $houseno, $zip ) {
+        $sql = $conn->prepare("SELECT pandid FROM pand WHERE adres = ? AND postalcode = ?");
+        $sql->execute ( array ( $street . " " . $houseno, $zip ) );
+        $row = $sql->fetchAll();
+        return $row;
+    }
 }
