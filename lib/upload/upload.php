@@ -14,7 +14,7 @@ function uploadFile($id)
         $count = count($_FILES['upload']['name']);
 
         //Check if there are any images at all
-        if ($count == 0) {
+        if ($count == 0 || !file_exists($_FILES['upload']['tmp_name'][0]) || !is_uploaded_file($_FILES['upload']['tmp_name'][0])) {
             return $id;
         }
 
