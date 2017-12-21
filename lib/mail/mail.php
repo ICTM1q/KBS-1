@@ -48,7 +48,7 @@ function sendTokenMail ( $token, $email ) {
     }
 }
 
-function sendContactMail ( $attachment, $type, $firstname, $surname ) {
+function sendTypeMail ( $attachment, $type, $firstname, $surname, $images ) {
     include_once $_SERVER['DOCUMENT_ROOT']."/lib/config/mailconfig.php";
     $mail = new PHPMailer();
     $mail->IsSMTP();
@@ -69,7 +69,7 @@ function sendContactMail ( $attachment, $type, $firstname, $surname ) {
     $mail->Password = $emailpassword;
     $mail->SetFrom($emailaccount);
     $mail->Subject = "[" . date("y-m-d H:i:s") . "]" . "[" . $type . "]" . " Van: " . $firstname . " " . $surname;
-    $mail->Body = "Inkomend contactformulier.";
+    $mail->Body = "Inkomend " . $type . "formulier.";
     $toEmails = getFormEmails($type);
     if ( empty( $toEmails ) ) {
         return "EMPTY";
@@ -77,48 +77,13 @@ function sendContactMail ( $attachment, $type, $firstname, $surname ) {
     foreach ($toEmails as $addr) {
         $mail->addAddress($addr[0]);
     }
-    $mail->AddStringAttachment($attachment, "contactformulier" . "-" . date("y-m-d" ) . "-" . $firstname . "." . $surname . ".pdf");
-    if ( $mail->Send() ) {
-        return TRUE;
+    if ( $type === "Melding" && !empty($images) ) {
+        echo "Hier!";
+        foreach ($images as $image ) {
+            $mail->addAttachment("uploads/" . $image, $image);
+        }
     }
-    else {
-        return FALSE;
-    }
-}
-
-function sendComplaintMail ( $attachment, $type, $firstname, $surname, $images ) {
-    include_once $_SERVER['DOCUMENT_ROOT']."/lib/config/mailconfig.php";
-    $mail = new PHPMailer();
-    $mail->IsSMTP();
-    $mail->SMTPDebug = 0; // Debugging. 1 = Errors. 2 = Errors en server messsages.
-    $mail->SMTPAuth = true;
-    $mail->SMTPSecure = 'tls';
-    $mail->SMTPOptions = array(
-                        'ssl' => array(
-                            'verify_peer' => false,
-                            'verify_peer_name' => false,
-                            'allow_self_signed' => true
-                        )
-                    );
-    $mail->Host = "smtp.gmail.com";
-    $mail->Port = 587;
-    $mail->IsHTML(true);
-    $mail->Username = $emailaccount;
-    $mail->Password = $emailpassword;
-    $mail->SetFrom($emailaccount);
-    $mail->Subject = "[" . date("y-m-d H:i:s") . "]" . "[" . $type . "]" . " Van: " . $firstname . " " . $surname;
-    $mail->Body = "Inkomend meldingformulier.";
-    $toEmails = getFormEmails($type);
-    if ( empty( $toEmails ) ) {
-        return "EMPTY";
-    }
-    foreach ($toEmails as $addr) {
-        $mail->addAddress($addr[0]);
-    }
-    foreach ($images as $image ) {
-        $mail->addAttachment("uploads/" . $image[0], $image[0]);
-    }
-    $mail->AddStringAttachment($attachment, "meldingformulier" . "-" . date("y-m-d" ) . "-" . $firstname . "." . $surname . ".pdf");
+    $mail->AddStringAttachment($attachment, $type . "formulier" . "-" . date("y-m-d" ) . "-" . $firstname . "." . $surname . ".pdf");
     if ( $mail->Send() ) {
         return TRUE;
     }
@@ -150,7 +115,11 @@ function emailMaillist ( $adres, $city, $postalcode, $description, $price, $emai
         $mail->SetFrom($emailaccount);
         $mail->Subject = "Nieuwe woning!";
         $mail->addAddress($addr[0]);
-        $mail->Body = $adres . $city . $postalcode . $description . $price . "<br>" . 
+        $mail->Body = "Adres: ". $adres . "<br>" .
+                "Stad: " . $city . "<br>" .
+                "Postcode: " . $postalcode . "<br>" .
+                "Beschrijving: " . $description . "<br>" .
+                "Prijs: " . $price . "<br>" .
                  "<a href=" . "localhost/uitschrijven.php?token=" . $addr[1] . "&email=" . $addr[0] . ">Nieuwsbrief niet meer ontvangen.</a>";
         if ( !$mail->Send() ) {
             return FALSE;
