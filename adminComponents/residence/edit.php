@@ -45,7 +45,6 @@ if (isset($_POST['editRecord']) && $_POST != null){
     $beschrijving   = htmlspecialchars($_POST['beschrijving'] , ENT_QUOTES, 'UTF-8');
     $prijs          = htmlspecialchars($_POST['prijs'] , ENT_QUOTES, 'UTF-8');
 
-    var_dump($id);
     $functions->updateResidence($conn, $_POST['editRecord'], $adres, $postcode, $plaats, $beschrijving, $prijs, $id);
     $result = $functions->getSingleResidence($conn, $_POST['editRecord']);
     $result = $result->fetch_object();
