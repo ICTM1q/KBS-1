@@ -73,10 +73,9 @@ class residenceFunctions
     {
 
         include $_SERVER['DOCUMENT_ROOT']."/lib/mail/mail.php";
-        $sql = "INSERT INTO pand (adres, city, postalcode, description, price, `gwe-price`, picturesid)
+        $sql = "INSERT INTO pand (adres, city, postalcode, description, price, `gwe_price`, picturesid)
                 VALUES ('$adres', '$city', '$postalcode', '$description', '$price', '$gwe' , $picturesid)";
 
-        var_dump($sql);
         if ($conn->query($sql) === TRUE) {
             if ( sendToMaillist ( $adres, $city, $postalcode, $description, $price ) === TRUE ) {
                 $_SESSION['message'] = "Nieuwe woning succesvol toegevoegd.";
@@ -110,7 +109,7 @@ class residenceFunctions
     }
     function updateResidence($conn, $pandid, $adres, $postcode, $plaats, $beschrijving, $prijs, $gwe, $picturesid)
     {
-        $sql = "UPDATE pand SET adres='$adres', city='$plaats', postalcode='$postcode', description='$beschrijving', price='$prijs',gwe-price='$gwe',picturesid='$picturesid' WHERE pandid=$pandid";
+        $sql = "UPDATE pand SET adres='$adres', city='$plaats', postalcode='$postcode', description='$beschrijving', price='$prijs',`gwe_price`='$gwe',picturesid=$picturesid WHERE pandid=$pandid";
 
         if ($conn->query($sql) === TRUE) {
             $_SESSION['message'] = "De woning is successvol aangepast";
@@ -130,8 +129,8 @@ class residenceFunctions
         if ($result->num_rows > 0){
             return $result;
         } else {
-            $_SESSION['error'] = "Er is iets mis gegaan, de foto's kunnen niet worden gevonden.";
-            file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
+            $_SESSION['warning'] = "Er kunnen voor deze woning geen foto's worden gevonden.";
+            file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['warning'] . "\r\n", FILE_APPEND);
             return null;
         }
     }
