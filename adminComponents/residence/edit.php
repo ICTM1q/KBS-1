@@ -24,10 +24,9 @@ if (isset($pandID) && $pandID != null){
 }
 if (isset($_POST['editRecord']) && $_POST != null){
 
-
-    include "../../lib/upload/upload.php";
-    $id = uploadFile();
-    if ($id == false) {
+    $var = uploadFile($_POST['picturesid']);
+    insertPictures($var, $_POST['picturesid'] , $conn);
+    if ($_POST['picturesid'] == false) {
         $_SESSION['error'] = $UPLOAD_ERROR;
     }
 
@@ -36,8 +35,9 @@ if (isset($_POST['editRecord']) && $_POST != null){
     $postcode       = htmlspecialchars($_POST['postcode'] , ENT_QUOTES, 'UTF-8');
     $beschrijving   = htmlspecialchars($_POST['beschrijving'] , ENT_QUOTES, 'UTF-8');
     $prijs          = htmlspecialchars($_POST['prijs'] , ENT_QUOTES, 'UTF-8');
+    $gweprijs       = htmlspecialchars($_POST['gweprijs'] , ENT_QUOTES, 'UTF-8');
 
-    $functions->updateResidence($conn, $_POST['editRecord'], $adres, $postcode, $plaats, $beschrijving, $prijs, $id);
+    $functions->updateResidence($conn, $_POST['editRecord'], $adres, $postcode, $plaats, $beschrijving, $prijs, $_POST['picturesid']);
     $result = $functions->getSingleResidence($conn, $_POST['editRecord']);
     $result = $result->fetch_object();
 }
@@ -92,16 +92,33 @@ if($result != null){?>
                 <input id="prijs" name="prijs" type="number" min="0" step=".01" value="<?php echo $result->price ?>" class="form-control input-md" require_onced="require_onced">
             </div>
         </div>
-        <div class="row"><?php
-
-            $images = $functions->getResidencePictures($conn, $result->picturesid);
-            $row = $images->fetch_object();
-            var_dump("PicturesID: ".$result->picturesid);
-            echo "<pre>";
-            var_dump($row);
-            echo "</pre>";
-
-        ?></div>
+        <div class="form-group row">
+            <label class="col-md-5 control-label" for="gwe_prijs">gwe_prijs</label>
+            <div class="col-md-5">
+                <input id="gwe_prijs" name="gwe_prijs" type="number" min="0" step="1" value="<?php echo $result->gwe_price ?>" class="form-control input-md" require_onced="require_onced">
+            </div>
+        </div>
+        <?php $images = $functions->getResidencePictures($conn, $result->picturesid);
+        if($images != null) {?>
+        <div class="form-group row">
+            <label class="col-md-12 control-label">Verwijder een afbeelding door er op te klikken:</label>
+            <?php
+                $first = 0;
+                foreach ($images as $image) { ?>
+                    <div class="<?php if ($first == 0) {
+                        $first = 1;
+                        echo "offset-4 ";
+                    } else {
+                        $first--;
+                    } ?>col-md-3">
+                        <a href="edit.php?delete=<?php echo $image['picturesid'] ?>&path=<?php echo $image['path'] ?>"
+                           class="delete">
+                            <img src="<?php echo "/uploads/" . $image['path']; ?>" class="thumbnail mx-auto">
+                        </a>
+                    </div>
+                <?php }?>
+        </div>
+        <?php }?>
         <div class="form-group row">
             <div class="offset-3 col-md-2">
                 <a href="/adminComponents/residence/overview" class="form-control input-md btn btn-danger">Terug</a>

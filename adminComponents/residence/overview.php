@@ -20,7 +20,17 @@ if (isset($_POST) && $_POST != null && !isset($_POST['delete'])){
     if ($id == false) {
         $_SESSION['error'] = $UPLOAD_ERROR;
     }
-    $functions->insertNewResidence($conn, $_POST['adres'], $_POST['plaats'], $_POST['postcode'], $_POST['beschrijving'], $_POST['prijs'], $id);
+    $adres          = htmlspecialchars ($_POST['adres'] , ENT_QUOTES, 'UTF-8');
+    $plaats         = htmlspecialchars ($_POST['plaats'] , ENT_QUOTES, 'UTF-8');
+    $postcode       = htmlspecialchars ($_POST['postcode'] , ENT_QUOTES, 'UTF-8');
+    $beschrijving   = htmlspecialchars ($_POST['beschrijving'] , ENT_QUOTES, 'UTF-8');
+    $prijs          = htmlspecialchars ($_POST['prijs'] , ENT_QUOTES, 'UTF-8');
+    $gweprijs          = htmlspecialchars ($_POST['gwe_prijs'] , ENT_QUOTES, 'UTF-8');
+    if ($id == false){
+        $id = 'null';
+    }
+    var_dump($beschrijving,$id);
+    $functions->insertNewResidence($conn, $adres, $plaats, $postcode, $beschrijving, $prijs, $gweprijs, $id);
 
 
 }else{
@@ -73,10 +83,11 @@ $conn->close();
                 <td><?php echo $row['city'] ?></td>
                 <td><?php echo $row['description'] ?></td>
                 <td><?php echo $row['price'] ?></td>
-                <td><!--<img src="uploads/woning.png">--></td>
+                <td><?php echo $row['gwe-price'] ?></td>
                 <td class="custom-col">
                     <form method="post" action="/adminComponents/residence/edit.php">
                         <input  type="hidden" name="edit" value="<?php echo $row['pandid'] ?>">
+                        <input type="hidden" value="<?php echo $row['picturesid'] ?>" name="picturesid">
                         <button type="submit" class="btn fa fa-edit fa-2x"></button>
                     </form>
                 </td>

@@ -50,7 +50,14 @@ require_once "residenceFunctions.php";
         <div class="form-group row">
             <label class="col-md-5 control-label" for="prijs">Prijs</label>
             <div class="col-md-5">
-                <input id="prijs" name="prijs" type="number" min="0" step=".01" placeholder="" class="form-control input-md" require_onced="require_onced">
+                <input id="prijs" name="prijs" type="number" min="0" step="1" placeholder="" class="form-control input-md" require_onced="require_onced">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-md-5 control-label" for="gwe_prijs">gwe_prijs</label>
+            <div class="col-md-5">
+                <input id="gwe_prijs" name="gwe_prijs" type="number" min="0" step="1" placeholder="" class="form-control input-md" require_onced="require_onced">
             </div>
         </div>
         <div class="form-group row">
