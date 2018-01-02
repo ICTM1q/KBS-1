@@ -18,7 +18,7 @@ class userFunctions
         }
         else{
             $_SESSION['error'] = "Er kunnen geen gebruikers worden gevonden. Probeer het later nogmaals.";
-            file_put_contents("../logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
+            file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
             return null;
         }
 
@@ -35,7 +35,7 @@ class userFunctions
         }
         else{
             $_SESSION['error'] = "Er kunnen geen gebruikers worden gevonden. Probeer het later nogmaals.";
-            file_put_contents("../logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
+            file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
             return null;
         }
 
@@ -50,7 +50,7 @@ class userFunctions
         }
         else{
             $_SESSION['error'] = "De gebruiker die u probeerde te bewerken kan niet worden gevonden.";
-            file_put_contents("../logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
+            file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
             return null;
         }
     }
@@ -64,7 +64,7 @@ class userFunctions
         }
         else{
             $_SESSION['error'] = "De mailinstellingen van deze gebruiker kunnen niet worden gevonden.";
-            file_put_contents("../logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
+            file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
             return null;
         }
     }
@@ -76,7 +76,7 @@ class userFunctions
             return;
         } else {
             $_SESSION['error'] = "Error updating record: " . $conn->error;
-            file_put_contents("../logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
+            file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
             return;
         }
     }
@@ -88,7 +88,7 @@ class userFunctions
             return;
         } else {
             $_SESSION['error'] = "Error updating record: " . $conn->error;
-            file_put_contents("../logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
+            file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
             return;
         }
     }
@@ -102,7 +102,7 @@ class userFunctions
             return;
         } else {
             $_SESSION['error'] = "Error deleting record: " . $conn->error;
-            file_put_contents("../logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
+            file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
             return;
         }
     }

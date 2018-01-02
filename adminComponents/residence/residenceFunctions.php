@@ -82,7 +82,7 @@ class residenceFunctions
                 return;    
             }
             else {
-                $_SESSION['error'] = "Error.";
+                $_SESSION['error'] = "Error: Er kan geen abonnement email worden verstuurd.";
                 file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
                 return;
             }

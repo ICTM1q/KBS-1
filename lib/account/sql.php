@@ -116,7 +116,7 @@ if (!isset($SQL_AVAILABLE)) {
             return $row[0];
         }
         catch ( PDOException $e ) {
-            file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
+            file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $e . "\r\n", FILE_APPEND);
             return;
         }
     }
@@ -144,7 +144,7 @@ if (!isset($SQL_AVAILABLE)) {
 
         }
         catch ( PDOException $e ) {
-            file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
+            file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $e . "\r\n", FILE_APPEND);
             return;
         }
     }
@@ -159,7 +159,7 @@ if (!isset($SQL_AVAILABLE)) {
             return $row[0];
         }
         catch ( PDOException $e ) {
-            file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
+            file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $e . "\r\n", FILE_APPEND);
             return;
         }
     }
@@ -172,7 +172,7 @@ if (!isset($SQL_AVAILABLE)) {
             $stmt->execute ( array ( $ip ) );
         }
         catch ( PDOException $e ) {
-            file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
+            file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $e . "\r\n", FILE_APPEND);
             return;
         }
     }
