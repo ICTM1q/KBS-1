@@ -5,9 +5,7 @@
     require "adminComponents/residence/residenceFunctions.php";
     require_once "lib/vars.php";
     $functions = new residenceFunctions();
-    $conn = $functions->connectDB();
-    $residences = $functions->getAllResidence($conn);
-    $conn->close();
+    $residences = $functions->getAllResidence();
     ?>
     <link href="css/aanbod.css" rel="stylesheet">
 </head>

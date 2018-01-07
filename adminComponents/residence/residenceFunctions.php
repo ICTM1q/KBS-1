@@ -6,7 +6,8 @@
  * Time: 10:13
  */
 
-include_once "../../lib/account/sql.php";
+
+include_once $_SERVER["DOCUMENT_ROOT"]."/lib/account/sql.php";
 class residenceFunctions
 {
 
