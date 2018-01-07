@@ -11,11 +11,11 @@ include_once "menu.php";
 require_once "../residence/residenceFunctions.php";
 //data generation after include_once issueFunctions.php but before alert.php in case of error's.
 $functions = new residenceFunctions();
-$conn = $functions->connectDB();
+$conn = $functions->conn;
 require_once "userFunctions.php";
 $functions = new userFunctions();
 $result = $functions->getAllUsers($conn);
-$total = $result->num_rows;
+$total = count($result);
 $limit = 10;
 
 if (isset($_POST['delete']) && $_POST != null){
@@ -27,7 +27,6 @@ if(isset($_GET['page'])){
 }else{
     $result = $functions->getAllUsersPaginated($conn, $limit , 1);
 }
-$conn->close();
 
 include_once "../alert.php";
 ?>

@@ -1,10 +1,4 @@
-<?php if ($total > $limit){
-/**
- * Created by PhpStorm.
- * User: Tristan Willems
- * Date: 5-12-2017
- * Time: 12:19
- */?>
+<?php if ($total > $limit){?>
 <div class="row">
     <div class="offset-5 col-md-5">
         <ul class="pagination">

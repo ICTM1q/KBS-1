@@ -7,8 +7,8 @@ require "PHPMailer/src/PHPMailer.php";
 require "PHPMailer/src/SMTP.php";
 require "sql.php";
 
-function sendToMaillist ( $adres, $city, $postalcode, $description, $price ) {
-    $emails = getAllMallist();
+function sendToMaillist ($conn, $adres, $city, $postalcode, $description, $price ) {
+    $emails = getAllMallist($conn);
     if ( emailMaillist ( $adres, $city, $postalcode, $description, $price, $emails ) === TRUE ) {
         return TRUE;
     }

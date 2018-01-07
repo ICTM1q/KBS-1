@@ -18,25 +18,25 @@ require_once "residenceFunctions.php";
         <div class="form-group row">
             <label class="col-md-5 control-label" for="straat">Adres</label>
             <div class="col-md-5">
-                <input id="adres" name="adres" type="text" placeholder="" class="form-control input-md" require_onced="require_onced">
+                <input id="adres" name="adres" type="text" placeholder="" class="form-control input-md" required="required">
             </div>
         </div>
         <div class="form-group row">
             <label class="col-md-5 control-label" for="postcode">Postcode</label>
             <div class="col-md-5">
-                <input id="postcode" name="postcode" type="text" placeholder="" class="form-control input-md" require_onced="require_onced">
+                <input id="postcode" name="postcode" type="text" placeholder="" class="form-control input-md" required="required">
             </div>
         </div>
         <div class="form-group row">
             <label class="col-md-5 control-label" for="plaats">Plaats</label>
             <div class="col-md-5">
-                <input id="plaats" name="plaats" type="text" placeholder="" class="form-control input-md" require_onced="require_onced">
+                <input id="plaats" name="plaats" type="text" placeholder="" class="form-control input-md" required="required">
             </div>
         </div>
         <div class="form-group row">
             <label class="col-md-5 control-label" for="beschrijving">Beschrijving</label>
             <div class="col-md-5">
-                <textarea class="form-control" id="beschrijving" name="beschrijving" rows="5"></textarea require_onced="require_onced">
+                <textarea class="form-control" id="beschrijving" name="beschrijving" rows="5"></textarea required="required">
             </div>
         </div>
 
@@ -50,14 +50,31 @@ require_once "residenceFunctions.php";
         <div class="form-group row">
             <label class="col-md-5 control-label" for="prijs">Prijs</label>
             <div class="col-md-5">
-                <input id="prijs" name="prijs" type="number" min="0" step="1" placeholder="" class="form-control input-md" require_onced="require_onced">
+                <input id="prijs" name="prijs" type="number" min="0" step="1" placeholder="" class="form-control input-md" required="required">
             </div>
         </div>
 
         <div class="form-group row">
             <label class="col-md-5 control-label" for="gwe_prijs">G/W/E Prijs</label>
             <div class="col-md-5">
-                <input id="gwe_prijs" name="gwe_prijs" type="number" min="0" step="1" placeholder="" class="form-control input-md" require_onced="require_onced">
+                <input id="gwe_prijs" name="gwe_prijs" type="number" min="0" step="1" placeholder="" class="form-control input-md" required="required">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-5 control-label" for="actief">actief</label>
+            <div class="col-md-5">
+                <div class="radio">
+                    <label for="actief-0">
+                            <input type="radio" name="actief" id="actief-0" value=1>
+                        Ja
+                    </label>
+                </div>
+                <div class="radio">
+                    <label for="actief-1">
+                            <input type="radio" name="actief" id="actief-1" value=0 checked="checked">
+                        Nee
+                    </label>
+                </div>
             </div>
         </div>
         <div class="form-group row">

@@ -1,6 +1,5 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'] . "/adminComponents/residence/residenceFunctions.php";
 
 function uploadFile()
 {
@@ -77,10 +76,9 @@ function uploadFile()
     }
 }
 
-function autoUpload() {
-    $func = new residenceFunctions();
-    $conn = $func->connectDB();
+function autoUpload($conn) {
     $id = getId($conn);
+    $id = $id['max(picturesId)']+1;
     $pictures = uploadFile($id);
     if ($pictures != "error" && empty($pictures)){
         return $id;
@@ -110,8 +108,9 @@ function insertPictures($pictures, $id, $conn)
 //Insert a picture into the database with a specific id
 function insertPictureInDB($path, $id, $conn)
 {
-    $statement = $conn->prepare("INSERT INTO picture (picturesId, path) VALUES (?, ?)");
-    $statement->bind_param("ss", $id, $path);
+    $statement = $conn->prepare("INSERT INTO picture (picturesId, path) VALUES (:picturesid, :path)");
+    $statement->bindParam(":picturesid", $id, PDO::PARAM_INT);
+    $statement->bindParam(":path", $path, PDO::PARAM_STR);
     $statement->execute();
 }
 
@@ -120,10 +119,9 @@ function getId($conn)
 {
     $statement = $conn->prepare("SELECT max(picturesId) FROM picture");
     $statement->execute();
-    $statement->bind_result($max);
-    $statement->fetch();
+    $max = $statement->fetch();
 
-    return $max + 1;
+    return $max;
 }
 
 //Get all the pictures with this id

@@ -16,9 +16,9 @@
     require_once "residenceFunctions.php";
     $functions = new residenceFunctions();
     $conn = $functions->connectDB();
-    $result = $functions->getSingleResidence($conn, $_GET['pandid']);
+    $result = $functions->getSingleResidence($_GET['pandid']);
     $residence = $result->fetch_array();
-    $pictures = $functions->getResidencePictures($conn, $residence['picturesid']);
+    $pictures = $functions->getResidencePictures($residence['picturesid']);
     $conn->close();
     ?>
 </head>

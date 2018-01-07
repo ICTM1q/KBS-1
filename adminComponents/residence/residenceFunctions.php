@@ -6,78 +6,94 @@
  * Time: 10:13
  */
 
+include_once "../../lib/account/sql.php";
 class residenceFunctions
 {
-    function connectDB()
+
+    public $conn = null;
+
+    public function __construct()
     {
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "kbs";
-
-        // Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-        return $conn;
+        $this->conn = connectToDatabase();
     }
+    function getAllResidence(){
+        try {
+            $stmt = $this->conn->prepare('SELECT * FROM pand');
+            $stmt->execute();
+            $pand = $stmt->fetch();
 
-    function getAllResidence($conn)
-    {
-        $sql = "SELECT * FROM `pand`";
-
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-            return $result;
-        } else {
-            $_SESSION['error'] = "Er zijn geen woningen gevonden. Voeg een nieuwe woning toe om deze in het overzicht te zien.";
-            file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
-            return null;
+            if ($pand == false){
+                $_SESSION['error'] = "Er zijn geen woningen gevonden. Voeg een nieuwe woning toe om deze in het overzicht te zien.";
+                file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
+                return $pand;
+            }else {
+                return $pand;
+            }
+        }
+        catch ( PDOException $e ) {
+            file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $e . "\r\n", FILE_APPEND);
+            return $e;
         }
     }
-    function getAllResidencePaginated($conn, $limit ,$page)
+    function getAllResidencePaginated($limit1 , $page)
     {
-        $limit2 = ($page-1) * $limit;
-        $sql = "SELECT * FROM `pand` LIMIT $limit2, $limit";
+        try{
+            $limit2 = ($page-1) * $limit1;
 
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-            return $result;
-        } else {
-            $_SESSION['error'] = "Er zijn geen woningen gevonden. Voeg een nieuwe woning toe om deze in het overzicht te zien.";
-            file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
-            return null;
+            $stmt = $this->conn->prepare('SELECT * FROM pand LIMIT :limit2, :limit1');
+            $stmt->bindParam(":limit1" , $limit1, PDO::PARAM_INT);
+            $stmt->bindParam(":limit2" , $limit2, PDO::PARAM_INT);
+            $stmt->execute();
+            $pand = $stmt->fetchall();
+            return $pand;
+        }
+        catch ( PDOException $e ) {
+            $_SESSION['error'] = "Er zijn geen woningen gevonden. Voeg een nieuwe woning toe om deze in het overzicht te zien. PAGINATION ERROR";
+        file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $e . "\r\n", FILE_APPEND);
+        return $e;
         }
     }
-    function getSingleResidence($conn, $pandid)
+    function getSingleResidence($pandid)
     {
-        $sql = "SELECT * FROM `pand` WHERE pandid='$pandid'";
+        try {
+            $stmt = $this->conn->prepare('SELECT * FROM pand WHERE pandid=:pandid');
+            $stmt->bindParam(':pandid', $pandid, PDO::PARAM_INT);
+            $stmt->execute();
+            $pand = $stmt->fetch();
 
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0){
-            return $result;
-        } else {
-            $_SESSION['error'] = "Er is iets mis gegaan, de woning die u probeerde aan te passen kan niet worden gevonden.";
-            file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
-            return null;
+            if ($pand == false){
+                $_SESSION['error'] = "Er zijn geen woningen gevonden. Voeg een nieuwe woning toe om deze in het overzicht te zien.";
+                file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
+                return $pand;
+            }else {
+                return $pand;
+            }
+        }
+        catch ( PDOException $e ) {
+            file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $e . "\r\n", FILE_APPEND);
+            return $e;
         }
     }
-
-    function insertNewResidence($conn, $adres, $city, $postalcode, $description, $price, $gwe, $picturesid)
+    function insertNewResidence($adres, $city, $postalcode, $description, $price, $gwe, $picturesid, $active)
     {
-
         include $_SERVER['DOCUMENT_ROOT']."/lib/mail/mail.php";
-        $sql = "INSERT INTO pand (adres, city, postalcode, description, price, `gwe_price`, picturesid)
-                VALUES ('$adres', '$city', '$postalcode', '$description', '$price', '$gwe' , $picturesid)";
 
-        if ($conn->query($sql) === TRUE) {
-            if ( sendToMaillist ( $adres, $city, $postalcode, $description, $price ) === TRUE ) {
+        $stmt = $this->conn->prepare('INSERT INTO pand (adres, city, postalcode, description, price, `gwe_price`, picturesid, active) 
+                                VALUES(:adres, :city, :postalcode, :description, :price, :gwe_price, :pricturesid, :active)');
+        $stmt->bindParam(':adres',$adres,PDO::PARAM_STR);
+        $stmt->bindParam(':city',$city,PDO::PARAM_STR);
+        $stmt->bindParam(':postalcode',$postalcode,PDO::PARAM_STR);
+        $stmt->bindParam(':description',$description,PDO::PARAM_STR);
+        $stmt->bindParam(':price',$price,PDO::PARAM_INT);
+        $stmt->bindParam(':gwe_price',$gwe,PDO::PARAM_INT);
+        $stmt->bindParam(':pricturesid',$picturesid,PDO::PARAM_INT);
+        $stmt->bindParam(':active',$active,PDO::PARAM_BOOL);
+
+        $result = $stmt->execute();
+
+        if ($result === TRUE) {
+            var_dump("GOT HERE!");
+            if ( sendToMaillist ($this->conn, $adres, $city, $postalcode, $description, $price ) === TRUE ) {
                 $_SESSION['message'] = "Nieuwe woning succesvol toegevoegd.";
                 return;    
             }
@@ -88,45 +104,77 @@ class residenceFunctions
             }
             
         } else {
-            $_SESSION['error'] = "Error: " . $sql . "<br>" . $conn->error;
+            $_SESSION['error'] = "Error: " . $sql . "<br>" . $this->conn->error;
             file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
             return;
         }
     }
-    
-    function deleteResidence($conn, $pandid)
+    function deleteResidence($pandid)
     {
-        $sql = "DELETE FROM pand WHERE pandid=$pandid";
+        try {
+            $stmt = $this->conn->prepare('DELETE FROM pand WHERE pandid=:pandid');
+            $stmt->bindParam(':pandid', $pandid, PDO::PARAM_INT);
+            $result = $stmt->execute();
 
-        if ($conn->query($sql) === TRUE) {
-            $_SESSION['message'] = "Woning succesvol verwijderd.";
-            return;
-        } else {
-            $_SESSION['error'] = "Error deleting record: " . $conn->error;
-            file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
-            return;
+            if ($result == false){
+                $_SESSION['error'] = "Er is iets mis gegaan tijdens het verwijderen van een woning.";
+                file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
+                return null;
+            }else {
+                return true;
+            }
+        }
+        catch ( PDOException $e ) {
+            file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $e . "\r\n", FILE_APPEND);
+            return $e;
         }
     }
-    function updateResidence($conn, $pandid, $adres, $postcode, $plaats, $beschrijving, $prijs, $gwe, $picturesid)
+    function updateResidence($pandid, $adres, $postcode, $plaats, $beschrijving, $prijs, $gwe, $picturesid, $active)
     {
-        $sql = "UPDATE pand SET adres='$adres', city='$plaats', postalcode='$postcode', description='$beschrijving', price='$prijs',`gwe_price`='$gwe',picturesid=$picturesid WHERE pandid=$pandid";
+        try{
+            /*$sql = "UPDATE pand SET adres='$adres', city='$plaats', postalcode='$postcode', description='$beschrijving', price='$prijs',`gwe_price`='$gwe',picturesid=$picturesid WHERE pandid=$pandid";*/
 
-        if ($conn->query($sql) === TRUE) {
-            $_SESSION['message'] = "De woning is successvol aangepast";
-            return;
-        } else {
-            $_SESSION['error'] = "Error updating record: " . $conn->error;
-            file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
-            return;
+            $stmt = $this->conn->prepare('UPDATE pand 
+                                  SET 
+                                      adres= :adres,
+                                      city= :city,
+                                      postalcode= :postalcode,
+                                      description= :description,
+                                      price= :price,
+                                      gwe_price= :gwe_price,
+                                      picturesid= :picturesid,
+                                      active= :active 
+                                  WHERE pandid=:pandid');
+            $stmt->bindParam(':adres', $adres, PDO::PARAM_STR);
+            $stmt->bindParam(':city', $plaats,PDO::PARAM_STR);
+            $stmt->bindParam(':postalcode', $postcode,PDO::PARAM_STR);
+            $stmt->bindParam(':description', $beschrijving,PDO::PARAM_STR);
+            $stmt->bindParam(':price', $prijs,PDO::PARAM_INT);
+            $stmt->bindParam(':gwe_price', $gwe,PDO::PARAM_INT);
+            $stmt->bindParam(':picturesid',$picturesid,PDO::PARAM_INT);
+            $stmt->bindParam(':active', $active,PDO::PARAM_INT);
+            $stmt->bindParam(':pandid', $pandid,PDO::PARAM_INT);
+            $stmt->execute();
+            $result = $stmt->rowCount();
+            $SESSION['success'] = "Woning succesvol aangemaakt.";
+            return $result;
+
+        }
+        catch ( PDOException $e ) {
+            file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $e . "\r\n", FILE_APPEND);
+            return $e;
         }
     }
-    function getResidencePictures($conn, $picturesid)
+    function getResidencePictures($picturesid)
     {
         $sql = "SELECT * FROM `picture` WHERE picturesid='$picturesid'";
 
-        $result = $conn->query($sql);
+        $stmt= $this->conn->prepare('SELECT * FROM picture WHERE pictureid=:picid');
+        $stmt->bindParam(':picid', $picturesid, PDO::PARAM_INT);
 
-        if ($result->num_rows > 0){
+        $result = $this->conn->query($sql);
+
+        if ($result != false){
             return $result;
         } else {
             $_SESSION['warning'] = "Er kunnen voor deze woning geen foto's worden gevonden.";

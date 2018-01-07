@@ -24,7 +24,7 @@ if ( isset( $_POST["submit"]) ) {
     $secureImage = new Securimage();
 
     include_once "lib/upload/upload.php";
-    $id = autoUpload();
+    $id = autoUpload($conn);
     
     // Voer pdfFunc uit.
     $pdfHBComplaintArray = pdfTypeFunc($_POST["firstname"], $_POST["insertion"], $_POST["surname"], $_POST["email"], $_POST["telno"], $_POST["street"], $_POST["city"], $_POST["houseno"], $_POST["zip"], $_POST["complaint"], $secureImage, $_POST["captchaCode"], "Melding");
@@ -34,7 +34,7 @@ if ( isset( $_POST["submit"]) ) {
             $pdfHBComplaintArray["message"] = $_SESSION['error'];
         } else {
             $func = new residenceFunctions();
-            $conn = $func->connectDB();
+            $conn = $func->conn;
             $pictures = getPictures($id, $conn);
             
             // Vraag het pandid op en kijk of deze leeg is. Als deze leeg is is er geen pand dat overeenkomt met de ingevoerde informatie.

@@ -9,28 +9,39 @@
 class userFunctions
 {
     function getAllUsers($conn){
-        $sql = "SELECT * FROM user";
+        try {
+            //$sql = "SELECT * FROM user";
+            $stmt = $conn->prepare('SELECT * FROM user');
+            $stmt->execute();
+            $result = $stmt->fetchall();
 
-        $result = $conn->query($sql);
+            //$result = $conn->query($sql);
 
-        if($result->num_rows > 0){
-            return $result;
+            if ($result != false) {
+                return $result;
+            } else {
+                $_SESSION['error'] = "Er kunnen geen gebruikers worden gevonden. Probeer het later nogmaals.";
+                file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
+                return null;
+            }
+        }catch (Exception $e){
+
         }
-        else{
-            $_SESSION['error'] = "Er kunnen geen gebruikers worden gevonden. Probeer het later nogmaals.";
-            file_put_contents($_SERVER['DOCUMENT_ROOT']."/logs/errorlog.txt", date("Y-m-d H:i:s") . " - " . $_SESSION['error'] . "\r\n", FILE_APPEND);
-            return null;
-        }
-
     }
     function getAllUsersPaginated($conn, $limit, $page){
 
         $limit2 = ($page-1) * $limit;
-        $sql = "SELECT * FROM user LIMIT $limit2, $limit";
+        //$sql = "SELECT * FROM user LIMIT $limit2, $limit";
+        $stmt = $conn->prepare('SELECT * FROM user LIMIT :limit2 ,:limit1');
+        $stmt->bindParam(':limit2',$limit2, PDO::PARAM_INT);
+        $stmt->bindParam(':limit1',$limit, PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetchall();
 
-        $result = $conn->query($sql);
 
-        if($result->num_rows > 0){
+        //$result = $conn->query($sql);
+
+        if($result != false){
             return $result;
         }
         else{

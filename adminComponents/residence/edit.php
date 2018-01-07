@@ -18,7 +18,6 @@ include_once "menu.php";
 require_once("residenceFunctions.php");
 include "../../lib/upload/upload.php";
 $functions = new residenceFunctions();
-$conn = $functions->connectDB();
 if (isset($_POST['picturesid'])){
     $_SESSION['picturesid'] = $_POST['picturesid'];
 }
@@ -30,21 +29,20 @@ if (isset($_GET['path']) && isset($_GET['delete']) && $_GET != null){
     unset($_SESSION['pandid']);
 }
 if (isset($pandID) && $pandID != null){
-    $result = $functions->getSingleResidence($conn, $pandID);
-    if ($result!= null && $result->num_rows > 0){
-    $result = $result->fetch_object();
-    $_SESSION['pandid'] = $result->pandid;
+    $result = $functions->getSingleResidence( $pandID);
+    if ($result!= null && $result != false){
+        $_SESSION['pandid'] = $result['pandid'];
     }
 }
 if (isset($_POST['editRecord']) && $_POST != null){
     if ($_POST['picturesid'] != null){
-        $var = uploadFile($_POST['picturesid']);
+        $var = uploadFile();
     }
     else{
-        $_POST['picturesid'] = autoUpload();
+        $_POST['picturesid'] = autoUpload($functions->conn);
     }
     if (isset($var) && $var != null){
-        insertPictures($var, $_POST['picturesid'] , $conn);
+        insertPictures($var, $_POST['picturesid'] , $functions->conn);
     }
 
     $adres          = htmlspecialchars($_POST['adres'] , ENT_QUOTES, 'UTF-8');
@@ -53,15 +51,15 @@ if (isset($_POST['editRecord']) && $_POST != null){
     $beschrijving   = htmlspecialchars($_POST['beschrijving'] , ENT_QUOTES, 'UTF-8');
     $prijs          = htmlspecialchars($_POST['prijs'] , ENT_QUOTES, 'UTF-8');
     $gwe_prijs      = htmlspecialchars($_POST['gwe_prijs'], ENT_QUOTES, 'UTF-8');
+    $actief         = htmlspecialchars($_POST['actief'], ENT_QUOTES, 'UTF-8');
     if ($_POST['picturesid'] == false){
         $_POST['picturesid'] = 'null';
     }
 
-    $functions->updateResidence($conn, $_POST['editRecord'], $adres, $postcode, $plaats, $beschrijving, $prijs, $gwe_prijs, $_POST['picturesid']);
-    $result = $functions->getSingleResidence($conn, $_POST['editRecord']);
-    $result = $result->fetch_object();
+    $functions->updateResidence($_POST['editRecord'], $adres, $postcode, $plaats, $beschrijving, $prijs, $gwe_prijs, $_POST['picturesid'], $actief);
+    $result = $functions->getSingleResidence($_POST['editRecord']);
 }
-$images = $functions->getResidencePictures($conn, $result->picturesid);
+$images = $functions->getResidencePictures($result['picturesid']);
 include_once "../alert.php";
 if(isset($result) && $result != null){?>
 
@@ -73,29 +71,29 @@ if(isset($result) && $result != null){?>
 
         <!-- Text input-->
         <div class="form-group row">
-            <label class="col-md-4 control-label" for="straat">Adres</label>
+            <label class="col-md-4 control-label" for="adres">Adres</label>
             <div class="col-md-6">
-                <input id="adres" name="adres" type="text" value="<?php echo $result->adres ?>" class="form-control input-md" require_onced="require_onced">
+                <input id="adres" name="adres" type="text" value="<?php echo $result['adres'] ?>" class="form-control input-md" required="required">
             </div>
         </div>
         <div class="form-group row">
             <label class="col-md-4 control-label" for="postcode">Postcode</label>
             <div class="col-md-6">
-                <input id="postcode" name="postcode" type="text" value="<?php echo $result->postalcode ?>" class="form-control input-md" require_onced="require_onced">
+                <input id="postcode" name="postcode" type="text" value="<?php echo $result['postalcode'] ?>" class="form-control input-md" required="required">
 
             </div>
         </div>
         <div class="form-group row">
             <label class="col-md-4 control-label" for="plaats">Plaats</label>
             <div class="col-md-6">
-                <input id="plaats" name="plaats" type="text" value="<?php echo $result->city ?>" class="form-control input-md" require_onced="require_onced">
+                <input id="plaats" name="plaats" type="text" value="<?php echo $result['city'] ?>" class="form-control input-md" required="required">
 
             </div>
         </div>
         <div class="form-group row">
             <label class="col-md-4 control-label" for="beschrijving">Beschrijving</label>
             <div class="col-md-6">
-                <textarea class="form-control" id="beschrijving" name="beschrijving" rows="5"><?php echo $result->description ?></textarea require_onced="require_onced">
+                <textarea class="form-control" id="beschrijving" name="beschrijving" rows="5"><?php echo $result['description'] ?></textarea required="required">
             </div>
         </div>
 
@@ -109,13 +107,38 @@ if(isset($result) && $result != null){?>
         <div class="form-group row">
             <label class="col-md-4 control-label" for="prijs">Prijs</label>
             <div class="col-md-6">
-                <input id="prijs" name="prijs" type="number" min="0" step="1" value="<?php echo $result->price ?>" class="form-control input-md" require_onced="require_onced">
+                <input id="prijs" name="prijs" type="number" min="0" step="1" value="<?php echo $result['price'] ?>" class="form-control input-md" required="required">
             </div>
         </div>
         <div class="form-group row">
             <label class="col-md-4 control-label" for="gwe_prijs">G/W/E Prijs</label>
             <div class="col-md-6">
-                <input id="gwe_prijs" name="gwe_prijs" type="number" min="0" step="1" value="<?php echo $result->gwe_price ?>" class="form-control input-md" require_onced="require_onced">
+                <input id="gwe_prijs" name="gwe_prijs" type="number" min="0" step="1" value="<?php echo $result['gwe_price'] ?>" class="form-control input-md" required="required">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-4 control-label" for="actief">actief</label>
+            <div class="col-md-6">
+                <div class="radio">
+                    <label for="actief-0">
+                        <?php if($result['active'] == '1'){?>
+                            <input type="radio" name="actief" id="actief-0" value=1 checked="checked">
+                        <?php } else { ?>
+                            <input type="radio" name="actief" id="actief-0" value=1>
+                        <?php } ?>
+                        Ja
+                    </label>
+                </div>
+                <div class="radio">
+                    <label for="actief-1">
+                        <?php if($result['active'] == '0'){ ?>
+                            <input type="radio" name="actief" id="actief-1" value=0 checked="checked">
+                        <?php } else { ?>
+                            <input type="radio" name="actief" id="actief-1" value=0>
+                        <?php } ?>
+                        Nee
+                    </label>
+                </div>
             </div>
         </div>
         <?php if($images != null) {?>
@@ -140,11 +163,11 @@ if(isset($result) && $result != null){?>
         <?php }?>
         <div class="form-group row">
             <div class="offset-4 col-md-3">
-                <a href="/adminComponents/residence/overview" class="form-control input-md btn btn-danger">Terug</a>
+                <a href="/adminComponents/residence/overview.php" class="form-control input-md btn btn-danger">Terug</a>
             </div>
             <div class="col-md-3">
-                <input type="hidden" value="<?php echo $result->pandid ?>" name="editRecord">
-                <input type="hidden" value="<?php echo $result->picturesid ?>" name="picturesid">
+                <input type="hidden" value="<?php echo $result['pandid'] ?>" name="editRecord">
+                <input type="hidden" value="<?php echo $result['picturesid'] ?>" name="picturesid">
                 <input type="submit" class="form-control input-md btn btn-primary">
             </div>
         </div>

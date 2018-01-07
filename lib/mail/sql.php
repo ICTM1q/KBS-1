@@ -54,11 +54,8 @@ function insertIntoMaillist ( $email ) {
     }
 }
 
-function getAllMallist ( ) {
-    if (!isset($SQL_AVAILABLE)) {
-        require $_SERVER['DOCUMENT_ROOT'] . "/lib/account/sql.php";
-    }
-    $conn = connectToDatabase();
+function getAllMallist ($conn ) {
+
     $stmt = $conn->prepare ( "SELECT * FROM mail_list" );
     $stmt->execute();
     $row = $stmt->fetchAll();
